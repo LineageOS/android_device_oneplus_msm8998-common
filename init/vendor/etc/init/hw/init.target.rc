@@ -284,6 +284,7 @@ service per_mgr /vendor/bin/pm-service
     user system
     group system
     ioprio rt 4
+    shutdown critical
 
 service per_proxy /vendor/bin/pm-proxy
     class core
@@ -304,6 +305,7 @@ service qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
+   shutdown critical
 
 service spdaemon /vendor/bin/spdaemon
    class core
