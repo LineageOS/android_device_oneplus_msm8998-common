@@ -267,6 +267,8 @@
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED_VBAT" backend="speaker-protected-vbat" interface="SLIMBUS_0_RX" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED_VBAT" backend="voice-speaker-protected-vbat" interface="SLIMBUS_0_RX" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_2_PROTECTED_VBAT" backend="voice-speaker-2-protected-vbat" interface="SLIMBUS_0_RX" />
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="SLIMBUS_0_RX-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="SLIMBUS_0_RX-and-SLIMBUS_7_RX"/>
     </backend_names>
 
     <microphone_characteristics>
