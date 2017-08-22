@@ -149,6 +149,8 @@ on boot
     chown system system /sys/devices/soc/soc:fpc_fpc1020/report_key
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
     chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
     chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
     chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
