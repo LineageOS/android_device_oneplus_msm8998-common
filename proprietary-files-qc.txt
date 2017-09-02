@@ -80,7 +80,7 @@ etc/firmware/rampatch_tlv.img
 -vendor/lib64/libbtnv.so
 
 # CNE
-bin/cnd
+bin/cnd|6e92413a8a0cc9467cc35ab7805ebcfa8874db1f
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/cne/wqeclient/ATT/ATT_profile1.xml
@@ -112,9 +112,10 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwms.so
 vendor/lib/libwqe.so
 vendor/lib/libxml.so
-vendor/lib64/libcne.so
-vendor/lib64/libcneapiclient.so
+vendor/lib64/libcne.so|a38cf49ee5c42bc3efa9276d38c05e2232a9565e
+vendor/lib64/libcneapiclient.so|ebc1085bda166c21d33d724f6e83822497929399
 vendor/lib64/libcneqmiutils.so
+vendor/lib64/libprotobuf-cpp-lgcy.so|196013f7f1a84dfb0efdb736dd661b615ef4c5ae
 vendor/lib64/libvendorconn.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
