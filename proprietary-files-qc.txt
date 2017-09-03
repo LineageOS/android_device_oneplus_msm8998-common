@@ -115,7 +115,7 @@ vendor/lib/libxml.so
 vendor/lib64/libcne.so|a38cf49ee5c42bc3efa9276d38c05e2232a9565e
 vendor/lib64/libcneapiclient.so|ebc1085bda166c21d33d724f6e83822497929399
 vendor/lib64/libcneqmiutils.so
-vendor/lib64/libprotobuf-cpp-lgcy.so|196013f7f1a84dfb0efdb736dd661b615ef4c5ae
+vendor/lib64/libprotobuf-cpp-lgcy.so|75b0bab57505c6be44748c207000fad72d322429
 vendor/lib64/libvendorconn.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
@@ -395,7 +395,7 @@ vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
-vendor/lib64/libsettings.so
+vendor/lib64/libsettings.so|51b4a8b53d40363ca4ab3fe0dbd6090893a60cd3
 vendor/lib64/libsystem_health_mon.so
 vendor/qcril.db
 
