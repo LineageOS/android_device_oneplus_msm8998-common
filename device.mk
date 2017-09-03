@@ -360,6 +360,10 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     sensors.msm8998
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshims_system_properties
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
