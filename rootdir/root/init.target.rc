@@ -410,8 +410,8 @@ service mdtpd /system/vendor/bin/mdtpd
 service dashd /sbin/dashd
     class core
     critical
-    seclabel u:r:dashd:s0
     group root system
+    #seclabel u:r:dashd:s0
 
 service ifaadaemon /system/bin/ifaadaemon
     class late_start
