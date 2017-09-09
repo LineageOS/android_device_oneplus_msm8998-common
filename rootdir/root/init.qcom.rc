@@ -721,6 +721,9 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
+on property:init.svc.wificond=running
+    write /sys/kernel/boot_wlan/boot_wlan 1
+
 # FST Manager with hostapd (softap) - all settings inside ini file
 service fstman /system/bin/fstman -B -ddd -c /data/misc/wifi/fstman.ini
     user wifi

@@ -269,11 +269,6 @@ on boot
     chown system system /sys/class/timed_output/vibrator/wf_rep
     chown system system /sys/class/timed_output/vibrator/wf_s_rep
 
-    # Load WLAN driver, to satisfy wificond
-    insmod /system/lib/modules/wlan.ko
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
-    setprop wlan.driver.status "ok"
-
 #fingerprint service
 service fingerprintd /system/bin/fingerprintd
     class late_start
