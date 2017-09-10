@@ -47,7 +47,7 @@ on fs
 
     wait /dev/block/bootdevice/by-name/persist
     exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist noatime nosuid nodev barrier=1
 
     mkdir /persist/data 0700 system system
     mkdir /persist/bms 0700 root system
