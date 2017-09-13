@@ -60,7 +60,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.hw.aac.encoder=true \
     vendor.fm.a2dp.conc.disabled=true \
     vendor.audio.noisy.broadcast.delay=600 \
-    ro.config.media_vol_steps=25
+    ro.config.media_vol_steps=25 \
+    ro.af.client_heap_size_kbyte=7168
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
