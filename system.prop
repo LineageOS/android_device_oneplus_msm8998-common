@@ -87,7 +87,7 @@ ro.bluetooth.wipower=false
 ro.qualcomm.cabl=0
 
 # Camera
-camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera
 
 persist.camera.mobicat=2
 persist.camera.stats.debugexif=3080192
