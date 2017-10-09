@@ -27,3 +27,21 @@ LOCAL_MODULE := libcamera_parameters_ext
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := camera_shim.cpp
+
+LOCAL_SHARED_LIBRARIES := \
+    libgui \
+    libui
+
+LOCAL_C_INCLUDES := \
+    frameworks/native/include
+
+LOCAL_MODULE := libcamera_shim
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MULTILIB := 32
+
+include $(BUILD_SHARED_LIBRARY)

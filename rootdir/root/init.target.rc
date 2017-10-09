@@ -61,6 +61,8 @@ on fs
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
 
 on init
+    export LD_SHIM_LIBS "/system/vendor/lib64/libril-qc-qmi-1.so|libshims_system_properties.so:/system/lib/hw/camera.msm8998.so|libcamera_shim.so:/system/vendor/lib/libcamera_bokeh_wrapper.so|libcamera_shim.so:/system/vendor/lib/libfusionLibrary.so|libcamera_shim.so:/system/vendor/lib/libmmcamera_ppeiscore.so|libcamera_shim.so"
+
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
