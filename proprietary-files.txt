@@ -152,6 +152,12 @@ vendor/lib64/libjni_stillmore.so
 vendor/lib64/libjni_clearsight.so
 vendor/lib64/libjni_sharpshooter.so
 
+# Camera calibration
+etc/camera/cp/CPCalibrationData.bin
+etc/camera/cp/FusionCalibrationParams.bin
+etc/camera/cp/SystemParamsBokeh.bin
+etc/camera/cp/SystemParamsFusion.bin
+
 # Camera chromatix
 vendor/lib/libchromatix_imx350_3a_1536x866_30fps_video.so
 vendor/lib/libchromatix_imx350_3a_2304x1300_30fps_preview.so
