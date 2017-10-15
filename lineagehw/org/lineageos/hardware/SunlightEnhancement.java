@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.hardware;
-
-import org.cyanogenmod.internal.util.FileUtils;
+package org.lineageos.hardware;
 
 import android.util.Log;
+
+import org.lineageos.internal.util.FileUtils;
 
 /**
  * Facemelt mode!
