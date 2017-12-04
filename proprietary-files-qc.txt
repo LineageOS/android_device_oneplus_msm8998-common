@@ -477,9 +477,19 @@ vendor/lib64/libqvop-service.so
 vendor/lib/libqvop-service.so
 
 # Widevine
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libWVStreamControlAPI_L3.so
-vendor/lib/mediadrm/libwvdrmengine.so
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine
+vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc
+vendor/firmware/widevine.b00
+vendor/firmware/widevine.b01
+vendor/firmware/widevine.b02
+vendor/firmware/widevine.b03
+vendor/firmware/widevine.b04
+vendor/firmware/widevine.b05
+vendor/firmware/widevine.b06
+vendor/firmware/widevine.mdt
+vendor/lib/libcppf.so
+vendor/lib/liboemcrypto.so
+vendor/lib/libwvhidl.so
 
 # Wi-Fi
 bin/cnss_diag
