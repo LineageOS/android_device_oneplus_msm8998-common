@@ -32,6 +32,6 @@ def AddModemAssertion(info):
   if m:
     version = m.group(1).rstrip()
     if len(version) and '*' not in version:
-      cmd = 'assert(cheeseburger.verify_modem("' + version + '") == "1");'
+      cmd = 'assert(oneplus.verify_modem("' + version + '") == "1");'
       info.script.AppendExtra(cmd)
   return
