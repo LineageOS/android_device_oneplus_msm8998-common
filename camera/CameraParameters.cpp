@@ -179,6 +179,7 @@ CAMERA_PARAMETERS_EXTRA_C
 #endif
 
 char gClientPackageName[50] = "com.oneplus.camera";
+char lClientPackageName[50] = "com.oneplus.camera";
 
 CameraParameters::CameraParameters()
                 : mMap()
