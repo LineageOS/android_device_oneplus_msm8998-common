@@ -37,7 +37,7 @@
 #ifdef USES_BOOTDEVICE_PATH
 #define MODEM_PART_PATH "/dev/block/bootdevice/by-name/modem"
 #else
-#define MODEM_PART_PATH "/dev/block/platform/msm_sdcc.1/by-name/modem"
+#define MODEM_PART_PATH "/dev/block/platform/soc/1da4000.ufshc/by-name/modem"
 #endif
 #define MODEM_VER_STR "Time_Stamp\": \""
 #define MODEM_VER_STR_LEN 14
