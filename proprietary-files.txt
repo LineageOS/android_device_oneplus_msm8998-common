@@ -1,3 +1,6 @@
+# Audio
+etc/firmware/tfa98xx.cnt
+
 # Alipay
 bin/ifaadaemon
 lib/libteeclientjni.so
@@ -9,23 +12,35 @@ lib64/libteeclientjniv2.so
 -sbin/dashd:rootfs
 
 # Graphics firmware
-etc/firmware/a530_pfp.fw
-etc/firmware/a530_pm4.fw
-etc/firmware/a540_gpmu.fw2
-etc/firmware/a540_zap.b00
-etc/firmware/a540_zap.b01
-etc/firmware/a540_zap.b02
-etc/firmware/a540_zap.elf
-etc/firmware/a540_zap.mdt
+vendor/firmware/a530_gpmu.fw2
+vendor/firmware/a530_pfp.fw
+vendor/firmware/a530_pm4.fw
+vendor/firmware/a530v1_pfp.fw
+vendor/firmware/a530v1_pm4.fw
+vendor/firmware/a530v2_seq.fw2
+vendor/firmware/a530v3_gpmu.fw2
+vendor/firmware/a530v3_seq.fw2
+vendor/firmware/a530_zap.b00
+vendor/firmware/a530_zap.b01
+vendor/firmware/a530_zap.b02
+vendor/firmware/a530_zap.elf
+vendor/firmware/a530_zap.mdt
+vendor/firmware/a540_gpmu.fw2
+vendor/firmware/a540_zap.b00
+vendor/firmware/a540_zap.b01
+vendor/firmware/a540_zap.b02
+vendor/firmware/a540_zap.elf
+vendor/firmware/a540_zap.mdt
 
 # IPA
-bin/ipacm-diag
-etc/firmware/ipa_fws.b00
-etc/firmware/ipa_fws.b01
-etc/firmware/ipa_fws.b02
-etc/firmware/ipa_fws.b03
-etc/firmware/ipa_fws.b04
-etc/firmware/ipa_fws.mdt
+vendor/bin/ipacm-diag
+vendor/firmware/ipa_fws.b00
+vendor/firmware/ipa_fws.b01
+vendor/firmware/ipa_fws.b02
+vendor/firmware/ipa_fws.b03
+vendor/firmware/ipa_fws.b04
+vendor/firmware/ipa_fws.elf
+vendor/firmware/ipa_fws.mdt
 
 # NFC firmware
 vendor/firmware/libpn553_fw.so
@@ -38,4 +53,7 @@ etc/firmware/mbn_ota/mbn_ota.txt
 
 # Sensors
 vendor/etc/sensors/hals.conf
-etc/sensors/sensor_def_qcomdev.conf
+vendor/etc/sensors/sensor_def_qcomdev.conf
+
+# Touchscreen Firmware
+etc/firmware/tp/fw_synaptics_16859.img
