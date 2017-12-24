@@ -1,5 +1,6 @@
-#!/system/bin/sh
-# Copyright (c) 2012-2013,2016-2017 The Linux Foundation. All rights reserved.
+#! /vendor/bin/sh
+
+# Copyright (c) 2012-2013,2016 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,7 +27,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-export PATH=/system/bin
+export PATH=/vendor/bin
 
 # Set platform variables
 if [ -f /sys/devices/soc0/hw_platform ]; then
@@ -51,6 +52,14 @@ if [ -f /sys/class/graphics/fb0/virtual_size ]; then
 fi
 
 log -t BOOT -p i "MSM target '$1', SoC '$soc_hwplatform', HwID '$soc_hwid', SoC ver '$soc_hwver'"
+
+#For drm based display driver
+vbfile=/sys/module/drm/parameters/vblankoffdelay
+if [ -w $vbfile ]; then
+    echo -1 >  $vbfile
+else
+    log -t DRM_BOOT -p w "file: '$vbfile' or perms doesn't exist"
+fi
 
 function set_density_by_fb() {
     #put default density based on width
@@ -196,13 +205,16 @@ case "$target" in
                 setprop ro.sf.lcd_density 240
                 setprop qemu.hw.mainkeys 0
                 ;;
+            "ADP")
+                setprop ro.sf.lcd_density 160
+                setprop qemu.hw.mainkeys 0
+                ;;
             "SBC")
                 setprop ro.sf.lcd_density 240
                 setprop qemu.hw.mainkeys 0
                 ;;
             *)
-                #modify by zoufeng 560 to 420
-                setprop ro.sf.lcd_density 420
+                setprop ro.sf.lcd_density 560
                 ;;
         esac
         ;;
@@ -216,8 +228,8 @@ case "$target" in
             294|295|296|297|298|313)
                 setprop ro.opengles.version 196610
                 ;;
-            303|307|308|309|320)
-                # Vulkan is not supported for 8917 & 8920 variants
+            303|307|308|309)
+                # Vulkan is not supported for 8917 variants
                 setprop ro.opengles.version 196608
                 setprop persist.graphics.vulkan.disable true
                 ;;
@@ -226,10 +238,18 @@ case "$target" in
                 ;;
         esac
         ;;
-    "msm8998")
+    "msm8909")
+        case "$soc_hwplatform" in
+            *)
+                setprop persist.graphics.vulkan.disable true
+                ;;
+        esac
+        ;;
+    "msm8998" | "apq8098_latv")
         case "$soc_hwplatform" in
             *)
                 #modify by Leo Jia 560 to 420
+                #setprop ro.sf.lcd_density 560
                 setprop ro.sf.lcd_density 420
                 if [ ! -e /dev/kgsl-3d0 ]; then
                     setprop persist.sys.force_sw_gles 1
@@ -239,8 +259,60 @@ case "$target" in
                 fi
                 ;;
         esac
+        case "$soc_hwid" in
+                "319") #apq8098_latv
+                echo "\n==Loading ALX module==\n"
+                insmod /system/lib/modules/alx.ko
+		;;
+	esac
+        ;;
+    "sdm845")
+        case "$soc_hwplatform" in
+            *)
+                setprop ro.sf.lcd_density 560
+                if [ ! -e /dev/kgsl-3d0 ]; then
+                    setprop persist.sys.force_sw_gles 1
+                    setprop sdm.idle_time 0
+                else
+                    setprop persist.sys.force_sw_gles 0
+                fi
+                ;;
+        esac
+        ;;
+    "msm8953")
+        cap_ver=`cat /sys/devices/soc/1d00000.qcom,vidc/capability_version` 2> /dev/null
+        if [ $cap_ver -eq 1 ]; then
+            setprop media.msm8953.version 1
+        fi
         ;;
 esac
+
+# In mpss AT version is greater than 3.1, need
+# to use the new vendor-ril which supports L+L feature
+# otherwise use the existing old one.
+if [ -f /firmware/verinfo/ver_info.txt ]; then
+    modem=`cat /firmware/verinfo/ver_info.txt |
+            sed -n 's/^[^:]*modem[^:]*:[[:blank:]]*//p' |
+            sed 's/.*AT.\(.*\)/\1/g' | cut -d \- -f 1`
+    zygote=`getprop ro.zygote`
+    case "$zygote" in
+    "zygote64_32")
+        if [ "$modem" \< "3.1" ]; then
+            setprop vendor.rild.libpath "/vendor/lib64/libril-qc-qmi-1.so"
+        else
+            setprop vendor.rild.libpath "/vendor/lib64/libril-qc-hal-qmi.so"
+        fi
+        ;;
+    "zygote32")
+        if [ "$modem" \< "3.1" ]; then
+            setprop vendor.rild.libpath "/vendor/lib/libril-qc-qmi-1.so"
+        else
+            setprop vendor.rild.libpath "/vendor/lib/libril-qc-hal-qmi.so"
+        fi
+        ;;
+    esac
+fi
+
 #set default lcd density
 #Since lcd density has read only
 #property, it will not overwrite previous set
@@ -283,63 +355,65 @@ function setHDMIPermission() {
    ln -s $dev_file $dev_gfx_hdmi
 }
 
-# check for HDMI connection
-for fb_cnt in 0 1 2 3
-do
-    file=/sys/class/graphics/fb$fb_cnt/msm_fb_panel_info
+# check for the type of driver FB or DRM
+fb_driver=/sys/class/graphics/fb0
+if [ -e "$fb_driver" ]
+then
+    # check for HDMI connection
+    for fb_cnt in 0 1 2 3
+    do
+        file=/sys/class/graphics/fb$fb_cnt/msm_fb_panel_info
+        if [ -f "$file" ]
+        then
+          cat $file | while read line; do
+            case "$line" in
+                *"is_pluggable"*)
+                 case "$line" in
+                      *"1"*)
+                      setHDMIPermission $fb_cnt
+                 esac
+            esac
+          done
+        fi
+    done
+
+    # check for mdp caps
+    file=/sys/class/graphics/fb0/mdp/caps
     if [ -f "$file" ]
     then
-      cat $file | while read line; do
-        case "$line" in
-            *"is_pluggable"*)
-             case "$line" in
-                  *"1"*)
-                  setHDMIPermission $fb_cnt
-             esac
-        esac
-      done
+        setprop debug.gralloc.gfx_ubwc_disable 1
+        cat $file | while read line; do
+          case "$line" in
+                    *"ubwc"*)
+                    setprop debug.gralloc.enable_fb_ubwc 1
+                    setprop debug.gralloc.gfx_ubwc_disable 0
+                esac
+        done
     fi
-done
 
+    file=/sys/class/graphics/fb0
+    if [ -d "$file" ]
+    then
+            set_perms $file/idle_time system.graphics 0664
+            set_perms $file/dynamic_fps system.graphics 0664
+            set_perms $file/dyn_pu system.graphics 0664
+            set_perms $file/modes system.graphics 0664
+            set_perms $file/mode system.graphics 0664
+            set_perms $file/msm_cmd_autorefresh_en system.graphics 0664
+    fi
 
-
-# check for mdp caps
-file=/sys/class/graphics/fb0/mdp/caps
-if [ -f "$file" ]
-then
-    setprop debug.gralloc.enable_fb_ubwc 0
-    setprop debug.gralloc.gfx_ubwc_disable 1
-    cat $file | while read line; do
-      case "$line" in
-                *"ubwc"*)
-                setprop debug.gralloc.enable_fb_ubwc 1
-                setprop debug.gralloc.gfx_ubwc_disable 0
-            esac
+    # set lineptr permissions for all displays
+    for fb_cnt in 0 1 2 3
+    do
+        file=/sys/class/graphics/fb$fb_cnt
+        if [ -f "$file/lineptr_value" ]; then
+            set_perms $file/lineptr_value system.graphics 0664
+        fi
+        if [ -f "$file/msm_fb_persist_mode" ]; then
+            set_perms $file/msm_fb_persist_mode system.graphics 0664
+        fi
     done
 fi
-
-file=/sys/class/graphics/fb0
-if [ -d "$file" ]
-then
-        set_perms $file/idle_time system.graphics 0664
-        set_perms $file/dynamic_fps system.graphics 0664
-        set_perms $file/dyn_pu system.graphics 0664
-        set_perms $file/modes system.graphics 0664
-        set_perms $file/mode system.graphics 0664
-        set_perms $file/msm_cmd_autorefresh_en system.graphics 0664
-fi
-
-# set lineptr permissions for all displays
-for fb_cnt in 0 1 2 3
-do
-    file=/sys/class/graphics/fb$fb_cnt
-    if [ -f "$file/lineptr_value" ]; then
-        set_perms $file/lineptr_value system.graphics 0664
-    fi
-    if [ -f "$file/msm_fb_persist_mode" ]; then
-        set_perms $file/msm_fb_persist_mode system.graphics 0664
-    fi
-done
 
 boot_reason=`cat /proc/sys/kernel/boot_reason`
 reboot_reason=`getprop ro.boot.alarmboot`
@@ -348,13 +422,7 @@ if [ "$boot_reason" = "3" ] || [ "$reboot_reason" = "true" ]; then
     if [ "$power_off_alarm_file" = "1" ]
     then
         setprop ro.alarm_boot true
-        #ifndef VENDOR_EDIT
-        #setprop debug.sf.nobootanimation 1
-        #ENDIF
-        #ifdef VENDOR_EDIT
-        setprop debug.sf.nobootanimation 0
-        #ENDIF
-
+        setprop debug.sf.nobootanimation 1
     fi
 else
     setprop ro.alarm_boot false
