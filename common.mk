@@ -164,6 +164,8 @@ PRODUCT_PACKAGES += \
     gralloc.msm8998 \
     hwcomposer.msm8998 \
     memtrack.msm8998 \
+    libdisplayconfig \
+    libhwc2on1adapter \
     libgenlock \
     liboverlay \
     libtinyxml \
