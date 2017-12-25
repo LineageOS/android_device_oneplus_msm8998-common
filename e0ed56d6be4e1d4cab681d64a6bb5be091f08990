@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d45b3d2d_aaa680a3",
+        "filename": "rootdir/root/init.target.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2017-12-25T11:22:03Z",
+      "side": 1,
+      "message": "Don\u0027t do this, I added on op3 for historical reason",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 41
+      },
+      "revId": "e0ed56d6be4e1d4cab681d64a6bb5be091f08990",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
