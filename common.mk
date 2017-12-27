@@ -406,12 +406,12 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
+    hostapd \
+    hostapd_cli \   
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    libwpa_client \
-    hostapd \
+    libwifi-hal-qcom \
     wificond \
-    wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf \
     wifi-mac-generator
