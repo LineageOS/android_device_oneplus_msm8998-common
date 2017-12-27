@@ -47,7 +47,7 @@ on init
 on fs
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
-    mount_all /vendor/etc/fstab.qcom
+    mount_all /vendor/etc/fstab.qcom --early
     swapon_all /vendor/etc/fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
@@ -59,18 +59,32 @@ on fs
     mkdir /persist/data 0700 system system
     restorecon_recursive /persist
 
-#ifdef VENDOR_EDIT
-#### zhiguang.su,make adsp boot faster.
-    write /sys/kernel/boot_adsp/boot 1
-#endif
-
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
     mount ext4 /dev/block/bootdevice/by-name/dsp_a /dsp ro nosuid nodev barrier=1
 
-on post-fs
+    # Start HW service manager early
+    start hwservicemanager
+
+    # qseecomd needs /dev/block/bootdevice
+    # vold needs keymaster that needs qseecomd
     start qseecomd
-    exec - system system -- /vendor/bin/init.qti.qseecomd.sh
+
+on late-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start hwcomposer-2-1
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    # Mount RW partitions which need run fsck
+    mount_all /vendor/etc/fstab.qcom --late
+
+on post-fs
     write /dev/ipa 1
+
+    # Wait qseecomd started
+    wait_for_prop sys.listeners.registered true
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
