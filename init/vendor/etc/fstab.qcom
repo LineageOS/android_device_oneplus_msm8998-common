@@ -7,7 +7,7 @@
 
 #<src>                                                       <mnt_point>       <type>  <mnt_flags and options>                                                                              <fs_mgr_flags>
 /dev/block/bootdevice/by-name/boot                           /boot             emmc    defaults                                                                                             defaults
-/dev/block/bootdevice/by-name/userdata                       /data             ext4    nosuid,nodev,noatime,barrier=1,noauto_da_alloc                                                       wait,check,fileencryption=ice,quota
+/dev/block/bootdevice/by-name/userdata                       /data             ext4    nosuid,nodev,noatime,barrier=1,noauto_da_alloc                                                       latemount,wait,check,fileencryption=ice,quota
 /dev/block/bootdevice/by-name/cache                          /cache            ext4    nosuid,nodev,noatime,barrier=1                                                                       wait,check,formattable
 /dev/block/bootdevice/by-name/misc                           /misc             emmc    defaults                                                                                             defaults
 

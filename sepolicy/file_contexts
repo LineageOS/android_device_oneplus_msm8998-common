@@ -1,6 +1,5 @@
 # executables
 /system/bin/ifaadaemon                                          u:object_r:ifaadaemon_exec:s0
-/system/bin/init.qti.qseecomd.sh                                u:object_r:init-qti-fbe-sh_exec:s0
 
 # We have a couple of non-standard NV partitions
 /dev/block/bootdevice/by-name/oem_dycnvbk                       u:object_r:modem_efs_partition_device:s0
