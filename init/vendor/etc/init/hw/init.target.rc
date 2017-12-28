@@ -248,10 +248,6 @@ on boot
    chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
 #endif
 
-    /* create a empty file for wifi hal to write mac address */
-    write /persist/wlan_mac.bin ""
-    chown wifi wifi /persist/wlan_mac.bin
-
 #install video modules
    insmod /system/lib/modules/msm-vidc-vmem.ko
    insmod /system/lib/modules/msm-vidc.ko
