@@ -191,7 +191,8 @@ set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
-    int brightness = rgb_to_brightness(state);
+    // panel driver brightness range is 0-1023
+    int brightness = rgb_to_brightness(state) * 4;
     if(!dev) {
         return -1;
     }
