@@ -1,5 +1,6 @@
 # ADSP
 vendor/bin/adsprpcd
+vendor/etc/diracvdd.bin
 vendor/lib/libadsp_default_listener.so
 vendor/lib/libadsp_hvx_callback_skel.so
 vendor/lib/libadsp_hvx_stub.so
@@ -35,6 +36,11 @@ vendor/lib/rfsa/adsp/libscveT2T_skel.so
 vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 vendor/lib/rfsa/adsp/libvpp_frc.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
+
+# Alarm
+-vendor/framework/vendor.qti.hardware.alarm-V1.0-java.jar
+vendor/lib/vendor.qti.hardware.alarm@1.0.so
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # Audio
 vendor/lib/libacdb-fts.so
@@ -539,6 +545,16 @@ vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
 
+# ESE-Powermanager
+vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
+vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
+lib/vendor.qti.esepowermanager@1.0.so
+lib64/vendor.qti.esepowermanager@1.0.so
+vendor/lib/vendor.qti.esepowermanager@1.0_vendor.so
+vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
+vendor/lib64/vendor.qti.esepowermanager@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
+
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8998.so
 vendor/lib64/hw/gatekeeper.msm8998.so
@@ -679,6 +695,55 @@ vendor/lib64/libsdmextension.so
 vendor/lib64/libsdm-disp-vndapis.so
 vendor/lib64/libuiblur.so
 
+# QDutils
+vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
+vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
+lib/vendor.qti.hardware.qdutils_disp@1.0.so
+lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so
+
+# Improvetouch
+vendor/bin/hbtp_daemon
+lib/libhbtpjni.so
+lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
+lib/vendor.qti.hardware.improvetouch.blobmanager@1.0.so
+lib/vendor.qti.hardware.improvetouch.gesturemanager@1.0.so
+lib64/libhbtpjni.so
+lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
+lib64/vendor.qti.hardware.improvetouch.blobmanager@1.0.so
+lib64/vendor.qti.hardware.improvetouch.gesturemanager@1.0.so
+vendor/etc/hbtp/hbtpcfg.dat
+vendor/etc/hbtp/hbtpcfg2.dat
+vendor/lib/libhbtpclient.so
+vendor/lib/libhbtpfrmwk.so
+vendor/lib/libhbtpdsp.so
+vendor/lib/vendor.qti.hardware.improvetouch.blobmanager@1.0-service.so
+vendor/lib/vendor.qti.hardware.improvetouch.blobmanager@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.improvetouch.gesturemanager@1.0-service.so
+vendor/lib/vendor.qti.hardware.improvetouch.gesturemanager@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
+vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0_vendor.so
+vendor/lib64/libhbtpclient.so
+vendor/lib64/libhbtpfrmwk.so
+vendor/lib64/libhbtpdsp.so
+vendor/lib64/vendor.qti.hardware.improvetouch.blobmanager@1.0-service.so
+vendor/lib64/vendor.qti.hardware.improvetouch.blobmanager@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.improvetouch.gesturemanager@1.0-service.so
+vendor/lib64/vendor.qti.hardware.improvetouch.gesturemanager@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
+vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0_vendor.so
+
+# IOP
+vendor/bin/hw/vendor.qti.hardware.iop@1.0-service
+vendor/etc/init/vendor.qti.hardware.iop@1.0-service.rc
+lib/vendor.qti.hardware.iop@1.0.so
+lib64/vendor.qti.hardware.iop@1.0.so
+vendor/lib/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib/hw/vendor.qti.hardware.iop@1.0-impl.so
+vendor/lib64/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.hardware.iop@1.0-impl.so
+
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
@@ -698,7 +763,9 @@ vendor/lib/libsmwrapper.so
 
 # Media
 lib/libmmosal.so
+lib/vendor.qti.hardware.vpp@1.1.so
 lib64/libmmosal.so
+lib64/vendor.qti.hardware.vpp@1.1.so
 -vendor/lib/libgpustats.so
 vendor/lib/libOmxVpp.so
 vendor/lib/libvpplibrary.so
@@ -980,6 +1047,17 @@ vendor/lib/libwvhidl.so
 # Wi-Fi
 vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
+
+# Wi-Fi Display
+vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
+lib/com.qualcomm.qti.wifidisplayhal@1.0.so
+lib64/com.qualcomm.qti.wifidisplayhal@1.0.so
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0_vendor.so
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
+vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0_vendor.so
+vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
+vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
 
 # VR
 lib64/libvraudio_client.so
