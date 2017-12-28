@@ -49,6 +49,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.fm.a2dp.conc.disabled=true \
     vendor.audio.noisy.broadcast.delay=600
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    aaudio.mmap_policy=2 \
+    aaudio.mmap_exclusive_policy=2 \
+    aaudio.hw_burst_min_usec=1000
+
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cutoff_voltage_mv=3200
