@@ -1047,6 +1047,11 @@ vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
 
+# Secure Processor SubSystem
+bin/spdaemon
+vendor/lib/libspcom.so
+vendor/lib64/libspcom.so
+
 # Sensors
 lib/libsensor_test.so
 lib/libqmi_cci_system.so
