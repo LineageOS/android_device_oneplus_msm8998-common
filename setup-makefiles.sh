@@ -36,7 +36,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
 
 # Copyright headers and guards
-write_headers "cheeseburger dumpling"
+write_headers "cheeseburger dumpling oneplus5"
 
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
