@@ -75,7 +75,7 @@ void property_override(const std::string& name, const std::string& value)
 void init_target_properties()
 {
     std::string device;
-    int unknownDevice = 1;
+    bool unknownDevice = true;
 
     if (ReadFileToString(DEVINFO_FILE, &device)) {
         LOG(INFO) << "Device info: " << device;
@@ -84,13 +84,13 @@ void init_target_properties()
             // Oneplus 5
             property_set("ro.display.series", "OnePlus 5");
             property_set("ro.sf.lcd_density", "480");
-            unknownDevice = 0;
+            unknownDevice = false;
         }
         else if (!strncmp(device.c_str(), "17801", 5)) {
             // Oneplus 5T
             property_set("ro.display.series", "OnePlus 5T");
             property_set("ro.sf.lcd_density", "420");
-            unknownDevice = 0;
+            unknownDevice = false;
         }
     }
     else {
