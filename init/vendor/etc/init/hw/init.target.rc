@@ -47,6 +47,8 @@ on init
 on fs
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
+    restorecon_recursive /dev/block/bootdevice
+
     mount_all /vendor/etc/fstab.qcom --early
     swapon_all /vendor/etc/fstab.qcom
 
@@ -163,7 +165,7 @@ on boot
     chmod 0666 /dev/p61
     chown spi spi /dev/p61
     chmod 0666 /dev/dash/
-    restorecon  /dev/dash
+    restorecon /dev/dash
 
     chown system system /sys/class/leds/red/pause_lo
     chown system system /sys/class/leds/blue/pause_lo
