@@ -1,0 +1,1 @@
+allow modprobe { vendor_file }:system module_load;
