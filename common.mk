@@ -137,7 +137,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     camera.device@3.2-impl \
-    Camera2
+    Snap
 
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
