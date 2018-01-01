@@ -565,7 +565,7 @@ service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth diag system wakelock
-    seclabel u:r:bluetooth:s0
+    seclabel u:r:wcnss_filter:s0
     disabled
 
 service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
