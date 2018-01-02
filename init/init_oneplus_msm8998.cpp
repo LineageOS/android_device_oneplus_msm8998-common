@@ -118,7 +118,7 @@ void init_alarm_boot_properties()
          * 2 -> sudden momentary power loss (SMPL)
          * 3 -> real time clock (RTC)
          * 4 -> DC charger inserted
-         * 5 -> USB charger insertd
+         * 5 -> USB charger inserted
          * 6 -> PON1 pin toggled (for secondary PMICs)
          * 7 -> CBLPWR_N pin toggled (for external power supply)
          * 8 -> KPDPWR_N pin toggled (power key pressed)
