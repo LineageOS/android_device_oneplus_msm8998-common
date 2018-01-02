@@ -296,7 +296,7 @@ service per_proxy /vendor/bin/pm-proxy
 on property:init.svc.per_mgr=running
     start per_proxy
 
-on property:sys.shutdown.requested=*
+on shutdown
     stop per_proxy
 
 on charger
