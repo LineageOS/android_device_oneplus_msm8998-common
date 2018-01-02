@@ -84,10 +84,10 @@ on late-fs
     mount_all /vendor/etc/fstab.qcom --late
 
 on post-fs
-    write /dev/ipa 1
-
     # Wait qseecomd started
     wait_for_prop sys.listeners.registered true
+
+    write /dev/ipa 1
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
