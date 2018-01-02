@@ -274,6 +274,10 @@ on post-fs-data
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
 
+    #create ipacm log dir
+    mkdir /data/vendor/ipa 0770 radio radio
+    chmod 0770 /data/vendor/ipa
+
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
@@ -622,6 +626,12 @@ service qmuxd /system/vendor/bin/qmuxd
 
 service netmgrd /system/vendor/bin/netmgrd
     class main
+    disabled
+
+service ipacm /system/vendor/bin/ipacm
+    class main
+    user radio
+    group radio inet
     disabled
 
 service qti /system/vendor/bin/qti
