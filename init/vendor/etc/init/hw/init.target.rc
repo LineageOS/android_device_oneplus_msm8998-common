@@ -266,12 +266,6 @@ on boot
    chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
 #endif
 
-#install video modules
-   insmod /system/lib/modules/msm-vidc-vmem.ko
-   insmod /system/lib/modules/msm-vidc.ko
-   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
-   insmod /system/lib/modules/msm-vidc-table-gov.ko
-
     # Fingerprint GOODIX
     chmod 0666 /dev/goodix_fp
 

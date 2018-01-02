@@ -122,11 +122,6 @@ on boot
 
     setprop wifi.interface wlan0
 
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
-
-
     setprop ro.telephony.call_ring.multiple false
 
     #enable camera read sensors data
@@ -135,21 +130,7 @@ on boot
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
-
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
-    setprop net.tcp.buffersize.lte     2097152,4194304,8388608,262144,524288,1048576
-    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
-    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
-    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
-    setprop net.tcp.buffersize.evdo    4094,87380,524288,4096,16384,262144
 
     setprop net.tcp.2g_init_rwnd 10
 
@@ -978,7 +959,7 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     socket rild-debug2 stream 660 radio system
     user radio
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log qcom_diag net_raw
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log net_raw
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service ril-daemon3 /vendor/bin/hw/rild -c 3
@@ -987,7 +968,7 @@ service ril-daemon3 /vendor/bin/hw/rild -c 3
     socket rild-debug3 stream 660 radio system
     user radio
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log qcom_diag net_raw
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log net_raw
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service profiler_daemon /system/bin/profiler_daemon
@@ -1036,14 +1017,14 @@ on property:sys.qbcharger.enable=false
 service diag_mdlog_start /system/vendor/bin/diag_mdlog -c
     class late_start
     user shell
-    group system qcom_diag sdcard_rw sdcard_r media_rw oem_2901
+    group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
 service diag_mdlog_stop /system/vendor/bin/diag_mdlog -k
     class late_start
     user shell
-    group system qcom_diag sdcard_rw sdcard_r media_rw oem_2901
+    group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
