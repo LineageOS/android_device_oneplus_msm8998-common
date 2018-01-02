@@ -1083,10 +1083,6 @@ vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 -vendor/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
-vendor/framework/oat/arm/vendor.qti.hardware.sensorscalibrate-V1.0-java.odex
-vendor/framework/oat/arm/vendor.qti.hardware.sensorscalibrate-V1.0-java.vdex
-vendor/framework/oat/arm64/vendor.qti.hardware.sensorscalibrate-V1.0-java.odex
-vendor/framework/oat/arm64/vendor.qti.hardware.sensorscalibrate-V1.0-java.vdex
 
 # Thermal
 vendor/etc/thermal-engine.conf
