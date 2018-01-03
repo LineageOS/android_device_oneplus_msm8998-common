@@ -47,7 +47,6 @@ on init
     # wait for bootdevice and symlink early
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
-    restorecon_recursive /dev/block/bootdevice
 
     # start qseecomd early as we mount system/ early
     # vold needs keymaster that needs qseecomd
@@ -164,7 +163,7 @@ on boot
     chmod 0666 /dev/p61
     chown spi spi /dev/p61
     chmod 0666 /dev/dash/
-    restorecon /dev/dash
+    restorecon  /dev/dash
 
     chown system system /sys/class/leds/red/pause_lo
     chown system system /sys/class/leds/blue/pause_lo
@@ -276,7 +275,7 @@ on boot
 service dashd /sbin/dashd
     class core
     #critical
-    seclabel u:r:dashd:s0
+    #seclabel u:r:dashd:s0
     group root system
 
 #Peripheral manager
