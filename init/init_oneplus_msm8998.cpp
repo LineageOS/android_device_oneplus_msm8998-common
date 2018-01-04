@@ -49,6 +49,7 @@
 #include "util.h"
 
 #define DEVINFO_FILE "/sys/project_info/project_name"
+#define SENSOR_VERSION_FILE "/sys/devices/soc/soc:fingerprint_detect/sensor_version"
 
 using android::base::Trim;
 using android::base::GetProperty;
@@ -99,6 +100,27 @@ void init_target_properties()
 
     if (unknownDevice) {
         property_set("ro.display.series", "UNKNOWN");
+    }
+}
+
+void init_fingerprint_properties()
+{
+    std::string sensor_version;
+
+    if (ReadFileToString(SENSOR_VERSION_FILE, &sensor_version)) {
+        LOG(INFO) << "Loading Fingerprint HAL for sensor version " << sensor_version;
+        if (Trim(sensor_version) == "1" || Trim(sensor_version) == "2") {
+            property_set("ro.hardware.fingerprint", "fpc");
+        }
+        else if (Trim(sensor_version) == "3") {
+            property_set("ro.hardware.fingerprint", "goodix");
+        }
+        else {
+            LOG(ERROR) << "Unsupported fingerprint sensor: " << sensor_version;
+        }
+    }
+    else {
+        LOG(ERROR) << "Failed to detect sensor version";
     }
 }
 
@@ -169,5 +191,6 @@ void init_alarm_boot_properties()
 void vendor_load_properties() {
     LOG(INFO) << "Loading vendor specific properties";
     init_target_properties();
+    init_fingerprint_properties();
     init_alarm_boot_properties();
 }
