@@ -1,0 +1,2 @@
+# neverallow
+#allow surfaceflinger hal_display_config_hwservice:hwservice_manager { add };

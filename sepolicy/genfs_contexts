@@ -5,6 +5,6 @@ genfscon proc /tri-state-key           u:object_r:proc_touchpanel:s0
 genfscon debugfs /p2p0/power_stats     u:object_r:debugfs_power_stats:s0
 genfscon debugfs /wlan0/power_stats    u:object_r:debugfs_power_stats:s0
 
-genfscon debugfs /rmt_storage/rmts     u:object_r:debugfs_rmts:s0
+genfscon debugfs /rmt_storage/rmts     u:object_r:qti_debugfs:s0
 
-genfscon debugfs /msm_core             u:object_r:debugfs_msm_core:s0
+genfscon debugfs /msm_core             u:object_r:qti_debugfs:s0

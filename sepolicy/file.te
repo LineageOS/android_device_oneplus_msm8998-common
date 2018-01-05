@@ -7,6 +7,4 @@ type sysfs_fpc_irq, fs_type, sysfs_type;
 type sysfs_fpc_screen, fs_type, sysfs_type;
 type sysfs_fpc_proximity, fs_type, sysfs_type;
 
-type debugfs_msm_core, fs_type, debugfs_type;
-type debugfs_rmts, fs_type, debugfs_type;
 type debugfs_power_stats, fs_type, debugfs_type;
