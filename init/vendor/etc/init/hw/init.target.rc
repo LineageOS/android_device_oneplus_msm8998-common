@@ -104,6 +104,7 @@ on post-fs-data
     #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     mkdir /data/nfc
     mkdir /data/oemnvitems  0771 radio radio
+
     #fingerint, changhua add for fp debug image usage,feature default off
     mkdir /data/fpc_images 0770 system system
     mkdir /data/fpc_images/verify 0770 system system
@@ -116,6 +117,9 @@ on post-fs-data
     #mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
     mkdir /data/misc/media_dump 0770 mediaex mediadrm
     mkdir /data/reserve-lib 0775 system system
+
+    # Generate wifi mac
+    start wifi-mac-generator
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -363,6 +367,14 @@ service dashd /sbin/dashd
     #critical
     seclabel u:r:dashd:s0
     group root system
+
+service wifi-mac-generator /vendor/bin/wifi-mac-generator
+    class main
+    user wifi
+    group wifi
+    oneshot
+    disabled
+    seclabel u:r:wifi_mac_generator:s0
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
