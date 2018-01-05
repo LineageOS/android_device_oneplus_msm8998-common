@@ -141,6 +141,7 @@ on boot
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
+    # FPC1020 /sys
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
@@ -159,6 +160,10 @@ on boot
     chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
     #chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
     #chown system system /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
+    # Goodix /sys
+    chmod 0660 /sys/devices/soc/soc:goodix_fp/proximity_state
+    chown system system /sys/devices/soc/soc:goodix_fp/proximity_state
+
     chmod 0666 /dev/qseecom
     #liuyan 2017/7/27 add for goodix fp
     chmod 0666 /dev/goodix_fp
