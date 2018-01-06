@@ -42,15 +42,25 @@ public class ProximitySensor implements SensorEventListener {
     private Context mContext;
 
     public ProximitySensor(Context context) {
+        boolean found = false;
         mContext = context;
         mSensorManager = (SensorManager)
                 mContext.getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
-        if (android.os.Build.DEVICE.equals("OnePlus5")) {
+        if (FileUtils.fileExists(CHEESEBURGER_FILE)) {
             FPC_FILE = CHEESEBURGER_FILE;
-        } else {
+            found = true;
+        } else if (FileUtils.fileExists(DUMPLING_FILE)) {
             FPC_FILE = DUMPLING_FILE;
+            found = true;
+        } else {
+            Log.e(TAG, "No proximity state file found!");
+            FPC_FILE = CHEESEBURGER_FILE;
+        }
+
+        if (found) {
+            if (DEBUG) Log.d(TAG, "Using proximity state from " + FPC_FILE);
         }
     }
 
@@ -59,6 +69,8 @@ public class ProximitySensor implements SensorEventListener {
         boolean isNear = event.values[0] < mSensor.getMaximumRange();
         if (FileUtils.isFileWritable(FPC_FILE)) {
             FileUtils.writeLine(FPC_FILE, isNear ? "1" : "0");
+        } else {
+            Log.e(TAG, "Proximity state file " + FPC_FILE + " is not writable!");
         }
     }
 
