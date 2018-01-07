@@ -65,7 +65,7 @@ on fs
     # results in failure to launch late-start class.
 
     wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist noatime nosuid nodev barrier=1
     mkdir /persist/data 0700 system system
     restorecon_recursive /persist
 
@@ -179,20 +179,88 @@ on boot
     chown system system /sys/class/leds/red/pause_lo
     chown system system /sys/class/leds/blue/pause_lo
     chown system system /sys/class/leds/green/pause_lo
+    chmod 660 /sys/class/leds/red/pause_lo
+    chmod 660 /sys/class/leds/blue/pause_lo
+    chmod 660 /sys/class/leds/green/pause_lo
 
     chown system system /sys/class/leds/red/pause_hi
     chown system system /sys/class/leds/blue/pause_hi
     chown system system /sys/class/leds/green/pause_hi
+    chmod 660 /sys/class/leds/red/pause_hi
+    chmod 660 /sys/class/leds/blue/pause_hi
+    chmod 660 /sys/class/leds/green/pause_hi
 
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/blue/blink
     chown system system /sys/class/leds/green/blink
+    chmod 660 /sys/class/leds/red/blink
+    chmod 660 /sys/class/leds/blue/blink
+    chmod 660 /sys/class/leds/green/blink
 
-    chown system system /proc/touchpanel/gesture_enable
-    chown system system /proc/touchpanel/gesture_switch
-    chown system system /proc/touchpanel/key_switch
+    chown system system /sys/class/leds/rgb/rgb_blink
+    chmod 660 /sys/class/leds/rgb/rgb_blink
+
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/blue/ramp_step_ms
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/red/ramp_step_ms
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/blue/ramp_step_ms
+
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/red/duty_pcts
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/blue/duty_pcts
+
+    chown system system /sys/class/leds/red/start_idx
+    chown system system /sys/class/leds/blue/start_idx
+    chown system system /sys/class/leds/green/start_idx
+    chmod 660 /sys/class/leds/red/start_idx
+    chmod 660 /sys/class/leds/green/start_idx
+    chmod 660 /sys/class/leds/blue/start_idx
+
+# Touchpanel
+    chown system system /proc/touchpanel/double_swipe_enable
+    chown system system /proc/touchpanel/double_tap_enable
+    chown system system /proc/touchpanel/down_arrow_enable
+    chown system system /proc/touchpanel/down_swipe_enable
     chown system system /proc/touchpanel/key_disable
+    chown system system /proc/touchpanel/left_arrow_enable
+    chown system system /proc/touchpanel/left_swipe_enable
+    chown system system /proc/touchpanel/letter_m_enable
+    chown system system /proc/touchpanel/letter_o_enable
+    chown system system /proc/touchpanel/letter_s_enable
+    chown system system /proc/touchpanel/letter_w_enable
+    chown system system /proc/touchpanel/radd
+    chown system system /proc/touchpanel/right_arrow_enable
+    chown system system /proc/touchpanel/right_swipe_enable
+    chown system system /proc/touchpanel/sleep_mode_enable
     chown system system /proc/touchpanel/tpedge_limit_enable
+    chown system system /proc/touchpanel/up_arrow_enable
+    chown system system /proc/touchpanel/up_swipe_enable
+    chmod 660 /proc/touchpanel/double_swipe_enable
+    chmod 660 /proc/touchpanel/double_tap_enable
+    chmod 660 /proc/touchpanel/down_arrow_enable
+    chmod 660 /proc/touchpanel/down_swipe_enable
+    chmod 660 /proc/touchpanel/key_disable
+    chmod 660 /proc/touchpanel/left_arrow_enable
+    chmod 660 /proc/touchpanel/left_swipe_enable
+    chmod 660 /proc/touchpanel/letter_m_enable
+    chmod 660 /proc/touchpanel/letter_o_enable
+    chmod 660 /proc/touchpanel/letter_s_enable
+    chmod 660 /proc/touchpanel/letter_w_enable
+    chmod 660 /proc/touchpanel/radd
+    chmod 660 /proc/touchpanel/right_arrow_enable
+    chmod 660 /proc/touchpanel/right_swipe_enable
+    chmod 660 /proc/touchpanel/sleep_mode_enable
+    chmod 660 /proc/touchpanel/tpedge_limit_enable
+    chmod 660 /proc/touchpanel/up_arrow_enable
+    chmod 660 /proc/touchpanel/up_swipe_enable
+
+    chown system system /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+    chmod 660 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
 
 #ifdef VENDOR_EDIT
     # camera. enable mobicat
@@ -246,32 +314,41 @@ on boot
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 #endif /*VENDOR_EDIT*/
 
-   ####Regionalization config and prop files####
-   chmod 0644 /persist/speccfg/spec
-   chmod 0644 /persist/speccfg/devicetype
-   chmod 0644 /persist/speccfg/mbnversion
-   chmod 0644 /persist/speccfg/.not_triggered
-   chmod 0644 /persist/speccfg/vendor_ro.prop
-   chmod 0644 /persist/speccfg/vendor_persist.prop
-   chmod 0644 /persist/speccfg/submask
-   chmod 0644 /persist/speccfg/partition
-   chown system system /persist/speccfg/spec
-   chown system system /persist/speccfg/devicetype
-   chown system system /persist/speccfg/mbnversion
-   chown system system /persist/speccfg/.not_triggered
-   chown system system /persist/speccfg/vendor_ro.prop
-   chown system system /persist/speccfg/vendor_persist.prop
-   chown system system /persist/speccfg/submask
-   chown system system /persist/speccfg/partition
+    ####Regionalization config and prop files####
+    chmod 0644 /persist/speccfg/spec
+    chmod 0644 /persist/speccfg/devicetype
+    chmod 0644 /persist/speccfg/mbnversion
+    chmod 0644 /persist/speccfg/.not_triggered
+    chmod 0644 /persist/speccfg/vendor_ro.prop
+    chmod 0644 /persist/speccfg/vendor_persist.prop
+    chmod 0644 /persist/speccfg/submask
+    chmod 0644 /persist/speccfg/partition
+    chown system system /persist/speccfg/spec
+    chown system system /persist/speccfg/devicetype
+    chown system system /persist/speccfg/mbnversion
+    chown system system /persist/speccfg/.not_triggered
+    chown system system /persist/speccfg/vendor_ro.prop
+    chown system system /persist/speccfg/vendor_persist.prop
+    chown system system /persist/speccfg/submask
+    chown system system /persist/speccfg/partition
 
-#ifdef VENDOR_EDIT
-   chmod 0666 /sys/devices/virtual/graphics/fb0/SRGB
-   chmod 0666 /sys/devices/virtual/graphics/fb0/DCI_P3
-   chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
-   chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
-   chmod 0666 /sys/devices/virtual/graphics/fb0/panel_serial_number
-   chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
-#endif
+    chown system graphics /sys/devices/virtual/graphics/fb0/srgb
+    chown system graphics /sys/devices/virtual/graphics/fb0/dci_p3
+    chown system graphics /sys/devices/virtual/graphics/fb0/hbm
+    chown system graphics /sys/devices/virtual/graphics/fb0/night_mode
+    chown system graphics /sys/devices/virtual/graphics/fb0/panel_serial_number
+    chown system graphics /sys/devices/virtual/graphics/fb0/adaption_mode
+    chmod 0666 /sys/devices/virtual/graphics/fb0/srgb
+    chmod 0666 /sys/devices/virtual/graphics/fb0/dci_p3
+    chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
+    chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
+    chmod 0666 /sys/devices/virtual/graphics/fb0/panel_serial_number
+    chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
+
+    chown system graphics /sys/class/graphics/fb0/srgb
+    chown system graphics /sys/class/graphics/fb0/dci_p3
+    chmod 0664 /sys/class/graphics/fb0/srgb
+    chmod 0664 /sys/class/graphics/fb0/dci_p3
 
     # Fingerprint GOODIX
     chmod 0666 /dev/goodix_fp
@@ -441,16 +518,16 @@ on property:wlan.write.con_mode=*
 
 #ifdef VENDOR_EDIT
 on property:sys.srgb=1
-   write /sys/devices/virtual/graphics/fb0/SRGB 1
+   write /sys/devices/virtual/graphics/fb0/srgb 1
 
 on property:sys.srgb=0
-   write /sys/devices/virtual/graphics/fb0/SRGB 0
+   write /sys/devices/virtual/graphics/fb0/srgb 0
 
 on property:sys.dci3p=1
-   write /sys/devices/virtual/graphics/fb0/DCI_P3 1
+   write /sys/devices/virtual/graphics/fb0/dci_p3 1
 
 on property:sys.dci3p=0
-   write /sys/devices/virtual/graphics/fb0/DCI_P3 0
+   write /sys/devices/virtual/graphics/fb0/dci_p3 0
 
 on property:sys.hbm=1
    write /sys/devices/virtual/graphics/fb0/hbm 1
@@ -463,8 +540,10 @@ on property:sys.night_mode=1
 
 on property:sys.night_mode=0
    write /sys/devices/virtual/graphics/fb0/night_mode 0
+
 on property:sys.automode=1
    write /sys/devices/virtual/graphics/fb0/adaption_mode 1
+
 on property:sys.automode=0
    write /sys/devices/virtual/graphics/fb0/adaption_mode 0
 #endif
