@@ -545,7 +545,20 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag system wakelock
+    group bluetooth diag system
+    seclabel u:r:wcnss_filter:s0
+    disabled
+
+on property:wc_transport.start_root=true
+    start hci_filter_root
+
+on property:wc_transport.start_root=false
+    stop hci_filter_root
+
+service hci_filter_root /system/vendor/bin/wcnss_filter
+    class late_start
+    user bluetooth
+    group bluetooth diag system
     seclabel u:r:wcnss_filter:s0
     disabled
 
