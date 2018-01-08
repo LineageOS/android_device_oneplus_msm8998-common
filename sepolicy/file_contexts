@@ -9,6 +9,8 @@
 /dev/block/bootdevice/by-name/oem_stanvbk                       u:object_r:modem_efs_partition_device:s0
 
 # Fingerprint
+/dev/fpc1020                                                    u:object_r:fingerprint_device:s0
+/dev/goodix_fp                                                  u:object_r:fingerprint_device:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom u:object_r:hal_fingerprint_default_exec:s0
 
 # FRP partition
