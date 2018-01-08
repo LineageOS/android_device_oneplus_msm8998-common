@@ -82,12 +82,16 @@ void init_target_properties()
 
         if (!strncmp(device.c_str(), "16859", 5)) {
             // Oneplus 5
+            property_override("ro.build.fingerprint", "8.0.0/OPR6.170623.013/01021345:user/release-keys");
+            property_override("ro.build.description", "OnePlus5-user 8.0.0 OPR6.170623.013 47 release-keys");
             property_set("ro.display.series", "OnePlus 5");
             property_set("ro.sf.lcd_density", "480");
             unknownDevice = false;
         }
         else if (!strncmp(device.c_str(), "17801", 5)) {
             // Oneplus 5T
+            property_override("ro.build.fingerprint", "8.0.0/OPR6.170623.013/12191451:user/release-keys");
+            property_override("ro.build.description", "OnePlus5T-user 8.0.0 OPR6.170623.013 232 release-keys");
             property_set("ro.display.series", "OnePlus 5T");
             property_set("ro.sf.lcd_density", "420");
             unknownDevice = false;
