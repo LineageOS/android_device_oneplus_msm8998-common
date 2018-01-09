@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90b4c38c_09d1088d",
+        "filename": "init/init_oneplus_msm8998.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2018-01-09T18:12:25Z",
+      "side": 1,
+      "message": "The net change here seems to be just removal of the OnePlus/OnePlus5T/OnePlus5T: prefix from the fingerprint.  Maybe we could just do that in the device specific trees ?\n\nhttps://github.com/LineageOS/android_device_oneplus_cheeseburger/blob/lineage-15.1/lineage.mk#L41\nhttps://github.com/LineageOS/android_device_oneplus_dumpling/blob/lineage-15.1/lineage.mk#L41",
+      "revId": "e81657d3a702a9a648be7e43e074fde1e2817fd9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
