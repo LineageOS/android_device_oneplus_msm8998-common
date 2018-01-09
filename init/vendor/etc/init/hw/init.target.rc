@@ -121,6 +121,9 @@ on post-fs-data
     # Generate wifi mac
     start wifi-mac-generator
 
+    # Generate bt mac
+    start bt-mac-generator
+
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
@@ -375,6 +378,14 @@ service wifi-mac-generator /vendor/bin/wifi-mac-generator
     oneshot
     disabled
     seclabel u:r:wifi_mac_generator:s0
+
+service bt-mac-generator /system/vendor/bin/bt-mac-generator
+    class main
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
+    seclabel u:r:bt_mac_generator:s0
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
