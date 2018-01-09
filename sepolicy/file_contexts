@@ -29,6 +29,7 @@
 # bluetooth
 /sys/devices/bt_wcn3990/rfkill/rfkill0/state                    u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/bt_wcn3990/extldo                                  u:object_r:sysfs_bluetooth_writable:s0
+/(vendor|system/vendor)/bin/bt-mac-generator                    u:object_r:bt_mac_generator_exec:s0
 
 # sys
 /sys/devices/soc/soc:fpc_fpc1020/irq                            u:object_r:sysfs_fpc_irq:s0
