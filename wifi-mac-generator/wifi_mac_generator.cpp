@@ -162,7 +162,7 @@ static void update_wlan_mac_bin(uint8_t *mac, bool random) {
 
     fb = fopen(WLAN_MAC_BIN, "wb");
     if (fb != NULL) {
-        ALOGD("%s: writing buffer to file %s", __func__, WLAN_MAC_BIN);
+        ALOGD("%s: Writing buffer to file %s", __func__, WLAN_MAC_BIN);
         fwrite(buf, strlen(buf), 1, fb);
         fclose(fb);
     }
@@ -173,18 +173,26 @@ void get_mac_from_nv() {
     FILE * fd;
     uint8_t buf[6] = {0};
     int len = 0;
+    int retries = 10;
     bool random = false;
+
+    // Wait till NV_MAC_FILE is available after factory reset
+    while (retries-- > 0) {
+        if ((stat(NV_MAC_FILE_0, &st) == 0) && (stat(NV_MAC_FILE_1, &st) == 0)) break;
+        ALOGD("%s: NV mac files %s | %s do not exist yet. Waiting... (%d)", __func__, NV_MAC_FILE_0, NV_MAC_FILE_1, retries);
+        usleep(1000000);
+    }
 
     if ((stat(NV_MAC_FILE_0, &st) != 0 || st.st_size < 6) &&
         (stat(NV_MAC_FILE_1, &st) != 0 || st.st_size < 6)) {
-        ALOGE("%s: invalid nv mac file %s || %s, will generate random mac", __func__, NV_MAC_FILE_0, NV_MAC_FILE_1);
+        ALOGE("%s: Invalid NV mac files %s | %s, will generate random mac", __func__, NV_MAC_FILE_0, NV_MAC_FILE_1);
         random = true;
     } else {
         // read nv files in binary mode
         if ((fd = fopen(NV_MAC_FILE_0, "rb")) == NULL) {
-            ALOGE("%s: Could not open nv mac file %s", __func__, NV_MAC_FILE_0);
+            ALOGE("%s: Could not open NV mac file %s", __func__, NV_MAC_FILE_0);
             if ((fd = fopen(NV_MAC_FILE_1, "rb")) == NULL) {
-                ALOGE("%s: Could not open nv mac file %s", __func__, NV_MAC_FILE_1);
+                ALOGE("%s: Could not open NV mac file %s", __func__, NV_MAC_FILE_1);
                 random = true;
             }
         }
