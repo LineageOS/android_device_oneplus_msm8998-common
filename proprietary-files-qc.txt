@@ -43,6 +43,9 @@ vendor/lib/vendor.qti.hardware.alarm@1.0.so
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # Audio
+lib64/libldacBT_enc.so
+lib64/libldacBT_abr.so
+-vendor/app/aptxui/aptxui.apk
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
