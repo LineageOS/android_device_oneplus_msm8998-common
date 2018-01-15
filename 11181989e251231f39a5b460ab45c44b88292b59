@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c745fb6d_31e046c8",
+        "filename": "overlay/lineage-sdk/lineage/res/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 15525
+      },
+      "writtenOn": "2018-01-15T02:33:20Z",
+      "side": 1,
+      "message": "Should be 64 for dumpling. Why don\u0027t we move this field to the cheeseburger/dumpling tree? They\u0027re different.",
+      "range": {
+        "startLine": 96,
+        "startChar": 46,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "11181989e251231f39a5b460ab45c44b88292b59",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
