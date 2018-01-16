@@ -364,6 +364,9 @@ on property:sys.boot_completed=1
     # Enable ZRAM on boot_completed
     swapon_all /vendor/etc/fstab.qcom
 
+    # Set BFQ I/O scheduler
+    setprop sys.io.scheduler "bfq"
+
 # DASH
 service dashd /sbin/dashd
     class core
