@@ -76,6 +76,9 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
+# I am too lazy to repopick all the sepolicy changes over and over
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
