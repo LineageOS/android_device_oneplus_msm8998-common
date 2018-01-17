@@ -22,6 +22,30 @@
       "revId": "72eb0e1a339d0eef3b0abc99b139e1f0906bdc94",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c52731b3_c02163a0",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/ProximitySensor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2018-01-17T04:46:23Z",
+      "side": 1,
+      "message": "I added the goodix support here https://review.lineageos.org/#/c/201349/ and I actually deliberately didn\u0027t bring in any screen state tracking to keep the api surface to a minimum ;-)\n\nIs there a benefit to embedding feature application logic into the kernel ?  I would actually have preferred that the sysfs path exposed by the driver was just called \"suspend\" (or similar).  The conditions for when it\u0027s used are then up to calling application.  Future flexibility is greater if we don\u0027t pin the kernel implementation for a specific use case.\n\nBack to the problem being fixed here, if the pocketmode app is already receiving screen on/off events, why not use it instead of making the driver more complicated by adding screen tracking ?\n\nI have another motivation here too - I\u0027ve begun looking at moving pocketmode into the lineage-sdk LineageHardwareService and exposing a lineagehw class for enabling/disabling fingerprint sensor.  Keeping the kernel requirement to a minimum means it would be easier for other devices to implement.",
+      "parentUuid": "eb77584f_9ef29328",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "72eb0e1a339d0eef3b0abc99b139e1f0906bdc94",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
