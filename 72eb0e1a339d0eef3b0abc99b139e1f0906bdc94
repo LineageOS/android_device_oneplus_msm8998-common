@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb77584f_9ef29328",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/ProximitySensor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 15525
+      },
+      "writtenOn": "2018-01-17T02:15:36Z",
+      "side": 1,
+      "message": "No. This should be only be a \"proximity state\" flag, not a \"whether or not to disable\" flag. The key of the problem is that somebody forgot to re-enable irq in the goodix driver when screen on. FPC driver doesn\u0027t have this bug.",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "72eb0e1a339d0eef3b0abc99b139e1f0906bdc94",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
