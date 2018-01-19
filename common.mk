@@ -292,9 +292,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
-    lights.msm8998
+    android.hardware.light@2.0-service.oneplus_8998
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
