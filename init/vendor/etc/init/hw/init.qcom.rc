@@ -535,6 +535,7 @@ service rmt_storage /vendor/bin/rmt_storage
 service tftp_server /vendor/bin/tftp_server
    class core
    user root
+   group root system
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
