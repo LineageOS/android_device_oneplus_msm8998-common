@@ -689,6 +689,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 
 on property:wlan.driver.status=ok
     chown wifi wifi /sys/module/wlan/parameters/fwpath
+    restart wifi_hal_legacy
 
 service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
     -iwigig0 -Dnl80211 -c/data/vendor/wifi/wigig_supplicant.conf \
