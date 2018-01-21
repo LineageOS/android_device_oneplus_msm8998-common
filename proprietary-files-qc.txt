@@ -78,40 +78,11 @@ lib/libopposfr.so
 lib/libfiltergenerator.so
 lib/libblurbuster.so
 lib/libtrueportrait.so
-lib/libscveBlobDescriptor_skel.so
-lib/libscveT2T_skel.so
-lib/libscveFaceLandmark_skel.so
-lib/libscveBlobDescriptor.so
-lib/libscveImageCorrection.so
-lib/libscveFaceRecognition.so
-lib/libscvePanorama_lite.so
-lib/libscveCommon_stub.so
-lib/libscveBlobDescriptor_stub.so
-lib/libscveFaceLandmarks.so
-lib/libscveFaceLandmarks_stub.so
-lib/libscvePanorama.so
-lib/libscveCommon.so
-lib/libscveObjectTracker.so
-lib/libscveObjectTracker_stub.so
-lib/libscveObjectSegmentation.so
 lib/libVDBlurlessAPI.so
 lib/libVDHDRAPI.so
 lib/vendor.qti.hardware.camera.device@1.0.so
 lib64/libfiltergenerator.so
 lib64/libblurbuster.so
-lib64/libscveBlobDescriptor.so
-lib64/libscveImageCorrection.so
-lib64/libscveFaceRecognition.so
-lib64/libscvePanorama_lite.so
-lib64/libscveCommon_stub.so
-lib64/libscveBlobDescriptor_stub.so
-lib64/libscveFaceLandmarks.so
-lib64/libscveFaceLandmarks_stub.so
-lib64/libscvePanorama.so
-lib64/libscveCommon.so
-lib64/libscveObjectTracker.so
-lib64/libscveObjectTracker_stub.so
-lib64/libscveObjectSegmentation.so
 lib64/libtrueportrait.so
 lib64/vendor.qti.hardware.camera.device@1.0.so
 vendor/etc/camera/camera_config.xml
@@ -366,6 +337,7 @@ vendor/lib/libchromatix_imx398_3a_4656x2608_30fps_preview.so
 vendor/lib/libchromatix_imx398_3a_4656x2608_30fps_video.so
 vendor/lib/libchromatix_imx398_3a_4656x2608_30fps_video_4k.so
 vendor/lib/libchromatix_imx398_3a_4656x3496_30fps_preview.so
+vendor/lib/libchromatix_imx398_3a_4656x3496_30fps_video.so
 vendor/lib/libchromatix_imx398_3a_hq.so
 vendor/lib/libchromatix_imx398_3a_manual.so
 vendor/lib/libchromatix_imx398_3a_panorama.so
@@ -380,6 +352,7 @@ vendor/lib/libchromatix_imx398_cpp_4656x2608_30fps_video.so
 vendor/lib/libchromatix_imx398_cpp_4656x2608_30fps_video_4k.so
 vendor/lib/libchromatix_imx398_cpp_4656x3496_30fps_preview.so
 vendor/lib/libchromatix_imx398_cpp_4656x3496_30fps_snapshot.so
+vendor/lib/libchromatix_imx398_cpp_4656x3496_30fps_video.so
 vendor/lib/libchromatix_imx398_cpp_snapshot_flash.so
 vendor/lib/libchromatix_imx398_cpp_snapshot_hdr.so
 vendor/lib/libchromatix_imx398_cpp_snapshot_manual.so
@@ -392,6 +365,7 @@ vendor/lib/libchromatix_imx398_isp_3264x2448_30fps_snapshot_bokeh.so
 vendor/lib/libchromatix_imx398_isp_4656x2608_30fps_video.so
 vendor/lib/libchromatix_imx398_isp_4656x3496_30fps_preview.so
 vendor/lib/libchromatix_imx398_isp_4656x3496_30fps_snapshot.so
+vendor/lib/libchromatix_imx398_isp_4656x3496_30fps_video.so
 vendor/lib/libchromatix_imx398_isp_manual.so
 vendor/lib/libchromatix_imx398_isp_panorama.so
 vendor/lib/libchromatix_imx398_isp_zsl_snapshot.so
@@ -558,12 +532,14 @@ framework/dpmapi.jar
 framework/tcmclient.jar
 -priv-app/dpmserviceapp/dpmserviceapp.apk
 lib/com.qualcomm.qti.dpm.api@1.0.so
+lib/libdiag_system.so
 lib/libdpmctmgr.so
 lib/libdpmfdmgr.so
 lib/libdpmframework.so
 lib/libdpmnsrm.so
 lib/libdpmtcm.so
 lib64/com.qualcomm.qti.dpm.api@1.0.so
+lib64/libdiag_system.so
 lib64/libdpmctmgr.so
 lib64/libdpmfdmgr.so
 lib64/libdpmframework.so
@@ -812,16 +788,6 @@ vendor/lib64/vendor.qti.hardware.improvetouch.gesturemanager@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
 vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0_vendor.so
 
-# IOP
-vendor/bin/hw/vendor.qti.hardware.iop@1.0-service
-vendor/etc/init/vendor.qti.hardware.iop@1.0-service.rc
-lib/vendor.qti.hardware.iop@1.0.so
-lib64/vendor.qti.hardware.iop@1.0.so
-vendor/lib/vendor.qti.hardware.iop@1.0_vendor.so
-vendor/lib/hw/vendor.qti.hardware.iop@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.iop@1.0_vendor.so
-vendor/lib64/hw/vendor.qti.hardware.iop@1.0-impl.so
-
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
@@ -943,12 +909,12 @@ vendor/etc/data/netmgr_config.xml
 etc/permissions/embms.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
-etc/permissions/radioconfig.xml
 etc/permissions/telephonyservice.xml
 framework/embmslibrary.jar
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
-framework/qti-telephony-common.jar
+# qti-telephony-common.jar from sagit
+framework/qti-telephony-common.jar|3fc00ec80be50bc9b595fc9fe06ec26c832a72e3
 framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
