@@ -1336,7 +1336,6 @@ vendor/lib64/libwvhidl.so
 vendor/lib/libcppf.so
 
 # Wi-Fi
-vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
 
 # Wi-Fi Display
