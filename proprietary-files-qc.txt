@@ -1369,7 +1369,6 @@ vendor/lib64/libwvhidl.so
 vendor/lib/libcppf.so
 
 # Wi-Fi
-vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
 vendor/bin/fstman
 vendor/bin/wifilearner
