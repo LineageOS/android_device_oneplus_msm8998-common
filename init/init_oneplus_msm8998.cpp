@@ -137,6 +137,8 @@ void init_alarm_boot_properties()
         }
         else if (Trim(boot_reason) == "3") {
             property_set("ro.alarm_boot", "true");
+            // disable boot animation for RTC wakeup
+            property_set("debug.sf.nobootanimation", "1");
         }
         else if (Trim(boot_reason) == "4") {
             property_set("ro.boot.bootreason", "dc_chg");
