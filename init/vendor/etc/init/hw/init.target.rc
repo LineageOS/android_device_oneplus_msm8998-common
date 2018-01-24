@@ -27,6 +27,9 @@
 #
 #
 
+import /vendor/etc/init/hw/init.target.displaymodes.rc
+import /vendor/etc/init/hw/init.target.performance.rc
+
 on early-init
     mkdir /firmware 0771 system system
     mkdir /bt_firmware 0771 system system
@@ -35,13 +38,6 @@ on early-init
     write /proc/sys/kernel/sched_boost 1
 
 on init
-    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
-    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
-    write /dev/stune/schedtune.colocate 0
-    write /dev/stune/background/schedtune.colocate 0
-    write /dev/stune/system-background/schedtune.colocate 0
-    write /dev/stune/foreground/schedtune.colocate 0
-    write /dev/stune/top-app/schedtune.colocate 1
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     # wait for bootdevice and symlink early
@@ -101,11 +97,11 @@ on post-fs-data
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/misc/qvr 0770 system system
 
-    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
+    # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     mkdir /data/nfc
     mkdir /data/oemnvitems  0771 radio radio
 
-    #fingerint, changhua add for fp debug image usage,feature default off
+    # Fingerint, changhua add for fp debug image usage,feature default off
     mkdir /data/fpc_images 0770 system system
     mkdir /data/fpc_images/verify 0770 system system
     mkdir /data/fpc_images/enroll 0770 system system
@@ -124,29 +120,9 @@ on post-fs-data
     # Generate bt mac
     start bt-mac-generator
 
-# For cpusets initialize for Silver Only first and then Silver + Gold
-# Silver Only configuration cannot work with 0-7
 on boot
     start rmt_storage
     start rfs_access
-
-    write /dev/cpuset/top-app/cpus 0-3
-    write /dev/cpuset/foreground/cpus 0-3
-    write /dev/cpuset/background/cpus 0-3
-    write /dev/cpuset/system-background/cpus 0-3
-    write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/background/cpus 0-7
-    write /dev/cpuset/system-background/cpus 0-7
-
-    # Add a cpuset for the camera daemon
-    # We want all cores for camera
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/cpus 0-7
-    write /dev/cpuset/camera-daemon/mems 0
-    chown cameraserver cameraserver /dev/cpuset/camera-daemon
-    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
-    chmod 0660 /dev/cpuset/camera-daemon/tasks
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
@@ -171,15 +147,17 @@ on boot
     chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
     #chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
     #chown system system /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
+
+    chown system system /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+    chmod 660 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+
     # Goodix /sys
     chmod 0660 /sys/devices/soc/soc:goodix_fp/proximity_state
     chown system system /sys/devices/soc/soc:goodix_fp/proximity_state
 
     chmod 0666 /dev/qseecom
-    #liuyan 2017/7/27 add for goodix fp
     chmod 0666 /dev/goodix_fp
-    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
-    setprop ro.nfc.port "I2C"
+
     chmod 0666 /dev/pn544
     chown nfc nfc /dev/pn544
     chmod 0666 /dev/p61
@@ -232,7 +210,14 @@ on boot
     chmod 660 /sys/class/leds/green/start_idx
     chmod 660 /sys/class/leds/blue/start_idx
 
-# Touchpanel
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chmod 666 /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chmod 666 /sys/class/leds/led:torch_1/brightness
+    chown system system /sys/class/leds/led:switch_0/brightness
+    chmod 666 /sys/class/leds/led:switch_0/brightness
+
+    # Touchpanel
     chown system system /proc/touchpanel/double_swipe_enable
     chown system system /proc/touchpanel/double_tap_enable
     chown system system /proc/touchpanel/down_arrow_enable
@@ -270,60 +255,13 @@ on boot
     chmod 660 /proc/touchpanel/up_arrow_enable
     chmod 660 /proc/touchpanel/up_swipe_enable
 
-    chown system system /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
-    chmod 660 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
-
-#ifdef VENDOR_EDIT
-    # camera. enable mobicat
-    setprop persist.camera.mobicat 2
-    setprop persist.camera.stats.debugexif 3080192
-    # camera. enable mobicat
-#endif
-
-#ifdef VENDOR_EDIT
-    chown system system /sys/class/leds/led:torch_0/brightness
-    chmod 666 /sys/class/leds/led:torch_0/brightness
-    chown system system /sys/class/leds/led:torch_1/brightness
-    chmod 666 /sys/class/leds/led:torch_1/brightness
-    chown system system /sys/class/leds/led:switch_0/brightness
-    chmod 666 /sys/class/leds/led:switch_0/brightness
-#endif
-
-#wujialong , 2015/10/22, Add for RGB light support
-    chown system system /sys/class/leds/red/blink
-    chown system system /sys/class/leds/blue/blink
-    chown system system /sys/class/leds/green/blink
-    chown system system /sys/class/leds/red/ramp_step_ms
-    chown system system /sys/class/leds/blue/ramp_step_ms
-    chown system system /sys/class/leds/green/ramp_step_ms
-    chown system system /sys/class/leds/red/duty_pcts
-    chown system system /sys/class/leds/blue/duty_pcts
-    chown system system /sys/class/leds/green/duty_pcts
-    chmod 660 /sys/class/leds/red/ramp_step_ms
-    chmod 660 /sys/class/leds/green/ramp_step_ms
-    chmod 660 /sys/class/leds/blue/ramp_step_ms
-    chmod 660 /sys/class/leds/red/duty_pcts
-    chmod 660 /sys/class/leds/green/duty_pcts
-    chmod 660 /sys/class/leds/blue/duty_pcts
-
-#ifdef VENDOR_EDIT
-#lifeng@bsp tp 2015/6/3 for firmware update
+    #lifeng@bsp tp 2015/6/3 for firmware update
     write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
-   #write /proc/s1302/fw_update 0
-#endif /*VENDOR_EDIT*/
+    #write /proc/s1302/fw_update 0
 
-#ifdef VENDOR_EDIT
-#/* Liyu.Tan, 2015.10.26, wifi test bin */
-    chown system system /system/bin/iwpriv
-    chmod 0777  /system/bin/iwpriv
-    chown system system /system/bin/iwlist
-    chmod 0777  /system/bin/iwlist
-    chown system system /system/xbin/tcpdump
-    chmod 0777  /system/xbin/tcpdump
-
-# Set TCP MTU probing to automatic
+    # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
-#endif /*VENDOR_EDIT*/
+    write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
 
     ####Regionalization config and prop files####
     chmod 0644 /persist/speccfg/spec
@@ -343,35 +281,10 @@ on boot
     chown system system /persist/speccfg/submask
     chown system system /persist/speccfg/partition
 
-    chown system graphics /sys/devices/virtual/graphics/fb0/srgb
-    chown system graphics /sys/devices/virtual/graphics/fb0/dci_p3
-    chown system graphics /sys/devices/virtual/graphics/fb0/hbm
-    chown system graphics /sys/devices/virtual/graphics/fb0/night_mode
-    chown system graphics /sys/devices/virtual/graphics/fb0/panel_serial_number
-    chown system graphics /sys/devices/virtual/graphics/fb0/adaption_mode
-    chmod 0666 /sys/devices/virtual/graphics/fb0/srgb
-    chmod 0666 /sys/devices/virtual/graphics/fb0/dci_p3
-    chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
-    chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
-    chmod 0666 /sys/devices/virtual/graphics/fb0/panel_serial_number
-    chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
-
-    chown system graphics /sys/class/graphics/fb0/srgb
-    chown system graphics /sys/class/graphics/fb0/dci_p3
-    chmod 0664 /sys/class/graphics/fb0/srgb
-    chmod 0664 /sys/class/graphics/fb0/dci_p3
-
-    # Fingerprint GOODIX
-    chmod 0666 /dev/goodix_fp
-
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_completed
     swapon_all /vendor/etc/fstab.qcom
 
-    # Set BFQ I/O scheduler
-    setprop sys.io.scheduler "bfq"
-
-# DASH
 service dashd /sbin/dashd
     class core
     #critical
@@ -394,7 +307,6 @@ service bt-mac-generator /system/vendor/bin/bt-mac-generator
     disabled
     seclabel u:r:bt_mac_generator:s0
 
-#Peripheral manager
 service per_mgr /vendor/bin/pm-service
     class core
     user system
@@ -531,7 +443,6 @@ service qvrd /system/bin/qvrservice
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
 
-#ifdef VENDOR_EDIT
 service ftmdaemon /system/vendor/bin/ftmdaemon -n
     class late_start
     user root
@@ -539,6 +450,15 @@ service ftmdaemon /system/vendor/bin/ftmdaemon -n
     disabled
     oneshot
     seclabel u:r:ftmdaemon:s0
+
+on property:ro.build.type=eng
+    write /proc/sys/kernel/printk "7 6 1 7"
+
+on property:ro.build.type=userdebug
+    write /proc/sys/kernel/printk "7 6 1 7"
+
+on property:ro.build.type=user
+    write /proc/sys/kernel/printk "4 4 1 4"
 
 on property:wlan.ftm.daemon=on
     start ftmdaemon
@@ -548,36 +468,3 @@ on property:wlan.ftm.daemon=off
 
 on property:wlan.write.con_mode=*
     write /sys/module/wlan/parameters/con_mode ${wlan.write.con_mode}
-#endif /*VENDOR_EDIT*/
-
-#ifdef VENDOR_EDIT
-on property:sys.srgb=1
-   write /sys/devices/virtual/graphics/fb0/srgb 1
-
-on property:sys.srgb=0
-   write /sys/devices/virtual/graphics/fb0/srgb 0
-
-on property:sys.dci3p=1
-   write /sys/devices/virtual/graphics/fb0/dci_p3 1
-
-on property:sys.dci3p=0
-   write /sys/devices/virtual/graphics/fb0/dci_p3 0
-
-on property:sys.hbm=1
-   write /sys/devices/virtual/graphics/fb0/hbm 1
-
-on property:sys.hbm=0
-   write /sys/devices/virtual/graphics/fb0/hbm 0
-
-on property:sys.night_mode=1
-   write /sys/devices/virtual/graphics/fb0/night_mode 1
-
-on property:sys.night_mode=0
-   write /sys/devices/virtual/graphics/fb0/night_mode 0
-
-on property:sys.automode=1
-   write /sys/devices/virtual/graphics/fb0/adaption_mode 1
-
-on property:sys.automode=0
-   write /sys/devices/virtual/graphics/fb0/adaption_mode 0
-#endif
