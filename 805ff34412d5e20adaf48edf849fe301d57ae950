@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa4d43b6_b1db19ef",
+        "filename": "init/vendor/etc/init/hw/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-01-24T20:05:50Z",
+      "side": 0,
+      "message": "that\u0027s not the diag like stated in commit message",
+      "range": {
+        "startLine": 636,
+        "startChar": 16,
+        "endLine": 636,
+        "endChar": 23
+      },
+      "revId": "805ff34412d5e20adaf48edf849fe301d57ae950",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
