@@ -320,6 +320,7 @@ on boot
 # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 #endif /*VENDOR_EDIT*/
+    write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
 
     ####Regionalization config and prop files####
     chmod 0644 /persist/speccfg/spec
@@ -535,6 +536,15 @@ service ftmdaemon /system/vendor/bin/ftmdaemon -n
     disabled
     oneshot
     seclabel u:r:ftmdaemon:s0
+
+on property:ro.build.type=eng
+    write /proc/sys/kernel/printk "7 6 1 7"
+
+on property:ro.build.type=userdebug
+    write /proc/sys/kernel/printk "7 6 1 7"
+
+on property:ro.build.type=user
+    write /proc/sys/kernel/printk "4 4 1 4"
 
 on property:wlan.ftm.daemon=on
     start ftmdaemon
