@@ -22,6 +22,30 @@
       "revId": "805ff34412d5e20adaf48edf849fe301d57ae950",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93f2c75c_211a6507",
+        "filename": "init/vendor/etc/init/hw/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 8328
+      },
+      "writtenOn": "2018-01-24T20:09:49Z",
+      "side": 0,
+      "message": "https://source.codeaurora.org/quic/la/device/qcom/common/commit/?h\u003dLA.UM.6.4.r1-06100-8x98.0\u0026id\u003d32a3c386836ecc763390335bade87c967d49594b",
+      "parentUuid": "aa4d43b6_b1db19ef",
+      "range": {
+        "startLine": 636,
+        "startChar": 16,
+        "endLine": 636,
+        "endChar": 23
+      },
+      "revId": "805ff34412d5e20adaf48edf849fe301d57ae950",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
