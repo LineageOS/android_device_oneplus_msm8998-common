@@ -69,6 +69,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera \
+    persist.camera.mobicat=2 \
+    persist.camera.stats.debugexif=3080192 \
     persist.ts.rtmakeup=false
 
 # CNE
@@ -102,12 +104,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.gralloc.enable_fb_ubwc=1 \
+    debug.gralloc.gfx_ubwc_disable=0 \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
     ro.opengles.version=196610 \
     sdm.debug.disable_skip_validate=1 \
     sdm.perf_hint_window=0 \
     persist.debug.wfd.enable=1 \
+    persist.sys.force_sw_gles=0 \
     persist.sys.wfd.virtual=0 \
     persist.hwc.enable_vds=1
 
@@ -148,7 +152,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath="/system/vendor/lib64/libril-qc-qmi-1.so"
+    rild.libpath="/vendor/lib64/libril-qc-qmi-1.so" \
+    vendor.rild.libpath="/vendor/lib64/libril-qc-qmi-1.so"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_plmn="" \
