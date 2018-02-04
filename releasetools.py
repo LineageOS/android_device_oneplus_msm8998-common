@@ -20,10 +20,12 @@ import re
 
 def FullOTA_Assertions(info):
   AddModemAssertion(info)
+  RunCustomScript(info, "unlock-vendor.sh", "")
   return
 
 def IncrementalOTA_Assertions(info):
   AddModemAssertion(info)
+  RunCustomScript(info, "unlock-vendor.sh", "")
   return
 
 def AddModemAssertion(info):
@@ -35,3 +37,8 @@ def AddModemAssertion(info):
       cmd = 'assert(oneplus.verify_modem("' + version + '") == "1");'
       info.script.AppendExtra(cmd)
   return
+
+def RunCustomScript(info, name, arg):
+  info.script.AppendExtra(('run_program("/tmp/install/bin/%s", "%s");' % (name, arg)))
+  return
+    
