@@ -1,6 +1,0 @@
-on early-init
-    exec u:r:modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules wlan
-
-on property:wlan.driver.status=ok
-    restorecon /sys/kernel/debug/p2p0/power_stats
-    restorecon /sys/kernel/debug/wlan0/power_stats
