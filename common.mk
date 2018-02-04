@@ -420,6 +420,11 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
     com.android.future.usb.accessory
 
+# Vendor move
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/bin/sgdisk-op5:install/bin/sgdisk-op5 \
+    $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
