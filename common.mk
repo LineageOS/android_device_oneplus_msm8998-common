@@ -325,11 +325,16 @@ PRODUCT_PACKAGES += \
 
 # Privapp Whitelist
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/configs/privapp-permissions-com.qualcomm.location.xml:system/etc/privapp-permissions-com.qualcomm.location.xml
 
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.1-service-qti
+
+# Low power Whitelist
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfigs/qti_whitelist.xml
 
 # QMI
 PRODUCT_PACKAGES += \
