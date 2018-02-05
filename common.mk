@@ -415,15 +415,19 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service \
     thermal.msm8998
 
+# Treble
+PRODUCT_VENDOR_MOVE_ENABLED := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/bin/sgdisk-op5:install/bin/sgdisk-op5 \
+    $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
     com.android.future.usb.accessory
-
-# Vendor move
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bin/sgdisk-op5:install/bin/sgdisk-op5 \
-    $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
 
 # Vibrator
 PRODUCT_PACKAGES += \
