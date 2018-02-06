@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "546dbe36_ec78711e",
+        "filename": "common.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 15525
+      },
+      "writtenOn": "2018-02-06T15:55:41Z",
+      "side": 1,
+      "message": "why not just add it to proprietary-files-qc.txt",
+      "range": {
+        "startLine": 329,
+        "startChar": 72,
+        "endLine": 329,
+        "endChar": 128
+      },
+      "revId": "5a39f895b6fe296e947781e4670f6760059efb88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
