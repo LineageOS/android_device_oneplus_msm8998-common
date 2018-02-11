@@ -168,7 +168,9 @@ PRODUCT_PACKAGES += \
     libhwc2on1adapter \
     libgenlock \
     liboverlay \
-    libtinyxml
+    libtinyxml \
+    libqdMetaData \
+    libqdMetaData.system
 
 PRODUCT_PACKAGES += \
     qdcm_calib_data_samsung_s6e3fa5_1080p_cmd_mode_dsi_panel.xml \
@@ -227,6 +229,7 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
     android.hidl.manager@1.0-java
 
 # Init
