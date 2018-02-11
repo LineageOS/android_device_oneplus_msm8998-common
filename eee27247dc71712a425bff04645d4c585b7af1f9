@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10991814_92ee465d",
+        "filename": "common.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 9760
+      },
+      "writtenOn": "2018-02-11T08:21:43Z",
+      "side": 1,
+      "message": "Are you sure that here\n:system/etc/sysconfigs/\nMay be\n:system/etc/sysconfig/",
+      "revId": "eee27247dc71712a425bff04645d4c585b7af1f9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
