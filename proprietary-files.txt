@@ -9,7 +9,7 @@ lib64/libteeclientjniv2.so
 -priv-app/IFAAService/IFAAService.apk
 
 # DASH
--sbin/dashd:rootfs
+-sbin/dashd;rootfs
 
 # Graphics firmware
 vendor/firmware/a530_gpmu.fw2
