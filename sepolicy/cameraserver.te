@@ -8,9 +8,9 @@ allow cameraserver self:process { execmem };
 allow cameraserver shell_exec:file { r_file_perms };
 
 allow cameraserver hal_perf_hwservice:hwservice_manager { find };
-allow cameraserver hal_perf_default:binder { call };
+binder_call(cameraserver, hal_perf_default)
 
 allow cameraserver hal_configstore_ISurfaceFlingerConfigs:hwservice_manager { find };
-allow cameraserver hal_configstore_default:binder { call };
+binder_call(cameraserver, hal_configstore_default)
 
 allow cameraserver nfc_data_file:dir { search };
