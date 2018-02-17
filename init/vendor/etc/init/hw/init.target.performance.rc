@@ -21,10 +21,9 @@ on boot
     write /dev/cpuset/system-background/cpus 0-7
 
     # Add a cpuset for the camera daemon
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/cpus 0-7
+    mkdir /dev/cpuset/camera-daemon 0750 cameraserver cameraserver
+    write /dev/cpuset/camera-daemon/cpus 0
     write /dev/cpuset/camera-daemon/mems 0
-    chown cameraserver cameraserver /dev/cpuset/camera-daemon
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
@@ -124,8 +123,14 @@ on property:sys.boot_completed=1
     write /sys/module/lpm_levels/parameters/sleep_disabled N
 
     # Setup cpusets
-    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 0-3,6-7
+    write /dev/cpuset/foreground/cpus 0-3,6-7
+    write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/camera-daemon/cpus 0-3
+
+    # Disable sched boost
     write /proc/sys/kernel/sched_boost 0
 
     # Enable Adaptive LMK
