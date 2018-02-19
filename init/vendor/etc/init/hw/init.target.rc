@@ -81,6 +81,9 @@ on fs
     start hwservicemanager
 
 on late-fs
+    # Must be set before wifi hal gets started
+    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
+
     # Start services for bootanim
     start surfaceflinger
     start bootanim
@@ -135,7 +138,6 @@ on boot
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
-    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
 
     # FPC1020 /sys
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
