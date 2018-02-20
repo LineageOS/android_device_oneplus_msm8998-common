@@ -42,6 +42,8 @@
 /sys/devices/soc/soc:goodix_fp/proximity_state                  u:object_r:sysfs_fpc_proximity:s0
 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD           u:object_r:sysfs_fpc_key:s0
 /sys/kernel/boot_wlan(/.*)?                                     u:object_r:sysfs_wifi:s0
+/sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay:s0
+/sys/devices/virtual/graphics/fb0/srgb                          u:object_r:sysfs_livedisplay:s0
 
 /sys/devices/soc/8c0000.qcom,msm-cam/video4linux/(/.*)?         u:object_r:graphics_device:s0
 
