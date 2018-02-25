@@ -47,7 +47,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.audio.hw.aac.encoder=true \
     vendor.fm.a2dp.conc.disabled=true \
-    vendor.audio.noisy.broadcast.delay=600
+    vendor.audio.noisy.broadcast.delay=600 \
+    ro.config.media_vol_steps=25
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
