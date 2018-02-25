@@ -27,6 +27,9 @@ $(call inherit-product, vendor/oneplus/msm8998-common/msm8998-common-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+$(call inherit-product, vendor/lineage/build/memory/phone-xxxhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, vendor/lineage/build/memory/phone-xxxhdpi-4096-hwui-memory.mk)
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
