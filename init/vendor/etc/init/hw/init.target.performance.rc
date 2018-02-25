@@ -27,6 +27,17 @@ on boot
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
+on charger
+    write /sys/module/msm_thermal/core_control/cpus_offlined 254
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1248000
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1267200
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+
 on property:sys.boot_completed=1
     # disable thermal core control until CPU is configured
     write /sys/module/msm_thermal/core_control/enabled 0

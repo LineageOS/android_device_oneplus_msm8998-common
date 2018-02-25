@@ -334,9 +334,6 @@ on property:init.svc.per_mgr=running
 on shutdown
     stop per_proxy
 
-on charger
-    setprop sys.usb.configfs 1
-
 service qseecomd /vendor/bin/qseecomd
    class core
    user root
