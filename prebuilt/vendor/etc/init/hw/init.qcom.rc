@@ -311,6 +311,15 @@ on post-fs-data
     mkdir /data/vendor/audio/acdbdata 0770 media audio
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
+    # Create directory used by the DASH client
+    mkdir /data/misc/dash 0770 media audio
+
+    mkdir /data/vendor/audio/ 0770 media audio
+
+   # Create a folder for audio delta files
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
+
     # Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
 
