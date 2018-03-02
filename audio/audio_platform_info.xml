@@ -134,7 +134,7 @@
         <device name="SND_DEVICE_IN_AANC_HANDSET_MIC" acdb_id="44"/>
         <device name="SND_DEVICE_IN_VOICE_FLUENCE_DMIC_AANC" acdb_id="44"/>
         <device name="SND_DEVICE_IN_QUAD_MIC" acdb_id="44"/>
-        <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" acdb_id="44"/>
+        <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" acdb_id="144"/>
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" acdb_id="44"/>
         <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" acdb_id="104"/>
         <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_1" acdb_id="46"/>
