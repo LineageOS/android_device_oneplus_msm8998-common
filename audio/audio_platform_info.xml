@@ -85,7 +85,7 @@
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_2_PROTECTED_VBAT" acdb_id="101"/>
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED_RAS" acdb_id="0"/>
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED_VBAT_RAS" acdb_id="0"/>
-        <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="0"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="144"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_EXTERNAL" acdb_id="4"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" acdb_id="143"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_NS" acdb_id="144"/>
