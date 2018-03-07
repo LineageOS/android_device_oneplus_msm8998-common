@@ -16,7 +16,7 @@
  */
 
 #define LOG_TAG "amplifier_oneplus5"
-#define LOG_NDEBUG 0
+//#define LOG_NDEBUG 0
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -28,14 +28,56 @@
 #include <hardware/audio_amplifier.h>
 #include <hardware/hardware.h>
 
-#define AUDIO_PARAMETER_KEY_ANC        "anc_enabled"
+#include "platform.h"
+#include "audio_hw.h"
+
+#define AUDIO_PARAMETER_KEY_ANC                 "anc_enabled"
+
+static int audio_mode = AUDIO_MODE_NORMAL;
+
+#ifdef ANC_HEADSET_ENABLED
+extern void audio_extn_set_anc_parameters(struct audio_device *adev,
+                                   struct str_parms *parms);
+#endif
+
+static int amp_set_parameters(struct amplifier_device *device,
+        struct str_parms *parms);
+
+static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
+{
+    ALOGD("%s: mode=%d\n", __func__, mode);
+    audio_mode = mode;
+    return 0;
+}
+
+static int amp_output_stream_standby(amplifier_device_t *device,
+        struct audio_stream_out *stream)
+{
+#ifdef ANC_HEADSET_ENABLED
+    struct stream_out *out = (struct stream_out *)stream;
+    struct audio_device *adev = out->dev;
+    struct str_parms *parms;
+
+    ALOGD("%s\n", __func__);
+    parms = str_parms_create();
+    amp_set_parameters(device, parms);
+    audio_extn_set_anc_parameters(adev, parms);
+#endif
+    return 0;
+}
 
 static int amp_set_parameters(struct amplifier_device *device,
         struct str_parms *parms)
 {
 #ifdef ANC_HEADSET_ENABLED
-    ALOGI("%s: Enable ANC\n", __func__);
-    str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
+    if (audio_mode == AUDIO_MODE_IN_CALL ||
+            audio_mode == AUDIO_MODE_IN_COMMUNICATION) {
+        ALOGI("%s: Enabling ANC\n", __func__);
+        str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
+    } else {
+        ALOGI("%s: Disabling ANC\n", __func__);
+        str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "false");
+    }
 #endif
     return 0;
 }
@@ -72,6 +114,8 @@ static int amp_module_open(const hw_module_t *module, const char *name,
     amp_dev->common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
     amp_dev->common.close = amp_dev_close;
 
+    amp_dev->set_mode = amp_set_mode;
+    amp_dev->output_stream_standby = amp_output_stream_standby;
     amp_dev->set_parameters = amp_set_parameters;
 
     *device = (hw_device_t *) amp_dev;
