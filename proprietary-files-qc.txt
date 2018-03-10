@@ -560,6 +560,7 @@ vendor/lib64/libdpmqmihal.so
 # DRM
 lib/libGPTEE_system.so
 lib/libQTEEConnector_system.so
+lib/liboemcrypto.so
 lib/vendor.qti.hardware.qteeconnector@1.0.so
 lib64/libGPTEE_system.so
 lib64/libQTEEConnector_system.so
@@ -567,6 +568,24 @@ lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/bin/qseecomd
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
+vendor/firmware/cppf.b00
+vendor/firmware/cppf.b01
+vendor/firmware/cppf.b02
+vendor/firmware/cppf.b03
+vendor/firmware/cppf.b04
+vendor/firmware/cppf.b05
+vendor/firmware/cppf.b06
+vendor/firmware/cppf.b07
+vendor/firmware/cppf.mdt
+vendor/firmware/widevine.b00
+vendor/firmware/widevine.b01
+vendor/firmware/widevine.b02
+vendor/firmware/widevine.b03
+vendor/firmware/widevine.b04
+vendor/firmware/widevine.b05
+vendor/firmware/widevine.b06
+vendor/firmware/widevine.b07
+vendor/firmware/widevine.mdt
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libGPreqcancel_svc.so
