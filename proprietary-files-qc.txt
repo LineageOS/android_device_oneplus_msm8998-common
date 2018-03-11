@@ -45,7 +45,6 @@ vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 # Audio
 lib64/libldacBT_enc.so
 lib64/libldacBT_abr.so
--vendor/app/aptxui/aptxui.apk
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -81,7 +80,7 @@ lib/libopposfr.so
 lib/libfiltergenerator.so
 lib/libblurbuster.so
 lib/libtrueportrait.so
-lib/libVDBlurlessAPI.so
+lib/libVDBlurlessAPI_v2.so
 lib/libVDHDRAPI.so
 lib/vendor.qti.hardware.camera.device@1.0.so
 lib64/libfiltergenerator.so
@@ -197,6 +196,8 @@ vendor/lib/libscveObjectTracker_stub.so
 vendor/lib/libscveObjectSegmentation.so
 vendor/lib/libubifocus.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
+vendor/lib/libSTDualCamCaptureBokeh.so
+vendor/lib/libvideobokeh.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libchromaflash.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
@@ -224,6 +225,7 @@ vendor/lib64/libscveCommon.so
 vendor/lib64/libscveObjectTracker.so
 vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/libscveObjectSegmentation.so
+vendor/lib64/libvideobokeh.so
 
 # Camera actuators
 vendor/lib/libactuator_lc898217xc_imx350.so
@@ -294,6 +296,7 @@ vendor/lib/libchromatix_imx350_isp_4608x3456_27fps_snapshot.so
 vendor/lib/libchromatix_imx350_isp_5184x3880_30fps_snapshot.so
 vendor/lib/libchromatix_imx350_postproc.so
 vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_auto_hdr.so
+vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_face_register.so
 vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_hdr.so
 vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_preview.so
 vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_video.so
@@ -417,7 +420,7 @@ lib/rfsa/adsp/libmorpho_image_stabilizer4_hvx_skel.so
 lib/rfsa/adsp/libmorpho_video_denoiser_hvx_skel.so
 lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 lib/rfsa/adsp/libthread_blur_skel.so
-lib/rfsa/adsp/libVDHexagonBlurless_skel.so
+lib/rfsa/adsp/libVDHexagonBlurless_v2_skel.so
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw
@@ -560,7 +563,6 @@ vendor/lib64/libdpmqmihal.so
 # DRM
 lib/libGPTEE_system.so
 lib/libQTEEConnector_system.so
-lib/liboemcrypto.so
 lib/vendor.qti.hardware.qteeconnector@1.0.so
 lib64/libGPTEE_system.so
 lib64/libQTEEConnector_system.so
@@ -591,6 +593,7 @@ vendor/lib/libdrmtime.so
 vendor/lib/libGPreqcancel_svc.so
 vendor/lib/libGPreqcancel.so
 vendor/lib/libqisl.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libsecureui_svcsock.so
@@ -867,6 +870,13 @@ vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
+# PLAYready
+vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
+vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
+
 # Postprocessing
 etc/permissions/com.qti.snapdragon.sdk.display.xml
 framework/com.qti.snapdragon.sdk.display.jar
@@ -925,7 +935,6 @@ vendor/lib64/libsmemlog.so
 -app/datastatusnotification/datastatusnotification.apk
 -app/embms/embms.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
--app/radioconfig/radioconfig.apk
 vendor/bin/netmgrd
 vendor/bin/port-bridge
 vendor/bin/rmt_storage
@@ -1118,12 +1127,79 @@ vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
 
 # Wi-Fi Display
-vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
+-app/WfdService/WfdService.apk
+-framework/WfdCommon.jar
+bin/wfdservice
+etc/init/wfdservice.rc
+etc/wfdconfig.xml
+etc/wfdconfigsink.xml
+lib/libFileMux.so
+lib/libExtendedExtractor.so
+lib/libmmparser_lite.so
+lib/libmmparser.so
+lib/libwfduibcsinkinterface.so
+lib/libwfdmminterface.so
+lib/libwfdcommonutils.so
+lib/libwfdcodecv4l2.so
+lib/libwfdmmsink.so
+lib/libwfdsm.so
+lib/libwfdnative.so
+lib/libwfduibcsrcinterface.so
+lib/libwfdmmsrc.so
+lib/libwfduibcsink.so
+lib/libwfdavenhancements.so
+lib/libwfdrtsp.so
+lib/libwfdconfigutils.so
+lib/libwfdservice.so
+lib/libwfduibcsrc.so
+lib/libwfduibcinterface.so
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
+lib64/libFileMux.so
+lib64/libmmparser_lite.so
+lib64/libmmparser.so
+lib64/libExtendedExtractor.so
+lib64/libwfduibcsinkinterface.so
+lib64/libwfdmminterface.so
+lib64/libwfdcommonutils.so
+lib64/libwfdcodecv4l2.so
+lib64/libwfdmmsink.so
+lib64/libwfdsm.so
+lib64/libwfdnative.so
+lib64/libwfduibcsrcinterface.so
+lib64/libwfdmmsrc.so
+lib64/libwfduibcsink.so
+lib64/libwfdavenhancements.so
+lib64/libwfdrtsp.so
+lib64/libwfdconfigutils.so
+lib64/libwfdservice.so
+lib64/libwfduibcsrc.so
+lib64/libwfduibcinterface.so
 lib64/com.qualcomm.qti.wifidisplayhal@1.0.so
+vendor/bin/hdcp1prov
+vendor/bin/hdcp2p2prov
+vendor/bin/wifidisplayhalservice
+vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
+vendor/lib/libwfdhdcpcp.so
+vendor/lib/libhdcp1prov.so
+vendor/lib/libhdcp2p2prov.so
+vendor/lib/libwfdmodulehdcpsession.so
+vendor/lib/libwfdhaldsmanager.so
+vendor/lib/libwfdhdcpcp.so
+vendor/lib/libwfdcommonutils_proprietary.so
+vendor/lib/libwfdmodulehdcpsession.so
+vendor/lib/libwfdmmservice.so
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0_vendor.so
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
+vendor/lib64/libwfdhdcpcp.so
+vendor/lib64/libhdcp1prov.so
+vendor/lib64/libhdcp2p2prov.so
+vendor/lib64/libwfdmodulehdcpsession.so
+vendor/lib64/libwfdhaldsmanager.so
+vendor/lib64/libwfdhdcpcp.so
+vendor/lib64/libwfdcommonutils_proprietary.so
+vendor/lib64/libwfdmodulehdcpsession.so
+vendor/lib64/libwfdmmservice.so
 vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0_vendor.so
 vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
 vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
