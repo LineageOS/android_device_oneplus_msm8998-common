@@ -168,8 +168,13 @@ on boot
 
     chmod 0666 /dev/pn544
     chown nfc nfc /dev/pn544
+
+    chmod 0666 /dev/nq-nci
+    chown nfc nfc /dev/nq-nci
+
     chmod 0666 /dev/p61
     chown spi spi /dev/p61
+
     chmod 0666 /dev/dash/
     restorecon /dev/dash
 
