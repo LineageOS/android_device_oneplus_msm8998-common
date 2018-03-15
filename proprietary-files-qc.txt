@@ -506,7 +506,9 @@ framework/cneapiclient.jar
 framework/com.quicinc.cne.jar
 -priv-app/CNEService/CNEService.apk
 lib/libvendorconn.so
+lib/vendor.qti.hardware.data.latency@1.0.so
 lib64/libvendorconn.so
+lib64/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib/com.quicinc.cne.api@1.0.so
 vendor/lib/com.quicinc.cne.constants@1.0.so
 vendor/lib/com.quicinc.cne.constants@2.0.so
@@ -517,6 +519,7 @@ vendor/lib/libcneqmiutils.so
 vendor/lib/libwms.so
 vendor/lib/libwqe.so
 vendor/lib/libxml.so
+vendor/lib/vendor.qti.hardware.data.latency@1.0_vendor.so
 vendor/lib64/com.quicinc.cne.api@1.0.so
 vendor/lib64/com.quicinc.cne.constants@1.0.so
 vendor/lib64/com.quicinc.cne.constants@2.0.so
@@ -527,6 +530,7 @@ vendor/lib64/libcneqmiutils.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
+vendor/lib64/vendor.qti.hardware.data.latency@1.0_vendor.so
 
 # DPM
 bin/dpmd
