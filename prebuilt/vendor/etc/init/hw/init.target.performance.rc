@@ -1,7 +1,6 @@
 on init
     # Disable UFS powersaving
     write /sys/devices/soc/1da4000.ufshc/clkgate_enable 0
-    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 0
 
     write /sys/module/lpm_levels/parameters/sleep_disabled Y
 
@@ -39,7 +38,6 @@ on boot
 on charger
     # Enable UFS powersaving
     write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
-    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 1
 
     write /sys/module/lpm_levels/parameters/sleep_disabled N
 
