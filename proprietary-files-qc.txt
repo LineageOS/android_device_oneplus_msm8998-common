@@ -782,6 +782,9 @@ vendor/lib64/libsdmextension.so
 vendor/lib64/libsdm-disp-vndapis.so
 vendor/lib64/libtinyxml2_1.so
 
+# Hexagon Controller
+vendor/lib64/libhexagon_nn_controller.so|3b2571c42d73229467129ed3c05e52af24d0fcd9
+
 # QDutils
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
 vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
