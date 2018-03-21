@@ -318,7 +318,7 @@
     </CamcorderProfiles>
 
     <!-- Front Camera -->
-    <CamcorderProfiles cameraId="2">
+    <CamcorderProfiles cameraId="1">
 
         <EncoderProfile quality="low" fileFormat="3gp" duration="30">
           <Video codec="h264"
@@ -536,7 +536,7 @@
     </CamcorderProfiles>
 
     <!-- Back Camera -->
-    <CamcorderProfiles cameraId="1">
+    <CamcorderProfiles cameraId="2">
 
         <EncoderProfile quality="low" fileFormat="3gp" duration="30">
           <Video codec="h264"
@@ -553,9 +553,9 @@
 
         <EncoderProfile quality="high" fileFormat="mp4" duration="30">
           <Video codec="h264"
-                 bitRate="20000000"
-                 width="1920"
-                 height="1080"
+                 bitRate="42000000"
+                 width="3840"
+                 height="2160"
                  frameRate="30" />
 
           <Audio codec="aac"
