@@ -33,7 +33,13 @@
 
 #define AUDIO_PARAMETER_KEY_ANC                 "anc_enabled"
 
-static int audio_mode = AUDIO_MODE_NORMAL;
+typedef struct amp {
+    amplifier_device_t amp_dev;
+    audio_mode_t audio_mode;
+    bool anc_enabled;
+} amp_t;
+
+static amp_t *amp = NULL;
 
 #ifdef ANC_HEADSET_ENABLED
 extern void audio_extn_set_anc_parameters(struct audio_device *adev,
@@ -45,8 +51,9 @@ static int amp_set_parameters(struct amplifier_device *device,
 
 static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
 {
+    amp_t *amp = (amp_t*) device;
     ALOGD("%s: mode=%d\n", __func__, mode);
-    audio_mode = mode;
+    amp->audio_mode = mode;
     return 0;
 }
 
@@ -70,13 +77,17 @@ static int amp_set_parameters(struct amplifier_device *device,
         struct str_parms *parms)
 {
 #ifdef ANC_HEADSET_ENABLED
-    if (audio_mode == AUDIO_MODE_IN_CALL ||
-            audio_mode == AUDIO_MODE_IN_COMMUNICATION) {
+    amp_t *amp = (amp_t*) device;
+
+    if (!amp->anc_enabled && (amp->audio_mode == AUDIO_MODE_IN_CALL ||
+            amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION)) {
         ALOGI("%s: Enabling ANC\n", __func__);
         str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
-    } else {
+        amp->anc_enabled = true;
+    } else if (amp->anc_enabled) {
         ALOGI("%s: Disabling ANC\n", __func__);
         str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "false");
+        amp->anc_enabled = false;
     }
 #endif
     return 0;
@@ -84,8 +95,10 @@ static int amp_set_parameters(struct amplifier_device *device,
 
 static int amp_dev_close(hw_device_t *device)
 {
-    if (device)
-        free(device);
+    if (device) {
+        amp_t *amp = (amp_t*) device;
+        free(amp);
+    }
 
     return 0;
 }
@@ -102,23 +115,32 @@ static int amp_module_open(const hw_module_t *module, const char *name,
         return -ENODEV;
     }
 
-    amplifier_device_t *amp_dev = calloc(1, sizeof(amplifier_device_t));
-    if (!amp_dev) {
+    if (amp) {
+        ALOGE("%s:%d: Unable to open second instance of amplifier\n",
+                __func__, __LINE__);
+        return -EBUSY;
+    }
+
+    amp = calloc(1, sizeof(amp_t));
+    if (!amp) {
         ALOGE("%s:%d: Unable to allocate memory for amplifier device\n",
                 __func__, __LINE__);
         return -ENOMEM;
     }
 
-    amp_dev->common.tag = HARDWARE_DEVICE_TAG;
-    amp_dev->common.module = (hw_module_t *) module;
-    amp_dev->common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
-    amp_dev->common.close = amp_dev_close;
+    amp->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
+    amp->amp_dev.common.module = (hw_module_t *) module;
+    amp->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
+    amp->amp_dev.common.close = amp_dev_close;
 
-    amp_dev->set_mode = amp_set_mode;
-    amp_dev->output_stream_standby = amp_output_stream_standby;
-    amp_dev->set_parameters = amp_set_parameters;
+    amp->amp_dev.set_mode = amp_set_mode;
+    amp->amp_dev.output_stream_standby = amp_output_stream_standby;
+    amp->amp_dev.set_parameters = amp_set_parameters;
 
-    *device = (hw_device_t *) amp_dev;
+    amp->audio_mode = AUDIO_MODE_NORMAL;
+    amp->anc_enabled = false;
+
+    *device = (hw_device_t *) amp;
 
     return 0;
 }
