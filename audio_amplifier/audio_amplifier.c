@@ -42,41 +42,8 @@ typedef struct amp {
 static amp_t *amp = NULL;
 
 #ifdef ANC_HEADSET_ENABLED
-extern void audio_extn_set_anc_parameters(struct audio_device *adev,
-                                   struct str_parms *parms);
-#endif
-
-static int amp_set_parameters(struct amplifier_device *device,
-        struct str_parms *parms);
-
-static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
+static void set_anc_parameter(struct amplifier_device *device, struct str_parms *parms)
 {
-    amp_t *amp = (amp_t*) device;
-    ALOGD("%s: mode=%d\n", __func__, mode);
-    amp->audio_mode = mode;
-    return 0;
-}
-
-static int amp_output_stream_standby(amplifier_device_t *device,
-        struct audio_stream_out *stream)
-{
-#ifdef ANC_HEADSET_ENABLED
-    struct stream_out *out = (struct stream_out *)stream;
-    struct audio_device *adev = out->dev;
-    struct str_parms *parms;
-
-    ALOGD("%s\n", __func__);
-    parms = str_parms_create();
-    amp_set_parameters(device, parms);
-    audio_extn_set_anc_parameters(adev, parms);
-#endif
-    return 0;
-}
-
-static int amp_set_parameters(struct amplifier_device *device,
-        struct str_parms *parms)
-{
-#ifdef ANC_HEADSET_ENABLED
     amp_t *amp = (amp_t*) device;
 
     if (amp->audio_mode == AUDIO_MODE_IN_CALL || amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION) {
@@ -92,6 +59,31 @@ static int amp_set_parameters(struct amplifier_device *device,
             amp->anc_enabled = false;
         }
     }
+}
+#endif
+
+static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
+{
+    amp_t *amp = (amp_t*) device;
+    ALOGD("%s: mode=%d\n", __func__, mode);
+    amp->audio_mode = mode;
+    return 0;
+}
+
+static int amp_set_parameters(struct amplifier_device *device,
+        struct str_parms *parms)
+{
+#ifdef ANC_HEADSET_ENABLED
+    set_anc_parameter(device, parms);
+#endif
+    return 0;
+}
+
+static int amp_out_set_parameters(struct amplifier_device *device,
+        struct str_parms *parms)
+{
+#ifdef ANC_HEADSET_ENABLED
+    set_anc_parameter(device, parms);
 #endif
     return 0;
 }
@@ -133,12 +125,12 @@ static int amp_module_open(const hw_module_t *module, const char *name,
 
     amp->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
     amp->amp_dev.common.module = (hw_module_t *) module;
-    amp->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
+    amp->amp_dev.common.version = AMPLIFIER_DEVICE_API_VERSION_2_1;
     amp->amp_dev.common.close = amp_dev_close;
 
     amp->amp_dev.set_mode = amp_set_mode;
-    amp->amp_dev.output_stream_standby = amp_output_stream_standby;
     amp->amp_dev.set_parameters = amp_set_parameters;
+    amp->amp_dev.out_set_parameters = amp_out_set_parameters;
 
     amp->audio_mode = AUDIO_MODE_NORMAL;
     amp->anc_enabled = false;
