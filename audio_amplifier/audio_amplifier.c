@@ -16,7 +16,7 @@
  */
 
 #define LOG_TAG "amplifier_oneplus5"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -76,6 +76,12 @@ static int amp_output_stream_standby(amplifier_device_t *device,
 static int amp_set_parameters(struct amplifier_device *device,
         struct str_parms *parms)
 {
+    return 0;
+}
+
+static int amp_out_set_parameters(struct amplifier_device *device,
+        struct str_parms *parms)
+{
 #ifdef ANC_HEADSET_ENABLED
     amp_t *amp = (amp_t*) device;
 
@@ -84,7 +90,9 @@ static int amp_set_parameters(struct amplifier_device *device,
         ALOGI("%s: Enabling ANC\n", __func__);
         str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
         amp->anc_enabled = true;
-    } else if (amp->anc_enabled) {
+    } else if (amp->anc_enabled && 
+            amp->audio_mode != AUDIO_MODE_IN_CALL &&
+            amp->audio_mode != AUDIO_MODE_IN_COMMUNICATION) {
         ALOGI("%s: Disabling ANC\n", __func__);
         str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "false");
         amp->anc_enabled = false;
@@ -130,12 +138,13 @@ static int amp_module_open(const hw_module_t *module, const char *name,
 
     amp->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
     amp->amp_dev.common.module = (hw_module_t *) module;
-    amp->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
+    amp->amp_dev.common.version = AMPLIFIER_DEVICE_API_VERSION_2_1;
     amp->amp_dev.common.close = amp_dev_close;
 
     amp->amp_dev.set_mode = amp_set_mode;
     amp->amp_dev.output_stream_standby = amp_output_stream_standby;
     amp->amp_dev.set_parameters = amp_set_parameters;
+    amp->amp_dev.out_set_parameters = amp_out_set_parameters;
 
     amp->audio_mode = AUDIO_MODE_NORMAL;
     amp->anc_enabled = false;
