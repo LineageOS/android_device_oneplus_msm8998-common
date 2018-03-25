@@ -79,15 +79,18 @@ static int amp_set_parameters(struct amplifier_device *device,
 #ifdef ANC_HEADSET_ENABLED
     amp_t *amp = (amp_t*) device;
 
-    if (!amp->anc_enabled && (amp->audio_mode == AUDIO_MODE_IN_CALL ||
-            amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION)) {
-        ALOGI("%s: Enabling ANC\n", __func__);
-        str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
-        amp->anc_enabled = true;
-    } else if (amp->anc_enabled) {
-        ALOGI("%s: Disabling ANC\n", __func__);
-        str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "false");
-        amp->anc_enabled = false;
+    if (amp->audio_mode == AUDIO_MODE_IN_CALL || amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION) {
+        if (!amp->anc_enabled) {
+            ALOGI("%s: Enabling ANC\n", __func__);
+            str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
+            amp->anc_enabled = true;
+        }
+    } else {
+        if (amp->anc_enabled) {
+            ALOGI("%s: Disabling ANC\n", __func__);
+            str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "false");
+            amp->anc_enabled = false;
+        }
     }
 #endif
     return 0;
