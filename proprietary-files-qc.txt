@@ -82,11 +82,9 @@ lib/libblurbuster.so
 lib/libtrueportrait.so
 lib/libVDBlurlessAPI_v2.so
 lib/libVDHDRAPI.so
-lib/vendor.qti.hardware.camera.device@1.0.so
 lib64/libfiltergenerator.so
 lib64/libblurbuster.so
 lib64/libtrueportrait.so
-lib64/vendor.qti.hardware.camera.device@1.0.so
 vendor/etc/camera/camera_config.xml
 vendor/etc/camera/imx350_chromatix.xml
 vendor/etc/camera/imx371_chromatix.xml
