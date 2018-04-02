@@ -958,8 +958,8 @@ etc/permissions/qcnvitems.xml:vendor/etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml:vendor/etc/permissions/telephonyservice.xml
 framework/embmslibrary.jar:vendor/framework/embmslibrary.jar
--framework/qcnvitems.jar:vendor/framework/qcnvitems.jar
--framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
+framework/qcnvitems.jar:vendor/framework/qcnvitems.jar
+framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
 # qti-telephony-common.jar from sagit
 framework/qti-telephony-common.jar|3fc00ec80be50bc9b595fc9fe06ec26c832a72e3
 framework/QtiTelephonyServicelibrary.jar:vendor/framework/QtiTelephonyServicelibrary.jar
