@@ -63,7 +63,7 @@ on init
     write /proc/sys/vm/page-cluster 0
 
 on fs
-    mount_all /vendor/etc/fstab.qcom --early
+    mount_all /vendor/etc/fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -79,10 +79,6 @@ on fs
 
     # Start HW service manager early
     start hwservicemanager
-
-on late-fs
-    # Mount RW partitions which need run fsck
-    mount_all /vendor/etc/fstab.qcom --late
 
 on post-fs
     # Wait qseecomd started
