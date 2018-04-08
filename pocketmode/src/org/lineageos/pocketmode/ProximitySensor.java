@@ -44,8 +44,7 @@ public class ProximitySensor implements SensorEventListener {
     public ProximitySensor(Context context) {
         boolean found = false;
         mContext = context;
-        mSensorManager = (SensorManager)
-                mContext.getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = mContext.getSystemService(SensorManager.class);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
         if (FileUtils.fileExists(CHEESEBURGER_FILE)) {
