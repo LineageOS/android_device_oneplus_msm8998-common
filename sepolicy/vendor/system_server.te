@@ -10,4 +10,8 @@ allow system_server cameraserver:fifo_file { rw_file_perms };
 
 allow system_server persist_file:dir { rw_dir_perms };
 
+allow system_server vendor_file:file { r_file_perms execute };
+
+allow system_server vendor_keylayout_file:file { r_file_perms };
+
 get_prop(system_server, alarm_boot_prop)
