@@ -1,2 +1,0 @@
-allow modprobe { vendor_file }:system module_load;
-allow modprobe vendor_toolbox_exec:file { entrypoint };

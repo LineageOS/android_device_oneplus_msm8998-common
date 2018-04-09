@@ -8,3 +8,5 @@ allow hal_camera_default hal_graphics_allocator_hwservice:hwservice_manager { fi
 
 allow hal_camera_default nfc_data_file:dir { search };
 allow hal_camera_default persist_file:file { rw_file_perms setattr };
+
+set_prop(hal_camera_default, diag_prop)
