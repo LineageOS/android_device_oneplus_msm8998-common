@@ -81,6 +81,16 @@ on fs
     start hwservicemanager
 
 on late-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    # Hack to give sf a little bit time to come up
+    wait /for/surfaceflinger 2
+    start hwcomposer-2-1
+
     # Mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.qcom --late
 
