@@ -27,6 +27,10 @@ $(call inherit-product, vendor/oneplus/msm8998-common/msm8998-common-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.boot.vendor.overlay.theme=org.lineageos.overlay.device.oneplus.msm8998
+PRODUCT_PACKAGES += \
+    oneplus_msm8998_overlay_rro
+
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=16m \
