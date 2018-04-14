@@ -1,4 +1,3 @@
-binder_call(hal_camera_default, servicemanager)
 binder_call(hal_camera_default, hal_configstore_default)
 binder_call(hal_camera_default, hal_graphics_allocator_default)
 
@@ -6,8 +5,6 @@ allow hal_camera_default system_server:unix_stream_socket { read write };
 
 allow hal_camera_default hal_configstore_ISurfaceFlingerConfigs:hwservice_manager { find };
 allow hal_camera_default hal_graphics_allocator_hwservice:hwservice_manager { find };
-allow hal_camera_default sensorservice_service:service_manager { find };
-allow hal_camera_default permission_service:service_manager { find };
 
 allow hal_camera_default nfc_data_file:dir { search };
 allow hal_camera_default persist_file:file { rw_file_perms setattr };
