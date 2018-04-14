@@ -43,7 +43,7 @@
 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD           u:object_r:sysfs_fpc_key:s0
 /sys/kernel/boot_wlan(/.*)?                                     u:object_r:sysfs_wifi:s0
 
-/sys/devices/soc/8c0000.qcom,msm-cam/video4linux/(/.*)?         u:object_r:graphics_device:s0
+/sys/devices/soc/8c0000.qcom,msm-cam/video4linux/(/.*)?         u:object_r:sysfs_graphics:s0
 
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
