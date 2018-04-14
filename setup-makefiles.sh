@@ -71,8 +71,8 @@ cat << EOF >> "$ANDROIDMK"
 
 endif
 
-\$(shell mkdir -p \$(PRODUCT_OUT)/system/vendor/lib/egl && pushd \$(PRODUCT_OUT)/system/vendor/lib > /dev/null && ln -sf egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
-\$(shell mkdir -p \$(PRODUCT_OUT)/system/vendor/lib64/egl && pushd \$(PRODUCT_OUT)/system/vendor/lib64 > /dev/null && ln -sf egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
+\$(shell mkdir -p \$(PRODUCT_OUT)/vendor/lib/egl && pushd \$(PRODUCT_OUT)/vendor/lib > /dev/null && ln -sf egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
+\$(shell mkdir -p \$(PRODUCT_OUT)/vendor/lib64/egl && pushd \$(PRODUCT_OUT)/vendor/lib64 > /dev/null && ln -sf egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
 EOF
 
 # We are done!
