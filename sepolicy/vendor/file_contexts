@@ -45,7 +45,7 @@
 /sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay:s0
 /sys/devices/virtual/graphics/fb0/srgb                          u:object_r:sysfs_livedisplay:s0
 
-/sys/devices/soc/8c0000.qcom,msm-cam/video4linux/(/.*)?         u:object_r:graphics_device:s0
+/sys/devices/soc/8c0000.qcom,msm-cam/video4linux/(/.*)?         u:object_r:sysfs_graphics:s0
 
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
