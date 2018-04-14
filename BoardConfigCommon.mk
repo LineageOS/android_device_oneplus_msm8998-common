@@ -273,6 +273,10 @@ USE_SENSOR_MULTI_HAL := true
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
 
+# Vendor overlays
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.boot.vendor.overlay.theme=org.lineageos.overlay.device.oneplus.msm8998
+PRODUCT_PACKAGES += oneplus_msm8998_overlay_rro
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
