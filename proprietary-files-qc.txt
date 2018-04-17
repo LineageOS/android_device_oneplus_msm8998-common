@@ -807,6 +807,8 @@ lib64/vendor.qti.hardware.improvetouch.blobmanager@1.0.so
 lib64/vendor.qti.hardware.improvetouch.gesturemanager@1.0.so
 vendor/etc/hbtp/hbtpcfg.dat
 vendor/etc/hbtp/hbtpcfg2.dat
+vendor/etc/hbtp/qtc800h.bin
+vendor/etc/hbtp/qtc800s_dsp.bin
 vendor/lib/libhbtpclient.so
 vendor/lib/libhbtpfrmwk.so
 vendor/lib/libhbtpdsp.so
