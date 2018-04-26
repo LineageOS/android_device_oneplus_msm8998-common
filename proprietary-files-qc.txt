@@ -784,6 +784,8 @@ vendor/lib64/libhdr_tm.so|9a61ddbece993d3329d337265f7be5278c237833
 # Graphics - SDM - LA.UM.6.4.r1-07400-8x98.0
 vendor/bin/hw/vendor.display.color@1.0-service|fec0d808fa0b795bf3afe8cad8afa06dcc3bf6e1
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti|dc6ff7d6bdb4bd7ee248eb03e4b1e53bd04f8221
+vendor/etc/init/vendor.display.color@1.0-service.rc|5ad673f879b3685a0e79b5633437e5499cb94f48
+vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc|69d9cbc54f8ac0a0fb010f92bfa7de5981d643cf
 vendor/lib/libqseed3.so|952f805ba6166e2c24fc8c21b9500ba7cbae1296
 vendor/lib/libsdm-color.so|2a265d34873f3d02bed7641640e84ea75edb977a
 vendor/lib/libsdm-diag.so|ac8b0130258ab08354cedfca89f73fb063e67290
