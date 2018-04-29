@@ -179,6 +179,9 @@ persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
 persist.data.iwlan.enable=true
 
+# Security patch level (vendor)
+ro.lineage.build.vendor_security_patch=2018-04-05
+
 # Sensors
 ro.vendor.sensors.dev_ori=true
 ro.vendor.sensors.pmd=true
