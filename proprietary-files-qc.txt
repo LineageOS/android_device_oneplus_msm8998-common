@@ -682,7 +682,6 @@ vendor/lib/libevent_observer.so
 vendor/lib/libflp.so
 vendor/lib/libgdtap.so
 vendor/lib/libgeofence.so
-vendor/lib/libgnsspps.so
 vendor/lib/libizat_client_api.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
@@ -708,7 +707,6 @@ vendor/lib64/libevent_observer.so
 vendor/lib64/libflp.so
 vendor/lib64/libgdtap.so
 vendor/lib64/libgeofence.so
-vendor/lib64/libgnsspps.so
 vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
