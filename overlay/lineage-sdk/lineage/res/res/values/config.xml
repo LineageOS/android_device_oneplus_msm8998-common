@@ -61,22 +61,25 @@
         app, they can be remapped here. The format is
         "oldname:newname", one per entry. -->
     <string-array name="config_displayModeMappings" translatable="false">
-        <item>standard:standard</item>
-        <item>dynamic:dynamic</item>
-        <item>cinema:cinema</item>
-        <item>astronomy:astronomy</item>
-        <item>photography:photography</item>
-        <item>basic:basic</item>
+        <item>native:standard</item>
+        <item>night_mode:reading</item>
+        <item>sharpness1:Sharpness1</item>
+        <item>sharpness2:Sharpness2</item>
+        <item>sharpness3:Sharpness3</item>
+        <item>sharpness4:Sharpness4</item>
+        <item>sharpness5:Sharpness5</item>
+        <item>sharpness6:Sharpness6</item>
+        <item>sharpness7:Sharpness7</item>
+        <item>sharpness8:Sharpness8</item>
         <item>srgb:srgb</item>
         <item>dci_p3:dci_p3</item>
     </string-array>
 
-
     <!-- Turn on LiveDisplay auto mode by default -->
-    <integer name="config_defaultLiveDisplayMode">2</integer>
+    <integer name="config_defaultLiveDisplayMode">0</integer>
 
-    <!-- Should we filter any display modes which are unampped? -->
-    <bool name="config_filterDisplayModes">true</bool>
+    <!-- Should we filter any display modes which are unmapped? -->
+    <bool name="config_filterDisplayModes">false</bool>
 
     <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
     <bool name="config_enableBurnInProtection">true</bool>
