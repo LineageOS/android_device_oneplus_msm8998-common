@@ -39,8 +39,7 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 root system
 
-    # Support legacy paths
-    symlink /sdcard /mnt/sdcard
+    # Support legacy path
     symlink /sdcard /storage/sdcard0
 
     # Create cgroup mount point for memory
