@@ -525,6 +525,9 @@ on property:sys.boot_completed=1
     write /sys/devices/soc0/image_variant "${ro.product.name}-${ro.build.type}"
     write /sys/devices/soc0/image_crm_version "${ro.build.version.codename}"
 
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
     write /dev/kmsg "Boot completed "
 
 service charger /system/bin/charger
