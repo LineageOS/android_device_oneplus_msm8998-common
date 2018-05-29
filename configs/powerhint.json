@@ -437,7 +437,7 @@
       "PowerHint": "CAMERA_STREAMING",
       "Node": "CPUBigClusterMaxFreq",
       "Duration": 1000,
-      "Value": "2457600"
+      "Value": "1958400"
     },
     {
       "PowerHint": "CAMERA_STREAMING",
