@@ -27,6 +27,8 @@ import android.os.SystemProperties;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ProximitySensor implements SensorEventListener {
 
@@ -38,11 +40,13 @@ public class ProximitySensor implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private Context mContext;
+    private ExecutorService mExecutorService;
 
     public ProximitySensor(Context context) {
         mContext = context;
         mSensorManager = mContext.getSystemService(SensorManager.class);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        mExecutorService = Executors.newSingleThreadExecutor();
 
         switch (SystemProperties.get("ro.lineage.device", "")) {
             case "cheeseburger":
@@ -78,14 +82,17 @@ public class ProximitySensor implements SensorEventListener {
 
     protected void enable() {
         if (DEBUG) Log.d(TAG, "Enabling");
-        mSensorManager.registerListener(this, mSensor,
-                SensorManager.SENSOR_DELAY_NORMAL);
+        mExecutorService.submit(() -> {
+            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        });
     }
 
     protected void disable() {
         if (DEBUG) Log.d(TAG, "Disabling");
-        mSensorManager.unregisterListener(this, mSensor);
-        // Ensure FP is left enabled
-        setFPProximityState(/* isNear */ false);
+        mExecutorService.submit(() -> {
+            mSensorManager.unregisterListener(this, mSensor);
+            // Ensure FP is left enabled
+            setFPProximityState(/* isNear */ false);
+        });
     }
 }
