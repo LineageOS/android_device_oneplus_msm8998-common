@@ -28,6 +28,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class PocketSensor implements SensorEventListener {
 
@@ -39,10 +41,12 @@ public class PocketSensor implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private Context mContext;
+    private ExecutorService mExecutorService;
 
     public PocketSensor(Context context) {
         mContext = context;
         mSensorManager = mContext.getSystemService(SensorManager.class);
+        mExecutorService = Executors.newSingleThreadExecutor();
 
         for (Sensor sensor : mSensorManager.getSensorList(Sensor.TYPE_ALL)) {
             if (TextUtils.equals(sensor.getStringType(), "com.oneplus.sensor.pocket")) {
@@ -85,14 +89,17 @@ public class PocketSensor implements SensorEventListener {
 
     protected void enable() {
         if (DEBUG) Log.d(TAG, "Enabling");
-        mSensorManager.registerListener(this, mSensor,
-                SensorManager.SENSOR_DELAY_NORMAL);
+        mExecutorService.submit(() -> {
+            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        });
     }
 
     protected void disable() {
         if (DEBUG) Log.d(TAG, "Disabling");
-        mSensorManager.unregisterListener(this, mSensor);
-        // Ensure FP is left enabled
-        setFPProximityState(/* isNear */ false);
+        mExecutorService.submit(() -> {
+            mSensorManager.unregisterListener(this, mSensor);
+            // Ensure FP is left enabled
+            setFPProximityState(/* isNear */ false);
+        });
     }
 }
