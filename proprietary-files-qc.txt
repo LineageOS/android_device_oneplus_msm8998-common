@@ -375,7 +375,6 @@ vendor/lib/libchromatix_imx398_postproc.so
 
 # Camera etc
 etc/camera/attribute.model
-etc/camera/license.lic
 etc/camera/ashdr/iso617_4608x3456.ncf
 etc/camera/ashdr/ncf_pack.ncf
 etc/camera/sticker/dog.zip
