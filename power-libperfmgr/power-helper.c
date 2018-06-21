@@ -28,7 +28,7 @@
  */
 
 #define LOG_NIDEBUG 0
-#define LOG_TAG "android.hardware.power@1.2-service.oneplus_msm8998"
+#define LOG_TAG "android.hardware.power@1.3-service.oneplus_msm8998"
 
 #include <errno.h>
 #include <inttypes.h>
