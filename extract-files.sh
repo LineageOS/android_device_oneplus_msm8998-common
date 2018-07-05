@@ -87,4 +87,10 @@ fix_radio_framework_path vendor/etc/permissions/qcnvitems.xml
 fix_radio_framework_path vendor/etc/permissions/qcrilhook.xml
 fix_radio_framework_path vendor/etc/permissions/telephonyservice.xml
 
+#
+# Correct android.hidl.manager@1.0-java jar name
+#
+sed -i "s|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g" \
+    "$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/vendor/etc/permissions/qti_libpermissions.xml
+
 "$MY_DIR"/setup-makefiles.sh
