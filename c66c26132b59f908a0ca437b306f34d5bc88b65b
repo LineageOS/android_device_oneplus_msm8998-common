@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84e5defe_104bdb00",
+        "filename": "common.mk",
+        "patchSetId": 18
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-07-07T09:25:05Z",
+      "side": 1,
+      "message": "This was sorted alphabetically.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 36
+      },
+      "revId": "c66c26132b59f908a0ca437b306f34d5bc88b65b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
