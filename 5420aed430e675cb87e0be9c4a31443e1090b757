@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f1d2f55_e558d677",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 8461
+      },
+      "writtenOn": "2018-07-14T13:04:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we inherit the makefile instead of declaring it?",
+      "revId": "5420aed430e675cb87e0be9c4a31443e1090b757",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
