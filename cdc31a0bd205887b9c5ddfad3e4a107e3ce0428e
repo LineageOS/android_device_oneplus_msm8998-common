@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c891b2_a9be5668",
+        "filename": "audio/audio_output_policy.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2018-07-21T13:16:58Z",
+      "side": 0,
+      "message": "I love the fact we have the same hacks in op6\nthey probably just forward ported it without testing",
+      "revId": "cdc31a0bd205887b9c5ddfad3e4a107e3ce0428e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
