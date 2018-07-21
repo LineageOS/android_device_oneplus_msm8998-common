@@ -14,6 +14,9 @@ binder_call(platform_app, ifaadaemon)
 #Allow ifaadaemon to be registered with service manager
 allow ifaadaemon ifaadaemon_service:service_manager add;
 
+#Allow access to binder device
+allow ifaadaemon binder_device:chr_file rw_file_perms;
+
 #Allow access to tee device
 allow ifaadaemon tee_device:chr_file rw_file_perms;
 
