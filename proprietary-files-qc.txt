@@ -900,7 +900,7 @@ vendor/lib64/libdisp-aba.so
 # QMI
 vendor/bin/irsc_util
 etc/permissions/qti_permissions.xml
-etc/permissions/qti_libpermissions.xml|40363a2318e67ac69bd67f3187fd12b8faa60c9e
+etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
 vendor/bin/pd-mapper
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
