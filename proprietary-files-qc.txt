@@ -952,8 +952,7 @@ etc/permissions/telephonyservice.xml
 framework/embmslibrary.jar
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
-# qti-telephony-common.jar from sagit
-framework/qti-telephony-common.jar|3fc00ec80be50bc9b595fc9fe06ec26c832a72e3
+framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
