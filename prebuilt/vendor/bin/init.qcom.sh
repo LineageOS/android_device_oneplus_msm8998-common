@@ -88,7 +88,7 @@ start_vm_bms()
 		chown -h root.system /sys/class/power_supply/bms/voltage_ocv
 		chmod 0664 /sys/class/power_supply/bms/current_now
 		chmod 0664 /sys/class/power_supply/bms/voltage_ocv
-		start vm_bms
+		start vendor.vm_bms
 	fi
 }
 

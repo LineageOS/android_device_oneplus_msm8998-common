@@ -76,7 +76,7 @@ on mmi && property:ro.bootmode=ffbm-00
 
     start fastmmi
     # start qcom-post-boot to set the misc partition path property value
-    start qcom-post-boot
+    start vendor.qcom-post-boot
     start mmi_diag
 
 on mmi && property:ro.bootmode=ffbm-01
@@ -88,7 +88,7 @@ on mmi && property:ro.bootmode=ffbm-01
 
     start fastmmi
     ## start qcom-post-boot to set the misc partition path property value
-    start qcom-post-boot
+    start vendor.qcom-post-boot
     start mmi_diag
 
 on property:persist.vendor.usb.config=* && property:ro.bootmode=ffbm-00
