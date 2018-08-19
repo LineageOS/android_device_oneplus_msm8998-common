@@ -28,7 +28,7 @@
 on charger
     setrlimit 13 40 40
     setprop ro.board.platform msm8998
-    start qcom-post-boot
+    start vendor.qcom-post-boot
     write /sys/module/msm_thermal/core_control/cpus_offlined 254
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1248000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1267200
