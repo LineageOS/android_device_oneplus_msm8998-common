@@ -56,7 +56,7 @@ on init
 
     # start qseecomd early as we mount system/ early
     # vold needs keymaster that needs qseecomd
-    start qseecomd
+    start vendor.qseecomd
 
     # ZRAM setup
     write /sys/block/zram0/comp_algorithm lz4
@@ -117,14 +117,14 @@ on post-fs-data
     mkdir /data/reserve-lib 0775 system system
 
     # Generate wifi mac
-    start wifi-mac-generator
+    start vendor.wifi-mac-generator
 
     # Generate bt mac
-    start bt-mac-generator
+    start vendor.bt-mac-generator
 
 on boot
-    start rmt_storage
-    start rfs_access
+    start vendor.rmt_storage
+    start vendor.rfs_access
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
@@ -258,7 +258,7 @@ service ifaadaemon /system/bin/ifaadaemon
     user system
     group system
 
-service wifi-mac-generator /vendor/bin/wifi-mac-generator
+service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
     user wifi
     group wifi
@@ -266,7 +266,7 @@ service wifi-mac-generator /vendor/bin/wifi-mac-generator
     disabled
     seclabel u:r:wifi_mac_generator:s0
 
-service bt-mac-generator /vendor/bin/bt-mac-generator
+service vendor.bt-mac-generator /vendor/bin/bt-mac-generator
     class main
     user bluetooth
     group bluetooth
@@ -274,37 +274,37 @@ service bt-mac-generator /vendor/bin/bt-mac-generator
     disabled
     seclabel u:r:bt_mac_generator:s0
 
-service per_mgr /vendor/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system
     ioprio rt 4
     shutdown critical
 
-service per_proxy /vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
     disabled
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on shutdown
-    stop per_proxy
+    stop vendor.per_proxy
 
-service qseecomd /vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
    shutdown critical
 
-service spdaemon /vendor/bin/spdaemon
+service vendor.spdaemon /vendor/bin/spdaemon
    class core
    user system
    group system
 
-service thermal-engine /vendor/bin/thermal-engine
+service vendor.thermal-engine /vendor/bin/thermal-engine
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -313,42 +313,42 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-service adsprpcd /vendor/bin/adsprpcd
+service vendor.adsprpcd /vendor/bin/adsprpcd
    class main
    user media
    group media
 
-service hbtp /vendor/bin/hbtp_daemon
+service vendor.hbtp /vendor/bin/hbtp_daemon
     class main
     user system
     group system
     disabled
 
-service audiod /vendor/bin/audiod
+service vendor.audiod /vendor/bin/audiod
    class late_start
    user system
    group system
 
-service imsqmidaemon /vendor/bin/imsqmidaemon
+service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
-service imsdatadaemon /vendor/bin/imsdatadaemon
+service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
     group system wifi radio inet log diag
     disabled
 
-service pd_mapper /vendor/bin/pd-mapper
+service vendor.pd_mapper /vendor/bin/pd-mapper
      class core
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
+    start vendor.imsdatadaemon
 
-service ims_rtp_daemon /vendor/bin/ims_rtp_daemon
+service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
    class main
    user system
    group radio diag inet log
@@ -361,10 +361,10 @@ service vendor.imsrcsservice /vendor/bin/imsrcsd
    disabled
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-    start ims_rtp_daemon
+    start vendor.ims_rtp_daemon
     start vendor.imsrcsservice
 
-service ppd /vendor/bin/mm-pp-dpps
+service vendor.ppd /vendor/bin/mm-pp-dpps
     class late_start
     user system
     group system graphics
@@ -372,30 +372,30 @@ service ppd /vendor/bin/mm-pp-dpps
     disabled
 
 on property:init.svc.hwcomposer-2-1=stopped
-    stop ppd
+    stop vendor.ppd
 
 on property:init.svc.hwcomposer-2-1=running
-    start ppd
+    start vendor.ppd
 
 on property:init.svc.hwcomposer-2-1=restarting
-    stop ppd
+    stop vendor.ppd
 
 on property:init.svc.surfaceflinger=restarting
     stop hwcomposer-2-1
     start hwcomposer-2-1
 
-service energy-awareness /vendor/bin/energy-awareness
+service vendor.energy-awareness /vendor/bin/energy-awareness
     class main
     user root
     group system
     oneshot
 
-service mdtpd /vendor/bin/mdtpd
+service vendor.mdtpd /vendor/bin/mdtpd
     class late_start
     user root
     group system radio drmrpc
 
-service hvdcp_opti /vendor/bin/hvdcp_opti
+service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
@@ -407,7 +407,7 @@ service qvrd /system/bin/qvrservice
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
 
-service ftmdaemon /vendor/bin/ftmdaemon -n
+service vendor.ftmdaemon /vendor/bin/ftmdaemon -n
     class late_start
     user root
     group wifi root system
@@ -425,10 +425,10 @@ on property:ro.build.type=user
     write /proc/sys/kernel/printk "4 4 1 4"
 
 on property:wlan.ftm.daemon=on
-    start ftmdaemon
+    start vendor.ftmdaemon
 
 on property:wlan.ftm.daemon=off
-    stop ftmdaemon
+    stop vendor.ftmdaemon
 
 on property:wlan.write.con_mode=*
     write /sys/module/wlan/parameters/con_mode ${wlan.write.con_mode}
