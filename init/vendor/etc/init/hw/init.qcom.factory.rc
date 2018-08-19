@@ -27,7 +27,7 @@
 #
 
 # Define fastmmi
-service fastmmi /vendor/bin/mmi
+service vendor.fastmmi /vendor/bin/mmi
     user root
     group root
     disabled
@@ -69,26 +69,26 @@ on mmi
     #Start the following services needed for fftm
     start servicemanager
     start surfaceflinger
-    start qcom-usb-sh
+    start vendor.qcom-usb-sh
     start logd
     start debuggerd
     start debuggerd64
-    start per_mgr
-    start qcom-sh
+    start vendor.per_mgr
+    start vendor.qcom-sh
     start ril-daemon
     start config_bluetooth
     start sensors
     start media
-    start wcnss-service
-    start qcom-post-boot
-    start rmt_storage
-    start qcom-c_main-sh
-    start irsc_util
-    start qcamerasvr
-    start qcomsysd
-    start ptt_ffbm
-    start tftp_server
-    start cnss-daemon
+    start vendor.wcnss-service
+    start vendor.qcom-post-boot
+    start vendor.rmt_storage
+    start vendor.qcom-c_main-sh
+    start vendor.irsc_util
+    start vendor.qcamerasvr
+    start vendor.qcomsysd
+    start vendor.ptt_ffbm
+    start vendor.tftp_server
+    start vendor.cnss-daemon
 
 on ffbm
     trigger early-fs
