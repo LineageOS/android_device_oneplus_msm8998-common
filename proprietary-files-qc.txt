@@ -231,6 +231,24 @@ vendor/lib/libactuator_lc898217xc_imx398.so
 # Camera app modules
 lib/libblurbuster.so
 lib/libtrueportrait.so
+lib/libfastcvopt.so
+lib/libchromaflash.so
+lib/liboptizoom.so
+lib/libscveBlobDescriptor.so
+lib/libscveImageCorrection.so
+lib/libscveFaceRecognition.so
+lib/libscvePanorama_lite.so
+lib/libscveCommon_stub.so
+lib/libscveBlobDescriptor_stub.so
+lib/libscveFaceLandmarks.so
+lib/libscveFaceLandmarks_stub.so
+lib/libscvePanorama.so
+lib/libscveCommon.so
+lib/libscveObjectTracker.so
+lib/libscveObjectTracker_stub.so
+lib/libscveObjectSegmentation.so
+lib/libseemore.so
+lib/libubifocus.so
 lib/libjni_blurbuster.so
 lib/libjni_chromaflash.so
 lib/libjni_dualcamera.so
@@ -248,6 +266,24 @@ lib/libjni_truescanner_v2.so
 lib/libjni_ubifocus.so
 lib64/libblurbuster.so
 lib64/libtrueportrait.so
+lib64/libfastcvopt.so
+lib64/libchromaflash.so
+lib64/liboptizoom.so
+lib64/libscveBlobDescriptor.so
+lib64/libscveImageCorrection.so
+lib64/libscveFaceRecognition.so
+lib64/libscvePanorama_lite.so
+lib64/libscveCommon_stub.so
+lib64/libscveBlobDescriptor_stub.so
+lib64/libscveFaceLandmarks.so
+lib64/libscveFaceLandmarks_stub.so
+lib64/libscvePanorama.so
+lib64/libscveCommon.so
+lib64/libscveObjectTracker.so
+lib64/libscveObjectTracker_stub.so
+lib64/libscveObjectSegmentation.so
+lib64/libseemore.so
+lib64/libubifocus.so
 lib64/libjni_blurbuster.so
 lib64/libjni_chromaflash.so
 lib64/libjni_clearsight.so
@@ -264,6 +300,8 @@ lib64/libjni_trackingfocus.so
 lib64/libjni_trueportrait.so
 lib64/libjni_truescanner_v2.so
 lib64/libjni_ubifocus.so
+
+
 
 # Camera calibration
 etc/camera/cp/CPCalibrationData.bin:vendor/etc/camera/cp/CPCalibrationData.bin

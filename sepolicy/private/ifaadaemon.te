@@ -15,3 +15,6 @@ allow ifaadaemon tee_device:chr_file rw_file_perms;
 
 #Allow access to ion device
 allow ifaadaemon ion_device:chr_file r_file_perms;
+
+#Allow access to libQSEEComAPI.so
+allow ifaadaemon vendor_file:file rx_file_perms;

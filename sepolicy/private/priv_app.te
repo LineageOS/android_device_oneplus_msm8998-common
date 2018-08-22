@@ -1,0 +1,2 @@
+# Execute libraries from RenderScript cache
+allow priv_app app_data_file:file { rx_file_perms };
