@@ -74,12 +74,12 @@ vendor/bin/wcnss_filter
 
 # Camera
 lib/libmm-qcamera.so
-lib/libopposfr.so
+/vendor/lib/libopposfr.so
 lib/libfiltergenerator.so
 lib/libblurbuster.so
 lib/libtrueportrait.so
-lib/libVDBlurlessAPI_v2.so
-lib/libVDHDRAPI.so
+vendor/lib/libVDBlurlessAPI_v2.so
+vendor/lib/libVDHDRAPI.so
 lib64/libfiltergenerator.so
 lib64/libblurbuster.so
 lib64/libtrueportrait.so
@@ -373,14 +373,14 @@ vendor/lib/libchromatix_imx398_postproc.so
 
 # Camera etc
 etc/camera/attribute.model
-etc/camera/ashdr/iso617_4608x3456.ncf
-etc/camera/ashdr/ncf_pack.ncf
-etc/camera/sticker/dog.zip
-etc/camera/sticker/huzi.zip
-etc/camera/sticker/megviifacepp_0_4_7_model
-etc/camera/sticker/mgbeautify_1_2_3_model
-etc/camera/sticker/tuzi.zip
-etc/camera/sticker/wanzai.zip
+vendor/etc/camera/ashdr/iso617_4608x3456.ncf
+vendor/etc/camera/ashdr/ncf_pack.ncf
+vendor/etc/camera/sticker/dog.zip
+vendor/etc/camera/sticker/huzi.zip
+vendor/etc/camera/sticker/megviifacepp_0_4_7_model
+vendor/etc/camera/sticker/mgbeautify_1_2_3_model
+vendor/etc/camera/sticker/tuzi.zip
+vendor/etc/camera/sticker/wanzai.zip
 
 # Camera postprocessing
 etc/fsync_db.config
@@ -397,25 +397,25 @@ etc/oneplus5T_vstab_db_1080p_video_1_30fps.config
 etc/oneplus5T_vstab_db_4k_video_0_30fps.config
 etc/oneplus5T_vstab_db_720p_video_0_30fps.config
 etc/oneplus5T_vstab_db_720p_video_1_30fps.config
-lib/lib_oneplus_facebeauty.so
-lib/lib_oneplus_watermark.so
-lib/libmms_gyro_vstab_auth.so
-lib/libmms_gyro_vstab.so
-lib/libmms_hal_vstab.so
-lib/libmms_warper_vstab.so
-lib/libmorpho_image_stab4.so
-lib/libmorpho_video_refiner.so
-lib/libopcamera_crypt.so
-lib/libopcamera_native_modules.so
-lib/libSensorManagerHAL.so
+vendor/lib/lib_oneplus_facebeauty.so
+vendor/lib/lib_oneplus_watermark.so
+vendor/lib/libmms_gyro_vstab_auth.so
+vendor/lib/libmms_gyro_vstab.so
+vendor/lib/libmms_hal_vstab.so
+vendor/lib/libmms_warper_vstab.so
+vendor/lib/libmorpho_image_stab4.so
+vendor/lib/libmorpho_video_refiner.so
+vendor/lib/libopcamera_crypt.so
+vendor/lib/libopcamera_native_modules.so
+vendor/lib/libSensorManagerHAL.so
 
 # Camera / DSP - Hexagon libraries
 lib/rfsa/adsp/libdepthmap_skel.so
-lib/rfsa/adsp/libmorpho_image_stabilizer4_hvx_skel.so
-lib/rfsa/adsp/libmorpho_video_denoiser_hvx_skel.so
 lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 lib/rfsa/adsp/libthread_blur_skel.so
-lib/rfsa/adsp/libVDHexagonBlurless_v2_skel.so
+vendor/lib/rfsa/adsp/libmorpho_image_stabilizer4_hvx_skel.so
+vendor/lib/rfsa/adsp/libmorpho_video_denoiser_hvx_skel.so
+vendor/lib/rfsa/adsp/libVDHexagonBlurless_v2_skel.so
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw
@@ -1052,7 +1052,7 @@ vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
 
 # Secure Processor SubSystem
-bin/spdaemon
+vendor/bin/spdaemon
 vendor/lib/libspcom.so
 vendor/lib64/libspcom.so
 
