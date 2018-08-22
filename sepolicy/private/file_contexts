@@ -1,0 +1,2 @@
+# Alipay
+/system/bin/ifaadaemon                          u:object_r:ifaadaemon_exec:s0
