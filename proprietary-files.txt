@@ -2,11 +2,11 @@
 etc/firmware/tfa98xx.cnt:vendor/firmware/tfa98xx.cnt
 
 # Alipay
-bin/ifaadaemon:vendor/bin/ifaadaemon
-lib/libteeclientjni.so:vendor/lib/libteeclientjni.so
-lib64/libteeclientjni.so:vendor/lib64/libteeclientjni.so
-lib64/libteeclientjniv2.so:vendor/lib64/libteeclientjniv2.so
--priv-app/IFAAService/IFAAService.apk:vendor/priv-app/IFAAService/IFAAService.apk
+bin/ifaadaemon
+lib/libteeclientjni.so
+lib64/libteeclientjni.so
+lib64/libteeclientjniv2.so
+-priv-app/IFAAService/IFAAService.apk
 
 # DASH
 -sbin/dashd;rootfs
