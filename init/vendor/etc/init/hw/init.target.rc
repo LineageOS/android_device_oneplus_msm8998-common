@@ -253,7 +253,7 @@ service dashd /sbin/dashd
     group root system
 
 # IFAA
-service ifaadaemon /vendor/bin/ifaadaemon
+service ifaadaemon /system/bin/ifaadaemon
     class late_start
     user system
     group system
