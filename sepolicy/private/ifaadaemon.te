@@ -10,8 +10,13 @@ allow platform_app ifaadaemon_service:service_manager find;
 #Allow ifaadaemon to be registered with service manager
 allow ifaadaemon ifaadaemon_service:service_manager add;
 
+allow ifaadaemon servicemanager:binder { call transfer };
+
 #Allow access to tee device
 allow ifaadaemon tee_device:chr_file rw_file_perms;
 
 #Allow access to ion device
 allow ifaadaemon ion_device:chr_file r_file_perms;
+
+#Allow access to libQSEEComAPI.so
+allow ifaadaemon vendor_file:file rx_file_perms;
