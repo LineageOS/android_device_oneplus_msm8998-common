@@ -58,8 +58,6 @@ vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
-vendor/lib64/libaptX_encoder.so
-vendor/lib64/libaptXHD_encoder.so
 vendor/lib64/libqtigef.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
@@ -69,8 +67,36 @@ vendor/lib64/soundfx/libqcvirt.so
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
--vendor/lib/libbtnv.so
--vendor/lib64/libbtnv.so
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib/libbtnv.so
+vendor/lib/libbt-hidlclient.so
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib64/libbtnv.so
+vendor/lib64/libbt-hidlclient.so
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+
+# Bluetooth (ANT+)
+lib/com.qualcomm.qti.ant@1.0.so
+-lib/libantradio.so
+lib64/com.qualcomm.qti.ant@1.0.so
+-lib64/libantradio.so
+vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
+vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+
+# Bluetooth (Audio)
+vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
+vendor/lib/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib64/libaptX_encoder.so
+vendor/lib64/libaptXHD_encoder.so
+vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
+vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 
 # Camera
 lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
@@ -487,11 +513,15 @@ vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile4.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile5.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile6.xml
 vendor/etc/cne/wqeclient/ROW/ROW_profile1.xml
 vendor/etc/cne/wqeclient/ROW/ROW_profile2.xml
 vendor/etc/cne/wqeclient/ROW/ROW_profile3.xml
 vendor/etc/cne/wqeclient/ROW/ROW_profile4.xml
 vendor/etc/cne/wqeclient/ROW/ROW_profile5.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile6.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile7.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile1.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile2.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml
