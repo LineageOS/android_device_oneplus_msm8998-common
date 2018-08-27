@@ -1,0 +1,2 @@
+# AptX Encoder
+allow bluetooth vendor_file:file { rx_file_perms };
