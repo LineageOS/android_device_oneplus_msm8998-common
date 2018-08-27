@@ -40,6 +40,16 @@ vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 vendor/lib/vendor.qti.hardware.alarm@1.0.so
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
+# ANT+
+lib64/com.qualcomm.qti.ant@1.0.so
+-lib64/libantradio.so
+lib/com.qualcomm.qti.ant@1.0.so
+-lib/libantradio.so
+vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
+vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+
 # Audio
 lib64/libldacBT_enc.so:vendor/lib64/libldacBT_enc.so
 lib64/libldacBT_abr.so:vendor/lib64/libldacBT_abr.so
@@ -69,8 +79,12 @@ vendor/lib64/soundfx/libqcvirt.so
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
--vendor/lib/libbtnv.so
--vendor/lib64/libbtnv.so
+vendor/lib/libbtnv.so
+vendor/lib64/libbtnv.so
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib64/libbt-hidlclient.so
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 
 # Camera
 lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
