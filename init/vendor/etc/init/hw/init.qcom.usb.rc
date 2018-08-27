@@ -56,13 +56,7 @@ on charger
     start qcom-usb-sh
 
     setprop sys.usb.config mass_storage
-    # close IPA AP side clk
-    #write /d/clk/aggre2_noc_a_clk/enable 0
-    #write /d/clk/ipa_clk/enable 0
-    #write /d/clk/cnoc_clk/enable 0
-    #write /d/clk/cnoc_a_clk/enable 0
-    #write /d/clk/snoc_clk/enable 0
-    #write /d/clk/snoc_a_clk/enable 0
+    setprop sys.usb.ffs.aio_compat 1
 
     start dashd
 
@@ -112,6 +106,7 @@ on boot
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
     enable vendor.qcom-usb-sh
+    setprop sys.usb.ffs.aio_compat 1
 
 service vendor.qcom-usb-sh /vendor/bin/init.qcom.usb.sh
     class core
