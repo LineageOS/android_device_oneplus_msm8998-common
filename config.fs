@@ -114,3 +114,9 @@ mode: 0755
 user: AID_BLUETOOTH
 group: AID_BLUETOOTH
 caps: BLOCK_SUSPEND
+
+[vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: BLOCK_SUSPEND NET_ADMIN
