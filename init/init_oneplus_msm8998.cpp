@@ -46,7 +46,6 @@
 
 #include "vendor_init.h"
 #include "property_service.h"
-#include "util.h"
 
 #define DEVINFO_FILE "/sys/project_info/project_name"
 #define SENSOR_VERSION_FILE "/sys/devices/soc/soc:fingerprint_detect/sensor_version"
