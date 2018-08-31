@@ -65,6 +65,14 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 
+# Audio (SSR)
+vendor/etc/drc/drc_cfg_5.1.txt
+vendor/etc/drc/drc_cfg_AZ.txt
+vendor/etc/surround_sound_3mic/surround_sound_rec_5.1.cfg
+vendor/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
+vendor/lib/libdrc.so
+vendor/lib/libsurround_3mic_proc.so
+
 # Bluetooth
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
