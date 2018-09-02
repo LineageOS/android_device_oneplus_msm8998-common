@@ -467,8 +467,7 @@ PRODUCT_PACKAGES += \
 # Update this list with what each blob is actually for
 # libstdc++: camera.msm8998
 PRODUCT_PACKAGES += \
-    libstdc++.vendor \
-    vndk_package
+    libstdc++.vendor
 
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so \
