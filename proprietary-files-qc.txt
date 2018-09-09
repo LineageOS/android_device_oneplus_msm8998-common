@@ -69,17 +69,17 @@ vendor/bin/hci_qcomm_init
 vendor/bin/wcnss_filter
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/lib/libbtnv.so
+-vendor/lib/libbtnv.so
 vendor/lib/libbt-hidlclient.so
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib64/libbtnv.so
+-vendor/lib64/libbtnv.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 
 # Bluetooth (ANT+)
-lib/com.qualcomm.qti.ant@1.0.so
+-lib/com.qualcomm.qti.ant@1.0.so
 -lib/libantradio.so
-lib64/com.qualcomm.qti.ant@1.0.so
+-lib64/com.qualcomm.qti.ant@1.0.so
 -lib64/libantradio.so
 vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
 vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
@@ -87,6 +87,8 @@ vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 
 # Bluetooth (Audio)
+-lib/vendor.qti.hardware.fm@1.0.so
+-lib64/vendor.qti.hardware.fm@1.0.so
 vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
 vendor/lib/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
