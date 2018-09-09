@@ -36,17 +36,38 @@
 typedef struct amp {
     amplifier_device_t amp_dev;
     audio_mode_t audio_mode;
+    uint32_t out_sound_device;
     bool anc_enabled;
 } amp_t;
 
 static amp_t *amp = NULL;
 
+static bool is_headphone(uint32_t devices)
+{
+    if (devices == SND_DEVICE_OUT_HEADPHONES ||
+            devices == SND_DEVICE_OUT_HEADPHONES_DSD ||
+            devices == SND_DEVICE_OUT_HEADPHONES_44_1 ||
+            devices == SND_DEVICE_OUT_VOICE_HEADPHONES ||
+            devices == SND_DEVICE_OUT_ANC_HEADSET ||
+            devices == SND_DEVICE_OUT_ANC_FB_HEADSET ||
+            devices == SND_DEVICE_OUT_VOICE_ANC_HEADSET ||
+            devices == SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET) {
+        ALOGI("%s: device=%d true\n", __func__, devices);
+        return true;
+    } else {
+        ALOGI("%s: device=%d false\n", __func__, devices);
+        return false;
+    }
+}
+
 #ifdef ANC_HEADSET_ENABLED
 static void set_anc_parameter(struct amplifier_device *device, struct str_parms *parms)
 {
     amp_t *amp = (amp_t*) device;
+    ALOGD("%s\n", __func__);
 
-    if (amp->audio_mode == AUDIO_MODE_IN_CALL || amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION) {
+    if ((amp->audio_mode == AUDIO_MODE_IN_CALL || amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION) &&
+        is_headphone(amp->out_sound_device)) {
         if (!amp->anc_enabled) {
             ALOGI("%s: Enabling ANC\n", __func__);
             str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
@@ -62,6 +83,33 @@ static void set_anc_parameter(struct amplifier_device *device, struct str_parms 
 }
 #endif
 
+static int amp_set_input_devices(amplifier_device_t *device, uint32_t devices)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
+static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
+{
+    ALOGD("%s: devices=%d\n", __func__, devices);
+    amp->out_sound_device = devices;
+    return 0;
+}
+
+static int amp_enable_output_devices(amplifier_device_t *device,
+        uint32_t devices, bool enable)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
+static int amp_enable_input_devices(amplifier_device_t *device,
+        uint32_t devices, bool enable)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
 static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
 {
     amp_t *amp = (amp_t*) device;
@@ -70,9 +118,38 @@ static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
     return 0;
 }
 
+static int amp_output_stream_start(amplifier_device_t *device,
+        struct audio_stream_out *stream, bool offload)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
+static int amp_input_stream_start(amplifier_device_t *device,
+        struct audio_stream_in *stream)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
+static int amp_output_stream_standby(amplifier_device_t *device,
+        struct audio_stream_out *stream)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
+static int amp_input_stream_standby(amplifier_device_t *device,
+        struct audio_stream_in *stream)
+{
+    ALOGD("%s\n", __func__);
+    return 0;
+}
+
 static int amp_set_parameters(struct amplifier_device *device,
         struct str_parms *parms)
 {
+    ALOGD("%s\n", __func__);
 #ifdef ANC_HEADSET_ENABLED
     set_anc_parameter(device, parms);
 #endif
@@ -82,9 +159,17 @@ static int amp_set_parameters(struct amplifier_device *device,
 static int amp_out_set_parameters(struct amplifier_device *device,
         struct str_parms *parms)
 {
+    ALOGD("%s\n", __func__);
 #ifdef ANC_HEADSET_ENABLED
     set_anc_parameter(device, parms);
 #endif
+    return 0;
+}
+
+static int amp_in_set_parameters(struct amplifier_device *device,
+        struct str_parms *parms)
+{
+    ALOGD("%s\n", __func__);
     return 0;
 }
 
@@ -128,9 +213,18 @@ static int amp_module_open(const hw_module_t *module, const char *name,
     amp->amp_dev.common.version = AMPLIFIER_DEVICE_API_VERSION_2_1;
     amp->amp_dev.common.close = amp_dev_close;
 
+    amp->amp_dev.set_input_devices = amp_set_input_devices;
+    amp->amp_dev.set_output_devices = amp_set_output_devices;
+    amp->amp_dev.enable_output_devices = amp_enable_output_devices;
+    amp->amp_dev.enable_input_devices = amp_enable_input_devices;
     amp->amp_dev.set_mode = amp_set_mode;
+    amp->amp_dev.output_stream_start = amp_output_stream_start;
+    amp->amp_dev.input_stream_start = amp_input_stream_start;
+    amp->amp_dev.output_stream_standby = amp_output_stream_standby;
+    amp->amp_dev.input_stream_standby = amp_input_stream_standby;
     amp->amp_dev.set_parameters = amp_set_parameters;
     amp->amp_dev.out_set_parameters = amp_out_set_parameters;
+    amp->amp_dev.in_set_parameters = amp_in_set_parameters;
 
     amp->audio_mode = AUDIO_MODE_NORMAL;
     amp->anc_enabled = false;
