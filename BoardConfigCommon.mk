@@ -77,6 +77,8 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
