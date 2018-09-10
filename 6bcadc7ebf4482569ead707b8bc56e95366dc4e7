@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1273ceef_8b7e8b93",
+        "filename": "recovery/root/init.recovery.qcom.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 12240
+      },
+      "writtenOn": "2018-09-10T17:31:16Z",
+      "side": 1,
+      "message": "missing quotes",
+      "revId": "6bcadc7ebf4482569ead707b8bc56e95366dc4e7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
