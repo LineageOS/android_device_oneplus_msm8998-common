@@ -31,10 +31,6 @@ import /vendor/etc/init/hw/init.target.displaymodes.rc
 import /vendor/etc/init/hw/init.target.performance.rc
 
 on early-init
-    mkdir /firmware 0771 system system
-    mkdir /bt_firmware 0771 system system
-    symlink /data/tombstones /tombstones
-    mkdir /dsp 0771 media media
     write /proc/sys/kernel/sched_boost 1
 
 on init
