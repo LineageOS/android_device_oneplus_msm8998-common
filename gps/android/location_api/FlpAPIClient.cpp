@@ -27,17 +27,14 @@
  *
  */
 
-#define LOG_NDEBUG 0
-#define LOG_TAG "LocSvc_BatchingAPIClient"
+#define LOG_NDDEBUG 0
+#define LOG_TAG "LocSvc_FlpAPIClient"
 
 #include <log_util.h>
 #include <loc_cfg.h>
 
 #include "LocationUtil.h"
-#include "BatchingAPIClient.h"
-
-#include "limits.h"
-
+#include "FlpAPIClient.h"
 
 namespace android {
 namespace hardware {
@@ -48,24 +45,22 @@ namespace implementation {
 static void convertBatchOption(const IGnssBatching::Options& in, LocationOptions& out,
         LocationCapabilitiesMask mask);
 
-BatchingAPIClient::BatchingAPIClient(const sp<IGnssBatchingCallback>& callback) :
+FlpAPIClient::FlpAPIClient(const sp<IGnssBatchingCallback>& callback) :
     LocationAPIClientBase(),
     mGnssBatchingCbIface(callback),
-    mDefaultId(UINT_MAX),
+    mDefaultId(42),
     mLocationCapabilitiesMask(0)
 {
     LOC_LOGD("%s]: (%p)", __FUNCTION__, &callback);
 
     LocationCallbacks locationCallbacks;
-    memset(&locationCallbacks, 0, sizeof(LocationCallbacks));
     locationCallbacks.size = sizeof(LocationCallbacks);
 
     locationCallbacks.trackingCb = nullptr;
     locationCallbacks.batchingCb = nullptr;
     if (mGnssBatchingCbIface != nullptr) {
-        locationCallbacks.batchingCb = [this](size_t count, Location* location,
-            BatchingOptions batchOptions) {
-            onBatchingCb(count, location, batchOptions);
+        locationCallbacks.batchingCb = [this](size_t count, Location* location) {
+            onBatchingCb(count, location);
         };
     }
     locationCallbacks.geofenceBreachCb = nullptr;
@@ -79,18 +74,18 @@ BatchingAPIClient::BatchingAPIClient(const sp<IGnssBatchingCallback>& callback) 
     locAPISetCallbacks(locationCallbacks);
 }
 
-BatchingAPIClient::~BatchingAPIClient()
+FlpAPIClient::~FlpAPIClient()
 {
     LOC_LOGD("%s]: ()", __FUNCTION__);
 }
 
-int BatchingAPIClient::getBatchSize()
+int FlpAPIClient::flpGetBatchSize()
 {
     LOC_LOGD("%s]: ()", __FUNCTION__);
     return locAPIGetBatchSize();
 }
 
-int BatchingAPIClient::startSession(const IGnssBatching::Options& opts)
+int FlpAPIClient::flpStartSession(const IGnssBatching::Options& opts)
 {
     LOC_LOGD("%s]: (%lld %d)", __FUNCTION__,
             static_cast<long long>(opts.periodNanos), static_cast<uint8_t>(opts.flags));
@@ -107,7 +102,7 @@ int BatchingAPIClient::startSession(const IGnssBatching::Options& opts)
     return retVal;
 }
 
-int BatchingAPIClient::updateSessionOptions(const IGnssBatching::Options& opts)
+int FlpAPIClient::flpUpdateSessionOptions(const IGnssBatching::Options& opts)
 {
     LOC_LOGD("%s]: (%lld %d)", __FUNCTION__,
             static_cast<long long>(opts.periodNanos), static_cast<uint8_t>(opts.flags));
@@ -125,7 +120,7 @@ int BatchingAPIClient::updateSessionOptions(const IGnssBatching::Options& opts)
     return retVal;
 }
 
-int BatchingAPIClient::stopSession()
+int FlpAPIClient::flpStopSession()
 {
     LOC_LOGD("%s]: ", __FUNCTION__);
     int retVal = -1;
@@ -135,25 +130,25 @@ int BatchingAPIClient::stopSession()
     return retVal;
 }
 
-void BatchingAPIClient::getBatchedLocation(int last_n_locations)
+void FlpAPIClient::flpGetBatchedLocation(int last_n_locations)
 {
     LOC_LOGD("%s]: (%d)", __FUNCTION__, last_n_locations);
-    locAPIGetBatchedLocations(mDefaultId, last_n_locations);
+    locAPIGetBatchedLocations(last_n_locations);
 }
 
-void BatchingAPIClient::flushBatchedLocations()
+void FlpAPIClient::flpFlushBatchedLocations()
 {
     LOC_LOGD("%s]: ()", __FUNCTION__);
-    locAPIGetBatchedLocations(mDefaultId, SIZE_MAX);
+    locAPIGetBatchedLocations(SIZE_MAX);
 }
 
-void BatchingAPIClient::onCapabilitiesCb(LocationCapabilitiesMask capabilitiesMask)
+void FlpAPIClient::onCapabilitiesCb(LocationCapabilitiesMask capabilitiesMask)
 {
     LOC_LOGD("%s]: (%02x)", __FUNCTION__, capabilitiesMask);
     mLocationCapabilitiesMask = capabilitiesMask;
 }
 
-void BatchingAPIClient::onBatchingCb(size_t count, Location* location, BatchingOptions batchOptions)
+void FlpAPIClient::onBatchingCb(size_t count, Location* location)
 {
     LOC_LOGD("%s]: (count: %zu)", __FUNCTION__, count);
     if (mGnssBatchingCbIface != nullptr && count > 0) {

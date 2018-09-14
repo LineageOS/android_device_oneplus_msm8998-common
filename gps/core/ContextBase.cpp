@@ -26,7 +26,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#define LOG_NDEBUG 0
+#define LOG_NDDEBUG 0
 #define LOG_TAG "LocSvc_CtxBase"
 
 #include <dlfcn.h>
@@ -96,7 +96,7 @@ void ContextBase::readConfig()
    mGps_conf.NMEA_PROVIDER = 0;
    mGps_conf.GPS_LOCK = 0;
    mGps_conf.SUPL_VER = 0x10000;
-   mGps_conf.SUPL_MODE = 0x1;
+   mGps_conf.SUPL_MODE = 0x3;
    mGps_conf.SUPL_ES = 0;
    mGps_conf.CAPABILITIES = 0x7;
    /* LTE Positioning Profile configuration is disable by default*/

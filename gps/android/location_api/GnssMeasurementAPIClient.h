@@ -26,46 +26,56 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef XTRA_SYSTEM_STATUS_OBS_H
-#define XTRA_SYSTEM_STATUS_OBS_H
 
-#include <cinttypes>
-#include <MsgTask.h>
-
-using namespace std;
-using loc_core::IOsObserver;
-using loc_core::IDataItemObserver;
-using loc_core::IDataItemCore;
+#ifndef GNSS_MEASUREMENT_API_CLINET_H
+#define GNSS_MEASUREMENT_API_CLINET_H
 
 
-class XtraSystemStatusObserver : public IDataItemObserver {
-public :
-    // constructor & destructor
-    inline XtraSystemStatusObserver(IOsObserver* sysStatObs, const MsgTask* msgTask):
-            mSystemStatusObsrvr(sysStatObs), mMsgTask(msgTask) {
-        subscribe(true);
-    }
-    inline XtraSystemStatusObserver() {};
-    inline virtual ~XtraSystemStatusObserver() { subscribe(false); }
+#include <android/hardware/gnss/1.0/IGnssMeasurement.h>
+#include <android/hardware/gnss/1.0/IGnssMeasurementCallback.h>
+#include <LocationAPIClientBase.h>
+#include <hidl/Status.h>
 
-    // IDataItemObserver overrides
-    inline virtual void getName(string& name);
-    virtual void notify(const list<IDataItemCore*>& dlist);
+namespace android {
+namespace hardware {
+namespace gnss {
+namespace V1_0 {
+namespace implementation {
 
-    bool updateLockStatus(uint32_t lock);
-    bool updateConnectionStatus(bool connected, uint32_t type);
-    bool updateTac(const string& tac);
-    bool updateMccMnc(const string& mccmnc);
-    inline const MsgTask* getMsgTask() { return mMsgTask; }
-    void subscribe(bool yes);
+using ::android::hardware::gnss::V1_0::IGnssMeasurement;
+using ::android::sp;
+
+class GnssMeasurementAPIClient : public LocationAPIClientBase
+{
+public:
+    GnssMeasurementAPIClient();
+    virtual ~GnssMeasurementAPIClient();
+    GnssMeasurementAPIClient(const GnssMeasurementAPIClient&) = delete;
+    GnssMeasurementAPIClient& operator=(const GnssMeasurementAPIClient&) = delete;
+
+    // for GpsMeasurementInterface
+    Return<IGnssMeasurement::GnssMeasurementStatus> gnssMeasurementSetCallback(
+            const sp<IGnssMeasurementCallback>& callback);
+    void gnssMeasurementClose();
+
+    // callbacks we are interested in
+    void onCapabilitiesCb(LocationCapabilitiesMask capabilitiesMask) final;
+    void onGnssMeasurementsCb(GnssMeasurementsNotification gnssMeasurementsNotification) final;
 
 private:
-    int createSocket();
-    void closeSocket(const int32_t socketFd);
-    bool sendEvent(const stringstream& event);
-    IOsObserver*    mSystemStatusObsrvr;
-    const MsgTask* mMsgTask;
+    pthread_mutex_t mLock;
+    pthread_cond_t mCond;
 
+    sp<IGnssMeasurementCallback> mGnssMeasurementCbIface;
+
+    LocationCapabilitiesMask mLocationCapabilitiesMask;
+
+    LocationOptions mLocationOptions;
 };
 
-#endif
+}  // namespace implementation
+}  // namespace V1_0
+}  // namespace gnss
+}  // namespace hardware
+}  // namespace android
+#endif // GNSS_MEASUREMENT_API_CLINET_H

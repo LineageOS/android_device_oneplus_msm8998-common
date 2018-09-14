@@ -35,7 +35,6 @@
 #include <LocationAPI.h>
 #include <Agps.h>
 #include <SystemStatus.h>
-#include <XtraSystemStatusObserver.h>
 
 #define MAX_URL_LEN 256
 #define NMEA_SENTENCE_MAX_LENGTH 200
@@ -76,10 +75,6 @@ typedef struct {
 
 using namespace loc_core;
 
-namespace loc_core {
-    class SystemStatus;
-}
-
 class GnssAdapter : public LocAdapterBase {
     /* ==== ULP ============================================================================ */
     UlpProxyBase* mUlpProxy;
@@ -97,7 +92,6 @@ class GnssAdapter : public LocAdapterBase {
     /* ==== CONTROL ======================================================================== */
     LocationControlCallbacks mControlCallbacks;
     uint32_t mPowerVoteId;
-    uint32_t mNmeaMask;
 
     /* ==== NI ============================================================================= */
     NiData mNiData;
@@ -105,12 +99,6 @@ class GnssAdapter : public LocAdapterBase {
     /* ==== AGPS ========================================================*/
     // This must be initialized via initAgps()
     AgpsManager mAgpsManager;
-    AgpsCbInfo mAgpsCbInfo;
-
-    /* === SystemStatus ===================================================================== */
-    SystemStatus* mSystemStatus;
-    std::string mServerUrl;
-    XtraSystemStatusObserver mXtraObserver;
 
     /*==== CONVERSION ===================================================================*/
     static void convertOptions(LocPosMode& out, const LocationOptions& options);
@@ -123,7 +111,7 @@ class GnssAdapter : public LocAdapterBase {
 public:
 
     GnssAdapter();
-    virtual inline ~GnssAdapter() { delete mUlpProxy; }
+    virtual ~GnssAdapter();
 
     /* ==== SSR ============================================================================ */
     /* ======== EVENTS ====(Called from QMI Thread)========================================= */
@@ -149,8 +137,6 @@ public:
     void updateClientsEventMask();
     void stopClientSessions(LocationAPI* client);
     LocationCallbacks getClientCallbacks(LocationAPI* client);
-    LocationCapabilitiesMask getCapabilities();
-    void broadcastCapabilities(LocationCapabilitiesMask);
 
     /* ==== TRACKING ======================================================================= */
     /* ======== COMMANDS ====(Called from Client Thread)==================================== */
@@ -171,7 +157,7 @@ public:
     void saveTrackingSession(LocationAPI* client, uint32_t sessionId,
                              const LocationOptions& options);
     void eraseTrackingSession(LocationAPI* client, uint32_t sessionId);
-    bool setUlpPositionMode(const LocPosMode& mode);
+    void setUlpPositionMode(const LocPosMode& mode) { mUlpPositionMode = mode; }
     LocPosMode& getUlpPositionMode() { return mUlpPositionMode; }
     LocationError startTrackingMultiplex(const LocationOptions& options);
     LocationError startTracking(const LocationOptions& options);
@@ -199,10 +185,10 @@ public:
     uint32_t* gnssUpdateConfigCommand(GnssConfig config);
     uint32_t gnssDeleteAidingDataCommand(GnssAidingData& data);
 
-    void initDefaultAgpsCommand();
-    void initAgpsCommand(const AgpsCbInfo& cbInfo);
-    void dataConnOpenCommand(AGpsExtType agpsType,
-            const char* apnName, int apnLen, AGpsBearerType bearerType);
+    void initAgpsCommand(void* statusV4Cb);
+    void dataConnOpenCommand(
+            AGpsExtType agpsType,
+            const char* apnName, int apnLen, LocApnIpType ipType);
     void dataConnClosedCommand(AGpsExtType agpsType);
     void dataConnFailedCommand(AGpsExtType agpsType);
 
@@ -216,8 +202,6 @@ public:
     void setPowerVoteId(uint32_t id) { mPowerVoteId = id; }
     uint32_t getPowerVoteId() { return mPowerVoteId; }
     bool resolveInAddress(const char* hostAddress, struct in_addr* inAddress);
-    virtual bool isInSession() { return !mTrackingSessions.empty(); }
-    void initDefaultAgps();
 
     /* ==== REPORTS ======================================================================== */
     /* ======== EVENTS ====(Called from QMI/ULP Thread)===================================== */
@@ -229,8 +213,7 @@ public:
     virtual void reportSvEvent(const GnssSvNotification& svNotify, bool fromUlp=false);
     virtual void reportNmeaEvent(const char* nmea, size_t length, bool fromUlp=false);
     virtual bool requestNiNotifyEvent(const GnssNiNotification& notify, const void* data);
-    virtual void reportGnssMeasurementDataEvent(const GnssMeasurementsNotification& measurements,
-                                                int msInWeek);
+    virtual void reportGnssMeasurementDataEvent(const GnssMeasurementsNotification& measurementsNotify);
     virtual void reportSvMeasurementEvent(GnssSvMeasurementSet &svMeasurementSet);
     virtual void reportSvPolynomialEvent(GnssSvPolynomial &svPolynomial);
 
@@ -248,17 +231,10 @@ public:
     void reportSv(GnssSvNotification& svNotify);
     void reportNmea(const char* nmea, size_t length);
     bool requestNiNotify(const GnssNiNotification& notify, const void* data);
-    void reportGnssMeasurementData(const GnssMeasurementsNotification& measurements);
+    void reportGnssMeasurementData(const GnssMeasurementsNotification& measurementsNotify);
 
     /*======== GNSSDEBUG ================================================================*/
     bool getDebugReport(GnssDebugReport& report);
-    /* get AGC information from system status and fill it */
-    void getAgcInformation(GnssMeasurementsNotification& measurements, int msInWeek);
-
-    /*==== SYSTEM STATUS ================================================================*/
-    inline SystemStatus* getSystemStatus(void) { return mSystemStatus; }
-    std::string& getServerUrl(void) { return mServerUrl; }
-    void setServerUrl(const char* server) { mServerUrl.assign(server); }
 
     /*==== CONVERSION ===================================================================*/
     static uint32_t convertGpsLock(const GnssConfigGpsLock gpsLock);
@@ -277,8 +253,7 @@ public:
     static uint32_t convertSuplMode(const GnssConfigSuplModeMask suplModeMask);
     static void convertSatelliteInfo(std::vector<GnssDebugSatelliteInfo>& out,
                                      const GnssSvType& in_constellation,
-                                     const SystemStatusReports& in);
-
+                                     const SystemStatusReports& in);    
     void injectLocationCommand(double latitude, double longitude, float accuracy);
     void injectTimeCommand(int64_t time, int64_t timeReference, int32_t uncertainty);
 
