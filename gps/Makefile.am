@@ -3,7 +3,7 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = core location gnss
+SUBDIRS = core loc_api
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = loc-hal.pc

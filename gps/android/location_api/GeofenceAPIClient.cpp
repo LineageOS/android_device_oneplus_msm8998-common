@@ -27,7 +27,7 @@
  *
  */
 
-#define LOG_NDEBUG 0
+#define LOG_NDDEBUG 0
 #define LOG_TAG "LocSvc_GeofenceApiClient"
 
 #include <log_util.h>
@@ -50,7 +50,6 @@ GeofenceAPIClient::GeofenceAPIClient(const sp<IGnssGeofenceCallback>& callback) 
     LOC_LOGD("%s]: (%p)", __FUNCTION__, &callback);
 
     LocationCallbacks locationCallbacks;
-    memset(&locationCallbacks, 0, sizeof(LocationCallbacks));
     locationCallbacks.size = sizeof(LocationCallbacks);
 
     locationCallbacks.trackingCb = nullptr;

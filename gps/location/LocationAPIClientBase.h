@@ -41,139 +41,21 @@ enum SESSION_MODE {
     SESSION_MODE_NONE = 0,
     SESSION_MODE_ON_FULL,
     SESSION_MODE_ON_FIX,
-    SESSION_MODE_ON_TRIP_COMPLETED
 };
 
 enum REQUEST_TYPE {
     REQUEST_TRACKING = 0,
-    REQUEST_SESSION,
+    REQUEST_BATCHING,
     REQUEST_GEOFENCE,
     REQUEST_NIRESPONSE,
+    REQUEST_DELETEAIDINGDATA,
+    REQUEST_CONTROL,
+    REQUEST_CONFIG,
     REQUEST_MAX,
 };
 
-enum CTRL_REQUEST_TYPE {
-    CTRL_REQUEST_DELETEAIDINGDATA = 0,
-    CTRL_REQUEST_CONTROL,
-    CTRL_REQUEST_CONFIG,
-    CTRL_REQUEST_MAX,
-};
-
-class LocationAPIClientBase;
-
-class LocationAPIRequest {
-public:
-    LocationAPIRequest() {}
-    virtual ~LocationAPIRequest() {}
-    virtual void onResponse(LocationError /*error*/, uint32_t /*id*/) {}
-    virtual void onCollectiveResponse(
-            size_t /*count*/, LocationError* /*errors*/, uint32_t* /*ids*/) {}
-};
-
-class RequestQueue {
-public:
-    RequestQueue(): mSession(0) {
-    }
-    virtual ~RequestQueue() {
-        reset(0);
-    }
-    void inline setSession(uint32_t session) { mSession = session; }
-    void reset(uint32_t session) {
-        LocationAPIRequest* request = nullptr;
-        while (!mQueue.empty()) {
-            request = mQueue.front();
-            mQueue.pop();
-            delete request;
-        }
-        mSession = session;
-    }
-    void push(LocationAPIRequest* request) {
-        mQueue.push(request);
-    }
-    LocationAPIRequest* pop() {
-        LocationAPIRequest* request = nullptr;
-        if (!mQueue.empty()) {
-            request = mQueue.front();
-            mQueue.pop();
-        }
-        return request;
-    }
-    uint32_t getSession() { return mSession; }
-private:
-    uint32_t mSession;
-    std::queue<LocationAPIRequest*> mQueue;
-};
-
-class LocationAPIControlClient {
-public:
-    LocationAPIControlClient();
-    virtual ~LocationAPIControlClient();
-    LocationAPIControlClient(const LocationAPIControlClient&) = delete;
-    LocationAPIControlClient& operator=(const LocationAPIControlClient&) = delete;
-
-    LocationAPIRequest* getRequestBySession(uint32_t session);
-
-    // LocationControlAPI
-    uint32_t locAPIGnssDeleteAidingData(GnssAidingData& data);
-    uint32_t locAPIEnable(LocationTechnologyType techType);
-    void locAPIDisable();
-    uint32_t locAPIGnssUpdateConfig(GnssConfig config);
-
-    // callbacks
-    void onCtrlResponseCb(LocationError error, uint32_t id);
-    void onCtrlCollectiveResponseCb(size_t count, LocationError* errors, uint32_t* ids);
-
-    inline virtual void onGnssDeleteAidingDataCb(LocationError /*error*/) {}
-    inline virtual void onEnableCb(LocationError /*error*/) {}
-    inline virtual void onDisableCb(LocationError /*error*/) {}
-    inline virtual void onGnssUpdateConfigCb(
-            size_t /*count*/, LocationError* /*errors*/, uint32_t* /*ids*/) {}
-
-    class GnssDeleteAidingDataRequest : public LocationAPIRequest {
-    public:
-        GnssDeleteAidingDataRequest(LocationAPIControlClient& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
-            mAPI.onGnssDeleteAidingDataCb(error);
-        }
-        LocationAPIControlClient& mAPI;
-    };
-
-    class EnableRequest : public LocationAPIRequest {
-    public:
-        EnableRequest(LocationAPIControlClient& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
-            mAPI.onEnableCb(error);
-        }
-        LocationAPIControlClient& mAPI;
-    };
-
-    class DisableRequest : public LocationAPIRequest {
-    public:
-        DisableRequest(LocationAPIControlClient& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
-            mAPI.onDisableCb(error);
-        }
-        LocationAPIControlClient& mAPI;
-    };
-
-    class GnssUpdateConfigRequest : public LocationAPIRequest {
-    public:
-        GnssUpdateConfigRequest(LocationAPIControlClient& API) : mAPI(API) {}
-        inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* ids) {
-            mAPI.onGnssUpdateConfigCb(count, errors, ids);
-        }
-        LocationAPIControlClient& mAPI;
-    };
-
-private:
-    pthread_mutex_t mMutex;
-    LocationControlAPI* mLocationControlAPI;
-    RequestQueue mRequestQueues[CTRL_REQUEST_MAX];
-    bool mEnabled;
-    GnssConfig mConfig;
-};
-
-class LocationAPIClientBase {
+class LocationAPIClientBase
+{
 public:
     LocationAPIClientBase();
     virtual ~LocationAPIClientBase();
@@ -181,8 +63,6 @@ public:
     LocationAPIClientBase& operator=(const LocationAPIClientBase&) = delete;
 
     void locAPISetCallbacks(LocationCallbacks& locationCallbacks);
-    void removeSession(uint32_t session);
-    LocationAPIRequest* getRequestBySession(uint32_t session);
 
     // LocationAPI
     uint32_t locAPIStartTracking(LocationOptions& options);
@@ -195,7 +75,7 @@ public:
     uint32_t locAPIStopSession(uint32_t id);
     uint32_t locAPIUpdateSessionOptions(uint32_t id, uint32_t sessionMode,
             LocationOptions& options);
-    uint32_t locAPIGetBatchedLocations(uint32_t id, size_t count);
+    void locAPIGetBatchedLocations(size_t count);
 
     uint32_t locAPIAddGeofences(size_t count, uint32_t* ids,
             GeofenceOption* options, GeofenceInfo* data);
@@ -206,10 +86,18 @@ public:
     void locAPIRemoveAllGeofences();
 
     void locAPIGnssNiResponse(uint32_t id, GnssNiResponse response);
+    uint32_t locAPIGnssDeleteAidingData(GnssAidingData& data);
+
+    uint32_t locAPIEnable(LocationTechnologyType techType);
+    void locAPIDisable();
+    uint32_t locAPIGnssUpdateConfig(GnssConfig config);
 
     // callbacks
     void onResponseCb(LocationError error, uint32_t id);
     void onCollectiveResponseCb(size_t count, LocationError* errors, uint32_t* ids);
+
+    void onCtrlResponseCb(LocationError error, uint32_t id);
+    void onCtrlCollectiveResponseCb(size_t count, LocationError* errors, uint32_t* ids);
 
     void beforeGeofenceBreachCb(GeofenceBreachNotification geofenceBreachNotification);
 
@@ -227,12 +115,7 @@ public:
     inline virtual void onGnssLocationInfoCb(
             GnssLocationInfoNotification /*gnssLocationInfoNotification*/) {}
 
-    inline virtual void onBatchingCb(size_t /*count*/, Location* /*location*/,
-            BatchingOptions /*batchingOptions*/) {}
-    inline virtual void onBatchingStatusCb(BatchingStatusInfo /*batchingStatus*/,
-            std::list<uint32_t> &/*listOfCompletedTrips*/) {}
-    void beforeBatchingStatusCb(BatchingStatusInfo batchStatus,
-            std::list<uint32_t> & tripCompletedList);
+    inline virtual void onBatchingCb(size_t /*count*/, Location* /*location*/) {}
     inline virtual void onStartBatchingCb(LocationError /*error*/) {}
     inline virtual void onStopBatchingCb(LocationError /*error*/) {}
     inline virtual void onUpdateBatchingOptionsCb(LocationError /*error*/) {}
@@ -255,6 +138,12 @@ public:
 
     inline virtual void onGnssNiCb(uint32_t /*id*/, GnssNiNotification /*gnssNiNotification*/) {}
     inline virtual void onGnssNiResponseCb(LocationError /*error*/) {}
+    inline virtual void onGnssDeleteAidingDataCb(LocationError /*error*/) {}
+
+    inline virtual void onEnableCb(LocationError /*error*/) {}
+    inline virtual void onDisableCb(LocationError /*error*/) {}
+    inline virtual void onGnssUpdateConfigCb(
+            size_t /*count*/, LocationError* /*errors*/, uint32_t* /*ids*/) {}
 
 private:
     // private inner classes
@@ -265,13 +154,12 @@ private:
         uint32_t sessionMode;
     } SessionEntity;
 
-    template<typename T>
     class BiDict {
     public:
         BiDict() {
             pthread_mutex_init(&mBiDictMutex, nullptr);
         }
-        virtual ~BiDict() {
+        ~BiDict() {
             pthread_mutex_destroy(&mBiDictMutex);
         }
         bool hasId(uint32_t id) {
@@ -280,30 +168,24 @@ private:
             pthread_mutex_unlock(&mBiDictMutex);
             return ret;
         }
-        bool hasSession(uint32_t session) {
-            pthread_mutex_lock(&mBiDictMutex);
-            bool ret = (mBackwardMap.find(session) != mBackwardMap.end());
-            pthread_mutex_unlock(&mBiDictMutex);
-            return ret;
-        }
-        void set(uint32_t id, uint32_t session, T& ext) {
+        void set(uint32_t id, uint32_t session, uint32_t type) {
             pthread_mutex_lock(&mBiDictMutex);
             mForwardMap[id] = session;
             mBackwardMap[session] = id;
-            mExtMap[session] = ext;
+            mTypeMap[session] = type;
             pthread_mutex_unlock(&mBiDictMutex);
         }
         void clear() {
             pthread_mutex_lock(&mBiDictMutex);
             mForwardMap.clear();
             mBackwardMap.clear();
-            mExtMap.clear();
+            mTypeMap.clear();
             pthread_mutex_unlock(&mBiDictMutex);
         }
         void rmById(uint32_t id) {
             pthread_mutex_lock(&mBiDictMutex);
             mBackwardMap.erase(mForwardMap[id]);
-            mExtMap.erase(mForwardMap[id]);
+            mTypeMap.erase(mForwardMap[id]);
             mForwardMap.erase(id);
             pthread_mutex_unlock(&mBiDictMutex);
         }
@@ -311,7 +193,7 @@ private:
             pthread_mutex_lock(&mBiDictMutex);
             mForwardMap.erase(mBackwardMap[session]);
             mBackwardMap.erase(session);
-            mExtMap.erase(session);
+            mTypeMap.erase(session);
             pthread_mutex_unlock(&mBiDictMutex);
         }
         uint32_t getId(uint32_t session) {
@@ -334,26 +216,11 @@ private:
             pthread_mutex_unlock(&mBiDictMutex);
             return ret;
         }
-        T getExtById(uint32_t id) {
+        uint32_t getType(uint32_t session) {
             pthread_mutex_lock(&mBiDictMutex);
-            T ret;
-            memset(&ret, 0, sizeof(T));
-            uint32_t session = mForwardMap[id];
-            if (session > 0) {
-                auto it = mExtMap.find(session);
-                if (it != mExtMap.end()) {
-                    ret = it->second;
-                }
-            }
-            pthread_mutex_unlock(&mBiDictMutex);
-            return ret;
-        }
-        T getExtBySession(uint32_t session) {
-            pthread_mutex_lock(&mBiDictMutex);
-            T ret;
-            memset(&ret, 0, sizeof(T));
-            auto it = mExtMap.find(session);
-            if (it != mExtMap.end()) {
+            uint32_t ret = 0;
+            auto it = mTypeMap.find(session);
+            if (it != mTypeMap.end()) {
                 ret = it->second;
             }
             pthread_mutex_unlock(&mBiDictMutex);
@@ -374,88 +241,79 @@ private:
         std::map<uint32_t, uint32_t> mForwardMap;
         // mBackwardMap mapping session->id
         std::map<uint32_t, uint32_t> mBackwardMap;
-        // mExtMap mapping session->ext
-        std::map<uint32_t, T> mExtMap;
+        // mTypeMap mapping session->type
+        std::map<uint32_t, uint32_t> mTypeMap;
+    };
+
+    class LocationAPIRequest {
+    public:
+        LocationAPIRequest(LocationAPIClientBase& API) : mAPI(API) {}
+        virtual ~LocationAPIRequest() {}
+        virtual void onResponse(LocationError /*error*/) {};
+        virtual void onCollectiveResponse(
+                size_t /*count*/, LocationError* /*errors*/, uint32_t* /*ids*/) {};
+        LocationAPIClientBase& mAPI;
     };
 
     class StartTrackingRequest : public LocationAPIRequest {
     public:
-        StartTrackingRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t id) {
-            if (error != LOCATION_ERROR_SUCCESS) {
-                mAPI.removeSession(id);
-            }
+        StartTrackingRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onStartTrackingCb(error);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class StopTrackingRequest : public LocationAPIRequest {
     public:
-        StopTrackingRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t id) {
+        StopTrackingRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onStopTrackingCb(error);
-            if (error == LOCATION_ERROR_SUCCESS) {
-                mAPI.removeSession(id);
-            }
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class UpdateTrackingOptionsRequest : public LocationAPIRequest {
     public:
-        UpdateTrackingOptionsRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
+        UpdateTrackingOptionsRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onUpdateTrackingOptionsCb(error);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class StartBatchingRequest : public LocationAPIRequest {
     public:
-        StartBatchingRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t id) {
-            if (error != LOCATION_ERROR_SUCCESS) {
-                mAPI.removeSession(id);
-            }
+        StartBatchingRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onStartBatchingCb(error);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class StopBatchingRequest : public LocationAPIRequest {
     public:
-        StopBatchingRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t id) {
+        StopBatchingRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onStopBatchingCb(error);
-            if (error == LOCATION_ERROR_SUCCESS) {
-                mAPI.removeSession(id);
-            }
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class UpdateBatchingOptionsRequest : public LocationAPIRequest {
     public:
-        UpdateBatchingOptionsRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
+        UpdateBatchingOptionsRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onUpdateBatchingOptionsCb(error);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class GetBatchedLocationsRequest : public LocationAPIRequest {
     public:
-        GetBatchedLocationsRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
+        GetBatchedLocationsRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onGetBatchedLocationsCb(error);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class AddGeofencesRequest : public LocationAPIRequest {
     public:
-        AddGeofencesRequest(LocationAPIClientBase& API) : mAPI(API) {}
+        AddGeofencesRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
         inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* sessions) {
             uint32_t *ids = (uint32_t*)malloc(sizeof(uint32_t) * count);
             for (size_t i = 0; i < count; i++) {
@@ -464,21 +322,25 @@ private:
             mAPI.onAddGeofencesCb(count, errors, ids);
             free(ids);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class RemoveGeofencesRequest : public LocationAPIRequest {
     public:
-        RemoveGeofencesRequest(LocationAPIClientBase& API) : mAPI(API) {}
+        RemoveGeofencesRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
         inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* sessions) {
-            // No need to handle collectiveResponse, cbs already notified
+            uint32_t *ids = (uint32_t*)malloc(sizeof(uint32_t) * count);
+            for (size_t i = 0; i < count; i++) {
+                ids[i] = mAPI.mGeofenceBiDict.getId(sessions[i]);
+                mAPI.mGeofenceBiDict.rmBySession(sessions[i]);
+            }
+            mAPI.onRemoveGeofencesCb(count, errors, ids);
+            free(ids);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class ModifyGeofencesRequest : public LocationAPIRequest {
     public:
-        ModifyGeofencesRequest(LocationAPIClientBase& API) : mAPI(API) {}
+        ModifyGeofencesRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
         inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* sessions) {
             uint32_t *ids = (uint32_t*)malloc(sizeof(uint32_t) * count);
             for (size_t i = 0; i < count; i++) {
@@ -487,12 +349,11 @@ private:
             mAPI.onModifyGeofencesCb(count, errors, ids);
             free(ids);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class PauseGeofencesRequest : public LocationAPIRequest {
     public:
-        PauseGeofencesRequest(LocationAPIClientBase& API) : mAPI(API) {}
+        PauseGeofencesRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
         inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* sessions) {
             uint32_t *ids = (uint32_t*)malloc(sizeof(uint32_t) * count);
             for (size_t i = 0; i < count; i++) {
@@ -501,12 +362,11 @@ private:
             mAPI.onPauseGeofencesCb(count, errors, ids);
             free(ids);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class ResumeGeofencesRequest : public LocationAPIRequest {
     public:
-        ResumeGeofencesRequest(LocationAPIClientBase& API) : mAPI(API) {}
+        ResumeGeofencesRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
         inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* sessions) {
             uint32_t *ids = (uint32_t*)malloc(sizeof(uint32_t) * count);
             for (size_t i = 0; i < count; i++) {
@@ -515,31 +375,97 @@ private:
             mAPI.onResumeGeofencesCb(count, errors, ids);
             free(ids);
         }
-        LocationAPIClientBase& mAPI;
     };
 
     class GnssNiResponseRequest : public LocationAPIRequest {
     public:
-        GnssNiResponseRequest(LocationAPIClientBase& API) : mAPI(API) {}
-        inline void onResponse(LocationError error, uint32_t /*id*/) {
+        GnssNiResponseRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
             mAPI.onGnssNiResponseCb(error);
         }
-        LocationAPIClientBase& mAPI;
     };
+
+    class GnssDeleteAidingDataRequest : public LocationAPIRequest {
+    public:
+        GnssDeleteAidingDataRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
+            mAPI.onGnssDeleteAidingDataCb(error);
+        }
+    };
+
+    class EnableRequest : public LocationAPIRequest {
+    public:
+        EnableRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
+            mAPI.onEnableCb(error);
+        }
+    };
+
+    class DisableRequest : public LocationAPIRequest {
+    public:
+        DisableRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onResponse(LocationError error) {
+            mAPI.onDisableCb(error);
+        }
+    };
+
+    class GnssUpdateConfigRequest : public LocationAPIRequest {
+    public:
+        GnssUpdateConfigRequest(LocationAPIClientBase& API) : LocationAPIRequest(API) {}
+        inline void onCollectiveResponse(size_t count, LocationError* errors, uint32_t* ids) {
+            mAPI.onGnssUpdateConfigCb(count, errors, ids);
+        }
+    };
+
+    class RequestQueue {
+    public:
+        RequestQueue(uint32_t session): mSession(session) {
+        }
+        ~RequestQueue() {
+            LocationAPIRequest* request = nullptr;
+            while (!mQueue.empty()) {
+                request = mQueue.front();
+                mQueue.pop();
+                delete request;
+            }
+        }
+        void push(LocationAPIRequest* request) {
+            mQueue.push(request);
+        }
+        LocationAPIRequest* pop() {
+            LocationAPIRequest* request = nullptr;
+            if (!mQueue.empty()) {
+                request = mQueue.front();
+                mQueue.pop();
+            }
+            return request;
+        }
+        uint32_t getSession() { return mSession; }
+    private:
+        uint32_t mSession;
+        std::queue<LocationAPIRequest*> mQueue;
+    };
+
+    LocationAPIRequest* getRequestBySession(uint32_t session);
 
 private:
     pthread_mutex_t mMutex;
 
+    trackingCallback mTrackingCallback;
+    batchingCallback mBatchingCallback;
     geofenceBreachCallback mGeofenceBreachCallback;
-    batchingStatusCallback mBatchingStatusCallback;
 
     LocationAPI* mLocationAPI;
+    LocationControlAPI* mLocationControlAPI;
 
-    RequestQueue mRequestQueues[REQUEST_MAX];
-    BiDict<GeofenceBreachTypeMask> mGeofenceBiDict;
-    BiDict<SessionEntity> mSessionBiDict;
+    BiDict mGeofenceBiDict;
+    RequestQueue* mRequestQueues[REQUEST_MAX];
+    std::map<uint32_t, SessionEntity> mSessionMap;
     int32_t mBatchSize;
+    bool mEnabled;
     bool mTracking;
+
+    GnssConfig mConfig;
 };
 
 #endif /* LOCATION_API_CLINET_BASE_H */
