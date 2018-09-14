@@ -27,14 +27,14 @@
  *
  */
 
-#define LOG_NDEBUG 0
-#define LOG_TAG "LocSvc_MeasurementAPIClient"
+#define LOG_NDDEBUG 0
+#define LOG_TAG "LocSvc_GnssMeasurementAPIClient"
 
 #include <log_util.h>
 #include <loc_cfg.h>
 
 #include "LocationUtil.h"
-#include "MeasurementAPIClient.h"
+#include "GnssMeasurementAPIClient.h"
 
 namespace android {
 namespace hardware {
@@ -48,30 +48,38 @@ static void convertGnssMeasurement(GnssMeasurementsData& in,
         IGnssMeasurementCallback::GnssMeasurement& out);
 static void convertGnssClock(GnssMeasurementsClock& in, IGnssMeasurementCallback::GnssClock& out);
 
-MeasurementAPIClient::MeasurementAPIClient() :
+GnssMeasurementAPIClient::GnssMeasurementAPIClient() :
     mGnssMeasurementCbIface(nullptr),
-    mTracking(false)
+    mLocationCapabilitiesMask(0)
 {
     LOC_LOGD("%s]: ()", __FUNCTION__);
+    pthread_mutex_init(&mLock, nullptr);
+    pthread_cond_init (&mCond, nullptr);
+
+    // set default LocationOptions.
+    memset(&mLocationOptions, 0, sizeof(LocationOptions));
+    mLocationOptions.size = sizeof(LocationOptions);
+    mLocationOptions.minInterval = 1000;
+    mLocationOptions.minDistance = 0;
+    mLocationOptions.mode = GNSS_SUPL_MODE_STANDALONE;
 }
 
-MeasurementAPIClient::~MeasurementAPIClient()
+GnssMeasurementAPIClient::~GnssMeasurementAPIClient()
 {
     LOC_LOGD("%s]: ()", __FUNCTION__);
+    pthread_cond_destroy(&mCond);
+    pthread_mutex_destroy(&mLock);
 }
 
 // for GpsInterface
 Return<IGnssMeasurement::GnssMeasurementStatus>
-MeasurementAPIClient::measurementSetCallback(const sp<IGnssMeasurementCallback>& callback)
+GnssMeasurementAPIClient::gnssMeasurementSetCallback(const sp<IGnssMeasurementCallback>& callback)
 {
     LOC_LOGD("%s]: (%p)", __FUNCTION__, &callback);
 
-    mMutex.lock();
     mGnssMeasurementCbIface = callback;
-    mMutex.unlock();
 
     LocationCallbacks locationCallbacks;
-    memset(&locationCallbacks, 0, sizeof(LocationCallbacks));
     locationCallbacks.size = sizeof(LocationCallbacks);
 
     locationCallbacks.trackingCb = nullptr;
@@ -92,45 +100,60 @@ MeasurementAPIClient::measurementSetCallback(const sp<IGnssMeasurementCallback>&
     }
 
     locAPISetCallbacks(locationCallbacks);
-    LocationOptions options;
-    memset(&options, 0, sizeof(LocationOptions));
-    options.size = sizeof(LocationOptions);
-    options.minInterval = 1000;
-    options.mode = GNSS_SUPL_MODE_STANDALONE;
-    mTracking = true;
+
+    while (!mLocationCapabilitiesMask) {
+        LOC_LOGD("%s]: wait for capabilities...", __FUNCTION__);
+        pthread_mutex_lock(&mLock);
+        pthread_cond_wait(&mCond, &mLock);
+        pthread_mutex_unlock(&mLock);
+    }
+    if (mLocationCapabilitiesMask & LOCATION_CAPABILITIES_GNSS_MSB_BIT)
+        mLocationOptions.mode = GNSS_SUPL_MODE_MSB;
+    else
+        mLocationOptions.mode = GNSS_SUPL_MODE_STANDALONE;
     LOC_LOGD("%s]: start tracking session", __FUNCTION__);
-    locAPIStartTracking(options);
+    locAPIStartTracking(mLocationOptions);
 
     return IGnssMeasurement::GnssMeasurementStatus::SUCCESS;
 }
 
 // for GpsMeasurementInterface
-void MeasurementAPIClient::measurementClose() {
+void GnssMeasurementAPIClient::gnssMeasurementClose() {
     LOC_LOGD("%s]: ()", __FUNCTION__);
-    mTracking = false;
+    pthread_mutex_lock(&mLock);
+    mGnssMeasurementCbIface = nullptr;
+    pthread_mutex_unlock(&mLock);
     locAPIStopTracking();
 }
 
 // callbacks
-void MeasurementAPIClient::onGnssMeasurementsCb(
+void GnssMeasurementAPIClient::onCapabilitiesCb(LocationCapabilitiesMask capabilitiesMask)
+{
+    LOC_LOGD("%s]: (%02x)", __FUNCTION__, capabilitiesMask);
+    mLocationCapabilitiesMask = capabilitiesMask;
+    pthread_mutex_lock(&mLock);
+    pthread_cond_signal(&mCond);
+    pthread_mutex_unlock(&mLock);
+}
+
+void GnssMeasurementAPIClient::onGnssMeasurementsCb(
         GnssMeasurementsNotification gnssMeasurementsNotification)
 {
-    LOC_LOGD("%s]: (count: %zu active: %zu)",
-            __FUNCTION__, gnssMeasurementsNotification.count, mTracking);
-    if (mTracking) {
-        mMutex.lock();
-        auto gnssMeasurementCbIface(mGnssMeasurementCbIface);
-        mMutex.unlock();
-
-        if (gnssMeasurementCbIface != nullptr) {
+    LOC_LOGD("%s]: (count: %zu)", __FUNCTION__, gnssMeasurementsNotification.count);
+    // we don't need to lock the mutext
+    // if mGnssMeasurementCbIface is set to nullptr
+    if (mGnssMeasurementCbIface != nullptr) {
+        pthread_mutex_lock(&mLock);
+        if (mGnssMeasurementCbIface != nullptr) {
             IGnssMeasurementCallback::GnssData gnssData;
             convertGnssData(gnssMeasurementsNotification, gnssData);
-            auto r = gnssMeasurementCbIface->GnssMeasurementCb(gnssData);
+            auto r = mGnssMeasurementCbIface->GnssMeasurementCb(gnssData);
             if (!r.isOk()) {
                 LOC_LOGE("%s] Error from GnssMeasurementCb description=%s",
                     __func__, r.description().c_str());
             }
         }
+        pthread_mutex_unlock(&mLock);
     }
 }
 
