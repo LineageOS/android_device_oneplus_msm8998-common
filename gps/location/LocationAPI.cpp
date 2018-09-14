@@ -29,7 +29,7 @@
 
 #include <location_interface.h>
 #include <dlfcn.h>
-#include <platform_lib_log_util.h>
+#include <log_util.h>
 #include <pthread.h>
 #include <map>
 
@@ -370,13 +370,13 @@ LocationAPI::updateTrackingOptions(uint32_t id, LocationOptions& locationOptions
 }
 
 uint32_t
-LocationAPI::startBatching(LocationOptions& locationOptions, BatchingOptions &batchingOptions)
+LocationAPI::startBatching(LocationOptions& locationOptions)
 {
     uint32_t id = 0;
     pthread_mutex_lock(&gDataMutex);
 
     if (gData.flpInterface != NULL) {
-        id = gData.flpInterface->startBatching(this, locationOptions, batchingOptions);
+        id = gData.flpInterface->startBatching(this, locationOptions);
     } else {
         LOC_LOGE("%s:%d]: No flp interface available for Location API client %p ",
                  __func__, __LINE__, this);
@@ -402,16 +402,14 @@ LocationAPI::stopBatching(uint32_t id)
 }
 
 void
-LocationAPI::updateBatchingOptions(uint32_t id,
-        LocationOptions& locationOptions, BatchingOptions& batchOptions)
+LocationAPI::updateBatchingOptions(uint32_t id, LocationOptions& locationOptions)
 {
     pthread_mutex_lock(&gDataMutex);
 
     if (gData.flpInterface != NULL) {
         gData.flpInterface->updateBatchingOptions(this,
                                                   id,
-                                                  locationOptions,
-                                                  batchOptions);
+                                                  locationOptions);
     } else {
         LOC_LOGE("%s:%d]: No flp interface available for Location API client %p ",
                  __func__, __LINE__, this);
