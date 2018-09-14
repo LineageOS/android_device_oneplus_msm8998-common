@@ -29,8 +29,6 @@
 #include <string>
 #include "Gnss.h"
 #include "AGnssRil.h"
-#include <DataItemConcreteTypesBase.h>
-
 typedef void* (getLocationInterface)();
 
 namespace android {
@@ -39,6 +37,7 @@ namespace gnss {
 namespace V1_0 {
 namespace implementation {
 
+static bool sendConnectionEvent(const bool connected, const int8_t type);
 
 AGnssRil::AGnssRil(Gnss* gnss) : mGnss(gnss) {
     ENTRY_LOG_CALLFLOW();
@@ -48,42 +47,77 @@ AGnssRil::~AGnssRil() {
     ENTRY_LOG_CALLFLOW();
 }
 
-Return<bool> AGnssRil::updateNetworkState(bool connected, NetworkType type, bool /*roaming*/) {
+Return<bool> AGnssRil::updateNetworkState(bool connected, NetworkType type, bool roaming) {
     ENTRY_LOG_CALLFLOW();
 
     // for XTRA
-    if (nullptr != mGnss && ( nullptr != mGnss->getGnssInterface() )) {
-        int8_t typeout = loc_core::NetworkInfoDataItemBase::TYPE_UNKNOWN;
-        switch(type)
-        {
-            case IAGnssRil::NetworkType::MOBILE:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_MOBILE;
-                break;
-            case IAGnssRil::NetworkType::WIFI:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_WIFI;
-                break;
-            case IAGnssRil::NetworkType::MMS:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_MMS;
-                break;
-            case IAGnssRil::NetworkType::SUPL:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_SUPL;
-                break;
-            case IAGnssRil::NetworkType::DUN:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_DUN;
-                break;
-            case IAGnssRil::NetworkType::HIPRI:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_HIPRI;
-                break;
-            case IAGnssRil::NetworkType::WIMAX:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_WIMAX;
-                break;
-            default:
-                typeout = loc_core::NetworkInfoDataItemBase::TYPE_UNKNOWN;
-                break;
-        }
-        mGnss->getGnssInterface()->updateConnectionStatus(connected, typeout);
-    }
+    sendConnectionEvent(connected, (int8_t)type);
+
     return true;
+}
+
+// for XTRA
+static inline int createSocket() {
+    int socketFd = -1;
+
+    if ((socketFd = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
+        LOC_LOGe("create socket error. reason:%s", strerror(errno));
+
+     } else {
+        const char* socketPath = "/data/vendor/location/xtra/socket_hal_xtra";
+        struct sockaddr_un addr = { .sun_family = AF_UNIX };
+        snprintf(addr.sun_path, sizeof(addr.sun_path), "%s", socketPath);
+
+        if (::connect(socketFd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+            LOC_LOGe("cannot connect to XTRA. reason:%s", strerror(errno));
+            if (::close(socketFd)) {
+                LOC_LOGe("close socket error. reason:%s", strerror(errno));
+            }
+            socketFd = -1;
+        }
+    }
+
+    return socketFd;
+}
+
+static inline void closeSocket(const int socketFd) {
+    if (socketFd >= 0) {
+        if(::close(socketFd)) {
+            LOC_LOGe("close socket error. reason:%s", strerror(errno));
+        }
+    }
+}
+
+static inline bool sendConnectionEvent(const bool connected, const int8_t type) {
+    int socketFd = createSocket();
+    if (socketFd < 0) {
+        LOC_LOGe("XTRA unreachable. sending failed.");
+        return false;
+    }
+
+    std::stringstream ss;
+    ss <<  "connection";
+    ss << " " << (connected ? "1" : "0");
+    ss << " " << (int)type;
+    ss << "\n"; // append seperator
+
+    const std::string& data = ss.str();
+    int remain = data.length();
+    ssize_t sent = 0;
+
+    while (remain > 0 &&
+          (sent = ::send(socketFd, data.c_str() + (data.length() - remain),
+                       remain, MSG_NOSIGNAL)) > 0) {
+        remain -= sent;
+    }
+
+    if (sent < 0) {
+        LOC_LOGe("sending error. reason:%s", strerror(errno));
+    }
+
+    closeSocket(socketFd);
+
+    return (remain == 0);
 }
 
 }  // namespace implementation
