@@ -30,7 +30,7 @@
 #ifndef GNSS_API_CLINET_H
 #define GNSS_API_CLINET_H
 
-#include <mutex>
+
 #include <android/hardware/gnss/1.0/IGnss.h>
 #include <android/hardware/gnss/1.0/IGnssCallback.h>
 #include <android/hardware/gnss/1.0/IGnssNiCallback.h>
@@ -58,6 +58,7 @@ public:
             const sp<IGnssNiCallback>& niCb);
     bool gnssStart();
     bool gnssStop();
+    void gnssDeleteAidingData(IGnss::GnssAidingData aidingDataFlags);
     bool gnssSetPositionMode(IGnss::GnssPositionMode mode,
             IGnss::GnssPositionRecurrence recurrence,
             uint32_t minIntervalMs,
@@ -67,10 +68,7 @@ public:
     // for GpsNiInterface
     void gnssNiRespond(int32_t notifId, IGnssNiCallback::GnssUserResponseType userResponse);
 
-    // these apis using LocationAPIControlClient
-    void gnssDeleteAidingData(IGnss::GnssAidingData aidingDataFlags);
-    void gnssEnable(LocationTechnologyType techType);
-    void gnssDisable();
+    // for GnssConfigurationInterface
     void gnssConfigurationUpdate(const GnssConfig& gnssConfig);
 
     inline LocationCapabilitiesMask gnssGetCapabilities() const {
@@ -91,10 +89,10 @@ public:
 private:
     sp<IGnssCallback> mGnssCbIface;
     sp<IGnssNiCallback> mGnssNiCbIface;
-    std::mutex mMutex;
-    LocationAPIControlClient* mControlClient;
+
     LocationCapabilitiesMask mLocationCapabilitiesMask;
     bool mLocationCapabilitiesCached;
+
     LocationOptions mLocationOptions;
 };
 
