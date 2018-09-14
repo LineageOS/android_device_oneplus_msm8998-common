@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efcc59ce_7c64a793",
+        "filename": "init/vendor/etc/init/hw/init.qcom.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2018-09-14T03:33:25Z",
+      "side": 1,
+      "message": "I think this has stay wpa_supplicant so that system can start/stop it (since renaming affects init.svc.* prop paths).",
+      "revId": "65a4322e784f023abd1234c2f41e400289b89087",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
