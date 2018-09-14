@@ -42,7 +42,7 @@ using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::android::sp;
 
-class BatchingAPIClient;
+class FlpAPIClient;
 struct GnssBatching : public IGnssBatching {
     GnssBatching();
     ~GnssBatching();
@@ -68,7 +68,7 @@ struct GnssBatching : public IGnssBatching {
  private:
     sp<GnssBatchingDeathRecipient> mGnssBatchingDeathRecipient = nullptr;
     sp<IGnssBatchingCallback> mGnssBatchingCbIface = nullptr;
-    BatchingAPIClient* mApi = nullptr;
+    FlpAPIClient* mApi = nullptr;
 };
 
 }  // namespace implementation
