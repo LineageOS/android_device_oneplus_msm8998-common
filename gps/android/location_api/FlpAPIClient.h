@@ -1,4 +1,4 @@
-/* Copyright (c) 2015, 2017 The Linux Foundation. All rights reserved.
+/* Copyright (c) 2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -27,57 +27,51 @@
  *
  */
 
-#ifndef __ICLIENTINDEX_H__
-#define __ICLIENTINDEX_H__
+#ifndef FLP_API_CLINET_H
+#define FLP_API_CLINET_H
 
-#include <list>
+#include <android/hardware/gnss/1.0/IGnssBatching.h>
+#include <android/hardware/gnss/1.0/IGnssBatchingCallback.h>
+#include <pthread.h>
 
-namespace loc_core
+#include <LocationAPIClientBase.h>
+
+#define FLP_CONF_FILE "/vendor/etc/flp.conf"
+
+namespace android {
+namespace hardware {
+namespace gnss {
+namespace V1_0 {
+namespace implementation {
+
+class FlpAPIClient : public LocationAPIClientBase
 {
-
-template  <typename CT, typename DIT>
-
-class IClientIndex {
 public:
+    FlpAPIClient(const sp<IGnssBatchingCallback>& callback);
+    ~FlpAPIClient();
+    int flpGetBatchSize();
+    int flpStartSession(const IGnssBatching::Options& options);
+    int flpUpdateSessionOptions(const IGnssBatching::Options& options);
+    int flpStopSession();
+    void flpGetBatchedLocation(int last_n_locations);
+    void flpFlushBatchedLocations();
 
-    // Checks if client is subscribed
-    virtual bool isSubscribedClient (CT client) = 0;
+    inline LocationCapabilitiesMask flpGetCapabilities() { return mLocationCapabilitiesMask; }
 
-    // gets subscription list
-    virtual void getSubscribedList (CT client, std :: list <DIT> & out) = 0;
+    // callbacks
+    void onCapabilitiesCb(LocationCapabilitiesMask capabilitiesMask) final;
+    void onBatchingCb(size_t count, Location* location) final;
 
-    // removes an entry
-    virtual int remove (CT client) = 0;
-
-    // removes std :: list of data items and returns a list of clients
-    // removed if any.
-    virtual void remove
-    (
-        const std :: list <DIT> & r,
-        std :: list <CT> & out
-    ) = 0;
-
-    // removes list of data items indexed by client and returns list
-    // of data items removed if any.
-    virtual void remove
-    (
-        CT client,
-        const std :: list <DIT> & r,
-        std :: list <DIT> & out
-    ) = 0;
-
-    // adds/modifies entry in  map and returns new data items added.
-    virtual void add
-    (
-        CT client,
-        const std :: list <DIT> & l,
-        std :: list <DIT> & out
-    ) = 0;
-
-    // dtor
-    virtual ~IClientIndex () {}
+private:
+    sp<IGnssBatchingCallback> mGnssBatchingCbIface;
+    uint32_t mDefaultId;
+    int mBatchSize;
+    LocationCapabilitiesMask mLocationCapabilitiesMask;
 };
 
-} // namespace loc_core
-
-#endif // #ifndef __ICLIENTINDEX_H__
+}  // namespace implementation
+}  // namespace V1_0
+}  // namespace gnss
+}  // namespace hardware
+}  // namespace android
+#endif // FLP_API_CLINET_H
