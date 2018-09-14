@@ -99,8 +99,6 @@ on post-fs-data
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/misc/qvr 0770 system system
 
-    # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
-    mkdir /data/nfc
     mkdir /data/oemnvitems  0771 radio radio
 
     # Fingerint, changhua add for fp debug image usage,feature default off
