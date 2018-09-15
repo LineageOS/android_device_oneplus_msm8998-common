@@ -55,7 +55,7 @@ on mmi
     #              This is FFBM only settings.
     # ========================================================
 
-    start fastmmi
+    start vendor.fastmmi
 
     # A/B update verifier that marks a successful boot.
     exec - root cache -- /system/bin/update_verifier nonencrypted
@@ -77,7 +77,7 @@ on mmi
     start vendor.qcom-sh
     start ril-daemon
     start config_bluetooth
-    start sensors
+    start vendor.sensors
     start media
     start vendor.wcnss-service
     start vendor.qcom-post-boot
