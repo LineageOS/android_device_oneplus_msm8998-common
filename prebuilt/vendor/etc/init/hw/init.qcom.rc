@@ -791,16 +791,14 @@ service vendor.cnss_diag /vendor/bin/cnss_diag -q -f
     class main
     user system
     group system wifi inet net_admin sdcard_rw media_rw diag
-#ifdef VENDOR_EDIT
     disabled
-    #oneshot
+    oneshot
 
 on property:persist.oem.wifi.cnssdiag=1
     start vendor.cnss_diag
 
 on property:persist.oem.wifi.cnssdiag=0
     stop vendor.cnss_diag
-#endif VENDOR_EDIT
 
 service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start

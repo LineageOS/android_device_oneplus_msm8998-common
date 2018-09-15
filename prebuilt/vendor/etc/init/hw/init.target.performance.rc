@@ -206,4 +206,4 @@ on property:sys.boot_completed=1
     setprop sys.io.scheduler "bfq"
 
     # Is IOP even still a thing?
-    start iop
+    start vendor.iop

@@ -29,7 +29,7 @@ on charger
     setrlimit 13 40 40
     setprop ro.board.platform msm8998
 
-    start qcom-post-boot
+    start vendor.qcom-post-boot
 
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
@@ -52,8 +52,8 @@ on charger
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
-    enable qcom-usb-sh
-    start qcom-usb-sh
+    enable vendor.qcom-usb-sh
+    start vendor.qcom-usb-sh
 
     setprop sys.usb.config mass_storage
     # close IPA AP side clk
@@ -440,7 +440,7 @@ on property:sys.usb.config=diag,serial_tty,serial_tty,rmnet_smd,mass_storage,adb
     write /sys/class/android_usb/android0/functions diag,adb,serial,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    start port-bridge
+    start vendor.port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,acm_tty,acm_tty,rmnet_smd,mass_storage,adb && property:sys.usb.configfs=0
@@ -453,7 +453,7 @@ on property:sys.usb.config=diag,acm_tty,acm_tty,rmnet_smd,mass_storage,adb && pr
     write /sys/class/android_usb/android0/functions diag,adb,acm,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    start port-bridge
+    start vendor.port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,serial_tty,serial_tty,rmnet_smd,mass_storage && property:sys.usb.configfs=0
@@ -465,7 +465,7 @@ on property:sys.usb.config=diag,serial_tty,serial_tty,rmnet_smd,mass_storage && 
     write /sys/class/android_usb/android0/f_serial/transports tty,tty
     write /sys/class/android_usb/android0/functions diag,serial,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    start port-bridge
+    start vendor.port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,acm_tty,acm_tty,rmnet_smd,mass_storage && property:sys.usb.configfs=0
@@ -501,7 +501,7 @@ on property:sys.usb.config=diag,acm_smd,acm_tty,rmnet_smd,mass_storage,adb && pr
     write /sys/class/android_usb/android0/functions diag,adb,acm,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    start port-bridge
+    start vendor.port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,serial_smd,serial_tty,rmnet_smd,mass_storage && property:sys.usb.configfs=0
