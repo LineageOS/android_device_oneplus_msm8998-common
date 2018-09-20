@@ -30,7 +30,7 @@
 
 static int force_random = 0;
 static const char NV_MAC_FILE[]          = "/data/oemnvitems/447";
-static const char BDADDR_PATH[]          = "/data/misc/bluetooth/bdaddr";
+static const char BDADDR_PATH[]          = "/data/vendor/bluetooth/bdaddr";
 
 static void to_upper(char *str) {
     int i = 0;
