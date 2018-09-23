@@ -117,18 +117,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420 \
+    ro.opengles.version=196610 \
     debug.sf.hw=1 \
-    debug.gralloc.enable_fb_ubwc=1 \
     debug.gralloc.gfx_ubwc_disable=0 \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
-    ro.opengles.version=196610 \
-    sdm.debug.disable_skip_validate=1 \
-    sdm.perf_hint_window=0 \
     persist.debug.wfd.enable=1 \
     persist.sys.force_sw_gles=0 \
     persist.sys.wfd.virtual=0 \
-    persist.hwc.enable_vds=1
+    persist.hwc.enable_vds=1 \
+    vendor.gralloc.enable_fb_ubwc=1 \
+    vendor.display.disable_skip_validate=1 \
+    vendor.display.enable_default_color_mode=0 \
+    vendor.display.perf_hint_window=50
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
