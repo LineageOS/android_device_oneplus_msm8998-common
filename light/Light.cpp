@@ -241,6 +241,9 @@ void Light::setSpeakerLightLocked(const LightState& state) {
     blue = colorRGB & 0xff;
     blink = onMs > 0 && offMs > 0;
 
+    // Green LED is too bright, adjust it
+    green = green * 5 / 8;
+
     // Disable all blinking to start
     mRgbBlink << 0 << std::endl;
 
