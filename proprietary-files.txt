@@ -46,6 +46,7 @@ vendor/firmware/libpn553_fw.so
 
 # Radio - factory
 lib64/libparam.so:vendor/lib64/libparam.so
+vendor/lib64/libparam_vendor.so
 
 # Radio - MBN
 etc/firmware/mbn_ota/mbn_ota.txt:vendor/firmware/mbn_ota/mbn_ota.txt
