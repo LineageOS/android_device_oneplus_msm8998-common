@@ -1,5 +1,5 @@
 # Audio
-etc/firmware/tfa98xx.cnt:vendor/firmware/tfa98xx.cnt
+vendor/etc/firmware/tfa98xx.cnt:vendor/firmware/tfa98xx.cnt
 
 # Alipay
 bin/ifaadaemon
