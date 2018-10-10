@@ -26,6 +26,4 @@ VNDK_SP_LIBRARIES := \
     libpng \
     libunwind \
     libunwindstack \
-    libutils \
-    libutilscallstack \
-    libdexfile
+    libutils
