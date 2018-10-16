@@ -650,7 +650,7 @@ on property:sys.shutdown.requested=*
     stop vendor.cnss-daemon
     stop vendor.per_proxy
 
-service power_off_alarm /vendor/bin/power_off_alarm
+service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
     group system
     disabled
