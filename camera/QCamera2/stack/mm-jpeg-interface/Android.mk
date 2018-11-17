@@ -1,7 +1,6 @@
 OLD_LOCAL_PATH := $(LOCAL_PATH)
 LOCAL_PATH := $(call my-dir)
 
-include $(LOCAL_PATH)/../../../common.mk
 include $(CLEAR_VARS)
 
 LOCAL_HEADER_LIBRARIES := libutils_headers
@@ -22,8 +21,6 @@ ifneq ($(TARGET_KERNEL_VERSION),$(filter $(TARGET_KERNEL_VERSION),3.18 4.4 4.9))
             system/core/libion/include
   endif
 endif
-LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LIB2D_ROTATION=true
 
@@ -84,6 +81,7 @@ LOCAL_SRC_FILES := \
     src/mm_jpeg_mpo_composer.c
 
 LOCAL_MODULE           := libmmjpeg_interface
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 include $(SDCLANG_COMMON_DEFS)
 LOCAL_PRELINK_MODULE   := false
 LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libqomx_core libmmcamera_interface
