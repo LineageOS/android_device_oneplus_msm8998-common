@@ -162,6 +162,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qsee=yes
 
+# QCOM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.qcomsysd.enabled=1
+
 # QTI
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.at_library=libqti-at.so \
@@ -221,11 +225,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.sta_detect=true \
     ro.vendor.sensors.mot_detect=true \
     ro.vendor.sensors.dpc=true \
-    ro.vendor.sensors.multishake=true
+    ro.vendor.sensors.multishake=true \
+    persist.vendor.sensors.direct_channel=true
 
 # Timeservice
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
+
+# Oiface
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.oiface.enable=0 \
+    persist.sys.hardcoder.name=oiface \
+    persist.sys.oiface.feature=oiface:0xF,oifaceim:ffffffff
 
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
