@@ -1,0 +1,26 @@
+on post-fs-data
+    # Generate wifi mac
+    start vendor.wifi-mac-generator
+
+    # Generate bt mac
+    start vendor.bt-mac-generator
+
+on boot
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
+service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
+    class main
+    user wifi
+    group wifi
+    oneshot
+    disabled
+    seclabel u:r:wifi_mac_generator:s0
+
+service vendor.bt-mac-generator /vendor/bin/bt-mac-generator
+    class main
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
+    seclabel u:r:bt_mac_generator:s0
