@@ -221,7 +221,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.sta_detect=true \
     ro.vendor.sensors.mot_detect=true \
     ro.vendor.sensors.dpc=true \
-    ro.vendor.sensors.multishake=true
+    ro.vendor.sensors.multishake=true \
+    persist.vendor.sensors.direct_channel=true
 
 # Timeservice
 PRODUCT_PROPERTY_OVERRIDES += \
