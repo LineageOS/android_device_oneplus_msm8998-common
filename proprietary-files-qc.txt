@@ -116,7 +116,7 @@ vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 
 # Camera
-lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
+vendor/lib/libmm-qcamera.so
 vendor/lib/libopposfr.so
 vendor/lib/libVDBlurlessAPI_v2.so
 vendor/lib/libVDHDRAPI.so
@@ -217,10 +217,12 @@ vendor/lib/libscveCommon.so
 vendor/lib/libscveObjectTracker.so
 vendor/lib/libscveObjectTracker_stub.so
 vendor/lib/libscveObjectSegmentation.so
+vendor/lib/libscveObjectSegmentation_stub.so
 vendor/lib/libstblur_capture_api.so
 vendor/lib/libSTDualCamCaptureBokeh.so
 vendor/lib/libSTDualCamPreviewBokeh.so
 vendor/lib/libSTdisp.so
+vendor/lib/libUBWC.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
 vendor/lib/vendor.qti.hardware.camera.device@1.0.so
 vendor/lib64/libcdsprpc.so
@@ -245,6 +247,8 @@ vendor/lib64/libscveCommon.so
 vendor/lib64/libscveObjectTracker.so
 vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/libscveObjectSegmentation.so
+vendor/lib64/libscveObjectSegmentation_stub.so
+vendor/lib64/libUBWC.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera actuators
@@ -289,6 +293,7 @@ vendor/lib/libchromatix_imx371_cpp_2304x1728_30fps_preview.so
 vendor/lib/libchromatix_imx371_cpp_2304x1728_30fps_snapshot.so
 vendor/lib/libchromatix_imx371_cpp_2304x1728_30fps_video.so
 vendor/lib/libchromatix_imx371_cpp_4656x3456_30fps_snapshot.so
+vendor/lib/libchromatix_imx371_cpp_640x480_30fps_video.so
 vendor/lib/libchromatix_imx371_cpp_640x480_120fps_video.so
 vendor/lib/libchromatix_imx371_isp_2304x1728_30fps_snapshot.so
 vendor/lib/libchromatix_imx371_isp_2304x1728_30fps_video.so
@@ -315,6 +320,7 @@ vendor/lib/libchromatix_imx376k_isp_2592x1940_30fps_snapshot.so
 vendor/lib/libchromatix_imx376k_postproc.so
 vendor/lib/libchromatix_imx398_3a_1476x834_120fps_video.so
 vendor/lib/libchromatix_imx398_3a_2328x1304_60fps_video.so
+vendor/lib/libchromatix_imx398_3a_3264x2448_24fps_preview_bokeh.so
 vendor/lib/libchromatix_imx398_3a_3264x2448_30fps_preview_bokeh.so
 vendor/lib/libchromatix_imx398_3a_4608x3456_30fps_preview_bokeh.so
 vendor/lib/libchromatix_imx398_3a_4656x2608_30fps_preview.so
@@ -325,6 +331,7 @@ vendor/lib/libchromatix_imx398_3a_4656x3496_30fps_video.so
 vendor/lib/libchromatix_imx398_3a_hq.so
 vendor/lib/libchromatix_imx398_3a_manual.so
 vendor/lib/libchromatix_imx398_3a_panorama.so
+vendor/lib/libchromatix_imx398_3a_wechat_preview.so
 vendor/lib/libchromatix_imx398_common.so
 vendor/lib/libchromatix_imx398_cpp_1476x834_120fps_video.so
 vendor/lib/libchromatix_imx398_cpp_2328x1304_60fps_video.so
@@ -352,7 +359,9 @@ vendor/lib/libchromatix_imx398_isp_4656x3496_30fps_snapshot.so
 vendor/lib/libchromatix_imx398_isp_4656x3496_30fps_video.so
 vendor/lib/libchromatix_imx398_isp_manual.so
 vendor/lib/libchromatix_imx398_isp_panorama.so
+vendor/lib/libchromatix_imx398_isp_zsl_snapshot.so
 vendor/lib/libchromatix_imx398_postproc.so
+vendor/lib/libchromatix_imx398_preview_1080p_cpp.so
 
 # Camera etc
 etc/camera/attribute.model:vendor/etc/camera/attribute.model
