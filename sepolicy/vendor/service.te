@@ -1,0 +1,3 @@
+type hal_drmkey_hwservice, service_manager_type;
+type hal_hdcpkey_hwservice, service_manager_type;
+type hal_ifaa_hwservice, service_manager_type;
