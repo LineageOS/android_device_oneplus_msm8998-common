@@ -28,10 +28,7 @@
 #
 
 on early-init
-    mkdir /firmware 0771 system system
-    mkdir /bt_firmware 0771 system system
-    symlink /data/tombstones /tombstones
-    mkdir /dsp 0771 media media
+    symlink /data/vendor/tombstones /tombstones
     write /proc/sys/kernel/sched_boost 1
 
 on init
@@ -64,13 +61,13 @@ on post-fs
     write /dev/ipa 1
 
 on post-fs-data
-    mkdir /data/tombstones 0771 system system
+    mkdir /data/vendor/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/vendor/hbtp 0750 system system
-    mkdir /data/misc/qvr 0770 system system
+    #mkdir /data/misc/qvr 0770 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -437,32 +434,32 @@ on property:init.svc.zygote=restarting
 #    user system
 #    group system
 
-service energy-awareness /system/vendor/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
+#service energy-awareness /system/vendor/bin/energy-awareness
+#    class main
+#    user root
+#    group system
+#    oneshot
 
-service mdtpd /system/vendor/bin/mdtpd
-    class late_start
-    user root
-    group system radio drmrpc
+#service mdtpd /system/vendor/bin/mdtpd
+#    class late_start
+#    user root
+#    group system radio drmrpc
 
-service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
-    class main
-    user root
-    group system wakelock
-    disabled
+#service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
+#    class main
+#    user root
+#    group system wakelock
+#    disabled
 
-service dashd /vendor/xbin/dashd
-     class core
-     critical
-     seclabel u:r:dashd:s0
-     group root system
+#service dashd /vendor/xbin/dashd
+#     class core
+#     critical
+#     seclabel u:r:dashd:s0
+#     group root system
 
-service qvrd /system/bin/qvrservice
-    class late_start
-    user system
-    group system camera graphics
-    socket qvrservice stream 0666 system system
-    capabilities SYS_NICE
+#service qvrd /system/bin/qvrservice
+#    class late_start
+#    user system
+#    group system camera graphics
+#    socket qvrservice stream 0666 system system
+#    capabilities SYS_NICE

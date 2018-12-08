@@ -141,7 +141,7 @@ on boot
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
     #joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
-    mkdir /data/oiface 0700 system system
+    mkdir /data/vendor/oiface 0700 system system
 
 on property:sys.boot_completed=1 && property:persist.sys.usb.config=none && property:ro.boot.type=auto
     setprop persist.sys.usb.config adb
@@ -279,9 +279,9 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
     oneshot
 
 #lifei@oneplus.media, 2016/02/14,  add service for CTS and engineer app
-service oem_audio_device /system/bin/chcon u:object_r:oem_audio_device:s0 /dev/snd
-    class late_start
-    oneshot
+#service oem_audio_device /system/bin/chcon u:object_r:oem_audio_device:s0 /dev/snd
+#    class late_start
+#    oneshot
 
 #davidliu@bsp 2017/04/14 Add OTG switch
 on property:persist.sys.oem.otg_support=true
@@ -296,10 +296,10 @@ on property:sys.boot_completed=1
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 
 # liuyan 2016/7/22, add ifaadaemon
-service ifaadaemon /vendor/bin/ifaadaemon
-    class late_start
-    user system
-    group system
+#service ifaadaemon /vendor/bin/ifaadaemon
+#    class late_start
+#    user system
+#    group system
 
 #@bsp 2018/09/05 FAT-4556 fix the audio heaset pop issue when shutdown(trigger faster)
 on property:sys.shutdown.requested=*

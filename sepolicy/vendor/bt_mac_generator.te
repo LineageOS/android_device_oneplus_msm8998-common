@@ -6,7 +6,7 @@ init_daemon_domain(bt_mac_generator)
 allow bt_mac_generator nv_data_file:dir { search };
 allow bt_mac_generator nv_data_file:file { r_file_perms };
 
-allow bt_mac_generator bluetooth_data_file:dir { rw_dir_perms };
-allow bt_mac_generator bluetooth_data_file:file { create_file_perms };
+allow bt_mac_generator vendor_bt_data_file:dir { rw_dir_perms };
+allow bt_mac_generator vendor_bt_data_file:file { create_file_perms };
 
 set_prop(bt_mac_generator, bluetooth_prop)
