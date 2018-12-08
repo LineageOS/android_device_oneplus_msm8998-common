@@ -1,3 +1,6 @@
+# Alarm boot
+get_prop(system_server, vendor_alarm_boot_prop)
+
 # Audio
 allow system_server audioserver:file { rw_file_perms };
 allow system_server hal_audio_default:file { rw_file_perms };
@@ -7,6 +10,7 @@ allow system_server sysfs_bluetooth_writable:file { rw_file_perms };
 
 # Camera
 allow system_server cameraserver:fifo_file { rw_file_perms };
+get_prop(system_server, vendor_camera_prop)
 
 # Misc
 allow system_server persist_file:dir { rw_dir_perms };
@@ -16,4 +20,5 @@ allow system_server sysfs_fpc_key:file { rw_file_perms };
 allow system_server vendor_file:file { r_file_perms execute };
 allow system_server vendor_keylayout_file:file { r_file_perms };
 
-get_prop(system_server, vendor_alarm_boot_prop)
+# Vibrator
+allow system_server sysfs_vibrator:file { r_file_perms };

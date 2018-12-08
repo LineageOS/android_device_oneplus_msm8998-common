@@ -6,5 +6,5 @@ init_daemon_domain(wifi_mac_generator)
 allow wifi_mac_generator nv_data_file:dir { search };
 allow wifi_mac_generator nv_data_file:file { r_file_perms };
 
-allow wifi_mac_generator persist_file:dir { search };
-allow wifi_mac_generator persist_file:file { rw_file_perms };
+allow wifi_mac_generator mnt_vendor_file:dir { search };
+allow wifi_mac_generator mnt_vendor_file:file { rw_file_perms };

@@ -1,0 +1,11 @@
+type hal_drmkey_default, domain, coredomain;
+type hal_drmkey_default_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hal_drmkey_default)
+
+hwbinder_use(hal_drmkey_default)
+add_hwservice(hal_drmkey_default, hal_drmkey_hwservice)
+
+allow hal_drmkey_default vendor_file:file { rx_file_perms };
+
+get_prop(hal_drmkey_default, hwservicemanager_prop)
