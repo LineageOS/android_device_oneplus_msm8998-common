@@ -1,0 +1,11 @@
+type hal_ifaa_default, domain, coredomain;
+type hal_ifaa_default_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hal_ifaa_default)
+
+hwbinder_use(hal_ifaa_default)
+add_hwservice(hal_ifaa_default, hal_ifaa_hwservice)
+
+allow hal_ifaa_default vendor_file:file { rx_file_perms };
+
+get_prop(hal_ifaa_default, hwservicemanager_prop)

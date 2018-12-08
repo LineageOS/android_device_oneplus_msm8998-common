@@ -141,7 +141,7 @@ on boot
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
     #joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
-    mkdir /data/oiface 0700 system system
+    mkdir /data/vendor/oiface 0700 system system
 
 on property:sys.boot_completed=1 && property:persist.sys.usb.config=none && property:ro.boot.type=auto
     setprop persist.sys.usb.config adb

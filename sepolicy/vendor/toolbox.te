@@ -1,0 +1,1 @@
+allow toolbox audio_device:dir { getattr };
