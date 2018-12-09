@@ -454,11 +454,11 @@ on property:init.svc.zygote=restarting
 #    group system wakelock
 #    disabled
 
-#service dashd /vendor/xbin/dashd
-#     class core
-#     critical
-#     seclabel u:r:dashd:s0
-#     group root system
+service dashd /vendor/xbin/dashd
+     class core
+     critical
+     seclabel u:r:dashd:s0
+     group root system
 
 #service qvrd /system/bin/qvrservice
 #    class late_start
