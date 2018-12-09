@@ -27,6 +27,9 @@
 #
 #
 
+import /vendor/etc/init/hw/init.target.displaymodes.rc
+import /vendor/etc/init/hw/init.target.performance.rc
+
 on early-init
     symlink /data/vendor/tombstones /tombstones
     write /proc/sys/kernel/sched_boost 1
