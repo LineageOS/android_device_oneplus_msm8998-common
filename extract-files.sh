@@ -78,17 +78,6 @@ fix_camera_etc_path vendor/lib/libmmcamera_imglib.so
 fix_camera_etc_path vendor/lib/libmmcamera_interface.so
 fix_camera_etc_path vendor/lib/libopcamera_native_modules.so
 
-function fix_radio_framework_path () {
-    sed -i \
-        's/\/system\/framework\//\/vendor\/framework\//g' \
-        "$COMMON_BLOB_ROOT"/"$1"
-}
-
-fix_radio_framework_path vendor/etc/permissions/embms.xml
-fix_radio_framework_path vendor/etc/permissions/qcnvitems.xml
-fix_radio_framework_path vendor/etc/permissions/qcrilhook.xml
-fix_radio_framework_path vendor/etc/permissions/telephonyservice.xml
-
 #
 # Correct android.hidl.manager@1.0-java jar name
 #
