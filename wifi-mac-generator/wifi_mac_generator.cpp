@@ -32,7 +32,7 @@
 static int force_random = 0;
 static const char NV_MAC_FILE_0[]          = "/data/vendor/oemnvitems/4678_0";
 static const char NV_MAC_FILE_1[]          = "/data/vendor/oemnvitems/4678_1";
-static const char WLAN_MAC_BIN[]           = "/persist/wlan_mac.bin";
+static const char WLAN_MAC_BIN[]           = "/mnt/vendor/persist/wlan_mac.bin";
 static const char STA_MAC_ADDR_NAME[]      = "Intf0MacAddress=";
 static const char P2P_MAC_ADDR_NAME[]      = "Intf1MacAddress=";
 static const char MAC_ADDR_NAME_NOT_USE1[] = "Intf3MacAddress=000AF58989FD\n";
