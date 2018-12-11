@@ -6,6 +6,8 @@ on post-fs-data
     start vendor.bt-mac-generator
 
 on boot
+    # Wifi driver state control
+    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
