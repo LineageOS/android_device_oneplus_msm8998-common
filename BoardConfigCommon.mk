@@ -67,7 +67,7 @@ BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_ena
 BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048 androidboot.usbconfigfs=true 
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a800000.dwc3 
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -317,6 +317,9 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
+WIFI_DRIVER_STATE_CTRL_PARAM := "/sys/kernel/boot_wlan/boot_wlan"
+WIFI_DRIVER_STATE_OFF := 0
+WIFI_DRIVER_STATE_ON := 1
 
 # inherit from the proprietary version
 -include vendor/oneplus/msm8998-common/BoardConfigVendor.mk
