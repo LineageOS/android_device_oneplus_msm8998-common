@@ -30,8 +30,8 @@
 
 /* wifi get mac */
 static int force_random = 0;
-static const char NV_MAC_FILE_0[]          = "/data/oemnvitems/4678_0";
-static const char NV_MAC_FILE_1[]          = "/data/oemnvitems/4678_1";
+static const char NV_MAC_FILE_0[]          = "/data/vendor/oemnvitems/4678_0";
+static const char NV_MAC_FILE_1[]          = "/data/vendor/oemnvitems/4678_1";
 static const char WLAN_MAC_BIN[]           = "/persist/wlan_mac.bin";
 static const char STA_MAC_ADDR_NAME[]      = "Intf0MacAddress=";
 static const char P2P_MAC_ADDR_NAME[]      = "Intf1MacAddress=";
@@ -162,7 +162,7 @@ static void update_wlan_mac_bin(uint8_t *mac, bool random) {
 
     fb = fopen(WLAN_MAC_BIN, "wb");
     if (fb != NULL) {
-        ALOGD("%s: Writing buffer to file %s", __func__, WLAN_MAC_BIN);
+        ALOGD("%s: Writing wifi mac to file %s", __func__, WLAN_MAC_BIN);
         fwrite(buf, strlen(buf), 1, fb);
         fclose(fb);
     }
