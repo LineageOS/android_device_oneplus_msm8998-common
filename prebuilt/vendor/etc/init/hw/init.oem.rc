@@ -1,8 +1,78 @@
-﻿on post-fs-data
+﻿on post-fs
+    chown system system /proc/ship_mode
+    chown system system /dev/param
+    chown system system /dev/block/mmcblk0p21
+    chmod 660 /dev/block/mmcblk0p21
+    chown system system /sys/class/timed_output/vibrator/vmax_mv
+    chown system system /sys/class/timed_output/vibrator/wf_s0
+    chown system system /sys/class/timed_output/vibrator/wf_s1
+    chown system system /sys/class/timed_output/vibrator/wf_s2
+    chown system system /sys/class/timed_output/vibrator/wf_s3
+    chown system system /sys/class/timed_output/vibrator/wf_s4
+    chown system system /sys/class/timed_output/vibrator/wf_s5
+    chown system system /sys/class/timed_output/vibrator/wf_s6
+    chown system system /sys/class/timed_output/vibrator/wf_s7
+    chown system system /sys/class/timed_output/vibrator/wf_update
+    chown system system /sys/class/timed_output/vibrator/wf_rep
+    chown system system /sys/class/timed_output/vibrator/wf_s_rep
+    chown system system /sys/devices/soc/c179000.i2c/i2c-5/5-0020/tp_grip_ctrl
+    chown system log /sys/fs/pstore/console-ramoops-0
+    chmod 0440 /sys/fs/pstore/console-ramoops-0
+    chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+    chown system system /sys/module/param_read_write/parameters/normal_reboot_count
+    chown system system /sys/module/param_read_write/parameters/abnormal_reboot_count
+    chown system system /sys/module/param_read_write/parameters/update_count
+    chown system system /sys/module/param_read_write/parameters/fastboot_count
+    chown system system /sys/class/power_supply/bms/set_allow_read_extern_fg_iic
+    chown system system /persist/sensors/registry/registry/tmd3725_platform.rgb.rfac_cal
+    chmod 660 /persist/sensors/registry/registry/tmd3725_platform.rgb.rfac_cal
+    chown system system /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
+    chmod 660 /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
+    chown system system /sys/class/leds/vibrator/vmax_mv
+    chmod 660 /sys/class/leds/vibrator/vmax_mv
+    #wangdongdong@MultiMediaService,2018/03/28,change the mode of the file
+    chmod 0664 /persist/spkr_calibration.bin
+    chown system system /sys/class/leds/vibrator/test_mode
+    chmod 660 /sys/class/leds/vibrator/test_mode
+    chown system system /sys/class/leds/vibrator/trigger
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/state
+
+    /* create a empty file for wifi hal to write mac address */
+    write /mnt/vendor/persist/wlan_mac.bin ""
+    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
+    mkdir /mnt/vendor/persist/engineermode
+    chown system system /mnt/vendor/persist/engineermode
+    mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
+    mkdir /mnt/vendor/persist/camera
+    chown system system /mnt/vendor/persist/camera
+    mkdir /mnt/vendor/persist/dual_camera_calibration 0777 system system
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/mpss/server_check.txt
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/mpss
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/adsp
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/slpi
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/apq/gnss
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/apq
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/adsp
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/mpss
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/slpi
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/tn
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared/server_info.txt
+    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs
+    mkdir /mnt/vendor/persist/OPDiagnose
+    chown system system /mnt/vendor/persist/OPDiagnose
+    chown system system /sys/class/power_supply/battery/connect_disable
+
+on post-fs-data
     #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     mkdir /data/nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
-    mkdir /data/vendor/oemnvitems  0771 radio radio
+    mkdir /data/vendor/oemnvitems 0771 radio radio
 
     #fingerint, changhua add for fp debug image usage,feature default off
     mkdir /data/fpc_images 0770 system system
@@ -58,10 +128,12 @@ on boot
     setprop ro.nfc.port "I2C"
     chmod 0666 /dev/nq-nci
     chown nfc nfc /dev/nq-nci
+
     chmod 0666 /dev/p73
     chown secure_element secure_element /dev/p73
-    chmod 0666 /dev/dash/
-    restorecon  /dev/dash
+
+    chmod 0666 /dev/dash
+    restorecon /dev/dash
 
     chmod 0666 /sys/module/opchain/parameters/boost_tl
 
@@ -192,76 +264,6 @@ on charger
 
 on property:sys.op_bootmode=charger && property:sys.usb.config=none
     setprop sys.usb.config mass_storage
-
-on post-fs
-    chown system system /proc/ship_mode
-    chown system system /dev/param
-    chown system system /dev/block/mmcblk0p21
-    chmod 660 /dev/block/mmcblk0p21
-    chown system system /sys/class/timed_output/vibrator/vmax_mv
-    chown system system /sys/class/timed_output/vibrator/wf_s0
-    chown system system /sys/class/timed_output/vibrator/wf_s1
-    chown system system /sys/class/timed_output/vibrator/wf_s2
-    chown system system /sys/class/timed_output/vibrator/wf_s3
-    chown system system /sys/class/timed_output/vibrator/wf_s4
-    chown system system /sys/class/timed_output/vibrator/wf_s5
-    chown system system /sys/class/timed_output/vibrator/wf_s6
-    chown system system /sys/class/timed_output/vibrator/wf_s7
-    chown system system /sys/class/timed_output/vibrator/wf_update
-    chown system system /sys/class/timed_output/vibrator/wf_rep
-    chown system system /sys/class/timed_output/vibrator/wf_s_rep
-    chown system system /sys/devices/soc/c179000.i2c/i2c-5/5-0020/tp_grip_ctrl
-    chown system log /sys/fs/pstore/console-ramoops-0
-    chmod 0440 /sys/fs/pstore/console-ramoops-0
-    chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
-    chown system system /sys/module/param_read_write/parameters/normal_reboot_count
-    chown system system /sys/module/param_read_write/parameters/abnormal_reboot_count
-    chown system system /sys/module/param_read_write/parameters/update_count
-    chown system system /sys/module/param_read_write/parameters/fastboot_count
-    chown system system /sys/class/power_supply/bms/set_allow_read_extern_fg_iic
-    chown system system /persist/sensors/registry/registry/tmd3725_platform.rgb.rfac_cal
-    chmod 660 /persist/sensors/registry/registry/tmd3725_platform.rgb.rfac_cal
-    chown system system /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
-    chmod 660 /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
-    chown system system /sys/class/leds/vibrator/vmax_mv
-    chmod 660 /sys/class/leds/vibrator/vmax_mv
-    #wangdongdong@MultiMediaService,2018/03/28,change the mode of the file
-    chmod 0664 /persist/spkr_calibration.bin
-    chown system system /sys/class/leds/vibrator/test_mode
-    chmod 660 /sys/class/leds/vibrator/test_mode
-    chown system system /sys/class/leds/vibrator/trigger
-    chown system system /sys/class/leds/vibrator/activate
-    chown system system /sys/class/leds/vibrator/brightness
-    chown system system /sys/class/leds/vibrator/duration
-    chown system system /sys/class/leds/vibrator/state
-
-    /* create a empty file for wifi hal to write mac address */
-    write /mnt/vendor/persist/wlan_mac.bin ""
-    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
-    mkdir /mnt/vendor/persist/engineermode
-    chown system system /mnt/vendor/persist/engineermode
-    mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
-    mkdir /mnt/vendor/persist/camera
-    chown system system /mnt/vendor/persist/camera
-    mkdir /mnt/vendor/persist/dual_camera_calibration 0777 system system
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/mpss/server_check.txt
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/mpss
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/adsp
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/slpi
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/apq/gnss
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/apq
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/adsp
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/mpss
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/slpi
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/tn
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared/server_info.txt
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs
-    mkdir /mnt/vendor/persist/OPDiagnose
-    chown system system /mnt/vendor/persist/OPDiagnose
-    chown system system /sys/class/power_supply/battery/connect_disable
 
 #niejianan@oneplus.framework , 2015/04/25, add for mmi charging test
 on property:sys.fastcharger=true
