@@ -1,21 +1,18 @@
 on boot
+    chown system graphics /sys/devices/virtual/graphics/fb0/adobe_rgb
     chown system graphics /sys/devices/virtual/graphics/fb0/srgb
     chown system graphics /sys/devices/virtual/graphics/fb0/dci_p3
     chown system graphics /sys/devices/virtual/graphics/fb0/hbm
     chown system graphics /sys/devices/virtual/graphics/fb0/night_mode
     chown system graphics /sys/devices/virtual/graphics/fb0/panel_serial_number
     chown system graphics /sys/devices/virtual/graphics/fb0/adaption_mode
+    chmod 0666 /sys/devices/virtual/graphics/fb0/adobe_rgb
     chmod 0666 /sys/devices/virtual/graphics/fb0/srgb
     chmod 0666 /sys/devices/virtual/graphics/fb0/dci_p3
     chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
     chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
     chmod 0666 /sys/devices/virtual/graphics/fb0/panel_serial_number
     chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
-
-    chown system graphics /sys/class/graphics/fb0/srgb
-    chown system graphics /sys/class/graphics/fb0/dci_p3
-    chmod 0664 /sys/class/graphics/fb0/srgb
-    chmod 0664 /sys/class/graphics/fb0/dci_p3
 
 on property:sys.srgb=1
    write /sys/devices/virtual/graphics/fb0/srgb 1
