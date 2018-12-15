@@ -1010,9 +1010,9 @@ vendor/radio/qcril_database/qcril.db
 # Radio - IMS
 -priv-app/ims/ims.apk|54464ad55ece9aa27bedca09f5af0ca49f17620b
 -app/imssettings/imssettings.apk
-etc/permissions/com.qualcomm.qti.imscmservice.xml:vendor/etc/permissions/com.qualcomm.qti.imscmservice.xml
-etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml:vendor/etc/permissions/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
-etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml:vendor/etc/permissions/etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
+etc/permissions/com.qualcomm.qti.imscmservice.xml
+etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
+etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
 framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 framework/com.qualcomm.qti.uceservice-V2.0-java.jar
