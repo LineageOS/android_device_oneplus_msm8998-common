@@ -26,15 +26,15 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-oemdump=`getprop persist.oem.dump`
-buildtype=`getprop ro.build.release_type`
+oemdump=`getprop persist.vendor.oem.dump`
+buildtype=`getprop ro.vendor.build.release_type`
 if [ "$oemdump" == "" ]; then
     case "$buildtype" in
         "release" | "cta")
-           setprop persist.oem.dump 0
+           setprop persist.vendor.oem.dump 0
            ;;
         *)
-           setprop persist.oem.dump 1
+           setprop persist.vendor.oem.dump 1
            ;;
     esac
 fi
@@ -315,7 +315,7 @@ case "$target" in
         else
              hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
-    if [ "$low_ram" != "true" ]; then
+	if [ "$low_ram" != "true" ]; then
              case "$soc_id" in
                   "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320" | "353" | "354" | "363" | "364")
                        case "$hw_platform" in
@@ -337,7 +337,7 @@ case "$target" in
         fi
         ;;
     "msm8953")
-        start_msm_irqbalance_8939
+	start_msm_irqbalance_8939
         if [ -f /sys/devices/soc0/soc_id ]; then
             soc_id=`cat /sys/devices/soc0/soc_id`
         else
@@ -436,7 +436,7 @@ buildvariant=`getprop ro.build.type`
 case "$buildvariant" in
     "userdebug" | "eng")
         #set default loglevel to KERN_INFO
-        #Modify by david@bsp, 20161101 change console loglevel to 7
+	#Modify by david@bsp, 20161101 change console loglevel to 7
         echo "7 6 1 7" > /proc/sys/kernel/printk
         ;;
     *)
