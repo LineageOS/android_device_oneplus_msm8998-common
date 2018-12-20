@@ -11,6 +11,12 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    # Proximity state
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+    chown system system /sys/devices/soc/soc:goodix_fp/proximity_state
+    chmod 0660 /sys/devices/soc/soc:goodix_fp/proximity_state
+
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
     user wifi
