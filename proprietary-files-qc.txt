@@ -562,9 +562,7 @@ lib64/libQTEEConnector_system.so
 lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/bin/qseecomd
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
-vendor/bin/hw/android.hardware.drm@1.1-service.clearkey
 vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
-vendor/etc/init/android.hardware.drm@1.1-service.clearkey.rc
 vendor/firmware/cppf.b00
 vendor/firmware/cppf.b01
 vendor/firmware/cppf.b02
