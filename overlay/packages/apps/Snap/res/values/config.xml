@@ -26,9 +26,6 @@
     <!-- Opens front camera using openLegacy() -->
     <bool name="front_camera_open_legacy">false</bool>
 
-    <!-- Enable support for camera api v2 -->
-    <bool name="support_camera_api_v2">true</bool>
-
     <!-- This value may be tweaked to save memory on low RAM devices. The value
          is the percentage of camera preview height/width to scale to. -->
     <integer name="panorama_frame_size_reduction">100</integer>
