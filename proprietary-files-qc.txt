@@ -1186,17 +1186,17 @@ vendor/bin/cnss-daemon
 
 # Wi-Fi Display
 -priv-app/WfdService/WfdService.apk
--framework/WfdCommon.jar:vendor/framework/WfdCommon.jar
-bin/wfdservice:vendor/bin/wfdservice
-etc/init/wfdservice.rc:vendor/etc/init/wfdservice.rc
-etc/wfdconfig.xml:vendor/etc/wfdconfig.xml
-etc/wfdconfigsink.xml:vendor/etc/wfdconfigsink.xml
-lib/libFileMux.so:vendor/lib/libFileMux.so
-lib/libmmparser_lite.so:vendor/lib/libmmparser_lite.so
-lib/extractors/libmmparser.so:vendor/lib/extractors/libmmparser.so
-lib64/libFileMux.so:vendor/lib64/libFileMux.so
-lib64/libmmparser_lite.so:vendor/lib64/libmmparser_lite.so
-lib64/extractors/libmmparser.so:vendor/lib64/extractors/libmmparser.so
+-framework/WfdCommon.jar
+bin/wfdservice
+etc/init/wfdservice.rc
+etc/wfdconfig.xml
+etc/wfdconfigsink.xml
+lib/libFileMux.so
+lib/libmmparser_lite.so
+lib/extractors/libmmparser.so
+lib64/libFileMux.so
+lib64/libmmparser_lite.so
+lib64/extractors/libmmparser.so
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/wifidisplayhalservice
