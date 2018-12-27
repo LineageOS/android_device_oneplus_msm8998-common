@@ -1186,28 +1186,48 @@ vendor/bin/cnss-daemon
 
 # Wi-Fi Display
 -priv-app/WfdService/WfdService.apk
--framework/WfdCommon.jar
 bin/wfdservice
 etc/init/wfdservice.rc
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
+framework/WfdCommon.jar
 lib/libFileMux.so
 lib/libmmparser_lite.so
+lib/libwfduibcsinkinterface.so
+lib/libwfdmminterface.so
+lib/libwfdcommonutils.so
+lib/libwfdcodecv4l2.so
+lib/libwfdmmsink.so
+lib/libwfdsm.so
+lib/libwfdnative.so
+lib/libwfduibcsrcinterface.so
+lib/libwfdmmsrc.so
+lib/libwfduibcsink.so
+lib/libwfdavenhancements.so
+lib/libwfdrtsp.so
+lib/libwfdconfigutils.so
+lib/libwfdservice.so
+lib/libwfduibcsrc.so
+lib/libwfduibcinterface.so
+lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib/extractors/libmmparser.so
 lib64/libFileMux.so
 lib64/libmmparser_lite.so
+lib64/libwfdnative.so
 lib64/extractors/libmmparser.so
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
-vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0.so
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
+vendor/lib/libDxHdcp.so
 vendor/lib/libhdcp1prov.so
 vendor/lib/libhdcp2p2prov.so
+vendor/lib/libhdcpsrm.so
+vendor/lib/libmmosal_proprietary.so
 vendor/lib/libwfdcommonutils_proprietary.so
 vendor/lib/libwfdhaldsmanager.so
-vendor/lib/libwfdhdcpcp.so
 vendor/lib/libwfdhdcpcp.so
 vendor/lib/libwfdmmservice.so
 vendor/lib/libwfdmodulehdcpsession.so
@@ -1215,9 +1235,8 @@ vendor/lib64/libDxHdcp.so
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
 vendor/lib64/libhdcpsrm.so
+vendor/lib64/libmmosal_proprietary.so
 vendor/lib64/libwfdhdcpcp.so
-vendor/lib64/libwfdhdcpcp.so
-vendor/lib64/libwvhidl.so
 
 # VR
 vendor/lib/hw/vr.msm8998.so
