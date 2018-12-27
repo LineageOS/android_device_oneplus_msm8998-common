@@ -5,6 +5,10 @@ on post-fs-data
     # Generate bt mac
     start vendor.bt-mac-generator
 
+    # For oneplus camera hal
+    write /data/misc/camera/client_package_name "com.oneplus.camera"
+    chmod 0444 /data/misc/camera/client_package_name
+
 on boot
     # Wifi driver state control
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
