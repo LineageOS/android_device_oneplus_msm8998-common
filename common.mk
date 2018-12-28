@@ -337,6 +337,7 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libaacwrapper \
     libc2dcolorconvert \
     libextmedia_jni \
     libhypv_intercept \
