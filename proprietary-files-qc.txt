@@ -1192,10 +1192,13 @@ etc/init/wfdservice.rc
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 -framework/WfdCommon.jar
+lib/libaacwrapper.so
 lib/libFileMux.so
 lib/libmmparser_lite.so
+lib/libOmxMux.so
 lib/libwfduibcsinkinterface.so
 lib/libwfdmminterface.so
+lib/libwfdclient.so
 lib/libwfdcommonutils.so
 lib/libwfdcodecv4l2.so
 lib/libwfdmmsink.so
@@ -1214,6 +1217,8 @@ lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib/extractors/libmmparser.so
 lib64/libFileMux.so
 lib64/libmmparser_lite.so
+lib64/libOmxMux.so
+lib64/libwfdclient.so
 lib64/libwfdnative.so
 lib64/extractors/libmmparser.so
 vendor/bin/hdcp1prov
