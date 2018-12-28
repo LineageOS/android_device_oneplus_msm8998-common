@@ -484,6 +484,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt
 
 # Wi-Fi Display
+PRODUCT_PACKAGES += \
+    libaacwrapper
+
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
