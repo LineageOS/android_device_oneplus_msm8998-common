@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f535420d_c71a4df3",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-12-28T17:23:39Z",
+      "side": 1,
+      "message": "Can be built from source.",
+      "range": {
+        "startLine": 1195,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 20
+      },
+      "revId": "9252446082f97a253ff741ffb12b78615cf44a27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
