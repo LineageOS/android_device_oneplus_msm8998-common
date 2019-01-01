@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
- *               2017-2018 The LineageOS Project
+ *               2017-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ package org.lineageos.settings.doze;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.display.AmbientDisplayConfiguration;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
@@ -28,6 +29,7 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import static android.provider.Settings.Secure.DOZE_ALWAYS_ON;
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 
 public final class Utils {
@@ -37,7 +39,9 @@ public final class Utils {
 
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
 
+    protected static final String ALWAYS_ON_DISPLAY = "always_on_display";
     protected static final String WAKE_ON_GESTURE_KEY = "wake_on_gesture";
+    protected static final String CATEG_TILT_SENSOR = "tilt_sensor";
     protected static final String CATEG_PROX_SENSOR = "proximity_sensor";
     protected static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
     protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
@@ -56,7 +60,7 @@ public final class Utils {
     }
 
     protected static void checkDozeService(Context context) {
-        if (isDozeEnabled(context) && sensorsEnabled(context)) {
+        if (isDozeEnabled(context) && !isAlwaysOnEnabled(context) && sensorsEnabled(context)) {
             startService(context);
         } else {
             stopService(context);
@@ -94,6 +98,25 @@ public final class Utils {
             context.sendBroadcastAsUser(
                     new Intent(DOZE_INTENT), new UserHandle(UserHandle.USER_CURRENT));
         }
+    }
+
+    protected static boolean enableAlwaysOn(Context context, boolean enable) {
+        return Settings.Secure.putIntForUser(context.getContentResolver(),
+                DOZE_ALWAYS_ON, enable ? 1 : 0, UserHandle.USER_CURRENT);
+    }
+
+    private static boolean isAlwaysOnEnabled(Context context) {
+        return Settings.Secure.getIntForUser(context.getContentResolver(),
+                DOZE_ALWAYS_ON, 1, UserHandle.USER_CURRENT) != 0;
+    }
+
+    protected static boolean alwaysOnDisplayAvailable(Context context) {
+        return new AmbientDisplayConfiguration(context).alwaysOnAvailable();
+    }
+
+    protected static void enableGesture(Context context, String gesture, boolean enable) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+                .putBoolean(gesture, enable).apply();
     }
 
     protected static boolean isGestureEnabled(Context context, String gesture) {
