@@ -45,6 +45,30 @@
       "revId": "dcca937098887577c22b5cc5971d8bbe6baff249",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f004cc6_8e6c726d",
+        "filename": "doze/res/color/switchbar_switch_track_tint.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-01-04T14:44:26Z",
+      "side": 1,
+      "message": "This is plain from Settings app.",
+      "parentUuid": "7288f41d_46d7d8fe",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "dcca937098887577c22b5cc5971d8bbe6baff249",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
