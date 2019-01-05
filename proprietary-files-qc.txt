@@ -1006,7 +1006,7 @@ vendor/lib64/vendor.qti.hardware.radio.am@1.0.so
 vendor/radio/qcril_database/qcril.db
 
 # Radio - IMS
--priv-app/ims/ims.apk|54464ad55ece9aa27bedca09f5af0ca49f17620b
+-priv-app/ims/ims.apk|c401289f49fb2ca00ef6a8f6e307b70897c7a1df
 -app/imssettings/imssettings.apk
 etc/permissions/com.qualcomm.qti.imscmservice.xml
 etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
