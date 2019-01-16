@@ -30,7 +30,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.min.duration.secs=30 \
     persist.dirac.acs.controller=qem \
     ro.dirac.acs.storeSettings=1 \
-    ro.dirac.ignore_error=1
+    ro.dirac.ignore_error=1 \
+    tunnel.audio.encode=true
 
 # Audio new
 PRODUCT_PROPERTY_OVERRIDES += \
