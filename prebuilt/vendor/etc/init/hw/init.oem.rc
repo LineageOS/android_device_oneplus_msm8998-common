@@ -157,6 +157,10 @@ on boot
     chown system system /proc/touchpanel/tpedge_limit_enable
     chown system system /proc/touchpanel/tp_debug_log
 
+    # For KeyDisabler
+    chown system system /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+    chmod 0666 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+
     chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
     chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
 
