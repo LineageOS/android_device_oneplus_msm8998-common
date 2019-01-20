@@ -194,6 +194,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.oem_smooth=1 \
     persist.radio.VT_CAM_INTERFACE=1 \
     persist.radio.apm_sim_not_pwdn=1 \
+    persist.radio.efssync=true \
     persist.radio.multisim.config=dsds \
     persist.radio.enhance_ecall=true \
     persist.radio.hw_mbn_update=0 \
@@ -204,7 +205,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.data_ltd_sys_ind=1 \
     persist.vendor.radio.ignore_dom_time=10 \
     persist.vendor.radio.rat_on=combine \
-    persist.vendor.radio.sib16_support=1
+    persist.vendor.radio.sib16_support=1 \
+    persist.vendor.radio.bar_fake_gcell=1 \
+    persist.vendor.radio.arfcn_test_mode=3
 
 # RmNet Data
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -217,7 +220,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.df.mux_count=8 \
     persist.data.df.iwlan_mux=9 \
     persist.data.df.dev_name=rmnet_usb0 \
-    persist.data.iwlan.enable=true
+    persist.vendor.data.iwlan.enable=true
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
