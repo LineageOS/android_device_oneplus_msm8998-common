@@ -3,7 +3,10 @@ vendor/etc/firmware/tfa98xx.cnt:vendor/firmware/tfa98xx.cnt
 
 # Alipay
 -priv-app/IFAAService/IFAAService.apk
+lib/libteeclientjni.so
 lib/vendor.oneplus.hardware.ifaa@2.0.so
+lib64/libteeclientjni.so
+lib64/libteeclientjniv2.so
 lib64/vendor.oneplus.hardware.ifaa@2.0.so
 vendor/bin/hw/vendor.oneplus.hardware.ifaa@2.0-service
 vendor/etc/init/vendor.oneplus.hardware.ifaa@2.0-service.rc
