@@ -1,5 +1,4 @@
-//
-// Copyright (C) 2018 The LineageOS Project
+// Copyright (C) 2019 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,20 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-cc_binary {
-    name: "android.hardware.light@2.0-service.oneplus_msm8998",
+cc_defaults {
+    name: "livedisplay_oneplus_msm8998",
+    defaults: ["hidl_defaults"],
     relative_install_path: "hw",
-    init_rc: ["android.hardware.light@2.0-service.oneplus_msm8998.rc"],
-    srcs: ["service.cpp", "Light.cpp"],
+    srcs: [
+        "DisplayModes.cpp",
+        "service.cpp",
+    ],
     shared_libs: [
         "libbase",
+        "libbinder",
         "libcutils",
-        "libhardware",
+        "libdl",
         "libhidlbase",
         "libhidltransport",
-        "libhwbinder",
         "libutils",
-        "android.hardware.light@2.0",
+        "vendor.lineage.livedisplay@2.0",
     ],
+}
+
+cc_binary {
+    name: "vendor.lineage.livedisplay@2.0-service.oneplus_msm8998",
+    init_rc: ["vendor.lineage.livedisplay@2.0-service.oneplus_msm8998.rc"],
+    defaults: ["livedisplay_oneplus_msm8998"],
     proprietary: true,
 }
