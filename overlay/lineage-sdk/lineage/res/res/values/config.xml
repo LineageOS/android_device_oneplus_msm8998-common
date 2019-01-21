@@ -71,7 +71,7 @@
     <integer name="config_defaultLiveDisplayMode">0</integer>
 
     <!-- Should we filter any display modes which are unmapped? -->
-    <bool name="config_filterDisplayModes">true</bool>
+    <bool name="config_filterDisplayModes">false</bool>
 
     <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
     <bool name="config_enableBurnInProtection">true</bool>
