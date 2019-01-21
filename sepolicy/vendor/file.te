@@ -1,15 +1,10 @@
+type debugfs_power_stats, fs_type, debugfs_type;
+type display_data_file, file_type;
+type nv_data_file, file_type, data_file_type;
 type proc_touchpanel, fs_type;
-
 type sysfs_fpc_key, fs_type, sysfs_type;
 type sysfs_fpc_irq, fs_type, sysfs_type;
 type sysfs_fpc_screen, fs_type, sysfs_type;
 type sysfs_fpc_proximity, fs_type, sysfs_type;
-type sysfs_livedisplay, sysfs_type, fs_type;
-
 type sysfs_wifi, fs_type, sysfs_type;
-
-type debugfs_power_stats, fs_type, debugfs_type;
-
-type nv_data_file, file_type, data_file_type;
-
 type vendor_keylayout_file, file_type, vendor_file_type;
