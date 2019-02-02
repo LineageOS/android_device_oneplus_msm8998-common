@@ -1,0 +1,13 @@
+type hal_touch_oneplus_msm8998, domain;
+type hal_touch_oneplus_msm8998_exec, exec_type, file_type;
+
+hal_server_domain(hal_touch_oneplus_msm8998, hal_lineage_touch)
+
+init_daemon_domain(hal_touch_oneplus_msm8998)
+
+# Talk to the binder device node
+allow hal_touch_oneplus_msm8998 binder_device:chr_file rw_file_perms;
+
+# Allow access to gesture enable nodes
+allow hal_touch_oneplus_msm8998 proc_touchpanel:dir search;
+allow hal_touch_oneplus_msm8998 proc_touchpanel:file rw_file_perms;

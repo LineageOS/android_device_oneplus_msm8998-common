@@ -1,0 +1,17 @@
+type hal_livedisplay_oneplus_msm8998, domain;
+type hal_livedisplay_oneplus_msm8998_exec, exec_type, file_type;
+
+hal_server_domain(hal_livedisplay_oneplus_msm8998, hal_lineage_livedisplay)
+
+init_daemon_domain(hal_livedisplay_oneplus_msm8998)
+
+# Talk to the binder device node
+allow hal_livedisplay_oneplus_msm8998 binder_device:chr_file rw_file_perms;
+
+# Allow LiveDisplay to write to DisplayMode nodes
+allow hal_livedisplay_oneplus_msm8998 sysfs_graphics:dir { r_dir_perms };
+allow hal_livedisplay_oneplus_msm8998 sysfs_livedisplay_tuneable:file { rw_file_perms };
+
+# Allow LiveDisplay to store files under /data/vendor/display and access them
+allow hal_livedisplay_oneplus_msm8998 display_vendor_data_file:dir { rw_dir_perms };
+allow hal_livedisplay_oneplus_msm8998 display_vendor_data_file:file { create_file_perms };

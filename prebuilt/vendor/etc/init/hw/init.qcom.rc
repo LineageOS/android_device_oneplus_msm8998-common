@@ -239,7 +239,7 @@ on boot
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
     # chmod sns.reg file user and group for sensor
-	# VENDOR_EDIT aaron.qiu
+    # VENDOR_EDIT aaron.qiu
     chown system system /mnt/vendor/persist/sensors/sns.reg
 
 # msm specific files that need to be created on /data
