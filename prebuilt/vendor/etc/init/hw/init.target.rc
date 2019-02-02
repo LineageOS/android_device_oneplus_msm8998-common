@@ -27,7 +27,6 @@
 #
 #
 
-import /vendor/etc/init/hw/init.target.displaymodes.rc
 import /vendor/etc/init/hw/init.target.performance.rc
 
 on early-init
