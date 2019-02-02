@@ -745,33 +745,32 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/libRSDriver_adreno.so
 
-# Graphics - DRM - LA.UM.6.4.r1-07400-8x98.0
+# Graphics - DRM
 vendor/lib/libsdedrm.so
 vendor/lib64/libsdedrm.so
 
-# Graphics - HDR - LA.UM.6.4.r1-07400-8x98.0
+# Graphics - HDR
 vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
-# Graphics - SDM - LA.UM.6.4.r1-07400-8x98.0
+# Graphics - SDM - LA.UM.7.4.r1-04100-8x98.0 
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
 vendor/etc/init/vendor.display.color@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
 vendor/lib/libqseed3.so
-vendor/lib/libsdm-color.so
+vendor/lib/libsdm-color.so|8e083bb2a20ecf76bf96e303134cbaa9ce46be81
 vendor/lib/libsdm-diag.so
--vendor/lib/libsdm-disp-vndapis.so
-vendor/lib/libsdmextension.so
+vendor/lib/libsdmextension.so|3104df6a013e53b972227ed132aa683ec7303746
 vendor/lib/libtinyxml2_1.so
 vendor/lib/vendor.display.color@1.0.so
 vendor/lib/vendor.display.postproc@1.0.so
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
 vendor/lib64/libqseed3.so
-vendor/lib64/libsdm-color.so
+vendor/lib64/libsdm-color.so|1a9b68e5f2f09d37c2fa83907a6a70c7adb081f5
 vendor/lib64/libsdm-diag.so
--vendor/lib64/libsdm-disp-vndapis.so
-vendor/lib64/libsdmextension.so
+-vendor/lib64/libsdm-disp-vndapis.so|8ac59a32a2601a8a4b0d3b097ed02f1279f3c6b7
+vendor/lib64/libsdmextension.so|c4a416cb8c0f5dc87bee8494d70247cf049224b9
 vendor/lib64/libtinyxml2_1.so
 vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.postproc@1.0.so
