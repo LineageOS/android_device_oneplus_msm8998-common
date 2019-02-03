@@ -18,6 +18,7 @@ cc_defaults {
     relative_install_path: "hw",
     srcs: [
         "DisplayModes.cpp",
+        "PictureAdjustment.cpp",
         "service.cpp",
     ],
     shared_libs: [

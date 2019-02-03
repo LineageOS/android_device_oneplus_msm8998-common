@@ -36,6 +36,8 @@ class DisplayModes : public IDisplayModes {
   public:
     DisplayModes();
 
+    static bool isSupported();
+
     // Methods from ::vendor::lineage::livedisplay::V2_0::IDisplayModes follow.
     Return<void> getDisplayModes(getDisplayModes_cb resultCb) override;
     Return<void> getCurrentDisplayMode(getCurrentDisplayMode_cb resultCb) override;
