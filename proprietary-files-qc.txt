@@ -49,14 +49,6 @@ vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 vendor/lib/rfsa/adsp/libvpp_frc.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 
-# Alarm
-vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
-vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
-vendor/lib/vendor.qti.hardware.alarm@1.0.so
-vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.alarm@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
-
 # Audio
 lib64/libldacBT_enc.so:vendor/lib64/libldacBT_enc.so
 lib64/libldacBT_abr.so:vendor/lib64/libldacBT_abr.so
@@ -885,6 +877,18 @@ etc/permissions/com.qti.snapdragon.sdk.display.xml
 framework/com.qti.snapdragon.sdk.display.jar
 vendor/bin/mm-pp-dpps
 vendor/lib64/libdisp-aba.so
+
+# PowerOffAlarm
+framework/vendor.qti.hardware.alarm-V1.0-java.jar
+lib/vendor.qti.hardware.alarm@1.0.so
+lib64/vendor.qti.hardware.alarm@1.0.so
+-vendor/app/PowerOffAlarm/PowerOffAlarm.apk
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
+vendor/lib/vendor.qti.hardware.alarm@1.0.so
+vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
 
 # QMI
 vendor/bin/irsc_util
