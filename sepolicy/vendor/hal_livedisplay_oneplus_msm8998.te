@@ -8,6 +8,20 @@ init_daemon_domain(hal_livedisplay_oneplus_msm8998)
 # Talk to the binder device node
 allow hal_livedisplay_oneplus_msm8998 binder_device:chr_file { rw_file_perms };
 
+# Allow LiveDisplay to use binder service
+binder_use(hal_livedisplay_oneplus_msm8998)
+
+# Allow LiveDisplay to use vendor-binder service
+vndbinder_use(hal_livedisplay_oneplus_msm8998)
+
+# Do not use add_service() as hal_graphics_composer_default may be the provider as well
+allow hal_livedisplay_oneplus_msm8998 qdisplay_service:service_manager find;
+
+# Do not use add_service() as hal_graphics_composer_default may be the provider as well
+allow hal_livedisplay_oneplus_msm8998 qdisplay_service:service_manager find;
+
+binder_call(hal_livedisplay_oneplus_msm8998, hal_graphics_composer_default)
+
 # Allow LiveDisplay to write to DisplayMode nodes
 allow hal_livedisplay_oneplus_msm8998 sysfs_graphics:dir { r_dir_perms };
 allow hal_livedisplay_oneplus_msm8998 sysfs_livedisplay_tuneable:file { rw_file_perms };
