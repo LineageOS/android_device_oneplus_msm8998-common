@@ -1,8 +1,5 @@
 type dumpsys, domain;
 
-# Allow access to persist
-allow cameraserver persist_file:file { rw_file_perms setattr };
-
 allow cameraserver self:process { execmem };
 
 allow cameraserver shell_exec:file { r_file_perms };

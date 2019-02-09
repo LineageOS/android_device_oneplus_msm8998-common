@@ -1,2 +1,0 @@
-allow tee fingerprintd_data_file:dir { rw_dir_perms };
-allow tee fingerprintd_data_file:file { create rw_file_perms unlink };

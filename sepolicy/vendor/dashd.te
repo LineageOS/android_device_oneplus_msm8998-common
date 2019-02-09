@@ -1,44 +1,11 @@
-# dash daemon
-type dashd, domain, coredomain;
+type dashd, domain;
 type dashd_exec, exec_type, vendor_file_type, file_type;
 
 init_daemon_domain(dashd)
 
-allow dashd rootfs:file { entrypoint read };
-
-# Write to /dev/kmsg
-allow dashd kmsg_device:chr_file { rw_file_perms };
-
-allow dashd self:capability { net_admin sys_tty_config };
 wakelock_use(dashd)
-allow dashd self:netlink_kobject_uevent_socket { create read setopt bind };
-binder_use(dashd)
-binder_service(dashd)
-binder_call(dashd, system_server)
+
 
 ###
 ### dashd: charger mode
 ###
-
-# Read /sys/fs/pstore/console-ramoops
-# Don't worry about overly broad permissions for now, as there's
-# only one file in /sys/fs/pstore
-allow dashd pstorefs:dir { r_dir_perms };
-allow dashd pstorefs:file { r_file_perms };
-
-allow dashd sysfs_graphics:dir { r_dir_perms };
-allow dashd sysfs_graphics:chr_file { rw_file_perms };
-allow dashd dash_device:dir { r_dir_perms };
-allow dashd dash_device:chr_file { getattr rw_file_perms };
-allow dashd tty_device:chr_file { rw_file_perms };
-allow dashd ashmem_device:chr_file { execute };
-allow dashd self:process { execmem };
-allow dashd proc_sysrq:file { rw_file_perms };
-allow dashd self:capability { sys_boot dac_override};
-allow dashd device:dir { open read write } ;
-#allow dashd device:chr_file { write read };
-
-allow dashd sysfs_batteryinfo:file { r_file_perms };
-
-r_dir_file(dashd, sysfs_usb_supply);
-r_dir_file(dashd, sysfs_battery_supply);
