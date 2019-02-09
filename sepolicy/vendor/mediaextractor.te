@@ -1,2 +1,0 @@
-allow mediaextractor vendor_file:dir { r_dir_perms };
-allow mediaextractor vendor_file:file { rx_file_perms };
