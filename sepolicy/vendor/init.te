@@ -1,8 +1,2 @@
-allow init dash_device:chr_file { getattr };
-allow init fingerprint_device:chr_file { setattr };
-allow init ipa_dev:chr_file { rw_file_perms };
-allow init sysfs:file { r_file_perms };
-allow init sysfs_graphics:lnk_file { r_file_perms };
-allow init sysfs_leds:file { r_file_perms };
-allow init sysfs_leds:lnk_file { r_file_perms };
-allow init proc:file { r_file_perms };
+allow init sysfs_fpc:file { r_file_perms };
+allow init sysfs_data:file { r_file_perms };

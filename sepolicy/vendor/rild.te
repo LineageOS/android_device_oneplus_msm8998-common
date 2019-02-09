@@ -1,6 +1,0 @@
-allow rild nv_data_file:dir { rw_dir_perms };
-allow rild nv_data_file:file { create_file_perms rw_file_perms };
-
-allow rild system_data_file:dir { getattr };
-
-set_prop(rild, diag_prop)
