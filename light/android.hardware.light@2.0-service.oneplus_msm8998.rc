@@ -49,6 +49,10 @@ on init
     chown system system /sys/class/leds/button-backlight/brightness
     chmod 660 /sys/class/leds/button-backlight/brightness
 
+    # LCD backlight permissions
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chmod 660 /sys/class/leds/lcd-backlight/brightness
+
 service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.oneplus_msm8998
     class hal
     user system

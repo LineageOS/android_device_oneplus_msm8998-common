@@ -1,1 +1,1 @@
-allow kernel self:capability { dac_override dac_read_search };
+dontaudit kernel self:capability { dac_override dac_read_search };
