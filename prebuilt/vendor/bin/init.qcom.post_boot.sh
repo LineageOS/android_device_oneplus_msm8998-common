@@ -3795,7 +3795,7 @@ case "$target" in
 	echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
 
 	# Enable sched systrace
-	echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
+	#echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
 
 	# Setting b.L scheduler parameters
 	echo 1 > /proc/sys/kernel/sched_migration_fixup

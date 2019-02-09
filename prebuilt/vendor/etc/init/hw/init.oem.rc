@@ -69,30 +69,19 @@
     chown system system /sys/class/power_supply/battery/connect_disable
 
 on post-fs-data
-    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
-    mkdir /data/nfc
+    # Nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
+
+    # Radio
     mkdir /data/vendor/oemnvitems 0771 radio radio
 
-    #fingerint, changhua add for fp debug image usage,feature default off
-    mkdir /data/fpc_images 0770 system system
-    mkdir /data/fpc_images/verify 0770 system system
-    mkdir /data/fpc_images/enroll 0770 system system
-    mkdir /data/fpc 0770 system system
+    # Fingerprint
     mkdir /data/vendor_de/silead 0770 system system
     mkdir /mnt/vendor/persist/silead 0777 system system
     mkdir /mnt/vendor/persist/goodix 0777 system system
-    mkdir /data/coredump  0777 system system
-    mkdir /data/theme 0775 system system
-    mkdir /data/mdm 0775 system system
-    mkdir /data/theme_storage 0775 system system
 
     #mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
     mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
-    mkdir /data/reserve-lib 0775 system system
-
-    #KennethWang add for oem log
-    mkdir /data/oem_log  0770 system system
 
     mkdir /persist/hdcp  775 media mediadrm
     mkdir /mnt/vendor/persist/hdcp  775 media mediadrm

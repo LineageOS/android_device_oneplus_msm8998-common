@@ -1,1 +1,2 @@
 allow vendor_init dash_device:chr_file { r_file_perms };
+allow vendor_init tmpfs:dir { create rw_dir_perms };

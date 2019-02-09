@@ -1,1 +1,1 @@
-allow hal_secure_element_default default_android_hwservice:hwservice_manager { find add };
+allow hal_secure_element_default hal_nfc_hwservice:hwservice_manager { find };
