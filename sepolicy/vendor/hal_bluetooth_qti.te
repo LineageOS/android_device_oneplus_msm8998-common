@@ -1,4 +1,0 @@
-allow hal_bluetooth_qti wcnss_filter:unix_stream_socket { connectto };
-
-allow hal_bluetooth_qti nv_data_file:dir { search };
-allow hal_bluetooth_qti nv_data_file:file { r_file_perms };
