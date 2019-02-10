@@ -6,6 +6,7 @@ on post-fs-data
     start vendor.bt-mac-generator
 
     # For oneplus camera hal
+    mkdir /data/misc/camera 775 system system
     write /data/misc/camera/client_package_name "com.oneplus.camera"
     chmod 0444 /data/misc/camera/client_package_name
 
