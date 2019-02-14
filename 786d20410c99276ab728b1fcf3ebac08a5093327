@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d740c5_dcb830e6",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-02-14T06:07:22Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 50
+      },
+      "revId": "786d20410c99276ab728b1fcf3ebac08a5093327",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45985373_f19be547",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-02-14T06:07:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1156,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 51
+      },
+      "revId": "786d20410c99276ab728b1fcf3ebac08a5093327",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
