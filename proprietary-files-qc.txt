@@ -15,15 +15,19 @@ vendor/lib/libadsp_hvx_callback_skel.so
 vendor/lib/libadsp_hvx_stub.so
 vendor/lib/libadsprpc.so
 vendor/lib/libcdsprpc.so
+vendor/lib/libfastcrc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
+vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libmdsprpc.so
 vendor/lib/libsdsprpc.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
 vendor/lib64/libcdsprpc.so
+vendor/lib64/libfastcrc.so
 vendor/lib64/libfastcvadsp_stub.so
 vendor/lib64/libfastcvopt.so
+vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libmdsprpc.so
 vendor/lib64/libsdsprpc.so
 
@@ -220,6 +224,7 @@ vendor/lib/libSTDualCamPreviewBokeh.so
 vendor/lib/libSTdisp.so
 vendor/lib/libUBWC.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
+vendor/lib/libvideoutils.so
 vendor/lib/vendor.qti.hardware.camera.device@1.0.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
@@ -245,6 +250,7 @@ vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/libscveObjectSegmentation.so
 vendor/lib64/libscveObjectSegmentation_stub.so
 vendor/lib64/libUBWC.so
+vendor/lib64/libvideoutils.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera actuators
@@ -688,6 +694,7 @@ vendor/lib64/liblbs_core.so
 -vendor/lib64/libloc_api_v02.so
 vendor/lib64/libloc_ds_api.so
 vendor/lib64/libloc_externalDr.so
+vendor/lib64/libloc_externalDrcore.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/liblocationservice.so
 vendor/lib64/liblowi_client.so
