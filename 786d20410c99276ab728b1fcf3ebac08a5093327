@@ -45,6 +45,30 @@
       "revId": "786d20410c99276ab728b1fcf3ebac08a5093327",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d725d9d_5a7a4735",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 21962
+      },
+      "writtenOn": "2019-02-19T09:17:12Z",
+      "side": 1,
+      "message": "like this? I tested delete them and seems WeChat works fine, but why they are in oos?",
+      "parentUuid": "45985373_f19be547",
+      "range": {
+        "startLine": 1156,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 51
+      },
+      "revId": "786d20410c99276ab728b1fcf3ebac08a5093327",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
