@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b6e1f7b_1e1ef7dd",
+        "filename": "sepolicy/vendor/cameraserver.te",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 8859
+      },
+      "writtenOn": "2019-02-26T08:22:15Z",
+      "side": 1,
+      "message": "Isn\u0027t this block redundant and out of place? Already defined in\nsepolicy/vendor/hal_nfc_default.te",
+      "revId": "1664d3db66e85e09cc912620476c34e4c36cdac4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
