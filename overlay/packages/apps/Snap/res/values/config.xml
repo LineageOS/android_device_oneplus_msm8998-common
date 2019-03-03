@@ -46,4 +46,7 @@
     <string-array name="longshot_scenemodes">
         <item>placeholder</item>
     </string-array>
+
+    <!-- Enable support for image stabilization -->
+    <bool name="support_dis">false</bool>
 </resources>
