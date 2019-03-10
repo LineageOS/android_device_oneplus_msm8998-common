@@ -86,8 +86,7 @@ public class Startup extends BroadcastReceiver {
     static boolean hasButtonProcs() {
         return (FileUtils.fileExists(Constants.NOTIF_SLIDER_TOP_NODE) &&
                 FileUtils.fileExists(Constants.NOTIF_SLIDER_MIDDLE_NODE) &&
-                FileUtils.fileExists(Constants.NOTIF_SLIDER_BOTTOM_NODE)) ||
-                FileUtils.fileExists(Constants.BUTTON_SWAP_NODE);
+                FileUtils.fileExists(Constants.NOTIF_SLIDER_BOTTOM_NODE));
     }
 
     static boolean hasOClick() {
