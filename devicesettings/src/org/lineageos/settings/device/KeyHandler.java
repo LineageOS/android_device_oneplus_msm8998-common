@@ -50,8 +50,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     // Supported scancodes
     private static final int FLIP_CAMERA_SCANCODE = 249;
-    private static final int MODE_ALARMS_ONLY = 601;
-    private static final int MODE_PRIORITY_ONLY = 602;
+    private static final int MODE_PRIORITY_ONLY = 601;
+    private static final int MODE_ALARMS_ONLY = 602;
     private static final int MODE_NONE = 603;
 
     private static final int GESTURE_WAKELOCK_DURATION = 3000;
