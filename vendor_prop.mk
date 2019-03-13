@@ -97,6 +97,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.ts.rtmakeup=false \
     persist.vendor.camera.tintless.skip=1
 
+# Codec2 switch
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.codec2=2
+
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.feature=1
