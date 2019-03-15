@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27490433_8620aed5",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2019-03-15T18:24:06Z",
+      "side": 1,
+      "message": "doesn\u0027t exist in 9.x roms",
+      "range": {
+        "startLine": 605,
+        "startChar": 13,
+        "endLine": 605,
+        "endChar": 20
+      },
+      "revId": "0d84611dc2cf66e863db3d24fd40fd9fdeda5b80",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc288008_d80bc3d8",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2019-03-15T18:24:06Z",
+      "side": 1,
+      "message": "built from sources",
+      "range": {
+        "startLine": 832,
+        "startChar": 17,
+        "endLine": 832,
+        "endChar": 24
+      },
+      "revId": "0d84611dc2cf66e863db3d24fd40fd9fdeda5b80",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9fead74_d83db96d",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2019-03-15T18:24:06Z",
+      "side": 1,
+      "message": "built from sources",
+      "range": {
+        "startLine": 858,
+        "startChar": 26,
+        "endLine": 858,
+        "endChar": 27
+      },
+      "revId": "0d84611dc2cf66e863db3d24fd40fd9fdeda5b80",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
