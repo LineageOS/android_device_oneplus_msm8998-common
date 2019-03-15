@@ -534,6 +534,7 @@ framework/com.qti.dpmframework.jar
 framework/dpmapi.jar
 framework/tcmclient.jar
 -priv-app/dpmserviceapp/dpmserviceapp.apk
+lib/libdiag_system.so
 lib64/com.qualcomm.qti.dpm.api@1.0.so
 lib64/libdiag_system.so
 lib64/libdpmctmgr.so
@@ -601,6 +602,7 @@ vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/libbase64.so
 vendor/lib64/libcpion.so
+vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libGPreqcancel_svc.so
@@ -827,6 +829,7 @@ lib/vendor.qti.hardware.vpp@1.1.so
 lib64/libmmosal.so
 lib64/vendor.qti.hardware.vpp@1.1.so
 -vendor/lib/libgpustats.so
+vendor/lib/libmm-omxcore.so
 vendor/lib/libOmxVpp.so
 vendor/lib/libvpplibrary.so
 vendor/lib/libI420colorconvert.so
@@ -852,6 +855,7 @@ vendor/lib/vendor.qti.hardware.vpp@1.1.so
 -vendor/lib64/libgpustats.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
+vendor/lib64/libmm-omxcore.so
 vendor/lib64/libOmxVpp.so
 vendor/lib64/libvpplibrary.so
 vendor/lib64/libI420colorconvert.so
@@ -976,7 +980,9 @@ framework/qti-telephony-common.jar|b1953a3599255f08f1785c677d22810f65e0167b
 framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
+vendor/lib/libconfigdb.so
 vendor/lib/libmdmdetect.so
+vendor/lib/libnetmgr.so
 vendor/lib/vendor.qti.hardware.radio.uim_remote_client@1.0.so
 vendor/lib/vendor.qti.hardware.radio.qtiradio@1.0.so
 vendor/lib/vendor.qti.hardware.radio.qtiradio@2.0.so
@@ -1066,12 +1072,14 @@ vendor/lib/com.qualcomm.qti.imscmservice@1.0.so
 vendor/lib/com.qualcomm.qti.imscmservice@2.0.so
 vendor/lib/com.qualcomm.qti.imscmservice@2.1.so
 vendor/lib/com.qualcomm.qti.uceservice@2.0.so
+vendor/lib/lib-dplmedia.so
 vendor/lib/lib-imscmservice.so
 vendor/lib/lib-imsdpl.so
 vendor/lib/lib-imsqimf.so
 vendor/lib/lib-imsrcs-v2.so
 vendor/lib/lib-imsrcsbaseimpl.so
 vendor/lib/lib-imsxml.so
+vendor/lib/lib-rtpcommon.so
 vendor/lib/lib-rtpcore.so
 vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
