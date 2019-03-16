@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfad851f_1a590015",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 22281
+      },
+      "writtenOn": "2019-03-16T01:14:56Z",
+      "side": 1,
+      "message": "Yup, I rechecked on OOS and you\u0027re correct",
+      "parentUuid": "27490433_8620aed5",
+      "range": {
+        "startLine": 605,
+        "startChar": 13,
+        "endLine": 605,
+        "endChar": 20
+      },
+      "revId": "0d84611dc2cf66e863db3d24fd40fd9fdeda5b80",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc288008_d80bc3d8",
         "filename": "proprietary-files-qc.txt",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-15T18:24:06Z",
       "side": 1,
       "message": "built from sources",
+      "range": {
+        "startLine": 832,
+        "startChar": 17,
+        "endLine": 832,
+        "endChar": 24
+      },
+      "revId": "0d84611dc2cf66e863db3d24fd40fd9fdeda5b80",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8751c8_d0512afa",
+        "filename": "proprietary-files-qc.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 22281
+      },
+      "writtenOn": "2019-03-16T01:14:56Z",
+      "side": 1,
+      "message": "Any intentions to build this?",
+      "parentUuid": "cc288008_d80bc3d8",
       "range": {
         "startLine": 832,
         "startChar": 17,
