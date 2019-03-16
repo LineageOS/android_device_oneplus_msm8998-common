@@ -615,12 +615,6 @@ service vendor.bt-mac-generator /vendor/bin/bt-mac-generator
     disabled
     seclabel u:r:bt_mac_generator:s0
 
-service vendor.cnd /system/vendor/bin/cnd
-    class main
-    user system
-    group system wifi inet radio wakelock net_admin
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     user system
@@ -630,12 +624,6 @@ service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
 
 on property:sys.powerctl=*
     stop vendor.cnss-daemon
-
-service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
-    class main
-    user system
-    group radio system
-    writepid /dev/cpuset/system-background/tasks
 
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
