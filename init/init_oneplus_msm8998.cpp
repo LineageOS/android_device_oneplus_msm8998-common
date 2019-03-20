@@ -90,6 +90,8 @@ void init_target_properties()
             property_set("ro.display.series", "OnePlus 5T");
             unknownDevice = false;
         }
+
+        property_set("vendor.boot.project_name", device.c_str());
     }
     else {
         LOG(ERROR) << "Unable to read device info from " << DEVINFO_FILE;
