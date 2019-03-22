@@ -1190,9 +1190,10 @@ on property:ro.logdumpd.enabled=1
     start logdumpd
 
 service vendor.time_daemon /vendor/bin/time_daemon
-    class main
-    user root
-    group root
+   class main
+   user system
+   group system
+   capabilities SYS_TIME
 
 service vendor.vppservice /vendor/bin/vppservice
     class main
