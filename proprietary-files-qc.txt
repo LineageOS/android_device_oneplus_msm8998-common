@@ -127,7 +127,6 @@ vendor/etc/camera/imx350_chromatix.xml
 vendor/etc/camera/imx371_chromatix.xml
 vendor/etc/camera/imx376k_chromatix.xml
 vendor/etc/scve/facereco/gModel.dat
-vendor/lib/hw/camera.msm8998.so|10dc4435f8d9d45e490106575d20f0d5101cd234
 vendor/lib/libblur_channel.so
 vendor/lib/libmmcamera_interface.so
 vendor/lib/libmmjpeg_interface.so
@@ -165,7 +164,6 @@ vendor/lib/libmmcamera_imx350_gt24c64ass_eeprom.so
 vendor/lib/libmmcamera_imx371.so|36b9380b7d608892377fc6271e3fe6517c421c0d
 vendor/lib/libmmcamera_imx376k.so
 vendor/lib/libmmcamera_imx376k_gt24c64_eeprom.so
-vendor/lib/libmmcamera_imx398.so|582bdebc92a13166959c74405aa4ad05e73ce997
 vendor/lib/libmmcamera_imx398_gt24c64_eeprom.so
 vendor/lib/libmmcamera_paaf_lib.so
 vendor/lib/libmmcamera_pdaf.so
