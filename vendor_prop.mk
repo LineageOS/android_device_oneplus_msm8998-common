@@ -136,7 +136,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.disable_wb_ubwc=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=0 \
-    vendor.display.perf_hint_window=50
+    vendor.display.perf_hint_window=50 \
+    debug.hwui.use_buffer_age=false
 
 # IOP
 PRODUCT_PROPERTY_OVERRIDES += \
