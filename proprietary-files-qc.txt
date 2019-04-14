@@ -161,7 +161,7 @@ vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imglib_faceproc_adspstub.so
 vendor/lib/libmmcamera_imx350.so
 vendor/lib/libmmcamera_imx350_gt24c64ass_eeprom.so
-vendor/lib/libmmcamera_imx371.so|36b9380b7d608892377fc6271e3fe6517c421c0d
+vendor/lib/libmmcamera_imx371.so
 vendor/lib/libmmcamera_imx376k.so
 vendor/lib/libmmcamera_imx376k_gt24c64_eeprom.so
 vendor/lib/libmmcamera_imx398_gt24c64_eeprom.so
