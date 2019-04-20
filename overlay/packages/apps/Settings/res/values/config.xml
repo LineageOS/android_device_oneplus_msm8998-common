@@ -24,4 +24,8 @@
        3 = right side
   -->
   <integer name="config_fingerprintSensorLocation">1</integer>
+
+    <!-- Whether to show Connected MAC Randomization in Developer Options
+         as not all devices can support dynamic MAC address change.  -->
+    <bool name="config_wifi_support_connected_mac_randomization">false</bool>
 </resources>
