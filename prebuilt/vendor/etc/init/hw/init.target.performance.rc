@@ -207,3 +207,6 @@ on property:sys.boot_completed=1
 
     # Is IOP even still a thing?
     start vendor.iop
+
+    # QCOM post boot
+    start qcom-post-boot
