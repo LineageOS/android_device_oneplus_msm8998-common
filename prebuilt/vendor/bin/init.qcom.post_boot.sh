@@ -3511,10 +3511,8 @@ case "$target" in
 	echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
 	echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
 
-        #ifdef VENDOR_EDIT
-        # Enable Adaptive LMK liuyaxin@framework.perf change
-        echo "18432,23040,27648,51256,150296,200640" > /sys/module/lowmemorykiller/parameters/minfree
-        #endif VENDOR_EDIT
+	# Enable Adaptive LMK liuyaxin@framework.perf change
+	echo "18432,23040,27648,51256,150296,200640" > /sys/module/lowmemorykiller/parameters/minfree
 
 	# Limit the min frequency to 825MHz
 	echo 825000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
@@ -3795,7 +3793,7 @@ case "$target" in
 	echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
 
 	# Enable sched systrace
-	#echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
+	echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
 
 	# Setting b.L scheduler parameters
 	echo 1 > /proc/sys/kernel/sched_migration_fixup
@@ -3855,6 +3853,11 @@ case "$target" in
         echo "0:1036800 4:1056000" > /sys/module/cpu_boost/parameters/input_boost_freq
         echo 450 > /sys/module/cpu_boost/parameters/input_boost_ms
         # Enable bus-dcvs
+
+	# Enable Adaptive LMK denzel.chen
+	echo "18432,23040,27648,51256,150296,200640" > /sys/module/lowmemorykiller/parameters/minfree
+
+
         for cpubw in /sys/class/devfreq/*qcom,cpubw*
         do
             echo "bw_hwmon" > $cpubw/governor
@@ -3942,6 +3945,10 @@ case "$target" in
 
         # Set Memory parameters
         configure_memory_parameters
+
+        # Chris.Gao@OnePlus.Power&&Perf, 2019/2/14 , Disable adaptive_lmk
+        echo 0 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+        # End Disable adaptive_lmk
 
         if [ -f "/defrag_aging.ko" ]; then
            insmod /defrag_aging.ko
