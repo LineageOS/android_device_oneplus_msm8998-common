@@ -52,14 +52,14 @@ fi
 # prevent slowdown at boot.
 
 # Run modem link script
-#if [ -f /system/etc/init.qcom.modem_links.sh ]; then
-#   /vendor/bin/init.qcom.modem_links.sh
-#fi
+if [ -f /system/etc/init.qcom.modem_links.sh ]; then
+   /system/vendor/bin/init.qcom.modem_links.sh
+fi
 
 # Run mdm link script
-#if [ -f /system/etc/init.qcom.mdm_links.sh ]; then
-#   /vendor/bin/init.qcom.mdm_links.sh
-#fi
+if [ -f /system/etc/init.qcom.mdm_links.sh ]; then
+   /system/vendor/bin/init.qcom.mdm_links.sh
+fi
 
 # Run wifi script
 if [ -f /vendor/bin/init.qcom.wifi.sh ]; then
@@ -67,9 +67,9 @@ if [ -f /vendor/bin/init.qcom.wifi.sh ]; then
 fi
 
 # Run the sensor script
-#if [ -f /system/etc/init.qcom.sensor.sh ]; then
-#   /vendor/bin/init.qcom.sensor.sh
-#fi
+if [ -f /system/etc/init.qcom.sensor.sh ]; then
+   /system/vendor/bin/init.qcom.sensor.sh
+fi
 
 touch /system/etc/boot_fixup
 
