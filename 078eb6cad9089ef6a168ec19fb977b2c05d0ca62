@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1763b84c_99f88f1f",
+        "filename": "overlay/packages/apps/Settings/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 15525
+      },
+      "writtenOn": "2019-05-05T16:40:54Z",
+      "side": 1,
+      "message": "The commit message says \"Enable\" but the code instead disable it?",
+      "range": {
+        "startLine": 30,
+        "startChar": 65,
+        "endLine": 30,
+        "endChar": 70
+      },
+      "revId": "078eb6cad9089ef6a168ec19fb977b2c05d0ca62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
