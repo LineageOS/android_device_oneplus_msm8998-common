@@ -414,8 +414,6 @@ Return<void> Power::powerHintAsync_1_2(PowerHint_1_2 hint, int32_t data) {
                 ATRACE_INT("camera_launch_lock", 1);
                 mHintManager->DoHint("CAMERA_LAUNCH");
                 ALOGD("CAMERA LAUNCH ON: %d MS, LAUNCH ON: 2500 MS", data);
-                // boosts 2.5s for launching
-                mHintManager->DoHint("LAUNCH", std::chrono::milliseconds(2500));
             } else if (data == 0) {
                 ATRACE_INT("camera_launch_lock", 0);
                 mHintManager->EndHint("CAMERA_LAUNCH");
