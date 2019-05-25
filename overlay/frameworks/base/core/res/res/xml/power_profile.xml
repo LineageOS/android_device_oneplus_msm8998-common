@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <device name="Android">
     <item name="none">0</item>
-    <item name="screen.on">53</item>
-    <item name="screen.full">218</item>
+    <item name="screen.on">55</item>
+    <item name="screen.full">216</item>
     <item name="bluetooth.active">45</item>
     <item name="bluetooth.on">0.6</item>
     <item name="wifi.on">8</item>
@@ -10,11 +10,11 @@
     <item name="wifi.scan">150</item>
     <item name="dsp.audio">37.7</item>
     <item name="dsp.video">56</item>
-    <item name="camera.flashlight">69</item>
-    <item name="camera.avg">540</item>
+    <item name="camera.flashlight">102</item>
+    <item name="camera.avg">570</item>
     <item name="radio.active">133</item>
     <item name="radio.scanning">1</item>
-    <item name="gps.on">72</item>
+    <item name="gps.on">34</item>
     <array name="radio.on">
         <value>3</value>
         <value>2</value>
@@ -23,7 +23,7 @@
         <value>4</value>
         <value>4</value>
     </array>
-    <array name="cpu.speeds.cluster0">
+    <array name="cpu.core_speeds.cluster0">
         <value>300000</value>
         <value>364800</value>
         <value>441600</value>
@@ -47,7 +47,7 @@
         <value>1824000</value>
         <value>1900800</value>
     </array>
-    <array name="cpu.speeds.cluster1">
+    <array name="cpu.core_speeds.cluster1">
         <value>300000</value>
         <value>345600</value>
         <value>422400</value>
@@ -80,7 +80,7 @@
         <value>2361600</value>
         <value>2457600</value>
     </array>
-    <array name="cpu.active.cluster0">
+    <array name="cpu.core_power.cluster0">
         <value>45.2</value>
         <value>46.2</value>
         <value>47.2</value>
@@ -104,7 +104,7 @@
         <value>92.5</value>
         <value>99.1</value>
     </array>
-    <array name="cpu.active.cluster1">
+    <array name="cpu.core_power.cluster1">
         <value>45.4</value>
         <value>45.7</value>
         <value>48.7</value>
