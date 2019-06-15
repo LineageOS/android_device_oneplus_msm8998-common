@@ -47,11 +47,21 @@ static bool is_headphone(uint32_t devices)
     if (devices == SND_DEVICE_OUT_HEADPHONES ||
             devices == SND_DEVICE_OUT_HEADPHONES_DSD ||
             devices == SND_DEVICE_OUT_HEADPHONES_44_1 ||
+            devices == SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES ||
             devices == SND_DEVICE_OUT_VOICE_HEADPHONES ||
+            devices == SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES ||
+            devices == SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES ||
             devices == SND_DEVICE_OUT_ANC_HEADSET ||
             devices == SND_DEVICE_OUT_ANC_FB_HEADSET ||
             devices == SND_DEVICE_OUT_VOICE_ANC_HEADSET ||
-            devices == SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET) {
+            devices == SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET ||
+            devices == SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_HEADPHONES ||
+            devices == SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_ANC_HEADSET ||
+            devices == SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_ANC_FB_HEADSET ||
+            devices == SND_DEVICE_OUT_VOICE_SPEAKER_STEREO_AND_VOICE_HEADPHONES ||
+            devices == SND_DEVICE_OUT_VOICE_SPEAKER_STEREO_AND_VOICE_ANC_HEADSET ||
+            devices == SND_DEVICE_OUT_VOICE_SPEAKER_STEREO_AND_VOICE_ANC_FB_HEADSET
+    ) {
         ALOGI("%s: device=%d true\n", __func__, devices);
         return true;
     } else {
