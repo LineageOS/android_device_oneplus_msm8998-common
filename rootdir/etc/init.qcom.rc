@@ -322,9 +322,6 @@ on post-fs-data
     # Trigger WLAN driver load
     write /sys/kernel/boot_wlan/boot_wlan 1
 
-    # Generate wifi mac
-    start vendor.wifi-mac-generator
-
     # For oneplus camera hal
     mkdir /data/misc/camera 775 system system
     write /data/misc/camera/client_package_name "com.oneplus.camera"
@@ -725,11 +722,3 @@ service vendor.time_daemon /vendor/bin/time_daemon
     group system
     capabilities SYS_TIME
     writepid /dev/cpuset/system-background/tasks
-
-service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
-    class main
-    user wifi
-    group wifi
-    oneshot
-    disabled
-    seclabel u:r:wifi_mac_generator:s0
