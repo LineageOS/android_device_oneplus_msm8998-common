@@ -102,4 +102,3 @@
 # Wifi
 /data/vendor/oemnvitems/4678_0    u:object_r:wifi_nv_data_file:s0
 /data/vendor/oemnvitems/4678_1    u:object_r:wifi_nv_data_file:s0
-/(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi_mac_generator_exec:s0
