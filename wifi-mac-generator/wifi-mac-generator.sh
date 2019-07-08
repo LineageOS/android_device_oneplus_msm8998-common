@@ -24,7 +24,7 @@ if [[ ! -f "${WLAN_MAC_PERSIST_PATH}" ]] || [[ ! -s "${WLAN_MAC_PERSIST_PATH}" ]
     if ! wait_for_file "${MAC_0_PATH}"; then
         MAC_0="${WLAN_MAC_VENDOR_PREFIX}`xxd -l 3 -p /dev/urandom | tr '[:lower:]' '[:upper:]'`"
     else
-        MAC_0=`xxd -p "${MAC_0_PATH}" | tr '[:lower:]' '[:upper:]'`
+        MAC_0=`xxd -p "${MAC_0_PATH}" | grep -o '..' | tac | tr -d '\n' | tr '[:lower:]' '[:upper:]'`
     fi
 
     MAC_1_PATH="/data/vendor/oemnvitems/4678_1"
@@ -32,7 +32,7 @@ if [[ ! -f "${WLAN_MAC_PERSIST_PATH}" ]] || [[ ! -s "${WLAN_MAC_PERSIST_PATH}" ]
     if ! wait_for_file "${MAC_1_PATH}"; then
         MAC_1="${WLAN_MAC_VENDOR_PREFIX}`xxd -l 3 -p /dev/urandom | tr '[:lower:]' '[:upper:]'`"
     else
-        MAC_1=`xxd -p "${MAC_1_PATH}" | tr '[:lower:]' '[:upper:]'`
+        MAC_1=`xxd -p "${MAC_1_PATH}" | grep -o '..' | tac | tr -d '\n' | tr '[:lower:]' '[:upper:]'`
     fi
 
     echo "Intf0MacAddress=${MAC_0}" > "${WLAN_MAC_PERSIST_PATH}"
