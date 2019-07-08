@@ -325,9 +325,6 @@ on post-fs-data
     # Generate wifi mac
     start vendor.wifi-mac-generator
 
-    # Generate bt mac
-    start vendor.bt-mac-generator
-
     # For oneplus camera hal
     mkdir /data/misc/camera 775 system system
     write /data/misc/camera/client_package_name "com.oneplus.camera"
@@ -590,14 +587,6 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     onrestart restart audioserver
-
-service vendor.bt-mac-generator /vendor/bin/bt-mac-generator
-    class main
-    user bluetooth
-    group bluetooth
-    oneshot
-    disabled
-    seclabel u:r:bt_mac_generator:s0
 
 service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start

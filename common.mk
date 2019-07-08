@@ -131,8 +131,7 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl:32 \
-    audio.bluetooth.default \
-    bt-mac-generator
+    audio.bluetooth.default
 
 # Camera
 PRODUCT_PACKAGES += \
