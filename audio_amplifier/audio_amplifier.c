@@ -76,8 +76,7 @@ static void set_anc_parameter(struct amplifier_device *device, struct str_parms 
     amp_t *amp = (amp_t*) device;
     ALOGD("%s\n", __func__);
 
-    if (amp->audio_mode == AUDIO_MODE_IN_CALL ||
-        (amp->audio_mode == AUDIO_MODE_IN_COMMUNICATION && is_headphone(amp->out_sound_device))) {
+    if (amp->audio_mode == AUDIO_MODE_IN_CALL) {
         if (!amp->anc_enabled) {
             ALOGI("%s: Enabling ANC\n", __func__);
             str_parms_add_str(parms, AUDIO_PARAMETER_KEY_ANC, "true");
