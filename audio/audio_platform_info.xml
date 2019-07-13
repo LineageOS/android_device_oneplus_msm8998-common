@@ -102,10 +102,10 @@
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" acdb_id="41"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" acdb_id="11"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" acdb_id="112"/>
-        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="114"/> <!-- Original: 113 -->
+        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="8"/> <!-- Original: 113 -->
         <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" acdb_id="114"/>
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="43"/>
-        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" acdb_id="115"/>
+        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" acdb_id="8"/> <!-- Original: 115 -->
         <device name="SND_DEVICE_IN_HDMI_MIC" acdb_id="116"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC" acdb_id="19"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC_NREC" acdb_id="8"/>
