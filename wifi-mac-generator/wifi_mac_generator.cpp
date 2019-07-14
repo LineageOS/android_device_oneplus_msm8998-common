@@ -22,14 +22,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <cutils/log.h>
 #include <cutils/properties.h>
+#include <log/log.h>
 #include <sys/stat.h>
 
 #include <android-base/logging.h>
 
 /* wifi get mac */
-static int force_random = 0;
 static const char NV_MAC_FILE_0[]          = "/data/vendor/oemnvitems/4678_0";
 static const char NV_MAC_FILE_1[]          = "/data/vendor/oemnvitems/4678_1";
 static const char WLAN_MAC_BIN[]           = "/mnt/vendor/persist/wlan_mac.bin";
@@ -39,15 +38,6 @@ static const char MAC_ADDR_NAME_NOT_USE1[] = "Intf3MacAddress=000AF58989FD\n";
 static const char MAC_ADDR_NAME_NOT_USE2[] = "Intf4MacAddress=000AF58989FC\n";
 static const char MAC_ADDR_NAME_END[]      = "END\n";
 static const char MAC_ADDR_NAME_REN[]      = "\n";
-
-static void to_upper(char *str) {
-    int i = 0;
-    while(str[i]!='\0') {
-        if((str[i]>='a') && (str[i]<='z'))
-            str[i]-=32;
-        i++;
-    }
-}
 
 static void array2str(uint8_t *array,char *str) {
     int i;
@@ -121,12 +111,8 @@ static void update_wlan_mac_bin(uint8_t *mac, bool random) {
     }
 
     if (random) {
-        /* If file is exist and check its size or force reproduce it when first start wifi */
-        if (force_random == 0)
-            force_random++;
-
-        /* If file is exist and check its size */
-        if (force_random != 1 && stat(WLAN_MAC_BIN, &st) == 0 && st.st_size >= 120) {
+        /* Check if file already exists and has valid size */
+        if (stat(WLAN_MAC_BIN, &st) == 0 && st.st_size >= 120) {
             ALOGD("%s: File %s already exists", __func__, WLAN_MAC_BIN);
             return;
         } else {
@@ -140,9 +126,6 @@ static void update_wlan_mac_bin(uint8_t *mac, bool random) {
             staMac[5] = (rand() & 0x0FF00000) >> 20;
             memcpy(p2pMac, staMac, sizeof(staMac));
             array2str(staMac, wifi_addr);
-
-            if (force_random == 1)
-                force_random ++;
         }
     } else {
         memcpy(p2pMac, staMac, sizeof(staMac));

@@ -22,24 +22,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <cutils/log.h>
 #include <cutils/properties.h>
+#include <log/log.h>
 #include <sys/stat.h>
 
 #include <android-base/logging.h>
 
-static int force_random = 0;
 static const char NV_MAC_FILE[]          = "/data/vendor/oemnvitems/447";
 static const char BDADDR_PATH[]          = "/data/vendor/bluetooth/bdaddr";
-
-static void to_upper(char *str) {
-    int i = 0;
-    while(str[i]!='\0') {
-        if((str[i]>='a') && (str[i]<='z'))
-            str[i]-=32;
-        i++;
-    }
-}
 
 static void array2str(uint8_t *array,char *str) {
     int i;
@@ -112,12 +102,8 @@ static void update_bt_mac(uint8_t *mac, bool random) {
     }
 
     if (random) {
-        /* If file is exist and check its size or force reproduce it when first start bt */
-        if (force_random == 0)
-            force_random++;
-
-        /* If file is exist and check its size */
-        if (force_random != 1 && stat(BDADDR_PATH, &st) == 0 && st.st_size >= 120) {
+        /* Check if file already exists and has valid size */
+        if (stat(BDADDR_PATH, &st) == 0 && st.st_size >= 120) {
             ALOGD("%s: File %s already exists", __func__, BDADDR_PATH);
             return;
         } else {
@@ -130,9 +116,6 @@ static void update_bt_mac(uint8_t *mac, bool random) {
             btMac[4] = (rand() & 0x0FF00000) >> 20;
             btMac[5] = (rand() & 0x0FF00000) >> 20;
             array2str(btMac, bt_addr);
-
-            if (force_random == 1)
-                force_random ++;
         }
     }
 
@@ -146,12 +129,6 @@ static void update_bt_mac(uint8_t *mac, bool random) {
     ALOGD("%s: Writing bt mac to file %s", __func__, BDADDR_PATH);
     fwrite(bt_addr, strlen(bt_addr), 1, fb);
     fclose(fb);
-
-    chmod(BDADDR_PATH, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH);
-
-    property_set("ro.bt.bdaddr_path", BDADDR_PATH);
-    // Legacy
-    property_set("persist.service.bdroid.bdaddr", BDADDR_PATH);
 }
 
 void get_mac_from_nv() {
@@ -179,12 +156,20 @@ void get_mac_from_nv() {
             random = true;
         }
     }
+
     if (!random) {
         fseek(fd, 0, SEEK_SET);
         len = fread(buf, sizeof(char), st.st_size, fd);
         fclose(fd);
     }
+
     update_bt_mac(buf, random);
+
+    if (stat(BDADDR_PATH, &st) == 0) {
+        chmod(BDADDR_PATH, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH);
+        property_set("ro.bt.bdaddr_path", BDADDR_PATH);
+        property_set("persist.service.bdroid.bdaddr", BDADDR_PATH);
+    }
 }
 
 int main()
