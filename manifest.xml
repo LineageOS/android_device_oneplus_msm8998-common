@@ -418,10 +418,6 @@
             <name>IDisplayModes</name>
             <instance>default</instance>
         </interface>
-        <interface>
-            <name>IPictureAdjustment</name>
-            <instance>default</instance>
-        </interface>
     </hal>
     <hal format="hidl">
         <name>vendor.lineage.power</name>
