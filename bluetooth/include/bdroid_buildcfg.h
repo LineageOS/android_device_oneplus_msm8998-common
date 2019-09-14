@@ -23,6 +23,8 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
+#pragma push_macro("PROPERTY_VALUE_MAX")
+
 #include <cutils/properties.h>
 #include <string.h>
 
@@ -65,5 +67,7 @@ static inline const char *BtmGetDefaultName()
 #define BT_CLEAN_TURN_ON_DISABLED 1
 // Increasing SEPs to 12 from 6 to support SHO/MCast i.e. two streams per codec
 #define AVDT_NUM_SEPS 12
+
+#pragma pop_macro("PROPERTY_VALUE_MAX")
 
 #endif
