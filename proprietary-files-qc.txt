@@ -506,6 +506,7 @@ vendor/lib64/com.quicinc.cne.api@1.1.so
 vendor/lib64/com.quicinc.cne.constants@1.0.so
 vendor/lib64/com.quicinc.cne.constants@2.0.so
 vendor/lib64/com.quicinc.cne.constants@2.1.so
+system/lib64/com.quicinc.cne.server@1.0.so:vendor/lib64/com.quicinc.cne.server@1.0.so
 vendor/lib64/com.quicinc.cne.server@2.0.so
 vendor/lib64/com.quicinc.cne.server@2.1.so
 vendor/lib64/com.quicinc.cne.server@2.2.so
@@ -766,9 +767,16 @@ vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so|8e083bb2a20ecf76bf96e303134cbaa9ce46be81
 vendor/lib/libsdm-diag.so
+-vendor/lib/libsdm-disp-vndapis.so|f81628ddf7fff00f5e316956ed3b50941932c7de
 vendor/lib/libsdmextension.so|3104df6a013e53b972227ed132aa683ec7303746
 vendor/lib/libtinyxml2_1.so
 vendor/lib/vendor.display.color@1.0.so
+vendor/lib/vendor.display.color@1.1.so
+vendor/lib/vendor.display.color@1.2.so
+vendor/lib/vendor.display.config@1.0.so
+vendor/lib/vendor.display.config@1.1.so
+system/lib/vendor.display.config@1.3.so:vendor/lib/vendor.display.config@1.3.so
+system/lib/vendor.display.config@1.4.so:vendor/lib/vendor.display.config@1.4.so
 vendor/lib/vendor.display.postproc@1.0.so
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
 vendor/lib64/libqseed3.so
@@ -778,6 +786,13 @@ vendor/lib64/libsdm-diag.so
 vendor/lib64/libsdmextension.so|c4a416cb8c0f5dc87bee8494d70247cf049224b9
 vendor/lib64/libtinyxml2_1.so
 vendor/lib64/vendor.display.color@1.0.so
+vendor/lib64/vendor.display.color@1.1.so
+vendor/lib64/vendor.display.color@1.2.so
+vendor/lib64/vendor.display.config@1.0.so
+vendor/lib64/vendor.display.config@1.1.so
+system/lib64/vendor.display.config@1.3.so:vendor/lib64/vendor.display.config@1.3.so
+system/lib64/vendor.display.config@1.4.so:vendor/lib64/vendor.display.config@1.4.so
+
 vendor/lib64/vendor.display.postproc@1.0.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 
@@ -814,7 +829,9 @@ vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libqtikeymaster4.so
 
 # Listen
+vendor/lib/libmulawdec.so
 vendor/lib/hw/sound_trigger.primary.msm8998.so
+vendor/lib64/libmulawdec.so
 vendor/lib64/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libsmwrapper.so
 
@@ -1026,7 +1043,7 @@ vendor/lib64/vendor.qti.hardware.radio.am@1.0.so
 vendor/radio/qcril_database/qcril.db
 
 # Radio - IMS
--priv-app/ims/ims.apk|543f67f1ae113a66e614f01d9a6aa3d28cdb8b57
+-priv-app/ims/ims.apk
 -app/imssettings/imssettings.apk
 etc/permissions/com.qualcomm.qti.imscmservice.xml
 etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
