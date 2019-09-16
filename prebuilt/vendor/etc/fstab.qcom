@@ -5,7 +5,7 @@
 # Currently we dont have e2fsck compiled. So fs check would failed.
 #<src>                                                       <mnt_point>               <type>  <mnt_flags and options>                                                                              <fs_mgr_flags>
 /dev/block/bootdevice/by-name/boot                           /boot                     emmc    defaults                                                                                             defaults
-/dev/block/bootdevice/by-name/userdata                       /data                     ext4    noatime,nosuid,nodev,noatime,barrier=1,noauto_da_alloc,discard                                       wait,check,fileencryption=ice,quota
+/dev/block/bootdevice/by-name/userdata                       /data                     ext4    nosuid,nodev,noatime,barrier=1,noauto_da_alloc                                       wait,check,latemount,fileencryption=ice,quota,reservedsize=128M
 /dev/block/bootdevice/by-name/cache                          /cache                    ext4    nosuid,nodev,noatime,barrier=1                                                                       wait,check,formattable
 /dev/block/bootdevice/by-name/misc                           /misc                     emmc    defaults                                                                                             defaults
 /dev/block/bootdevice/by-name/modem                          /vendor/firmware_mnt      vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0         wait
@@ -13,5 +13,4 @@
 /dev/block/bootdevice/by-name/dsp                            /vendor/dsp               ext4    ro,nosuid,nodev,barrier=1                                                                            wait
 /dev/block/bootdevice/by-name/persist                        /mnt/vendor/persist       ext4    noatime,nosuid,nodev,barrier=1                                                                       wait
 
-/dev/block/zram0                                             none                      swap    defaults                                                                                             zramsize=536870912,max_comp_streams=8
 /devices/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.0.auto/usb* auto                      auto    defaults                                                                                             voldmanaged=usbdisk:auto
