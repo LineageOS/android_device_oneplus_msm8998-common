@@ -1,4 +1,17 @@
-﻿on post-fs
+on init
+    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
+    mkdir /sys/fs/cgroup/freezer 0750 root system
+    mount cgroup none /sys/fs/cgroup/freezer  freezer
+    chmod 777 /sys/fs/cgroup/freezer
+
+    mkdir /sys/fs/cgroup/net_cls 
+    chmod 777 /sys/fs/cgroup/net_cls 
+    mount cgroup  none /sys/fs/cgroup/net_cls net_cls
+    chmod 777 /sys/fs/cgroup/net_cls/tasks
+    mkdir /sys/fs/cgroup/net_cls/background 0777
+    chmod 777 /sys/fs/cgroup/net_cls/background/tasks
+
+on post-fs
     chown system system /proc/ship_mode
     chown system system /dev/param
     chown system system /dev/block/mmcblk0p21
@@ -30,7 +43,8 @@
     chmod 660 /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
     chown system system /sys/class/leds/vibrator/vmax_mv
     chmod 660 /sys/class/leds/vibrator/vmax_mv
-    #wangdongdong@MultiMediaService,2018/03/28,change the mode of the file
+
+    # wangdongdong@MultiMediaService,2018/03/28,change the mode of the file
     chmod 0664 /persist/spkr_calibration.bin
     chown system system /sys/class/leds/vibrator/test_mode
     chmod 660 /sys/class/leds/vibrator/test_mode
@@ -40,7 +54,7 @@
     chown system system /sys/class/leds/vibrator/duration
     chown system system /sys/class/leds/vibrator/state
 
-    /* create a empty file for wifi hal to write mac address */
+    # create a empty file for wifi hal to write mac address
     write /mnt/vendor/persist/wlan_mac.bin ""
     chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
     mkdir /mnt/vendor/persist/engineermode
@@ -68,30 +82,6 @@
     chown system system /mnt/vendor/persist/OPDiagnose
     chown system system /sys/class/power_supply/battery/connect_disable
 
-on post-fs-data
-    # Nfc
-    mkdir /data/vendor/nfc 0770 nfc nfc
-
-    # Radio
-    mkdir /data/vendor/oemnvitems 0771 radio radio
-
-    # Fingerprint
-    mkdir /data/vendor_de/silead 0770 system system
-    mkdir /mnt/vendor/persist/silead 0777 system system
-    mkdir /mnt/vendor/persist/goodix 0777 system system
-
-    #mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
-    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
-
-    mkdir /persist/hdcp  775 media mediadrm
-    mkdir /mnt/vendor/persist/hdcp  775 media mediadrm
-
-    mkdir /data/vendor/misc/qsee/face/  0770 system system
-
-    #insmod /vendor/lib/modules/opchain.ko
-    #insmod /vendor/lib/modules-aging/opchain.ko
-
-#changhua add for fingerint
 on boot
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
@@ -107,13 +97,11 @@ on boot
     chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
     chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-    #chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
-    #chown system system /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
     chmod 0666 /dev/qseecom
-    #liuyan 2017/7/27 add for goodix fp
+    # liuyan 2017/7/27 add for goodix fp
     chmod 0666 /dev/goodix_fp
     
-    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
+    # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     setprop ro.nfc.port "I2C"
     chmod 0666 /dev/nq-nci
     chown nfc nfc /dev/nq-nci
@@ -126,7 +114,7 @@ on boot
 
     chmod 0666 /sys/module/opchain/parameters/boost_tl
 
-    #wulaibin@bsp , 2015/11/18, Modify for RGB light support
+    # wulaibin@bsp , 2015/11/18, Modify for RGB light support
     chown system system /sys/class/leds/red/pause_lo
     chown system system /sys/class/leds/blue/pause_lo
     chown system system /sys/class/leds/green/pause_lo
@@ -149,7 +137,7 @@ on boot
     chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
     chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
 
-    #shankai@bsp , 2017/12/29, Modify for rf_cable support
+    # shankai@bsp , 2017/12/29, Modify for rf_cable support
     chown system system /proc/rf_cable_config
 
     # camera. enable mobicat
@@ -163,7 +151,7 @@ on boot
     chown system system /sys/class/leds/led:switch_0/brightness
     chmod 666 /sys/class/leds/led:switch_0/brightness
 
-    #wujialong , 2015/10/22, Add for RGB light support
+    # wujialong , 2015/10/22, Add for RGB light support
     chown system system /sys/class/leds/red/ramp_step_ms
     chown system system /sys/class/leds/blue/ramp_step_ms
     chown system system /sys/class/leds/green/ramp_step_ms
@@ -180,15 +168,10 @@ on boot
     chmod 666 /sys/class/leds/green/brightness
     chmod 666 /sys/class/leds/blue/brightness
 
-    # Setup coredump mechanism
-    #chmod 0755 /system/bin/coredump.sh
-    #write /proc/sys/kernel/core_pattern |/system/bin/coredump.sh\ %p\ %u\ %t
-
-    #lifeng@bsp tp 2015/6/3 for firmware update
+    # lifeng@bsp tp 2015/6/3 for firmware update
     write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
-    #write /proc/s1302/fw_update 0
 
-    #/* Liyu.Tan, 2015.10.26, wifi test bin */
+    # Liyu.Tan, 2015.10.26, wifi test bin
     chown system system /vendor/bin/pktlogconf
     chmod 0777  /vendor/bin/pktlogconf
     chown system system /vendor/bin/iwpriv
@@ -201,30 +184,35 @@ on boot
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
-    #joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
+    # joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
     mkdir /data/vendor/oiface 0700 system system
+
+on post-fs-data
+    # Nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+    # Radio
+    mkdir /data/vendor/oemnvitems 0771 radio radio
+
+    # Fingerprint
+    mkdir /data/vendor_de/silead 0770 system system
+    mkdir /mnt/vendor/persist/silead 0777 system system
+    mkdir /mnt/vendor/persist/goodix 0777 system system
+
+    # mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
+    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
+
+    mkdir /persist/hdcp  775 media mediadrm
+    mkdir /mnt/vendor/persist/hdcp  775 media mediadrm
+
+    mkdir /data/vendor/misc/qsee/face/  0770 system system
 
 on property:sys.boot_completed=1 && property:persist.sys.usb.config=none && property:ro.boot.type=auto
     setprop persist.sys.usb.config adb
 
-#/*infi@bsp 2018/05/07 select WIRELESS_CONTROLLER_REMOTE_NDIS for
-# MAC/Ubuntu usb-tethering compatible*/
 on property:sys.boot_completed=1
     write /config/usb_gadget/g1/functions/gsi.rndis/rndis_class_id 1
     write /config/usb_gadget/g1/functions/gsi.rndis/rndis_wceis 1
-
-on init
-    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
-    mkdir /sys/fs/cgroup/freezer 0750 root system
-    mount cgroup none /sys/fs/cgroup/freezer  freezer
-    chmod 777 /sys/fs/cgroup/freezer
-
-    mkdir /sys/fs/cgroup/net_cls 
-    chmod 777 /sys/fs/cgroup/net_cls 
-    mount cgroup  none /sys/fs/cgroup/net_cls net_cls
-    chmod 777 /sys/fs/cgroup/net_cls/tasks
-    mkdir /sys/fs/cgroup/net_cls/background 0777
-    chmod 777 /sys/fs/cgroup/net_cls/background/tasks
 
 on charger && property:ro.debuggable=1
     setprop persist.sys.usb.config adb
@@ -254,29 +242,15 @@ on charger
 on property:sys.op_bootmode=charger && property:sys.usb.config=none
     setprop sys.usb.config mass_storage
 
-#niejianan@oneplus.framework , 2015/04/25, add for mmi charging test
 on property:sys.fastcharger=true
     write /sys/class/power_supply/battery/charging_enabled 1
 
 on property:sys.fastcharger=false
     write /sys/class/power_supply/battery/charging_enabled 0
 
-#kenshen@framework, 2017/09/18, align AOSP other OEMs
-# bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B -z \
-        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-
-#lifei@oneplus.media, 2016/02/14,  add service for CTS and engineer app
-#service oem_audio_device /system/bin/chcon u:object_r:oem_audio_device:s0 /dev/snd
-#    class late_start
-#    oneshot
-
-#davidliu@bsp 2017/04/14 Add OTG switch
 on property:persist.sys.oem.otg_support=true
     write /sys/class/power_supply/usb/otg_switch 1
+
 on property:persist.sys.oem.otg_support=false
     write /sys/class/power_supply/usb/otg_switch 0
 
@@ -286,12 +260,5 @@ on property:sys.boot_completed=1
     chown system system /sys/module/lpm_levels/parameters/cluster_prediction
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 
-# liuyan 2016/7/22, add ifaadaemon
-#service ifaadaemon /vendor/bin/ifaadaemon
-#    class late_start
-#    user system
-#    group system
-
-#@bsp 2018/09/05 FAT-4556 fix the audio heaset pop issue when shutdown(trigger faster)
 on property:sys.shutdown.requested=*
     write /sys/module/oneplus_fastchg/parameters/mcu_reset 1
