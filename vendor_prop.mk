@@ -20,7 +20,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=2 \
+    af.fast_track_multiplier=1 \
     vendor.audio_hal.period_size=192 \
     audio.offload.video=true \
     audio.offload.pcm.16bit.enable=true \
@@ -31,7 +31,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dirac.acs.controller=qem \
     ro.dirac.acs.storeSettings=1 \
     ro.dirac.ignore_error=1 \
-    tunnel.audio.encode=true
+    tunnel.audio.encode=true \
+    nxpWechatDebugEnable=1 \
+    persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
+    persist.vendor.audio.hac.enable=false
 
 # Audio new
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -41,6 +44,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicerec=true \
     persist.vendor.audio.fluence.speaker=true \
     vendor.audio.tunnel.encode=false \
+    ro.af.client_heap_size_kbyte=7168 \
+    persist.vendor.audio.hw.binder.size_kbyte=1024 \
     persist.vendor.audio.ras.enabled=false \
     vendor.audio.offload.buffer.size.kb=32 \
     vendor.audio.offload.track.enable=true \
@@ -56,14 +61,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.parser.ip.buffer.size=0 \
     vendor.audio.flac.sw.decoder.24bit=true \
     persist.vendor.bt.a2dp_offload_cap=false \
+    persist.vendor.bt.enable.splita2dp=false \
     vendor.audio.use.sw.alac.decoder=true \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.audio.hw.aac.encoder=true \
     vendor.fm.a2dp.conc.disabled=true \
     vendor.audio.noisy.broadcast.delay=600 \
     ro.config.media_vol_steps=25 \
-    ro.config.vc_call_vol_steps=11 \
-    ro.af.client_heap_size_kbyte=7168
+    ro.config.vc_call_vol_steps=11
 
 # Battery
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -75,16 +80,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.bt.a2dp_offload_cap=false \
     vendor.qcom.bluetooth.soc=cherokee \
     ro.bluetooth.a4wp=false \
-    ro.bluetooth.emb_wp_mode=true \
-    ro.bluetooth.wipower=true
+    ro.bluetooth.emb_wp_mode=false \
+    ro.bluetooth.wipower=false
 
 # Cabl
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.cabl=0
+    ro.qualcomm.cabl=2
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,com.android.camera,org.lineageos.snap \
+    vendor.camera.aux.packagelist=com.oneplus.camera,org.lineageos.snap,com.google.android.Pixel2ModUrnyx05 \
     vendor.camera.hal1.packagelist=com.whatsapp \
     persist.camera.mobicat=2 \
     persist.camera.stats.debugexif=3080192 \
@@ -113,7 +118,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DPM
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.dpm.feature=11
+    persist.vendor.dpm.feature=9
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -131,6 +136,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.sf.enable_hwc_vds=1 \
     debug.sf.latch_unsignaled=1 \
+    debug.gralloc.enable_fb_ubwc=1 \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
     persist.debug.wfd.enable=1 \
@@ -157,16 +163,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-http=true \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
     media.stagefright.enable-scan=true \
+    media.stagefright.audio.deep=true \
     mmp.enable.3g2=true \
     media.aac_51_output_enabled=true \
-    mm.enable.smoothstreaming=true \
+    mm.enable.sec.smoothstreaming=true \
     persist.mm.enable.prefetch=true \
     vidc.enc.dcvs.extra-buff-count=2 \
-    persist.media.treble_omx=true
+    persist.media.treble_omx=true \
+    vendor.vidc.debug.level=1 \
+    vendor.swvdec.log.level=1
 
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.nfc_nci=nqx.default \
     ro.nfc.port=I2C \
     persist.nfc.smartcard.config=SIM1,eSE1
 
@@ -230,15 +241,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.bar_fake_gcell=1 \
-    persist.vendor.radio.arfcn_test_mode=3
-
-# Radio - VoLTE / VoWifi
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.calls.on.ims=1
+    persist.vendor.radio.arfcn_test_mode=3 \
+    persist.backup.ntpServer=0.pool.ntp.org
 
 # RmNet Data
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -265,7 +269,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Timeservice
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true
+    persist.timed.enable=true \
+    persist.vendor.delta_time.enable=true
 
 # Oiface
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -282,6 +287,32 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # VNDK
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.vndk.version=28
+
+# VoLTE
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.ims.dropset_feature=0 \
+    persist.vendor.radio.add_power_save=1 \
+    persist.vendor.radio.force_on_dc=true \
+    persist.radio.custom_ecc=1 \
+    persist.radio.data_con_rprt=1 \
+    persist.radio.data_ltd_sys_ind=1 \
+    persist.radio.ignore_dom_time=10 \
+    persist.radio.rat_on=combine \
+    persist.radio.sib16_support=1 \
+    persist.radio.RATE_ADAPT_ENABLE=1 \
+    persist.radio.ROTATION_ENABLE=1 \
+    persist.radio.VT_ENABLE=1 \
+    persist.radio.VT_HYBRID_ENABLE=1 \
+    persist.radio.is_wps_enabled=true \
+    persist.radio.videopause.mode=1 \
+    persist.radio.sap_silent_pin=1 \
+    persist.radio.always_send_plmn=true \
+    persist.rcs.supported=0 \
+    persist.dbg.ims_volte_enable=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.radio.calls.on.ims=1
 
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
