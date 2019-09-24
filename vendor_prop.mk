@@ -211,6 +211,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-fma2dp=true \
     media.stagefright.enable-scan=true \
     media.stagefright.audio.deep=true \
+    media.stagefright.thumbnail.prefer_hw_codecs=true \
     mmp.enable.3g2=true \
     media.aac_51_output_enabled=true \
     mm.enable.sec.smoothstreaming=true \
