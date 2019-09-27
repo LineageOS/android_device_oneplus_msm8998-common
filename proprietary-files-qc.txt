@@ -79,17 +79,14 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcvirt.so
 
 # Bluetooth
-vendor/bin/btnvtool
-vendor/bin/hci_qcomm_init
-vendor/bin/wcnss_filter
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
--vendor/lib/libbtnv.so
-vendor/lib/libbt-hidlclient.so
-vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
--vendor/lib64/libbtnv.so
-vendor/lib64/libbt-hidlclient.so
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib/libbtnv.so|f987c402e05eaecfe43bd2626a0c9b1ebc068f76
+vendor/lib/libbt-hidlclient.so|23fad0ef6cd48502618c3381e923369f441e0c6e
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|44208f48bce10aba54227c0e50840aa106b4fa28
+vendor/lib64/libbtnv.so|11b97e25199558009e1df72bd002a97bb45fa8dc
+vendor/lib64/libbt-hidlclient.so|0fea38b7a4db63c759f3c962627596db601a14ec
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|07f0271c81a381125e53692e7d175141dc6e5d56
 
 # Bluetooth (ANT+)
 -lib/com.qualcomm.qti.ant@1.0.so
@@ -102,18 +99,26 @@ vendor/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 
 # Bluetooth (Audio)
--lib/vendor.qti.hardware.fm@1.0.so
-lib64/libaptX_encoder.so
-lib64/libaptXHD_encoder.so
--lib64/vendor.qti.hardware.fm@1.0.so
-vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0.so
-vendor/lib/vendor.qti.hardware.fm@1.0.so
-vendor/lib/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
-vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
-vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
-vendor/lib64/vendor.qti.hardware.fm@1.0.so
-vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
+lib64/libaptX_encoder.so|01379a17d29c1bbc7f6b0325709940ca8cdd7ab8
+lib64/libaptXHD_encoder.so|fdbca5626fee8607d90bea2a6903eeebf396a7cf
+vendor/lib/vendor.qti.hardware.fm@1.0.so|7f9e543834d9d539c5334b332037af4377919b6c
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|7c3b481cc7ac328f26577b24cef4b29bb2cbabdd
+vendor/lib/hw/audio.bluetooth_qti.default.so|823a82d831bcdba17bebfff57ff859e7386fd28f
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|882f6c283a7a38bb8c0b78b28bad78910f80ff5c
+vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|4af833286732aa1515ff1c7163e253f6b25516b5
+vendor/lib/libbluetooth_audio_session_qti.so|cb80942f8dbafc908c6c67cde505c2a2f70e6d1b
+vendor/lib/vendor.qti.hardware.bluetooth_audio@2.0.so|e0c41efb8cc7634538cd91cf5c12e40bbc16da6d
+vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|964ff0150c0af77fdc7f9839943b34d86fc5f86a
+vendor/lib64/hw/audio.bluetooth_qti.default.so|92ec8f9d7e845499eb4946d7d624955e58f15bed
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|986e860719653863178fdcf69e825f625809e75d
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|e860885f2ed838802b7e26d7ad6fd44e6767afc2
+vendor/lib64/libbluetooth_audio_session_qti.so|076b318c7ea1b04cebd86ceb9972fd7f62271428
+vendor/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so|6d6e3fba1f9c76f94361f8b528c84633df6c2fc0
+vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|6d532b17c0b32373e4f96fb7bc8eac2f6565ff02
+vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|a3e1790bd8da3f0a0ad0c7c08de8509c366331b0
+vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|222bd2213d6833d23d77f547d4b8dfd18bb9e121
+vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|2145be9a2a5113af6088fae53e67d0d413c29d0d
+vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|6c383366d7c3b2734ccf65fea7574f882292232e
 
 # Camera
 framework/com.qualcomm.qti.camera.jar
