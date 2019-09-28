@@ -191,11 +191,6 @@ on property:sys.boot_completed=1
     # Disable sched boost
     write /proc/sys/kernel/sched_boost 0
 
-    # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/minfree "18432,23040,27648,51256,150296,200640"
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 162500
-
     # Set up big.LITTLE scheduler configuration
     write /proc/sys/kernel/sched_migration_fixup 1
     write /proc/sys/kernel/sched_upmigrate 95
@@ -214,3 +209,6 @@ on property:sys.boot_completed=1
 
     # Is IOP even still a thing?
     start vendor.iop
+
+    # QCOM post boot
+    start qcom-post-boot
