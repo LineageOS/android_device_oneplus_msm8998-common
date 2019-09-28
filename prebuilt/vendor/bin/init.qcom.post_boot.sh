@@ -3785,78 +3785,11 @@ esac
 case "$target" in
     "msm8998" | "apq8098_latv")
 
-	echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
-	echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
-	echo 30 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
-	echo 100 > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
-	echo 1 > /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster
-	echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
-
 	# Enable sched systrace
 	echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
 
-	# Setting b.L scheduler parameters
-	echo 1 > /proc/sys/kernel/sched_migration_fixup
-	echo 95 > /proc/sys/kernel/sched_upmigrate
-	echo 90 > /proc/sys/kernel/sched_downmigrate
-	echo 100 > /proc/sys/kernel/sched_group_upmigrate
-	echo 95 > /proc/sys/kernel/sched_group_downmigrate
-	echo 0 > /proc/sys/kernel/sched_select_prev_cpu_us
-	echo 400000 > /proc/sys/kernel/sched_freq_inc_notify
-	echo 400000 > /proc/sys/kernel/sched_freq_dec_notify
-	echo 5 > /proc/sys/kernel/sched_spill_nr_run
-	echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
-        echo 1 > /proc/sys/kernel/sched_prefer_sync_wakee_to_waker
-	start iop
-
-        # disable thermal bcl hotplug to switch governor
-        echo 0 > /sys/module/msm_thermal/core_control/enabled
-
-        # online CPU0
-        echo 1 > /sys/devices/system/cpu/cpu0/online
-	# configure governor settings for little cluster
-	echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-	echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
-	echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
-	echo 19000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
-	echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
-	echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-	echo 1248000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-	echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-	echo "83 1804800:95" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-	echo 19000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
-	echo 79000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
-	echo 518400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-	echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
-        # online CPU4
-        echo 1 > /sys/devices/system/cpu/cpu4/online
-	# configure governor settings for big cluster
-	echo "interactive" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-	echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load
-	echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif
-	echo 19000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
-	echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
-	echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
-	echo 1574400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
-	echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
-	echo "83 1939200:90 2016000:95" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
-	echo 19000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
-	echo 79000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
-	echo 806400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
-	echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif
-
-        # re-enable thermal and BCL hotplug
-        echo 1 > /sys/module/msm_thermal/core_control/enabled
-
-        # Enable input boost configuration
-        # simon.ma+@2018/09/28,modify the input_boost_freq and input_boost_ms to make the anim smooth
-        echo "0:1036800 4:1056000" > /sys/module/cpu_boost/parameters/input_boost_freq
-        echo 450 > /sys/module/cpu_boost/parameters/input_boost_ms
-        # Enable bus-dcvs
-
 	# Enable Adaptive LMK denzel.chen
 	echo "18432,23040,27648,51256,150296,200640" > /sys/module/lowmemorykiller/parameters/minfree
-
 
         for cpubw in /sys/class/devfreq/*qcom,cpubw*
         do
@@ -3925,41 +3858,12 @@ case "$target" in
 	    ;;
 	esac
 
-	echo N > /sys/module/lpm_levels/system/pwr/cpu0/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/pwr/cpu1/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/pwr/cpu2/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/pwr/cpu3/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/perf/cpu4/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/perf/cpu5/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/perf/cpu6/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/perf/cpu7/ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-dynret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-ret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/perf/perf-l2-dynret/idle_enabled
-	echo N > /sys/module/lpm_levels/system/perf/perf-l2-ret/idle_enabled
-	echo N > /sys/module/lpm_levels/parameters/sleep_disabled
-
-        echo 0-3 > /dev/cpuset/background/cpus
-        echo 0-3 > /dev/cpuset/system-background/cpus
-        echo 0 > /proc/sys/kernel/sched_boost
-
         # Set Memory parameters
         configure_memory_parameters
 
         # Chris.Gao@OnePlus.Power&&Perf, 2019/2/14 , Disable adaptive_lmk
         echo 0 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
         # End Disable adaptive_lmk
-
-        if [ -f "/defrag_aging.ko" ]; then
-           insmod /defrag_aging.ko
-        else
-           insmod /system/lib/modules/defrag.ko
-        fi
-        sleep 1
-        lsmod | grep defrag
-        if [ $? != 0 ]; then
-           echo 1 > /sys/module/defrag_helper/parameters/disable
-        fi
     ;;
 esac
 
