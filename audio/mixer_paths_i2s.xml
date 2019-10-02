@@ -235,4 +235,8 @@
         <path name="handset-mic" />
     </path>
 
+    <path name="unprocessed-stereo-mic">
+        <path name="voice-rec-dmic-ef" />
+    </path>
+
 </mixer>
