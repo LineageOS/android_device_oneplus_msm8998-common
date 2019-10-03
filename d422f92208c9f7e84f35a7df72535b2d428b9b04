@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a23843_4884216c",
+        "filename": "prebuilt/vendor/etc/init/hw/init.target.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 21054
+      },
+      "writtenOn": "2019-10-03T11:56:06Z",
+      "side": 1,
+      "message": "if I am not wrong, then the prop for hwc2 status is init.svc.vendor.hwcomposer-2-1",
+      "revId": "d422f92208c9f7e84f35a7df72535b2d428b9b04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
