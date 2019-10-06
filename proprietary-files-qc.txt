@@ -992,7 +992,7 @@ etc/permissions/telephonyservice.xml:product/etc/permissions/telephonyservice.xm
 framework/embmslibrary.jar:product/framework/embmslibrary.jar
 framework/qcnvitems.jar:product/framework/qcnvitems.jar
 framework/qcrilhook.jar:product/framework/qcrilhook.jar
-product/framework/qti-telephony-common.jar|b1953a3599255f08f1785c677d22810f65e0167b
+product/framework/qti-telephony-common.jar|c7a2b3cfd98cf0e80cfb0af3f72e0d2c894725df
 framework/QtiTelephonyServicelibrary.jar:product/framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk:product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
