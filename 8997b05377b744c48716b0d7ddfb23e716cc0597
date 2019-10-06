@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dc1bef7_50a8db2c",
+        "filename": "vendor_prop.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2019-10-06T17:50:03Z",
+      "side": 1,
+      "message": "useless on aosp",
+      "revId": "8997b05377b744c48716b0d7ddfb23e716cc0597",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
