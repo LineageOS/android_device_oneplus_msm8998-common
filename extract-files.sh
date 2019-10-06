@@ -109,6 +109,8 @@ fix_product_path product/etc/permissions/embms.xml
 fix_product_path product/etc/permissions/qcnvitems.xml
 fix_product_path product/etc/permissions/qcrilhook.xml
 fix_product_path product/etc/permissions/telephonyservice.xml
+fix_product_path product/etc/permissions/cneapiclient.xml
+fix_product_path product/etc/permissions/com.quicinc.cne.xml
 
 #
 # Correct android.hidl.manager@1.0-java jar name
