@@ -398,13 +398,13 @@ service ppd /vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
     disabled
 
-on property:init.svc.hwcomposer-2-1=stopped
+on property:init.svc.vendor.hwcomposer-2-1=stopped
     stop ppd
 
-on property:init.svc.hwcomposer-2-1=running
+on property:init.svc.vendor.hwcomposer-2-1=running
     start ppd
 
-on property:init.svc.hwcomposer-2-1=restarting
+on property:init.svc.vendor.hwcomposer-2-1=restarting
     stop ppd
 
 #
