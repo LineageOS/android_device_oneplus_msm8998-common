@@ -21,10 +21,10 @@
      for different hardware or product builds. -->
 <resources>
     <!-- Opens back camera using openLegacy() -->
-    <bool name="back_camera_open_legacy">true</bool>
+    <bool name="back_camera_open_legacy">false</bool>
 
     <!-- Opens front camera using openLegacy() -->
-    <bool name="front_camera_open_legacy">true</bool>
+    <bool name="front_camera_open_legacy">false</bool>
 
     <!-- Restart preview for back camera onPictureTaken -->
     <bool name="back_camera_restart_preview_onPictureTaken">true</bool>
