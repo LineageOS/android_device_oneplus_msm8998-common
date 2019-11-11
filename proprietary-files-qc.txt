@@ -688,20 +688,11 @@ vendor/lib/hw/gatekeeper.msm8998.so
 vendor/lib64/hw/gatekeeper.msm8998.so
 
 # GPS
-etc/permissions/com.qti.location.sdk.xml
-etc/permissions/izat.xt.srv.xml
-framework/com.qti.location.sdk.jar
-framework/izat.xt.srv.jar
-lib64/libxt_native.so
-lib/libxt_native.so
-vendor/bin/garden_app
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
 vendor/bin/qdmastatsd
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
-vendor/bin/xtwifi-client
-vendor/bin/xtwifi-inet-agent
 vendor/etc/init/init.qdmastats.rc
 vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
 vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so
@@ -721,13 +712,7 @@ vendor/lib64/liblowi_wifihal.so
 vendor/lib64/libqdma_file_agent.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libxtadapter.so
-vendor/lib64/vendor.qti.gnss@1.0.so
-vendor/lib64/vendor.qti.gnss@1.1.so
-vendor/lib64/vendor.qti.gnss@1.2.so
-vendor/lib64/vendor.qti.gnss@2.0.so
-vendor/lib64/vendor.qti.gnss@2.1.so
 vendor/lib64/vendor.qti.gnss@3.0-service.so
-vendor/lib64/vendor.qti.gnss@3.0.so
 vendor/lib/hw/vendor.qti.gnss@3.0-impl.so
 vendor/lib/libdataitems.so
 vendor/lib/libgarden.so
@@ -741,13 +726,7 @@ vendor/lib/liblocationservice.so
 vendor/lib/libqdma_file_agent.so
 vendor/lib/libslimclient.so
 vendor/lib/libxtadapter.so
-vendor/lib/vendor.qti.gnss@1.0.so
-vendor/lib/vendor.qti.gnss@1.1.so
-vendor/lib/vendor.qti.gnss@1.2.so
-vendor/lib/vendor.qti.gnss@2.0.so
-vendor/lib/vendor.qti.gnss@2.1.so
 vendor/lib/vendor.qti.gnss@3.0-service.so
-vendor/lib/vendor.qti.gnss@3.0.so
 
 # Graphics
 vendor/lib64/egl/eglSubDriverAndroid.so
