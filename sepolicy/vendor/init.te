@@ -2,3 +2,5 @@ allow init proc_alarm_boot:file { r_file_perms };
 
 allow init sysfs_fpc:file { r_file_perms };
 allow init sysfs_data:file { r_file_perms };
+allow init sysfs_project_info:file { r_file_perms };
+

@@ -4,3 +4,6 @@ allow hal_nfc_default nfc_data_file:file { rw_file_perms };
 
 allow hal_nfc_default nfc_vendor_data_file:dir { search getattr };
 allow hal_nfc_default nfc_vendor_data_file:file { rw_file_perms };
+
+allow hal_nfc_default hal_secure_element_hwservice:hwservice_manager { find };
+binder_call(hal_nfc_default, hal_secure_element_default)
