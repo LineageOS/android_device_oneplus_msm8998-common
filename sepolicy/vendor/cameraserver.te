@@ -15,3 +15,5 @@ binder_call(cameraserver, mediacodec)
 typeattribute hal_nfc_default data_between_core_and_vendor_violators;
 allow hal_nfc_default nfc_data_file:dir { search };
 allow hal_nfc_default nfc_data_file:file { r_file_perms };
+
+allow cameraserver vendor_file:file { r_file_perms };

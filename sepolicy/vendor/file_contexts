@@ -24,7 +24,8 @@
 # Fingerprint
 /dev/fpc1020                                                    u:object_r:fingerprint_device:s0
 /dev/goodix_fp                                                  u:object_r:fingerprint_device:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom    u:object_r:hal_fingerprint_default_exec:s0
+/data/system/users/0/fpdata(/.*)?                               u:object_r:fingerprintd_data_file:s0
 
 # Lights
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.oneplus_msm8998    u:object_r:hal_light_default_exec:s0
@@ -61,7 +62,8 @@
 
 # Sysfs
 /sys/class/leds(/.*)?                                           u:object_r:sysfs_leds:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:gpio-leds/leds(/.*)?     u:object_r:sysfs_leds:s0
+/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:gpio-leds/leds(/.*)?    u:object_r:sysfs_leds:s0
+/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pmi8998@3:qcom,leds@d000/leds(/.*)?    u:object_r:sysfs_leds:s0
 
 /sys/devices/soc/soc:fingerprint_detect/sensor_version          u:object_r:sysfs_fpc:s0
 /sys/devices/soc/soc:fpc_fpc1020/irq                            u:object_r:sysfs_fpc_irq:s0
@@ -76,13 +78,13 @@
 /sys/kernel/boot_wlan(/.*)?                                     u:object_r:sysfs_wifi:s0
 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD           u:object_r:sysfs_fpc_key:s0
 
-/sys/project_info(/.*)?                                         u:object_r:sysfs_data:s0
+/sys/project_info(/.*)?                                         u:object_r:sysfs_project_info:s0
 
 /firmware(/.*)?                                                 u:object_r:firmware_file:s0
 /bt_firmware(/.*)?                                              u:object_r:bt_firmware_file:s0
 
 # Touch
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998 u:object_r:hal_touch_oneplus_msm8998_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998    u:object_r:hal_touch_oneplus_msm8998_exec:s0
 
 # Wifi
 /(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi_mac_generator_exec:s0
