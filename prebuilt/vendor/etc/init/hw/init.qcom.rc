@@ -426,6 +426,9 @@ on post-fs-data
     #Start move_wifi_data service.
     start vendor.move_wifi_data
 
+    # Trigger WLAN driver load
+    write /sys/kernel/boot_wlan/boot_wlan 1
+
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
     group nfc
