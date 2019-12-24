@@ -3,9 +3,6 @@ binder_call(hal_camera_default, hal_graphics_allocator_default)
 
 allow hal_camera_default system_server:unix_stream_socket { read write };
 
-allow hal_camera_default hal_configstore_ISurfaceFlingerConfigs:hwservice_manager { find };
-allow hal_camera_default hal_graphics_allocator_hwservice:hwservice_manager { find };
-
 # /data/misc/camera/client_package_name
 typeattribute hal_camera_default data_between_core_and_vendor_violators;
 allow hal_camera_default camera_data_file:dir { search };
