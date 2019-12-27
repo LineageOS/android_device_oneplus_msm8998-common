@@ -1,9 +1,12 @@
+genfscon debugfs /p2p0/power_stats     u:object_r:debugfs_power_stats:s0
+genfscon debugfs /wlan0/power_stats    u:object_r:debugfs_power_stats:s0
+genfscon debugfs /rmt_storage/rmts     u:object_r:qti_debugfs:s0
+genfscon debugfs /msm_core             u:object_r:qti_debugfs:s0
+
 genfscon proc /touchpanel              u:object_r:proc_touchpanel:s0
 genfscon proc /s1302                   u:object_r:proc_touchpanel:s0
 genfscon proc /tri-state-key           u:object_r:proc_touchpanel:s0
 genfscon proc /sys/kernel/boot_reason  u:object_r:proc_alarm_boot:s0
 
-genfscon debugfs /p2p0/power_stats     u:object_r:debugfs_power_stats:s0
-genfscon debugfs /wlan0/power_stats    u:object_r:debugfs_power_stats:s0
-genfscon debugfs /rmt_storage/rmts     u:object_r:qti_debugfs:s0
-genfscon debugfs /msm_core             u:object_r:qti_debugfs:s0
+genfscon sysfs /devices/soc/soc:fingerprint_detect/sensor_version    u:object_r:sysfs_fpc:s0
+genfscon sysfs /project_info/project_name                            u:object_r:sysfs_project_info:s0
