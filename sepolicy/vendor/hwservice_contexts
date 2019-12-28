@@ -5,5 +5,5 @@ vendor.oneplus.hardware.hdcpkey::IOneplusHdcpKey          u:object_r:hal_hdcpkey
 vendor.oneplus.hardware.ifaa::IOneplusIfaa                u:object_r:hal_ifaa_hwservice:s0
 vendor.oneplus.hardware.param::IOneplusParam              u:object_r:hal_param_hwservice:s0
 
-vendor.nxp.nxpese::INxpEse                                u:object_r:hal_secure_element_hwservice:s0
-vendor.nxp.nxpnfc::INxpNfc                                u:object_r:hal_nfc_hwservice:s0
+vendor.nxp.nxpese::INxpEse                                u:object_r:nxpese_hwservice:s0
+vendor.nxp.nxpnfc::INxpNfc                                u:object_r:nxpnfc_hwservice:s0
