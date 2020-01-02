@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5a6e4a6_f2cb2c6f",
+        "filename": "sepolicy/vendor/hal_nfc_default.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2020-01-02T07:34:47Z",
+      "side": 1,
+      "message": "add_hwservice(hal_nfc_default, nxpese_hwservice)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 5
+      },
+      "revId": "cacfe7be65a2c3c8f161eb57ca3af1d7d2c0c352",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1121711_9f5ee539",
+        "filename": "sepolicy/vendor/hal_nfc_default.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 523
+      },
+      "writtenOn": "2020-01-02T07:34:47Z",
+      "side": 1,
+      "message": "add_hwservice(hal_nfc_default, nxpnfc_hwservice)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "cacfe7be65a2c3c8f161eb57ca3af1d7d2c0c352",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
