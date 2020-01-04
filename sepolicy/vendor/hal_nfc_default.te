@@ -5,7 +5,6 @@ allow hal_nfc_default nfc_data_file:file { rw_file_perms };
 allow hal_nfc_default nfc_vendor_data_file:dir { rw_dir_perms };
 allow hal_nfc_default nfc_vendor_data_file:file { rw_file_perms };
 
-add_hwservice(hal_nfc_default, nxpese_hwservice)
 add_hwservice(hal_nfc_default, nxpnfc_hwservice)
 
 binder_call(hal_nfc_default, hal_secure_element_default)

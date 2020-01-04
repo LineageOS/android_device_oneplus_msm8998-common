@@ -1,2 +1,1 @@
 add_hwservice(hal_secure_element_default, nxpese_hwservice)
-add_hwservice(hal_secure_element_default, nxpnfc_hwservice)
