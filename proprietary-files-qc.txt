@@ -228,7 +228,6 @@ vendor/lib/libSTdisp.so
 vendor/lib/libUBWC.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
 vendor/lib/libvideoutils.so
-vendor/lib/vendor.qti.hardware.camera.device@1.0.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
@@ -254,7 +253,6 @@ vendor/lib64/libscveObjectSegmentation.so
 vendor/lib64/libscveObjectSegmentation_stub.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libvideoutils.so
-vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera actuators
 vendor/lib/libactuator_lc898217xc_imx350.so
@@ -778,10 +776,6 @@ vendor/lib/libtinyxml2_1.so
 vendor/lib/vendor.display.color@1.0.so
 vendor/lib/vendor.display.color@1.1.so
 vendor/lib/vendor.display.color@1.2.so
-vendor/lib/vendor.display.config@1.0.so
-vendor/lib/vendor.display.config@1.1.so
-system/lib/vendor.display.config@1.3.so:vendor/lib/vendor.display.config@1.3.so
-system/lib/vendor.display.config@1.4.so:vendor/lib/vendor.display.config@1.4.so
 vendor/lib/vendor.display.postproc@1.0.so
 vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
 vendor/lib64/libqseed3.so
@@ -793,11 +787,6 @@ vendor/lib64/libtinyxml2_1.so
 vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.color@1.2.so
-vendor/lib64/vendor.display.config@1.0.so
-vendor/lib64/vendor.display.config@1.1.so
-system/lib64/vendor.display.config@1.3.so:vendor/lib64/vendor.display.config@1.3.so
-system/lib64/vendor.display.config@1.4.so:vendor/lib64/vendor.display.config@1.4.so
-
 vendor/lib64/vendor.display.postproc@1.0.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 

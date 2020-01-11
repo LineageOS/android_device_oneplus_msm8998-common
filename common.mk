@@ -153,8 +153,7 @@ PRODUCT_PACKAGES += \
     Snap
 
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor
+    vendor.qti.hardware.camera.device@1.0
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -186,8 +185,7 @@ PRODUCT_PACKAGES += \
     libvulkan
 
 PRODUCT_PACKAGES += \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.0_vendor
+    vendor.display.config@1.0
 
 # Doze
 PRODUCT_PACKAGES += \
