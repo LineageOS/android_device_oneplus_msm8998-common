@@ -13,9 +13,15 @@
 /sys/devices/bt_wcn3990/extldo                                  u:object_r:sysfs_bluetooth_writable:s0
 /(vendor|system/vendor)/bin/bt-mac-generator                    u:object_r:bt_mac_generator_exec:s0
 
+# Camera
+/(product|system/product)/(lib|lib64)/vendor\.qti\.hardware\.camera\.device@1\.0\.so   u:object_r:same_process_hal_file:s0
+
 # Dash
 /dev/dash                                                       u:object_r:dash_device:s0
 /vendor/xbin/dashd                                              u:object_r:dashd_exec:s0
+
+# Display
+/(product|system/product)/(lib|lib64)/vendor\.display\.config@1\.[0-9]\.so   u:object_r:same_process_hal_file:s0
 
 # DRM
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.drmkey@1\.0-service    u:object_r:hal_drm_default_exec:s0
