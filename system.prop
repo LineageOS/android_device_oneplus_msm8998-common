@@ -47,6 +47,7 @@ ro.com.android.dataroaming=true
 ro.telephony.call_ring.multiple=false
 ro.telephony.default_network=22,20
 ro.telephony.iwlan_operation_mode=legacy
+ro.telephony.use_old_mnc_mcc_format=true
 telephony.lteOnCdmaDevice=1
 
 # SurfaceFlinger
