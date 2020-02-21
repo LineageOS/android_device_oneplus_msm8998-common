@@ -120,7 +120,6 @@ static int parse_stats(const char **params, size_t params_size,
     return 0;
 }
 
-
 static int extract_stats(uint64_t *list, char *file,
                          struct stat_pair *map, size_t map_size) {
     FILE *fp;
