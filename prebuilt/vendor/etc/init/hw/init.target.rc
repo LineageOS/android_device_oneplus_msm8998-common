@@ -319,10 +319,6 @@ service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
 #    class core
 #    disabled
 #
-#service mdm_launcher /system/bin/sh /init.mdm.sh
-#    class main
-#    oneshot
-#
 #service qcamerasvr /system/bin/mm-qcamera-daemon
 #    class late_start
 #    user camera
