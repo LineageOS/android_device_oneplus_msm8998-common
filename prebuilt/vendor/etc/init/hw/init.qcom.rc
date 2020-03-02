@@ -943,12 +943,6 @@ service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
 #    oneshot
 #    seclabel u:r:qti-testscripts:s0
 
-service vendor.wifi-sdio-on /vendor/bin/init.qcom.sdio.sh
-    class late_start
-    group wifi inet
-    disabled
-    oneshot
-
 service vendor.wifi-crda /vendor/bin/init.crda.sh
    class late_start
    user root
