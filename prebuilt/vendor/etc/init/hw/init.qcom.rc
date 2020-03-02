@@ -541,11 +541,6 @@ on property:vendor.bluetooth.startbtlogger=true
 on property:vendor.bluetooth.startbtlogger=false
     stop vendor.bt_logger
 
-service vendor.qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
 service vendor.qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
