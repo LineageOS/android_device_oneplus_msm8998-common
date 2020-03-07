@@ -55,3 +55,25 @@ cc_binary {
     ],
     proprietary: true,
 }
+
+cc_binary {
+    name: "android.hardware.power-service.oneplus_msm8998-libperfmgr",
+    relative_install_path: "hw",
+    init_rc: ["aidl/android.hardware.power-service.oneplus_msm8998-libperfmgr.rc"],
+    vintf_fragments: ["aidl/android.hardware.power-service.oneplus_msm8998.xml"],
+    vendor: true,
+    shared_libs: [
+        "android.hardware.power-ndk_platform",
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libbinder_ndk",
+        "libdisppower-msm8998",
+        "libperfmgr",
+    ],
+    srcs: [
+        "aidl/service.cpp",
+        "aidl/Power.cpp",
+    ],
+}
