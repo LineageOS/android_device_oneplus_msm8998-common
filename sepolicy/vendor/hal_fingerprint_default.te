@@ -14,3 +14,5 @@ allow hal_fingerprint_default sysfs_fpc_screen:file { rw_file_perms };
 
 allow hal_fingerprint_default tee_device:chr_file { rw_file_perms };
 allow hal_fingerprint_default self:netlink_socket { create_socket_perms_no_ioctl };
+
+set_prop(hal_fingerprint_default, vendor_fp_prop);
