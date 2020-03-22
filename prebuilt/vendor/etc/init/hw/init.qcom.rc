@@ -370,6 +370,9 @@ on boot
     chown system system /proc/tri-state-key/keyCode_bottom
     chmod 0660 /proc/tri-state-key/keyCode_bottom
 
+    # init.qcom.sh
+    write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
@@ -1016,9 +1019,6 @@ service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
 on property:sys.boot_completed=1
     start vendor.qcom-post-boot
 
-on property:ro.vendor.ril.mbn_copy_completed=1
-    write /data/vendor/radio/copy_complete 1
-
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
@@ -1081,7 +1081,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     class core
     user root
     group root
-    disabled
 
 on charger
     mkdir /dev/usb-ffs 0770 shell shell
