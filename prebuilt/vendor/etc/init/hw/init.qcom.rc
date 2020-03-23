@@ -134,7 +134,6 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
-    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
     # for backward compatibility
     chown system system /persist/sensors
@@ -791,12 +790,6 @@ on property:sys.boot_completed=1
     # QCOM post boot
     start qcom-post-boot
 
-on property:persist.vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
-on property:vendor.radio.atfwd.start=false
-    stop vendor.atfwd
-
 # corefile limit
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
@@ -1020,7 +1013,7 @@ on property:sys.boot_completed=1
     start vendor.qcom-post-boot
 
 service vendor.atfwd /vendor/bin/ATFWD-daemon
-    class late_start
+    class main
     user system
     group system radio
 
