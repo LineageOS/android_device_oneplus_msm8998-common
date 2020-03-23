@@ -1003,7 +1003,7 @@ service vendor.loc_launcher /vendor/bin/loc_launcher
     user gps
     group gps
 
-service vendor.qcom-sh /vendor/bin/init.qcom.sh
+service vendor.init-radio-sh /vendor/bin/init.radio.sh
     class late_start
     user root
     group root system radio
