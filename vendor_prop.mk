@@ -191,6 +191,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=420 \
     ro.opengles.version=196610 \
     debug.sf.hw=1 \
     debug.sf.enable_hwc_vds=1 \
