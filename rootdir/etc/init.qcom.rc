@@ -280,9 +280,6 @@ on boot
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
-    chown system system /sys/class/backlight/panel0-backlight/brightness
-    chown system system /sys/class/backlight/panel0-backlight/max_brightness
-
     # Create directory used for display
     mkdir /mnt/vendor/persist/display 0770 system graphics
 
