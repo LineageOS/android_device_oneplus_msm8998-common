@@ -118,8 +118,6 @@ on late-fs
     write /sys/block/sde/queue/read_ahead_kb 2048
 
 on post-fs
-    chmod 0755 /sys/kernel/debug/tracing
-
     # from init.oem.rc
     chown system system /proc/ship_mode
     chown system system /dev/param
