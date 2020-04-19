@@ -1026,10 +1026,6 @@ service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.andro
     oneshot
     keycodes 114 115 116
 
-#Set gpu available frequencies property
-on property:vendor.gpu.available_frequencies=*
-    setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
-
 # from init.oem.rc
 on property:sys.boot_completed=1 && property:persist.sys.usb.config=none && property:ro.boot.type=auto
     setprop persist.sys.usb.config adb
