@@ -821,9 +821,6 @@ on property:sys.boot_completed=1
     # QCOM post boot
     start qcom-post-boot
 
-on property:ro.bluetooth.ftm_enabled=true
-    start ftmd
-
 on property:vold.decrypt=trigger_restart_framework
     start wcnss-service
 
@@ -860,13 +857,6 @@ service vendor.rmt_storage /vendor/bin/rmt_storage
 service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
-
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
-    class late_start
-    user root
-    group bluetooth net_bt_admin misc diag net_bt
-    disabled
-    oneshot
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
