@@ -811,9 +811,6 @@ on property:sys.boot_completed=1
     # QCOM post boot
     start qcom-post-boot
 
-on property:vold.decrypt=trigger_restart_framework
-    start wcnss-service
-
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
