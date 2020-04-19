@@ -1033,23 +1033,6 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     user system
     group system radio
 
-service hostapd_fst /vendor/bin/hw/hostapd -dd -g /data/vendor/wifi/hostapd/global
-    interface android.hardware.wifi.hostapd@1.0::IHostapd default
-    class main
-    capabilities NET_ADMIN NET_RAW
-    user wifi
-    group wifi
-    disabled
-    oneshot
-
-service vendor.wigig_hostapd /vendor/bin/hw/hostapd -dd  -j wigighostapd /data/vendor/wifi/hostapd/wigig_hostapd.conf
-    class late_start
-    capabilities NET_ADMIN NET_RAW
-    user wifi
-    group wifi inet keystore
-    oneshot
-    disabled
-
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
