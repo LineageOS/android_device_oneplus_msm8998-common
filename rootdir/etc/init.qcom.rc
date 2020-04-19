@@ -821,11 +821,6 @@ on property:sys.boot_completed=1
     # QCOM post boot
     start qcom-post-boot
 
-# corefile limit
-on property:persist.debug.trace=1
-    mkdir /data/core 0777 root root
-    write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
-
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
