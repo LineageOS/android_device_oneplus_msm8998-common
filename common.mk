@@ -519,6 +519,7 @@ PRODUCT_PACKAGES += \
     wificond \
     wpa_supplicant \
     wpa_supplicant.conf \
+    WifiOverlay \
     wifi-mac-generator
 
 PRODUCT_COPY_FILES += \
