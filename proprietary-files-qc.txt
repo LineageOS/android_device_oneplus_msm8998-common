@@ -547,7 +547,6 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
 vendor/etc/init/cnd.rc
 vendor/etc/init/dataadpl.rc
-vendor/etc/init/dataqti.rc
 vendor/etc/init/init-qcril-data.rc
 vendor/etc/init/vendor.qti.hardware.factory@1.0-service.rc
 vendor/etc/permissions/vendor.qti.hardware.factory.xml:product/etc/permissions/vendor.qti.hardware.factory.xml
