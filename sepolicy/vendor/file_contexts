@@ -80,6 +80,9 @@
 # Thermal
 /data/vendor/thermal(/.*)?                                      u:object_r:thermal_data_file:s0
 
+# tri-state-key daemon
+/(vendor|system/vendor)/bin/tri-state-key_daemon                u:object_r:tri-state-key_daemon_exec:s0
+
 # Touch
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998    u:object_r:hal_touch_oneplus_msm8998_exec:s0
 
