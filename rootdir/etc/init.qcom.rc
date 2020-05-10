@@ -137,6 +137,9 @@ on fs
     start vendor.qseecomd
 
 on late-fs
+    # Start devices by sysfs trigger
+    start init-devstart-sh
+
     # Start services for bootanim
     start surfaceflinger
     start bootanim
@@ -160,8 +163,6 @@ on late-fs
     write /sys/block/sde/queue/read_ahead_kb 2048
 
 on post-fs
-    write /dev/ipa 1
-
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true
 
@@ -302,10 +303,8 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    # Allow subsystem (modem etc) debugging
-    write /sys/kernel/boot_adsp/boot 1
-    write /sys/kernel/boot_cdsp/boot 1
-    write /sys/kernel/boot_slpi/boot 1
+    # wait for devices
+    wait_for_prop vendor.qcom.devup 1
 
 on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -705,6 +704,12 @@ on property:sys.boot_completed=1
     #joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
     chown system system /sys/module/lpm_levels/parameters/cluster_prediction
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
+
+service init-devstart-sh /vendor/bin/init.devstart.sh
+    class core
+    user root
+    group root
+    oneshot
 
 service vendor.cnd /system/vendor/bin/cnd
     class main
