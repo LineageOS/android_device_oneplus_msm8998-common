@@ -8,3 +8,4 @@ type sysfs_fpc_screen, fs_type, sysfs_type;
 type sysfs_fpc_proximity, fs_type, sysfs_type;
 type sysfs_project_info, fs_type, sysfs_type;
 type sysfs_wifi, fs_type, sysfs_type;
+type thermal_data_file, data_file_type, file_type;
