@@ -134,8 +134,6 @@ on fs
     start vendor.qseecomd
 
 on post-fs
-    write /dev/ipa 1
-
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true
 
@@ -168,6 +166,9 @@ on post-fs
     chown system system /sys/class/power_supply/battery/connect_disable
 
 on late-fs
+    # Start devices by sysfs trigger
+    start init-devstart-sh
+
     # Start services for bootanim
     start surfaceflinger
     start bootanim
@@ -299,10 +300,8 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    # Allow subsystem (modem etc) debugging
-    write /sys/kernel/boot_adsp/boot 1
-    write /sys/kernel/boot_cdsp/boot 1
-    write /sys/kernel/boot_slpi/boot 1
+    # wait for devices
+    wait_for_prop vendor.qcom.devup 1
 
 on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -721,6 +720,12 @@ service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     user vendor_qrtr
     group vendor_qrtr
     capabilities NET_BIND_SERVICE
+
+service init-devstart-sh /vendor/bin/init.devstart.sh
+    class core
+    user root
+    group root
+    oneshot
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
