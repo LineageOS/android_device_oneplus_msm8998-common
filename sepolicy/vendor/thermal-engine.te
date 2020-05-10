@@ -1,0 +1,14 @@
+allow thermal-engine thermal_data_file:dir rw_dir_perms;
+allow thermal-engine thermal_data_file:file create_file_perms;
+
+allow thermal-engine self:capability { chown fowner };
+
+r_dir_file(thermal-engine, sysfs)
+r_dir_file(thermal-engine, sysfs_batteryinfo)
+r_dir_file(thermal-engine, sysfs_devfreq)
+r_dir_file(thermal-engine, sysfs_graphics)
+r_dir_file(thermal-engine, sysfs_thermal)
+
+set_prop(thermal-engine, thermal_engine_prop)
+
+dontaudit thermal-engine self:capability dac_override;
