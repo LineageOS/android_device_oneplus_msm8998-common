@@ -246,6 +246,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.iwlan_operation_mode=legacy \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=true \
+    ro.telephony.call_ring.multiple=false \
     persist.sys.oem_smooth=1 \
     persist.radio.multisim.config=dsds \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
