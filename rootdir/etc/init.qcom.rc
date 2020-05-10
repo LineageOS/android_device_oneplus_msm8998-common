@@ -39,7 +39,6 @@ on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules msm_11ad_proxy
 
     # from init.target.rc
-    symlink /data/vendor/tombstones /tombstones
     write /proc/sys/kernel/sched_boost 1
 
 on init
@@ -176,9 +175,6 @@ on post-fs
     write /dev/ipa 1
 
 on post-fs-data
-    #Create directory for tftp
-    mkdir /data/vendor/tombstones 0771 system system
-
     # from init.oem.rc
     # Nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
@@ -200,11 +196,6 @@ on post-fs-data
     mkdir /data/vendor/misc/qsee/face/  0770 system system
 
     # from init.target.rc
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
-
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
