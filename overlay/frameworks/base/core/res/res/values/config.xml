@@ -564,6 +564,8 @@
     <string-array name="config_locationProviderPackageNames" translatable="false">
         <!-- The standard AOSP fused location provider -->
         <item>com.android.location.fused</item>
+        <!-- gapps provider -->
+        <item>com.google.android.gms</item>
         <item>com.qualcomm.location</item>
     </string-array>
 
