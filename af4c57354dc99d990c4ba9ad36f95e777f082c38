@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc1dfc1_4f4b0e8e",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-05-20T06:44:53Z",
+      "side": 1,
+      "message": "The order in the array doesn\u0027t matter? Because in vendor/lineage it comes before AOSP fused location provider.",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 43
+      },
+      "revId": "af4c57354dc99d990c4ba9ad36f95e777f082c38",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
