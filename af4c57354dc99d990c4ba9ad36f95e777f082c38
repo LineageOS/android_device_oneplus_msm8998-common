@@ -22,6 +22,30 @@
       "revId": "af4c57354dc99d990c4ba9ad36f95e777f082c38",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7cd2384_7e2d8f1a",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2020-05-20T06:56:03Z",
+      "side": 1,
+      "message": "It\u0027s preferring gms fused at the moment:\nLocationProviderProxy: bindBestPackage for com.android.location.service.FusedLocationProvider :  found 2, new best component: ComponentInfo{com.google.android.gms/com.google.android.location.fused.FusedLocationService}",
+      "parentUuid": "2fc1dfc1_4f4b0e8e",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 43
+      },
+      "revId": "af4c57354dc99d990c4ba9ad36f95e777f082c38",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
