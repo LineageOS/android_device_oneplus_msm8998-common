@@ -31,7 +31,7 @@ def FullOTA_Assertions(info):
 
   for file in filemap:
     filename = line.split(" ")[0]
-    if filename not in info.input_zip.namelist():
+    if "INSTALL/{}".format(filename) not in info.input_zip.namelist():
       # Firmware files not present, assert
       info.script.AppendExtra('ui_print("Firmware files not present");')
       AddModemAssertion(info)
@@ -86,7 +86,7 @@ def AddFirmwareUpdate(info, filemap):
       for file in filemap:
         filename = file.split(" ")[0]
         filepath = file.split(" ")[-1]
-        info.script.AppendExtra('package_extract_file("' + filename + '", "' + filepath + '");')
+        info.script.AppendExtra('package_extract_file("install/' + filename + '", "' + filepath + '");')
 
       info.script.AppendExtra('),')
       info.script.AppendExtra('(')
