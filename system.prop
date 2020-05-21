@@ -19,6 +19,7 @@ persist.camera.stats.debugexif=3080192
 persist.ts.rtmakeup=false
 
 # Data
+persist.vendor.data.iwlan.enable=true
 persist.radio.aosp_usr_pref_sel=true
 persist.radio.custom_ecc=1
 
