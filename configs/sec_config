@@ -331,3 +331,5 @@
 57:4294967295:1000
 /*Allow QMI service to add radio permission*/
 228:4294967295:1001
+/* Time-services */
+22:4294967295:3004:1000
