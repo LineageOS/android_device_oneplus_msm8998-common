@@ -523,7 +523,7 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.btconfigstore</name>
         <transport>hwbinder</transport>
-        <version>2.1</version>
+        <version>1.0</version>
         <interface>
             <name>IBTConfigStore</name>
             <instance>default</instance>
