@@ -53,19 +53,7 @@ write_makefiles "$MY_DIR"/proprietary-files-qc.txt true
 cat << EOF >> "$PRODUCTMK"
 endif
 
--include vendor/extra/devices.mk
-ifneq (\$(call is-qc-perf-target),true)
 EOF
-
-cat << EOF >> "$ANDROIDMK"
-endif
-
-ifneq (\$(TARGET_HAVE_QC_PERF),true)
-EOF
-
-write_makefiles "$MY_DIR"/proprietary-files-qc-perf.txt true
-
-echo "endif" >> "$PRODUCTMK"
 
 cat << EOF >> "$ANDROIDMK"
 
