@@ -612,6 +612,7 @@ service dashd /vendor/xbin/dashd
      critical
      seclabel u:r:dashd:s0
      group root system
+     writepid /dev/cpuset/system-background/tasks
 
 service init-devstart-sh /vendor/bin/init.devstart.sh
     class core
@@ -623,6 +624,7 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 # Logcat dump daemon, dumps logs to logdump partition
 service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
@@ -639,11 +641,13 @@ service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class main
     user system
     group system radio
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     override
@@ -668,12 +672,14 @@ service vendor.cnd /system/vendor/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
     capabilities NET_ADMIN
+    writepid /dev/cpuset/system-background/tasks
 
 on property:sys.powerctl=*
     stop vendor.cnss-daemon
@@ -682,6 +688,7 @@ service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
     class main
     user system
     group radio system
+    writepid /dev/cpuset/system-background/tasks
 
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
@@ -689,6 +696,7 @@ service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
     user radio
     socket ims_qmid stream 0660 system radio
     group radio log vendor_qti_diag
+    writepid /dev/cpuset/system-background/tasks
 
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
@@ -696,6 +704,7 @@ service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
     user radio
     socket ims_datad stream 0660 system radio
     group radio wifi inet log vendor_qti_diag
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
@@ -705,11 +714,13 @@ service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
     class main
     user radio
     group radio vendor_qti_diag inet log
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.imsrcsservice /vendor/bin/imsrcsd
     class main
     user radio
     group radio vendor_qti_diag inet log wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     restart vendor.ims_rtp_daemon
@@ -719,30 +730,36 @@ service vendor.init-radio-sh /vendor/bin/init.radio.sh
     user root
     group root system radio
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.ipacm /vendor/bin/ipacm
     class main
     user radio
     group radio inet
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.loc_launcher /vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.mlid /vendor/bin/mlid
     class late_start
     user gps
     group gps
     socket mlid stream 0666 gps gps
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
      class core
@@ -752,11 +769,13 @@ service vendor.per_mgr /vendor/bin/pm-service
     user system
     group system
     ioprio rt 4
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:init.svc.vendor.per_mgr=running
@@ -771,6 +790,7 @@ service vendor.ppd /vendor/bin/mm-pp-dpps
     user system
     group system graphics
     socket pps stream 0660 system system
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:init.svc.vendor.hwcomposer-2-1=stopped
@@ -786,17 +806,20 @@ service vendor.qdmastatsd /vendor/bin/qdmastatsd
     class late_start
     user system
     group readproc system net_bw_stats radio vendor_rfs_shared
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     class core
     user vendor_qrtr
     group vendor_qrtr
     capabilities NET_BIND_SERVICE
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
@@ -809,27 +832,32 @@ service vendor.rmt_storage /vendor/bin/rmt_storage
     user root
     shutdown critical
     ioprio rt 0
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
     user system
     group system
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.ssgtzd /vendor/bin/ssgtzd
     class late_start
     user system
     group system
     socket ssgtzd stream 0660 system inet
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.ssgqmigd /vendor/bin/ssgqmigd
     class late_start
     user radio
     group radio gps system
     socket ssgqmig seqpacket 0660 radio inet
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.tftp_server /vendor/bin/tftp_server
     class core
     user root
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.thermal-engine /vendor/bin/thermal-engine
     class main
@@ -839,12 +867,14 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
     socket thermal-recv-passive-client stream 0666 system system
     socket thermal-send-rule stream 0660 system system
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.time_daemon /vendor/bin/time_daemon
     class main
     user system
     group system
     capabilities SYS_TIME
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
