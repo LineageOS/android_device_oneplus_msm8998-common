@@ -9,4 +9,4 @@ allow vendor_init camera_data_file:file { create_file_perms w_file_perms };
 
 allow vendor_init sysfs_wifi:file { w_file_perms };
 
-set_prop(vendor_init, power_prop)
+set_prop(vendor_init, vendor_power_prop)
