@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
-
 #define LOG_TAG "android.hardware.power@1.3-service.oneplus_msm8998"
 #define ATRACE_TAG (ATRACE_TAG_POWER | ATRACE_TAG_HAL)
 
