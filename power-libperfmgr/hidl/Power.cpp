@@ -28,6 +28,7 @@
 #include <utils/Log.h>
 #include <utils/Trace.h>
 
+#include "disp-power/DisplayLowPower.h"
 #include "Power.h"
 #include "power-helper.h"
 
@@ -60,6 +61,7 @@ constexpr char kPowerHalConfigPath[] = "/vendor/etc/powerhint.json";
 Power::Power() :
         mHintManager(nullptr),
         mInteractionHandler(nullptr),
+        mDisplayLowPower(nullptr),
         mVRModeOn(false),
         mSustainedPerfModeOn(false),
         mEncoderModeOn(false),
@@ -74,6 +76,8 @@ Power::Power() :
                             }
                             mInteractionHandler = std::make_unique<InteractionHandler>(mHintManager);
                             mInteractionHandler->Init();
+                            mDisplayLowPower = std::make_unique<DisplayLowPower>();
+                            mDisplayLowPower->Init();
                             std::string state = android::base::GetProperty(kPowerHalStateProp, "");
                             if (state == "VIDEO_ENCODE") {
                                 ALOGI("Initialize with VIDEO_ENCODE on");
@@ -220,6 +224,9 @@ Return<void> Power::powerHint(PowerHint_1_0 hint, int32_t data) {
                 }
             }
             ATRACE_END();
+            break;
+        case PowerHint_1_0::LOW_POWER:
+            mDisplayLowPower->SetDisplayLowPower(static_cast<bool>(data));
             break;
         default:
             break;
