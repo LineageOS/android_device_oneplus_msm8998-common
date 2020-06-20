@@ -16,7 +16,10 @@
 cc_library {
     name: "libdisppower-msm8998",
     proprietary: true,
-    srcs: ["disp-power/InteractionHandler.cpp"],
+    srcs: [
+        "disp-power/DisplayLowPower.cpp",
+        "disp-power/InteractionHandler.cpp",
+    ],
     shared_libs: [
         "libbase",
         "libcutils",
