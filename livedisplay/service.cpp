@@ -43,23 +43,8 @@ int main() {
     LOG(INFO) << "LiveDisplay HAL service is starting.";
 
     std::shared_ptr<SDMController> controller = std::make_shared<SDMController>();
-    sp<DisplayModes> dm;
-    sp<PictureAdjustment> pa;
-
-    // DisplayModes
-    dm = new DisplayModes();
-    if (dm == nullptr) {
-        LOG(ERROR) << "Can not create an instance of LiveDisplay HAL DisplayModes Iface, exiting.";
-        goto shutdown;
-    }
-
-    // PictureAdjustment
-    pa = new PictureAdjustment(controller);
-    if (pa == nullptr) {
-        LOG(ERROR)
-            << "Can not create an instance of LiveDisplay HAL PictureAdjustment Iface, exiting.";
-        goto shutdown;
-    }
+    sp<DisplayModes> dm = new DisplayModes();
+    sp<PictureAdjustment> pa = new PictureAdjustment(controller);
 
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
