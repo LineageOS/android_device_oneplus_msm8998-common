@@ -12,6 +12,7 @@ allow init-devstart-sh vendor_file:file rx_file_perms;
 # Set the vendor.qcom.devup property
 set_prop(init-devstart-sh, vendor_device_prop)
 
+allow init-devstart-sh ipa_dev:chr_file w_file_perms;
 allow init-devstart-sh sysfs_boot_adsp:dir r_dir_perms;
 allow init-devstart-sh sysfs_boot_adsp:file w_file_perms;
 allow init-devstart-sh sysfs_slpi:dir r_dir_perms;
