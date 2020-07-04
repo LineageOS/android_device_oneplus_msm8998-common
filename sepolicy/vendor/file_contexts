@@ -68,6 +68,7 @@
 
 # Ril
 /data/vendor/oemnvitems(/.*)?                                   u:object_r:vendor_radio_data_file:s0
+/(vendor|system/vendor)/bin/init\.radio\.sh                     u:object_r:init-radio-sh_exec:s0
 
 # Sysfs
 /sys/class/leds(/.*)?                                           u:object_r:sysfs_leds:s0
