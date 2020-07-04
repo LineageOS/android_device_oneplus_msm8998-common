@@ -613,7 +613,7 @@ service dashd /vendor/xbin/dashd
 service init-devstart-sh /vendor/bin/init.devstart.sh
     class core
     user root
-    group root
+    group root radio
     oneshot
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
