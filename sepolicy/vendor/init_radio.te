@@ -6,6 +6,8 @@ init_daemon_domain(init-radio-sh)
 allow init-radio-sh vendor_shell_exec:file rx_file_perms;
 allow init-radio-sh vendor_toolbox_exec:file rx_file_perms;
 
+allow init-radio-sh self:capability fowner;
+
 allow init-radio-sh vendor_mbn_data_file:dir create_dir_perms;
 allow init-radio-sh vendor_mbn_data_file:file create_file_perms;
 allow init-radio-sh vendor_radio_data_file:file create_file_perms;
