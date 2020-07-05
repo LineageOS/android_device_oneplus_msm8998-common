@@ -16,4 +16,4 @@ allow hal_power_default device_latency:chr_file rw_file_perms;
 set_prop(hal_power_default, power_prop)
 
 # To dump
-allow hal_power_default cgroup:file read;
+allow hal_power_default cgroup:file rw_file_perms;
