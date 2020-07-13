@@ -27,8 +27,6 @@
 
 PLATFORM_PATH := device/oneplus/msm8998-common
 
-BOARD_VENDOR := oneplus
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8998
 TARGET_NO_BOOTLOADER := true
