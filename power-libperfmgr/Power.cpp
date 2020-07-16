@@ -297,7 +297,7 @@ done:
 }
 
 static int get_wlan_low_power_stats(struct PowerStateSubsystem &subsystem) {
-
+#if WITH_WLAN_STATS
     uint64_t stats[WLAN_POWER_PARAMS_COUNT] = {0};
     struct PowerStateSubsystemSleepState *state;
     int ret;
@@ -324,7 +324,9 @@ static int get_wlan_low_power_stats(struct PowerStateSubsystem &subsystem) {
     state->totalTransitions = stats[DEEP_SLEEP_ENTER_COUNTER];
     state->lastEntryTimestampMs = stats[LAST_DEEP_SLEEP_ENTER_TSTAMP_MS];
     state->supportedOnlyInSuspend = false;
-
+#else
+    (void) subsystem;
+#endif
     return 0;
 }
 
