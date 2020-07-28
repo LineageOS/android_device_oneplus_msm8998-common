@@ -32,8 +32,8 @@ ro.boot.stg                            u:object_r:vendor_param_prop:s0
 vendor.powerhal.                       u:object_r:vendor_power_prop:s0
 
 # RIL
-persist.sys.assert.panic               u:object_r:exported3_radio_prop:s0
-persist.sys.oem.region                 u:object_r:exported3_radio_prop:s0
+persist.sys.assert.panic               u:object_r:radio_control_prop:s0
+persist.sys.oem.region                 u:object_r:radio_control_prop:s0
 vendor.oem.device.imeicache0           u:object_r:vendor_radio_prop:s0
 vendor.oem.device.imeicache1           u:object_r:vendor_radio_prop:s0
 
