@@ -167,7 +167,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
+    persist.vendor.dpm.feature=1 \
+    persist.vendor.dpm.loglevel=0 \
+    persist.vendor.dpm.nsrm.bkg.evt=3955
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
