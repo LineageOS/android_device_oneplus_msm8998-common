@@ -30,6 +30,7 @@
 
 #include <IDataItemCore.h>
 #include <loc_gps.h>
+#include <loc_cfg.h>
 #include <algorithm>
 #include <vector>
 #include <list>
@@ -41,9 +42,13 @@ using namespace loc_core;
  *
  * These values are same as we define in case of LA,
  * except for emergency type WWAN which is not defined there. */
+
 typedef enum {
     LOC_NET_CONN_TYPE_INVALID = 0,
     LOC_NET_CONN_TYPE_WLAN = 100,
+    LOC_NET_CONN_TYPE_ETHERNET = 101,
+    LOC_NET_CONN_TYPE_BLUETOOTH = 102,
+    LOC_NET_CONN_TYPE_USB_CRADLE = 103,
     LOC_NET_CONN_TYPE_WWAN_INTERNET = 201,
     LOC_NET_CONN_TYPE_WWAN_SUPL = 205,
     LOC_NET_CONN_TYPE_WWAN_EMERGENCY = 206,
@@ -88,9 +93,6 @@ typedef void (*LocWwanCallStatusCb)(
 /* DataItem Notification callback */
 typedef void (*LocNetStatusChangeCb)(
         void* userDataPtr, std::list<IDataItemCore*>& itemList);
-
-/* Maximum length of APN Name config items */
-#define APN_NAME_MAX_LEN 255
 
 /*--------------------------------------------------------------------
  * CLASS LocNetIfaceBase
@@ -161,7 +163,7 @@ protected:
     LocNetConnType mLocNetConnType;
 
     /* Config items */
-    char mApnName[APN_NAME_MAX_LEN];
+    char mApnName[LOC_MAX_PARAM_STRING];
     int  mIpType;
 
     LocNetIfaceBase(LocNetConnType connType) :
@@ -169,7 +171,7 @@ protected:
         mWwanCbUserDataPtr(NULL), mLocNetConnType(connType),
         mIpType(0) {
 
-        memset(mApnName, 0, APN_NAME_MAX_LEN);
+        memset(mApnName, 0, LOC_MAX_PARAM_STRING);
         fetchConfigItems();
     }
 

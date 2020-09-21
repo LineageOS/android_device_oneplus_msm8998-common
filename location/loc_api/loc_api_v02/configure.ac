@@ -7,7 +7,7 @@ AC_PREREQ(2.61)
 # Initialize the gps loc-api-v02 package version 1.0.0
 AC_INIT([loc-api-v02],1.0.0)
 # Does not strictly follow GNU Coding standards
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
 # Disables auto rebuilding of configure, Makefile.ins
 AM_MAINTAINER_MODE
 # Verifies the --srcdir is correct by checking for the path
@@ -36,10 +36,6 @@ AC_SUBST([GPSUTILS_LIBS])
 PKG_CHECK_MODULES([LOC_CORE], [loc-core])
 AC_SUBST([LOC_CORE_CFLAGS])
 AC_SUBST([LOC_CORE_LIBS])
-
-PKG_CHECK_MODULES([LOCDS], [loc-ds])
-AC_SUBST([LOCDS_CFLAGS])
-AC_SUBST([LOCDS_LIBS])
 
 PKG_CHECK_MODULES([QMIFW], [qmi-framework])
 AC_SUBST([QMIFW_CFLAGS])

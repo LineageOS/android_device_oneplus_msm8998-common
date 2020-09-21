@@ -1,4 +1,4 @@
-/* Copyright (c) 2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2014, 2020 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -32,7 +32,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#include <stddef.h>
+#include <stdint.h>
 /*===========================================================================
 FUNCTION loc_split_string
 
@@ -92,6 +93,55 @@ SIDE EFFECTS
    N/A
 ===========================================================================*/
 void loc_util_trim_space(char *org_string);
+
+/*===========================================================================
+FUNCTION dlGetSymFromLib
+
+DESCRIPTION
+   Handy function to get a pointer to a symbol from a library.
+
+   If libHandle is not null, it will be used as the handle to the library. In
+   that case libName wll not be used;
+   libHandle is an in / out parameter.
+   If libHandle is null, libName will be used to dlopen.
+   Either libHandle or libName must not be nullptr.
+   symName must not be null.
+
+DEPENDENCIES
+   N/A
+
+RETURN VALUE
+   pointer to symName. Could be nullptr if
+       Parameters are incorrect; or
+       libName can not be opened; or
+       symName can not be found.
+
+SIDE EFFECTS
+   N/A
+===========================================================================*/
+void* dlGetSymFromLib(void*& libHandle, const char* libName, const char* symName);
+
+/*===========================================================================
+FUNCTION getQTimerTickCount
+
+DESCRIPTION
+   This function is used to read the QTimer ticks count. This value is globally maintained and
+   must be the same across all processors on a target.
+
+DEPENDENCIES
+   N/A
+
+RETURN VALUE
+    uint64_t QTimer tick count
+
+SIDE EFFECTS
+   N/A
+===========================================================================*/
+
+
+uint64_t getQTimerTickCount();
+
+
 #ifdef __cplusplus
 }
 #endif

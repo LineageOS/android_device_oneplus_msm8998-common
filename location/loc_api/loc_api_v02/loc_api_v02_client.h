@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2016, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2020 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -58,8 +58,10 @@ extern "C" {
   Specific value of #locClientHandleType, indicating an invalid handle. */
 #define LOC_CLIENT_INVALID_HANDLE_VALUE (NULL)
 
+#define MASTER_HAL   "MHAL"
+#define HAL          "HAL"
 
-/** @addtogroup data_types
+  /** @addtogroup data_types
 @{ */
 
 /** Location client handle used to represent a specific client. Negative values
@@ -113,7 +115,10 @@ typedef enum
   eLOC_CLIENT_FAILURE_NOT_INITIALIZED              = 12,
   /**< Failed because the service has not been initialized. */
 
-  eLOC_CLIENT_FAILURE_NOT_ENOUGH_MEMORY             = 13
+  eLOC_CLIENT_FAILURE_NOT_ENOUGH_MEMORY             = 13,
+  /**< Failed because there is not enough memory to do the operation. */
+
+  eLOC_CLIENT_FAILURE_INVALID_MESSAGE_ID            = 14
   /**< Failed because there is not enough memory to do the operation. */
 
 }locClientStatusEnumType;
@@ -154,6 +159,7 @@ typedef enum
 */
 typedef union
 {
+   void* pReqData;
    const qmiLocInformClientRevisionReqMsgT_v02* pInformClientRevisionReq;
    /**< Notifies the service about the revision the client is using.
 
@@ -241,6 +247,16 @@ typedef union
         To send this request, set the reqId field in locClientSendReq() to
         QMI_LOC_SET_ENGINE_LOCK_REQ_V02. */
 
+   const qmiLocGetEngineLockReqMsgT_v02* pGetEngineLockReq;
+   /**< Gets the location engine lock.
+
+   If the request is accepted by the service, the client receives the
+   following indication containing a response:
+   QMI_LOC_GET_ENGINE_LOCK_IND_V02.
+
+   To send this request, set the reqId field in locClientSendReq() to
+   QMI_LOC_GET_ENGINE_LOCK_REQ_V02. */
+
    const qmiLocSetSbasConfigReqMsgT_v02* pSetSbasConfigReq;
    /**< Sets the SBAS configuration.
 
@@ -270,6 +286,16 @@ typedef union
 
         To send this request, set the reqId field in locClientSendReq() to
         QMI_LOC_SET_LOW_POWER_MODE_REQ_V02. */
+
+   const qmiLocRegisterMasterClientReqMsgT_v02* pRegisterMasterClientReq;
+   /**< Register Master Client.
+
+        If the request is accepted by the service, the client receives the
+        following indication containing a response:
+        QMI_LOC_REGISTER_MASTER_CLIENT_IND_V02.
+
+        To send this request, set the reqId field in locClientSendReq() to
+        QMI_LOC_REGISTER_MASTER_CLIENT_REQ_V02. */
 
    const qmiLocSetServerReqMsgT_v02* pSetServerReq;
    /**< Sets the A-GPS server type and address.
@@ -747,6 +773,35 @@ typedef union
 
     const qmiLocInjectFdclDataReqMsgT_v02 *pInjectFdclDataReq;
     /*QMI_LOC_INJECT_FDCL_DATA_REQ_V02*/
+
+    const qmiLocSetBlacklistSvReqMsgT_v02 *pSetBlacklistSvReq;
+    /*QMI_LOC_SET_BLACKLIST_SV_REQ_V02*/
+
+    const qmiLocSetConstellationConfigReqMsgT_v02 *pSetConstellationConfigReq;
+    /*QMI_LOC_SET_CONSTELLATION_CONTROL_REQ_V02*/
+
+    const qmiLocGetBsObsDataReqMsgT_v02 *pGetBsObsDataReq;
+    /*QMI_LOC_GET_BS_OBS_DATA_REQ_V02*/
+
+    const qmiLocSetConstrainedTuncModeReqMsgT_v02
+            *pSetConstrainedTuncModeReq;
+    /*QMI_LOC_SET_CONSTRAINED_TUNC_MODE_REQ_V02*/
+
+    const qmiLocEnablePositionAssistedClockEstReqMsgT_v02
+            *pSetEnablePositionAssistedClockEstReq;
+    /*QMI_LOC_ENABLE_POSITION_ASSISTED_CLOCK_EST_REQ_V02*/
+
+    const qmiLocQueryGNSSEnergyConsumedReqMsgT_v02
+            *pQueryGNSSEnergyConsumedReq;
+    /*QMI_LOC_QUERY_GNSS_ENERGY_CONSUMED_REQ_V02*/
+
+    const qmiLocInjectPlatformPowerStateReqMsgT_v02
+            *pInjectPowerStateReq;
+    /*QMI_LOC_INJECT_PLATFORM_POWER_STATE_REQ*/
+
+    const qmiLocSetRobustLocationReqMsgT_v02
+            *pSetRobustLocationReq;
+    /*QMI_LOC_SET_ROBUST_LOCATION_CONFIG_REQ*/
 }locClientReqUnionType;
 
 
@@ -763,7 +818,8 @@ typedef union
         sent.
 
         The eventIndId field in the event indication callback is set to
-        QMI_LOC_EVENT_POSITION_REPORT_IND_V02. */
+        QMI_LOC_EVENT_POSITION_REPORT_IND_V02 or
+        QMI_LOC_EVENT_UNPROPAGATED_POSITION_REPORT_IND_V02. */
 
    const qmiLocEventGnssSvInfoIndMsgT_v02* pGnssSvInfoReportEvent;
    /**< Contains the GNSS satellite information.
@@ -1018,6 +1074,59 @@ typedef union
   /**< Sent by the engine to request the client for FDCL data
     QMI_LOC_EVENT_FDCL_SERVICE_REQ_IND_V02. */
 
+   const qmiLocGetBlacklistSvIndMsgT_v02 *pGetBlacklistSvEvent;
+   /**< Sent by the engine to provide current blackisting SV info.
+        QMI_LOC_GET_BLACKLIST_SV_IND_V02. */
+
+   const qmiLocGetConstellationConfigIndMsgT_v02 *pGetConstellationConfigEvent;
+   /**< Sent by the engine to provide current constellation control info.
+        QMI_LOC_GET_CONSTELLATION_CONTROL_IND_V02. */
+
+   const qmiLocEventBsObsDataServiceReqIndMsgT_v02 *pBsObsDataServiceReqEvent;
+  /**< Sent by the engine to notify the client about BS CS data available
+    QMI_LOC_EVENT_BS_OBS_DATA_SERVICE_REQ_IND_V02. */
+
+   const qmiLocGpsEphemerisReportIndMsgT_v02 *pGpsEphemerisReportEvent;
+  /**< Sent by the engine when GPS ephemeris are available
+    The eventIndId field in the event indication callback is set to
+    QMI_LOC_EVENT_GPS_EPHEMERIS_REPORT_IND_V02 @newpagetable */
+
+   const qmiLocGloEphemerisReportIndMsgT_v02 *pGloEphemerisReportEvent;
+  /**< Sent by the engine when GLONASS ephemeris are available
+    The eventIndId field in the event indication callback is set to
+    QMI_LOC_EVENT_GLONASS_EPHEMERIS_REPORT_IND_V02 @newpagetable */
+
+   const qmiLocBdsEphemerisReportIndMsgT_v02 *pBdsEphemerisReportEvent;
+  /**< Sent by the engine when BDS ephemeris are available
+    The eventIndId field in the event indication callback is set to
+    QMI_LOC_EVENT_BDS_EPHEMERIS_REPORT_IND_V02 @newpagetable */
+
+   const qmiLocGalEphemerisReportIndMsgT_v02 *pGalEphemerisReportEvent;
+    /**< Sent by the engine when GALILEO ephemeris are available
+    The eventIndId field in the event indication callback is set to
+    QMI_LOC_EVENT_GALILEO_EPHEMERIS_REPORT_IND_V02 @newpagetable */
+
+    const qmiLocQzssEphemerisReportIndMsgT_v02 *pQzssEphemerisReportEvent;
+    /**< Sent by the engine when GALILEO ephemeris are available
+    The eventIndId field in the event indication callback is set to
+    QMI_LOC_EVENT_QZSS_EPHEMERIS_REPORT_IND_V02 @newpagetable */
+
+    const qmiLocEventReportIndMsgT_v02 *pLocEvent;
+    /** Sent by engine for modem events to the control point
+    QMI_LOC_EVENT_REPORT_IND_V02 */
+
+   const qmiLocSystemInfoIndMsgT_v02 *pLocSystemInfoEvent;
+   /** Sent by the engine to inform of location system info event
+    QMI_LOC_SYSTEM_INFO_IND_V02 */
+
+   const qmiLocGetBandMeasurementMetricsIndMsgT_v02 *pLocGetBandMeasurementMetricsEvent;
+   /** Sent asynchronously by MGP to registred clients for the Power metrics
+    QMI_LOC_GET_BAND_MEASUREMENT_METRICS_IND_V02 0x00CE*/
+
+   const qmiLocLocationRequestNotificationIndMsgT_v02 *pLocReqNotifEvent;
+   /** Sent by the engine to inform of location system info event
+   QMI_LOC_LOCATION_REQUEST_NOTIFICATION_IND_V02 */
+
 }locClientEventIndUnionType;
 
 
@@ -1129,6 +1238,12 @@ typedef union
 
         The respIndId field in the response indication callback is set to
         QMI_LOC_GET_LOW_POWER_MODE_IND_V02. */
+
+   const qmiLocRegisterMasterClientIndMsgT_v02* pRegisterMasterClientInd;
+   /**< Response to QMI_LOC_REGISTER_MASTER_CLIENT_REQ_V02.
+
+        The respIndId field in the response indication callback is set to
+        QMI_LOC_REGISTER_MASTER_CLIENT_IND_V02. */
 
    const qmiLocSetServerIndMsgT_v02* pSetServerInd;
    /**< Response to the QMI_LOC_SET_SERVER_REQ_V02 request.
@@ -1493,6 +1608,15 @@ typedef union
     const qmiLocInjectFdclDataIndMsgT_v02 *pInjectFdclDataInd;
     /* QMI_LOC_INJECT_FDCL_DATA_IND_V02 */
 
+    const qmiLocGetBsObsDataIndMsgT_v02 *pGetBsObsDataInd;
+    /* QMI_LOC_GET_BS_OBS_DATA_IND_V02 */
+
+    const qmiLocQueryGNSSEnergyConsumedIndMsgT_v02 *pQueryGNSSEnergyConsumedInd;
+    /* QMI_LOC_QUERY_GNSS_ENERGY_CONSUMED_IND_V02*/
+
+    const qmiLocInjectPlatformPowerStateIndMsgT_v02 *pInjectPlatformPowerStateInd;
+    /* QMI_LOC_INJECT_PLATFORM_POWER_STATE_IND_V02 */
+
 }locClientRespIndUnionType;
 
 /** @} */ /* end_addtogroup data_types */
@@ -1804,7 +1928,22 @@ extern bool locClientGetSizeByRespIndId(
 
 extern bool locClientRegisterEventMask(
     locClientHandleType clientHandle,
-    locClientEventMaskType eventRegMask);
+    locClientEventMaskType eventRegMask,
+    bool bIsMaster);
+
+/**  validateRequest
+  @brief validates the input request
+  @param [in] reqId       request ID
+  @param [in] reqPayload  Union of pointers to message payload
+  @param [out] ppOutData  Pointer to void *data if successful
+  @param [out] pOutLen    Pointer to length of data if succesful.
+  @return false on failure, true on Success
+*/
+extern bool validateRequest(
+    uint32_t                    reqId,
+    const locClientReqUnionType reqPayload,
+    void                        **ppOutData,
+    uint32_t                    *pOutLen );
 
 /*=============================================================================*/
 /** @} */ /* end_addtogroup operation_functions */

@@ -1,4 +1,4 @@
-/* Copyright (c) 2017, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2017, 2020 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -142,6 +142,24 @@ void LocNetIface::subscribeWithQcmap() {
     }
     LOC_LOGD("Created QCMAP_Client instance %p", mQcmapClientPtr);
 
+#ifdef FEATURE_MOBILEAP_INDICATION
+    // We need to Enable/Disable mobile AP only for backhaul connection only if the feature
+    // FEATURE_MOBILEAP_INDICATION is available, since RegisterForIndications will give us
+    // network notification and we don't need to keep mobileap enabled for the same.
+    /* Need to RegisterForIndications to get station mode status indications */
+    uint64_t reg_mask = WWAN_ROAMING_STATUS_IND|BACKHAUL_STATUS_IND|WWAN_STATUS_IND| \
+            MOBILE_AP_STATUS_IND|STATION_MODE_STATUS_IND|CRADLE_MODE_STATUS_IND| \
+            ETHERNET_MODE_STATUS_IND|BT_TETHERING_STATUS_IND|BT_TETHERING_WAN_IND| \
+            WLAN_STATUS_IND|PACKET_STATS_STATUS_IND;
+    bool ret  = false;
+    //Register with QCMAP for any BACKHAUL/network availability
+    ret = mQcmapClientPtr->RegisterForIndications(&qcmapErr, reg_mask);
+    LOC_LOGI("RegisterForIndications - qmi_error %d status %d\n", qcmapErr, ret);
+    if (QMI_ERR_NONE_V01 != qcmapErr)
+    {
+        LOC_LOGE("Backhaul registration failed error value: %d",qcmapErr);
+    }
+#else
     /* Need to enable MobileAP to get station mode status indications */
     bool ret = mQcmapClientPtr->EnableMobileAP(&qcmapErr);
     if (ret == false || qcmapErr != 0) {
@@ -153,6 +171,7 @@ void LocNetIface::subscribeWithQcmap() {
     if (ret == false || qcmapErr != 0) {
         LOC_LOGE("RegisterForWLANStatusIND failed, qcmapErr %d", qcmapErr);
     }
+#endif
 }
 
 void LocNetIface::unsubscribeWithQcmap() {
@@ -206,44 +225,6 @@ void LocNetIface::qcmapClientCallback(
         break;
     }
 
-    case QMI_QCMAP_MSGR_STATION_MODE_STATUS_IND_V01: {
-        LOC_LOGD("Received QMI_QCMAP_MSGR_STATION_MODE_STATUS_IND_V01");
-
-        qcmap_msgr_station_mode_status_ind_msg_v01 stationModeIndData;
-
-        /* Parse the indication */
-        qmi_error = qmi_client_message_decode(user_handle, QMI_IDL_INDICATION,
-                msg_id, ind_buf, ind_buf_len, &stationModeIndData,
-                sizeof(qcmap_msgr_station_mode_status_ind_msg_v01));
-
-        if (qmi_error != QMI_NO_ERR) {
-            LOC_LOGE("qmi_client_message_decode error %d", qmi_error);
-            return;
-        }
-
-        LocNetIface::sLocNetIfaceInstance->handleQcmapCallback(stationModeIndData);
-        break;
-    }
-
-    case QMI_QCMAP_MSGR_WWAN_STATUS_IND_V01: {
-        LOC_LOGD("Received QMI_QCMAP_MSGR_WWAN_STATUS_IND_V01");
-
-        qcmap_msgr_wwan_status_ind_msg_v01 wwanStatusIndData;
-
-        /* Parse the indication */
-        qmi_error = qmi_client_message_decode(user_handle, QMI_IDL_INDICATION,
-                msg_id, ind_buf, ind_buf_len, &wwanStatusIndData,
-                sizeof(qcmap_msgr_wwan_status_ind_msg_v01));
-
-        if (qmi_error != QMI_NO_ERR) {
-            LOC_LOGE("qmi_client_message_decode error %d", qmi_error);
-            return;
-        }
-
-        LocNetIface::sLocNetIfaceInstance->handleQcmapCallback(wwanStatusIndData);
-        break;
-    }
-
     case QMI_QCMAP_MSGR_BRING_UP_WWAN_IND_V01: {
         LOC_LOGD("Received QMI_QCMAP_MSGR_BRING_UP_WWAN_IND_V01");
 
@@ -282,6 +263,48 @@ void LocNetIface::qcmapClientCallback(
         break;
     }
 
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
+    case QMI_QCMAP_MSGR_BACKHAUL_STATUS_IND_V01:
+    {
+        qcmap_msgr_backhaul_status_ind_msg_v01 backhaulStatusData;
+
+        qmi_error = qmi_client_message_decode(user_handle,
+                           QMI_IDL_INDICATION,
+                           msg_id,
+                           ind_buf,
+                           ind_buf_len,
+                           &backhaulStatusData,
+                           sizeof(qcmap_msgr_backhaul_status_ind_msg_v01));
+        if (qmi_error != QMI_NO_ERR) {
+            LOC_LOGE("qmi_client_message_decode error %d", qmi_error);
+            return;
+        }
+
+        LocNetIface::sLocNetIfaceInstance->handleQcmapCallback(backhaulStatusData);
+        break;
+     }
+
+    case QMI_QCMAP_MSGR_WWAN_ROAMING_STATUS_IND_V01:
+    {
+        qcmap_msgr_wwan_roaming_status_ind_msg_v01 roamingStatusData;
+
+        qmi_error = qmi_client_message_decode(user_handle,
+                           QMI_IDL_INDICATION,
+                           msg_id,
+                           ind_buf,
+                           ind_buf_len,
+                           &roamingStatusData,
+                           sizeof(qcmap_msgr_wwan_roaming_status_ind_msg_v01));
+        if (qmi_error != QMI_NO_ERR) {
+            LOC_LOGE("qmi_client_message_decode error %d", qmi_error);
+            return;
+        }
+
+        LocNetIface::sLocNetIfaceInstance->handleQcmapCallback(roamingStatusData);
+        break;
+    }
+#endif
+
     default:
         LOC_LOGE("Ignoring QCMAP indication: %d", msg_id);
     }
@@ -300,9 +323,7 @@ void LocNetIface::handleQcmapCallback(
 
     /* Notify observers */
     if (wlanStatusIndData.wlan_status == QCMAP_MSGR_WLAN_ENABLED_V01) {
-        if (mLocNetWlanState == LOC_NET_CONN_STATE_DISABLED) {
-            mLocNetWlanState = LOC_NET_CONN_STATE_ENABLED;
-        }
+        mLocNetWlanState =LOC_NET_CONN_STATE_ENABLED;
         notifyObserverForWlanStatus(true);
     } else if (wlanStatusIndData.wlan_status == QCMAP_MSGR_WLAN_DISABLED_V01) {
         mLocNetWlanState = LOC_NET_CONN_STATE_DISABLED;
@@ -311,64 +332,42 @@ void LocNetIface::handleQcmapCallback(
         LOC_LOGE("Invalid wlan status %d", wlanStatusIndData.wlan_status);
     }
 }
-void LocNetIface::handleQcmapCallback(
-        qcmap_msgr_station_mode_status_ind_msg_v01 &stationModeIndData){
 
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
+void LocNetIface::handleQcmapCallback(
+            qcmap_msgr_backhaul_status_ind_msg_v01 &backhaulStatusIndData){
     ENTRY_LOG();
 
-    LOC_LOGI("station mode status: %d", stationModeIndData.station_mode_status);
-
-    /* Notify observers */
-    if (stationModeIndData.station_mode_status ==
-            QCMAP_MSGR_STATION_MODE_CONNECTED_V01) {
-        mLocNetWlanState = LOC_NET_CONN_STATE_CONNECTED;
-        notifyCurrentNetworkInfo(false, LOC_NET_CONN_TYPE_WLAN);
-    } else if (stationModeIndData.station_mode_status ==
-                QCMAP_MSGR_STATION_MODE_DISCONNECTED_V01) {
-        mLocNetWlanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        notifyCurrentNetworkInfo(false, LOC_NET_CONN_TYPE_WLAN);
-    } else {
-        LOC_LOGE("Unsupported station mode status %d",
-                    stationModeIndData.station_mode_status);
+    if (true == backhaulStatusIndData.backhaul_type_valid)
+    {
+        boolean isIpv4Avail = ((backhaulStatusIndData.backhaul_v4_status_valid
+                    && backhaulStatusIndData.backhaul_v4_status));
+        boolean isIpv6Avail = ((backhaulStatusIndData.backhaul_v6_status_valid
+                    && backhaulStatusIndData.backhaul_v6_status));
+        setCurrentBackHaulStatus(backhaulStatusIndData.backhaul_type,
+                                 isIpv4Avail, isIpv6Avail);
+        notifyCurrentNetworkInfo(false);
+    }
+    else {
+        LOC_LOGE("Backhaul type is not valid : %d", backhaulStatusIndData.backhaul_type_valid);
+        mLocNetBackHaulState = LOC_NET_CONN_STATE_INVALID;
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_INVALID;
     }
 }
-void LocNetIface::handleQcmapCallback(
-        qcmap_msgr_wwan_status_ind_msg_v01 &wwanStatusIndData) {
+#endif
 
-    ENTRY_LOG();
-
-    LOC_LOGD("WWAN Status (Connected_v4=3, Disconnected_v4=6): %d",
-            wwanStatusIndData.wwan_status);
-
-    /* Notify observers */
-    if (wwanStatusIndData.wwan_status ==
-            QCMAP_MSGR_WWAN_STATUS_CONNECTED_V01) {
-        mLocNetWwanState = LOC_NET_CONN_STATE_CONNECTED;
-        notifyCurrentNetworkInfo(false, LOC_NET_CONN_TYPE_WWAN_INTERNET);
-    } else if (wwanStatusIndData.wwan_status ==
-            QCMAP_MSGR_WWAN_STATUS_DISCONNECTED_V01) {
-        mLocNetWwanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        notifyCurrentNetworkInfo(false, LOC_NET_CONN_TYPE_WWAN_INTERNET);
-    } else {
-        LOC_LOGW("Unsupported wwan status %d",
-                wwanStatusIndData.wwan_status);
-    }
-}
-void LocNetIface::handleQcmapCallback(
+void LocNetIface::handleQcmapCallback (
         qcmap_msgr_bring_up_wwan_ind_msg_v01 &bringUpWwanIndData) {
 
     ENTRY_LOG();
 
-    LOC_LOGD("WWAN Bring up status (Connected=3, Disconnected=6): %d",
+    LOC_LOGD("WWAN Bring up status (Connected_v4,v6=3,9, connecting fail_v4,v6=2,8): %d",
             bringUpWwanIndData.conn_status);
 
     /* Notify observers */
-    if (bringUpWwanIndData.conn_status ==
-            QCMAP_MSGR_WWAN_STATUS_CONNECTED_V01) {
-
-        mLocNetWwanState = LOC_NET_CONN_STATE_CONNECTED;
-        notifyCurrentNetworkInfo(false, LOC_NET_CONN_TYPE_WWAN_INTERNET);
-
+    if (bringUpWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_CONNECTED_V01 ||
+            bringUpWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_IPV6_CONNECTED_V01) {
+        //We update state and type in backhaul status CB only
         if (mIsConnectBackhaulPending &&
                 mWwanCallStatusCb != NULL){
             LOC_LOGV("LOC_NET_WWAN_CALL_EVT_OPEN_SUCCESS");
@@ -378,8 +377,8 @@ void LocNetIface::handleQcmapCallback(
         }
         mIsConnectBackhaulPending = false;
 
-    } else if (bringUpWwanIndData.conn_status ==
-            QCMAP_MSGR_WWAN_STATUS_CONNECTING_FAIL_V01) {
+      } else if (bringUpWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_CONNECTING_FAIL_V01 ||
+               bringUpWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_IPV6_CONNECTING_FAIL_V01) {
 
         if (mIsConnectBackhaulPending &&
                 mWwanCallStatusCb != NULL){
@@ -401,16 +400,13 @@ void LocNetIface::handleQcmapCallback(
 
     ENTRY_LOG();
 
-    LOC_LOGD("WWAN teardown status (Connected=3, Disconnected=6): %d",
+    LOC_LOGD("WWAN teardown status (Disconnected_v4,v6=6,12) (Disconnecting fail_v4,v6=5,11): %d",
             teardownWwanIndData.conn_status);
 
     /* Notify observers */
-    if (teardownWwanIndData.conn_status ==
-            QCMAP_MSGR_WWAN_STATUS_DISCONNECTED_V01) {
-
-        mLocNetWwanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        notifyCurrentNetworkInfo(false, LOC_NET_CONN_TYPE_WWAN_INTERNET);
-
+    if (teardownWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_DISCONNECTED_V01 ||
+        teardownWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_IPV6_DISCONNECTED_V01) {
+        //We update state and type in backhaul status CB only
         if (mIsDisconnectBackhaulPending &&
                 mWwanCallStatusCb != NULL) {
             LOC_LOGV("LOC_NET_WWAN_CALL_EVT_CLOSE_SUCCESS");
@@ -420,8 +416,9 @@ void LocNetIface::handleQcmapCallback(
         }
         mIsDisconnectBackhaulPending = false;
 
-    } else if (teardownWwanIndData.conn_status ==
-            QCMAP_MSGR_WWAN_STATUS_DISCONNECTING_FAIL_V01) {
+    } else if (teardownWwanIndData.conn_status == QCMAP_MSGR_WWAN_STATUS_DISCONNECTING_FAIL_V01 ||
+                    teardownWwanIndData.conn_status ==
+                        QCMAP_MSGR_WWAN_STATUS_IPV6_DISCONNECTING_FAIL_V01) {
 
         if (mIsDisconnectBackhaulPending &&
                 mWwanCallStatusCb != NULL){
@@ -438,6 +435,18 @@ void LocNetIface::handleQcmapCallback(
     }
 }
 
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
+void LocNetIface::handleQcmapCallback(
+        qcmap_msgr_wwan_roaming_status_ind_msg_v01 &roamingStatusIndData) {
+
+    ENTRY_LOG();
+
+    mIsRoaming = (roamingStatusIndData.wwan_roaming_status != 0);
+    LOC_LOGD("Roaming status(OFF:0x00, ON:0x01-0x0C): %x, Roaming: %d",
+                roamingStatusIndData.wwan_roaming_status, mIsRoaming);
+}
+#endif
+
 void LocNetIface::notifyCurrentNetworkInfo(bool queryQcmap, LocNetConnType connType) {
 
     ENTRY_LOG();
@@ -450,29 +459,29 @@ void LocNetIface::notifyCurrentNetworkInfo(bool queryQcmap, LocNetConnType connT
 
     /* Check saved state if queryQcmap disabled */
     if (!queryQcmap) {
-        if (mLocNetWlanState == LOC_NET_CONN_STATE_CONNECTED) {
-            notifyObserverForNetworkInfo(true, LOC_NET_CONN_TYPE_WLAN);
-        } else if (mLocNetWwanState == LOC_NET_CONN_STATE_CONNECTED) {
-            notifyObserverForNetworkInfo(true, LOC_NET_CONN_TYPE_WWAN_INTERNET);
-        } else {
-            notifyObserverForNetworkInfo(false, connType);
+        if (LOC_NET_CONN_TYPE_INVALID != mLocNetBackHaulType) {
+            notifyObserverForNetworkInfo(
+                    (LOC_NET_CONN_STATE_CONNECTED == mLocNetBackHaulState),
+                    mLocNetBackHaulType);
+        }
+        else {
+            LOC_LOGE("Invalid connection type:%d , State:%d",
+                    mLocNetBackHaulType, mLocNetBackHaulState);
         }
         return;
     }
 
     /* Fetch connectivity status from qcmap and notify observers */
-    if (isWlanConnected()) {
-        mLocNetWlanState = LOC_NET_CONN_STATE_CONNECTED;
-        notifyObserverForNetworkInfo(true, LOC_NET_CONN_TYPE_WLAN);
-    } else if (isWwanConnected()) {
-        mLocNetWwanState = LOC_NET_CONN_STATE_CONNECTED;
-        notifyObserverForNetworkInfo(true, LOC_NET_CONN_TYPE_WWAN_INTERNET);
-    } else {
-        mLocNetWlanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        mLocNetWwanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        // notify observer for both wifi and wwan
-        notifyObserverForNetworkInfo(false, LOC_NET_CONN_TYPE_WLAN);
-        notifyObserverForNetworkInfo(false, LOC_NET_CONN_TYPE_WWAN_INTERNET);
+    /* Check if any network interface backhaul is connected */
+    isAnyBackHaulConnected();
+    if (LOC_NET_CONN_TYPE_WWAN_INTERNET == mLocNetBackHaulType) {
+        /* Check the roaming status if backhaul type is WWAN */
+        mIsRoaming = isWwanRoaming();
+    }
+    if (LOC_NET_CONN_TYPE_INVALID != mLocNetBackHaulType) {
+        notifyObserverForNetworkInfo(
+                (LOC_NET_CONN_STATE_CONNECTED == mLocNetBackHaulState),
+                mLocNetBackHaulType);
     }
 }
 
@@ -488,15 +497,7 @@ void LocNetIface::notifyCurrentWifiHardwareState(bool queryQcmap) {
 
     /* Check saved state if queryQcmap disabled */
     if (!queryQcmap) {
-        if (mLocNetWlanState == LOC_NET_CONN_STATE_ENABLED ||
-                mLocNetWlanState == LOC_NET_CONN_STATE_CONNECTED ||
-                mLocNetWlanState == LOC_NET_CONN_STATE_DISCONNECTED) {
-            notifyObserverForWlanStatus(true);
-        } else if (mLocNetWlanState == LOC_NET_CONN_STATE_DISABLED) {
-            notifyObserverForWlanStatus(false);
-        } else {
-            LOC_LOGE("Invalid WLAN state: %d", mLocNetWlanState);
-        }
+        notifyObserverForWlanStatus((LOC_NET_CONN_STATE_ENABLED == mLocNetWlanState));
         return;
     }
 
@@ -525,9 +526,7 @@ void LocNetIface::notifyCurrentWifiHardwareState(bool queryQcmap) {
             wlan_mode == QCMAP_MSGR_WLAN_MODE_AP_STA_BRIDGE_V01 ||
             wlan_mode == QCMAP_MSGR_WLAN_MODE_AP_AP_STA_BRIDGE_V01 ||
             wlan_mode == QCMAP_MSGR_WLAN_MODE_STA_ONLY_BRIDGE_V01) {
-        if (mLocNetWlanState == LOC_NET_CONN_STATE_DISABLED) {
-            mLocNetWlanState = LOC_NET_CONN_STATE_ENABLED;
-        }
+        mLocNetWlanState =LOC_NET_CONN_STATE_ENABLED;
         notifyObserverForWlanStatus(true);
     }
 }
@@ -576,6 +575,7 @@ void LocNetIface::notifyObserverForNetworkInfo(
     networkInfoDataItem.mType = (int32)connType;
     networkInfoDataItem.mAvailable = isConnected;
     networkInfoDataItem.mConnected = isConnected;
+    networkInfoDataItem.mRoaming = mIsRoaming;
 
     dataItem = &networkInfoDataItem;
 
@@ -657,9 +657,11 @@ bool LocNetIface::setupWwanCall() {
     LOC_LOGD("DSI_CALL_INFO_TECH_PREF = DSI_RADIO_TECH_UNKNOWN");
     dsi_set_data_call_param(mDsiHandle, DSI_CALL_INFO_TECH_PREF, &callParams);
 
-    /* APN from gps.conf */
+    /* APN from gps.conf
+      As this is read using loc cfg routine, the buffer size
+      max is LOC_MAX_PARAM_STRING. */
     char* apnName = getApnNameFromConfig();
-    int apnNameLen = strnlen(apnName, APN_NAME_MAX_LEN);
+    int apnNameLen = strnlen(apnName, LOC_MAX_PARAM_STRING);
     if (apnName != NULL &&  apnNameLen > 0) {
         callParams.buf_val = apnName;
         callParams.num_val = apnNameLen;
@@ -817,14 +819,13 @@ void LocNetIface::handleDSCallback(
     }
 }
 
-bool LocNetIface::isWlanConnected() {
-
+bool LocNetIface::isNonMeteredBackHaulTypeConnected() {
     ENTRY_LOG();
 
     /* Access QCMAP instance only from the static instance */
     if (this != LocNetIface::sLocNetIfaceInstance &&
             LocNetIface::sLocNetIfaceInstance != NULL) {
-        return LocNetIface::sLocNetIfaceInstance->isWlanConnected();
+        return LocNetIface::sLocNetIfaceInstance->isNonMeteredBackHaulTypeConnected();
     }
 
     /* Validate QCMAP Client instance */
@@ -833,32 +834,119 @@ bool LocNetIface::isWlanConnected() {
         return false;
     }
 
-    /* Fetch station mode status */
-    qcmap_msgr_station_mode_status_enum_v01 status =
-            QCMAP_MSGR_STATION_MODE_STATUS_ENUM_MIN_ENUM_VAL_V01;
-    qmi_error_type_v01 qmi_err_num = QMI_ERROR_TYPE_MIN_ENUM_VAL_V01;
-
-    if (!mQcmapClientPtr->GetStationModeStatus(&status, &qmi_err_num)) {
-        LOC_LOGE("Failed to fetch station mode status, err %d", qmi_err_num);
-        return false;
-    }
-
-    /* Notify observers */
-    if (status == QCMAP_MSGR_STATION_MODE_CONNECTED_V01) {
-        LOC_LOGV("WLAN is connected.");
-        mLocNetWlanState = LOC_NET_CONN_STATE_CONNECTED;
-        return true;
-    } else if (status == QCMAP_MSGR_STATION_MODE_DISCONNECTED_V01) {
-        LOC_LOGV("WLAN is disconnected.");
-        mLocNetWlanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        return false;
-    } else {
-        LOC_LOGE("Unhandled station mode status %d", status);
-    }
-
-    return false;
+    /* Update backhaul status */
+    isAnyBackHaulConnected();
+    /* if Current backhaul - Is not WWAN && Is not an Invalid type*/
+    return ((LOC_NET_CONN_TYPE_WWAN_INTERNET != mLocNetBackHaulType) &&
+                (LOC_NET_CONN_TYPE_INVALID != mLocNetBackHaulType));
 }
 
+bool LocNetIface::isWwanRoaming() {
+    ENTRY_LOG();
+
+    /* Access QCMAP instance only from the static instance */
+    if (this != LocNetIface::sLocNetIfaceInstance &&
+            LocNetIface::sLocNetIfaceInstance != NULL) {
+        return LocNetIface::sLocNetIfaceInstance->isWwanRoaming();
+    }
+
+    /* Validate QCMAP Client instance */
+    if (mQcmapClientPtr == NULL) {
+        LOC_LOGE("No QCMAP instance !");
+        return false;
+    }
+
+    /* fetch roaming status */
+    uint8_t roamStatus = 0;
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
+    qmi_error_type_v01 qmi_err_num = QMI_ERROR_TYPE_MIN_ENUM_VAL_V01;
+    if (!mQcmapClientPtr->GetWWANRoamStatus(&roamStatus, &qmi_err_num)) {
+        LOC_LOGE("Failed to fetch roaming status, err %d", qmi_err_num);
+        return false;
+    }
+#endif
+    // update internal roaming variable
+    LOC_LOGD("Roaming status(OFF:0x00, ON:0x01-0x0C): %x", roamStatus);
+    return (roamStatus != 0);
+}
+
+bool LocNetIface::isAnyBackHaulConnected() {
+
+    ENTRY_LOG();
+
+    /* Access QCMAP instance only from the static instance */
+    if (this != LocNetIface::sLocNetIfaceInstance &&
+            LocNetIface::sLocNetIfaceInstance != NULL) {
+        return LocNetIface::sLocNetIfaceInstance->isAnyBackHaulConnected();
+    }
+
+    /* Validate QCMAP Client instance */
+    if (mQcmapClientPtr == NULL) {
+        LOC_LOGE("No QCMAP instance !");
+        return false;
+    }
+
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
+    /* Fetch backhaul status */
+    qcmap_backhaul_status_info_type backhaulStatus =
+            {false, false, QCMAP_MSGR_BACKHAUL_TYPE_ENUM_MIN_ENUM_VAL_V01};
+    qmi_error_type_v01 qmi_err_num = QMI_ERROR_TYPE_MIN_ENUM_VAL_V01;
+
+    if (!mQcmapClientPtr->GetBackhaulStatus(&backhaulStatus, &qmi_err_num)) {
+        LOC_LOGE("Failed to fetch backhaul status, err %d", qmi_err_num);
+        return false;
+    }
+    setCurrentBackHaulStatus(backhaulStatus.backhaul_type,
+                backhaulStatus.backhaul_v4_available,
+                backhaulStatus.backhaul_v6_available);
+#endif
+    return (LOC_NET_CONN_STATE_CONNECTED == mLocNetBackHaulState);
+}
+
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
+void LocNetIface::setCurrentBackHaulStatus(
+                qcmap_msgr_backhaul_type_enum_v01 backhaulType,
+                boolean backhaulIPv4Available,
+                boolean backhaulIPv6Available) {
+    LOC_LOGI("Type:  1-WWAN, 2-USB Cradle, 3-WLAN , 4-Ethernet, 5-BT");
+    LOC_LOGI("BackhaulStatus Type: %d, IPv4 avail:%d, IPv6 avail:%d",
+                backhaulType, backhaulIPv4Available, backhaulIPv6Available);
+    switch (backhaulType)
+    {
+      case QCMAP_MSGR_WWAN_BACKHAUL_V01:
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_WWAN_INTERNET;
+        break;
+      case QCMAP_MSGR_USB_CRADLE_BACKHAUL_V01:
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_USB_CRADLE;
+        break;
+      case QCMAP_MSGR_WLAN_BACKHAUL_V01:
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_WLAN;
+        break;
+      case QCMAP_MSGR_ETHERNET_BACKHAUL_V01:
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_ETHERNET;
+        break;
+      case QCMAP_MSGR_BT_BACKHAUL_V01:
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_BLUETOOTH;
+        break;
+      default:
+        LOC_LOGE("Invalid backhaul type : %d", backhaulType);
+        mLocNetBackHaulType = LOC_NET_CONN_TYPE_INVALID;
+        break;
+    }
+    if (backhaulType != QCMAP_MSGR_WWAN_BACKHAUL_V01) {
+        // set this to false for backhaul type other than wwan
+        mIsRoaming = false;
+    }
+    if ((false == backhaulIPv4Available) && (false == backhaulIPv6Available)) {
+        mLocNetBackHaulState = LOC_NET_CONN_STATE_DISCONNECTED;
+    }
+    else {
+        mLocNetBackHaulState = LOC_NET_CONN_STATE_CONNECTED;
+    }
+}
+#endif
+
+/* isWwanConnected is used mainly from external clients (eg:XtraClient) */
 bool LocNetIface::isWwanConnected() {
 
     ENTRY_LOG();
@@ -875,25 +963,27 @@ bool LocNetIface::isWwanConnected() {
         return false;
     }
 
+#ifdef FEATURE_ROAMING_BACKHAUL_STATUS_INDICATION
     /* Fetch backhaul status */
-    qmi_error_type_v01 qmi_err_num = QMI_ERR_NONE_V01;
-    qcmap_msgr_wwan_status_enum_v01 v4_status, v6_status;
-    if (mQcmapClientPtr->GetWWANStatus(
-            &v4_status, &v6_status, &qmi_err_num) == false) {
-        LOC_LOGE("Failed to get wwan status, err 0x%x", qmi_err_num);
+    qcmap_backhaul_status_info_type backhaulStatus =
+            {false, false, QCMAP_MSGR_BACKHAUL_TYPE_ENUM_MIN_ENUM_VAL_V01};
+    qmi_error_type_v01 qmi_err_num = QMI_ERROR_TYPE_MIN_ENUM_VAL_V01;
+
+    if (!mQcmapClientPtr->GetBackhaulStatus(&backhaulStatus, &qmi_err_num)) {
+        LOC_LOGE("Failed to fetch backhaul status, err %d", qmi_err_num);
         return false;
     }
-    if (v4_status == QCMAP_MSGR_WWAN_STATUS_CONNECTED_V01) {
+
+    if ((QCMAP_MSGR_WWAN_BACKHAUL_V01 == backhaulStatus.backhaul_type) &&
+            (backhaulStatus.backhaul_v4_available || backhaulStatus.backhaul_v6_available)) {
+        // If WWAN is current backhaul type and either IPv4 or IPv6 connection available ?
         LOC_LOGV("WWAN is connected.");
-        mLocNetWwanState = LOC_NET_CONN_STATE_CONNECTED;
         return true;
-    } else if (v4_status == QCMAP_MSGR_WWAN_STATUS_DISCONNECTED_V01) {
-        LOC_LOGV("WWAN is disconnected.");
-        mLocNetWwanState = LOC_NET_CONN_STATE_DISCONNECTED;
-        return false;
     } else {
-        LOC_LOGE("Unhandled wwan status %d", v4_status);
+        LOC_LOGV("WWAN is disconnected.");
+        return false;
     }
+#endif
 
     return false;
 }
@@ -930,12 +1020,13 @@ bool LocNetIface::connectBackhaul() {
         LOC_LOGE("Failed to get wwan status, err 0x%x", qmi_err_num);
         return false;
     }
-    if (v4_status == QCMAP_MSGR_WWAN_STATUS_CONNECTING_V01) {
+    if (v4_status == QCMAP_MSGR_WWAN_STATUS_CONNECTING_V01 ||
+        v6_status == QCMAP_MSGR_WWAN_STATUS_IPV6_CONNECTING_V01) {
         LOC_LOGI("Ongoing connection attempt, ignoring connect.");
-        mConnectReqRecvCount++;
         return true;
     }
-    if (v4_status == QCMAP_MSGR_WWAN_STATUS_CONNECTED_V01) {
+    if (v4_status == QCMAP_MSGR_WWAN_STATUS_CONNECTED_V01 ||
+        v6_status == QCMAP_MSGR_WWAN_STATUS_IPV6_CONNECTED_V01) {
         LOC_LOGV("Backhaul already connected, ignoring connect.");
         if (mWwanCallStatusCb != NULL) {
             mWwanCallStatusCb(
@@ -952,18 +1043,37 @@ bool LocNetIface::connectBackhaul() {
     /* Check if we've already sent the request */
     if (mIsConnectBackhaulPending || mIsConnectReqSent) {
         LOC_LOGI("Ignoring connect, connect pending %d, wwan state %d "
-                "req sent %d", mIsConnectBackhaulPending, mLocNetWwanState,
+                "req sent %d", mIsConnectBackhaulPending, mLocNetBackHaulState,
                 mIsConnectReqSent);
         mConnectReqRecvCount++;
         return true;
     }
 
+#ifdef FEATURE_MOBILEAP_INDICATION
+    qmi_err_num = QMI_ERR_NONE_V01;
+     /* Need to enable MobileAP to invoke backhaul functions */
+    bool ret = mQcmapClientPtr->EnableMobileAP(&qmi_err_num);
+    if (false == ret ||  0 != qmi_err_num) {
+        LOC_LOGE("Failed to enable mobileap, qcmapErr %d", qmi_err_num);
+        return false;
+    }
+#endif
+
     /* Send connect request to QCMAP */
     qmi_err_num = QMI_ERR_NONE_V01;
+    qcmap_msgr_wwan_call_type_v01 wwan_call_type = getWwanCallType();
     LOC_LOGV("Sending ConnectBackhaul request..");
     if (mQcmapClientPtr->ConnectBackHaul(
-            QCMAP_MSGR_WWAN_CALL_TYPE_V4_V01, &qmi_err_num) == false) {
+            wwan_call_type, &qmi_err_num) == false) {
         LOC_LOGE("Connect backhaul failed, err 0x%x", qmi_err_num);
+#ifdef FEATURE_MOBILEAP_INDICATION
+        qmi_err_num = QMI_ERR_NONE_V01;
+        //Disabling mobile AP here if connect backhaul fails
+        bool ret = mQcmapClientPtr->DisableMobileAP(&qmi_err_num);
+        if (false == ret || 0 != qmi_err_num ) {
+            LOC_LOGE("Failed to disable mobileap, qcmapErr %d", qmi_err_num);
+        }
+#endif
         return false;
     }
 
@@ -973,6 +1083,14 @@ bool LocNetIface::connectBackhaul() {
     mConnectReqRecvCount++;
     return true;
 }
+
+
+qcmap_msgr_wwan_call_type_v01 LocNetIface::getWwanCallType() {
+    return (getIpTypeFromConfig() == LOC_NET_CONN_IP_TYPE_V6) ?
+        QCMAP_MSGR_WWAN_CALL_TYPE_V6_V01 :
+        QCMAP_MSGR_WWAN_CALL_TYPE_V4_V01;
+}
+
 
 bool LocNetIface::disconnectBackhaul() {
 
@@ -1017,10 +1135,20 @@ bool LocNetIface::disconnectBackhaul() {
 
     /* Send disconnect request to QCMAP */
     qmi_error_type_v01 qmi_err_num = QMI_ERR_NONE_V01;
+    qcmap_msgr_wwan_call_type_v01 wwan_call_type = getWwanCallType();
     LOC_LOGV("Sending DisconnectBackhaul..");
     if (mQcmapClientPtr->DisconnectBackHaul(
-            QCMAP_MSGR_WWAN_CALL_TYPE_V4_V01, &qmi_err_num) == false) {
+            wwan_call_type, &qmi_err_num) == false) {
         LOC_LOGE("Disconnect backhaul failed, err 0x%x", qmi_err_num);
+#ifdef FEATURE_MOBILEAP_INDICATION
+        // Even if DisconnectBackHaul fails, do not return, we need to
+        // DisableMobileAP in any case.
+    }
+    qmi_err_num = QMI_ERR_NONE_V01;
+    bool ret = mQcmapClientPtr->DisableMobileAP(&qmi_err_num);
+    if ( false == ret || 0 != qmi_err_num) {
+        LOC_LOGE("Failed to disable mobileap, qcmapErr %d", qmi_err_num);
+#endif
         return false;
     }
 
