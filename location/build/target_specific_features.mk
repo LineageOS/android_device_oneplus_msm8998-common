@@ -1,7 +1,6 @@
 GNSS_CFLAGS := \
     -Werror \
     -Wno-error=unused-parameter \
-    -Wno-error=format \
     -Wno-error=macro-redefined \
     -Wno-error=reorder \
     -Wno-error=missing-braces \
@@ -15,3 +14,7 @@ GNSS_CFLAGS := \
     -Wno-error=tautological-compare \
     -Wno-error=switch \
     -Wno-error=date-time
+
+# Activate the following two lines for regression testing
+#GNSS_SANITIZE := address cfi alignment bounds null unreachable integer
+#GNSS_SANITIZE_DIAG := address cfi alignment bounds null unreachable integer

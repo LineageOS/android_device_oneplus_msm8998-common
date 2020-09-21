@@ -7,7 +7,7 @@ AC_PREREQ(2.61)
 # Initialize the gps lbs-core package version 1.0.0
 AC_INIT([loc-net-iface],1.0.0)
 # Does not strictly follow GNU Coding standards
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
 # Disables auto rebuilding of configure, Makefile.ins
 AM_MAINTAINER_MODE
 # Verifies the --srcdir is correct by checking for the path
@@ -60,6 +60,27 @@ AC_SUBST([DSUTILS_LIBS])
 PKG_CHECK_MODULES([DATAITEMS], [data-items])
 AC_SUBST([DATAITEMS_CFLAGS])
 AC_SUBST([DATAITEMS_LIBS])
+
+# check if it has support for mobileap register indication.
+AC_ARG_ENABLE(mobileap-indications,
+    [AS_HELP_STRING([--enable-mobileap-indications=MOBILEAP_INDICATION_ENABLED],
+        [If it has support for mobileap register indication.])],
+    [MOBILEAP_INDICATION_ENABLED=$enableval],
+    [MOBILEAP_INDICATION_ENABLED=no]
+)
+
+AM_CONDITIONAL(USE_MOBILEAP_INDICATION, test "x$MOBILEAP_INDICATION_ENABLED" == "xyes")
+
+# Check if it has support for roaming and backhaul status indication.
+AC_ARG_ENABLE(roaming-backhaul-status-indications,
+    [AS_HELP_STRING([--enable-roaming-backhaul-status-indications=ROAM_BACKHAUL_STATUS_INDICATION_ENABLED],
+        [If it has support for mobileap register indication.])],
+    [ROAM_BACKHAUL_STATUS_INDICATION_ENABLED=$enableval],
+    [ROAM_BACKHAUL_STATUS_INDICATION_ENABLED=no]
+)
+
+AM_CONDITIONAL(USE_ROAMING_BACKHAUL_STATUS_INDICATION, test "x$ROAM_BACKHAUL_STATUS_INDICATION_ENABLED" == "xyes")
+
 
 AC_ARG_WITH([core_includes],
       AC_HELP_STRING([--with-core-includes=@<:@dir@:>@],
