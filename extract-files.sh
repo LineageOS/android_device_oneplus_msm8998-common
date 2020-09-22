@@ -126,8 +126,4 @@ fix_product_path product/etc/permissions/com.quicinc.cne.xml
 sed -i "s|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g" \
     "$COMMON_BLOB_ROOT"/vendor/etc/permissions/qti_libpermissions.xml
 
-# Load camera shim
-CAMERA_SHIM="$COMMON_BLOB_ROOT"/vendor/lib/libmms_hal_vstab.so
-patchelf --add-needed libshim_camera.so "$CAMERA_SHIM"
-
 "$MY_DIR"/setup-makefiles.sh
