@@ -1274,6 +1274,9 @@ vendor/lib64/libwvhidl.so|ff967a2aab27d75eb858c6a7a269d4090af9f377
 # Wi-Fi
 vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
+vendor/bin/fstman
+vendor/etc/init/vendor.qti.hardware.fstman@1.0-service.rc
+vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
 
 # Wi-Fi Display
 -priv-app/WfdService/WfdService.apk
