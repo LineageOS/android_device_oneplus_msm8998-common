@@ -594,15 +594,15 @@ vendor/lib/vendor.qti.hardware.data.qmi@1.0.so
 vendor/lib/vendor.qti.latency@2.0.so
 
 # DPM
-bin/dpmd
-etc/dpm/dpm.conf
-etc/init/dpmd.rc
-etc/permissions/com.qti.dpmframework.xml
-etc/permissions/dpmapi.xml
-framework/com.qti.dpmframework.jar
-framework/dpmapi.jar
 framework/tcmclient.jar
 framework/tcmiface.jar
+product/bin/dpmd
+product/etc/dpm/dpm.conf
+product/etc/init/dpmd.rc
+product/etc/permissions/com.qti.dpmframework.xml
+product/etc/permissions/dpmapi.xml
+product/framework/dpmapi.jar
+product/framework/com.qti.dpmframework.jar
 product/etc/dpm/dpm.conf
 product/etc/permissions/com.qti.dpmframework.xml
 product/etc/permissions/dpmapi.xml
