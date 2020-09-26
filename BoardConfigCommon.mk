@@ -284,6 +284,9 @@ BOARD_ROOT_EXTRA_SYMLINKS += /vendor/bt_firmware:/bt_firmware
 BOARD_ROOT_EXTRA_SYMLINKS += /vendor/firmware_mnt:/firmware
 BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
 
+# Security
+VENDOR_SECURITY_PATCH := 2020-04-05
+
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 
