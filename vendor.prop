@@ -109,6 +109,7 @@ persist.vendor.radio.enableadvancedscan=false
 persist.vendor.radio.flexmap_type=none
 persist.vendor.radio.force_on_dc=true
 persist.vendor.radio.ignore_dom_time=10
+persist.vendor.radio.mt_sms_ack=30
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
