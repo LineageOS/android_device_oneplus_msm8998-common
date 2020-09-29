@@ -8,6 +8,5 @@ allow qti_init_shell proc_modules:file { r_file_perms };
 
 set_prop(qti_init_shell, ctl_start_prop)
 set_prop(qti_init_shell, diag_prop)
-set_prop(qti_init_shell, system_prop)
 
 dontaudit qti_init_shell self:capability { dac_override dac_read_search };
