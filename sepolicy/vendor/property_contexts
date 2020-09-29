@@ -16,6 +16,10 @@ vendor.camera.                         u:object_r:camera_prop:s0
 
 vendor.display.mode                    u:object_r:vendor_display_prop:s0
 
+# RIL
+persist.sys.oem.region                 u:object_r:exported3_radio_prop:s0
+persist.sys.assert.panic               u:object_r:exported3_radio_prop:s0
+
 # Thermal
 persist.sys.thermal.                   u:object_r:thermal_engine_prop:s0
 sys.thermal.                           u:object_r:thermal_engine_prop:s0
