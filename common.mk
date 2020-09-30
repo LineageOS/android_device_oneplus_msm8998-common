@@ -309,7 +309,7 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1-service \
+    android.hardware.nfc@1.2-service \
     com.android.nfc_extras \
     NfcNci \
     Tag
@@ -322,7 +322,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC - Secure Element
 PRODUCT_PACKAGES += \
-    android.hardware.secure_element@1.0-service \
+    android.hardware.secure_element@1.1-service \
     SecureElement
 
 # OEM Unlock reporting

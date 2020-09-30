@@ -74,11 +74,7 @@ product/lib64/vendor.qti.esepowermanager@1.0.so
 product/lib/vendor.qti.esepowermanager@1.0.so
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
 vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
-vendor/lib64/ese_client.so
-vendor/lib64/ese_spi_nxp.so
 vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib64/ls_client.so
-vendor/lib64/vendor.nxp.eventprocessor@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib/vendor.qti.esepowermanager@1.0.so
