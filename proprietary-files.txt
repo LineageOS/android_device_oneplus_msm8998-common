@@ -9,16 +9,6 @@ vendor/bin/hw/vendor.oneplus.hardware.ifaa@2.0-service
 vendor/etc/init/vendor.oneplus.hardware.ifaa@2.0-service.rc
 vendor/lib64/vendor.oneplus.hardware.ifaa@2.0.so
 
-# Camera
--framework/vendor.oneplus.camera.CameraHIDL-V1.0-java.jar
-vendor/bin/hw/vendor.oneplus.camera.CameraHIDL@1.0-service
-vendor/etc/init/vendor.oneplus.camera.CameraHIDL@1.0-service.rc
-vendor/lib64/vendor.oneplus.camera.CameraHIDL@1.0.so
-lib/vendor.oneplus.camera.CameraHIDL@1.0.so
-lib/vendor.oneplus.camera.CameraHIDL@1.0-adapter-helper.so
-lib64/vendor.oneplus.camera.CameraHIDL@1.0.so
-lib64/vendor.oneplus.camera.CameraHIDL@1.0-adapter-helper.so
-
 # Dash
 vendor/xbin/dashd
 
@@ -110,9 +100,3 @@ etc/firmware/tp/fw_synaptics_16859.img
 # Sensors
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sensor_def_qcomdev.conf
-
-# Wifi
-vendor/bin/hw/vendor.oneplus.hardware.wifi@1.0-service
-vendor/etc/init/vendor.oneplus.hardware.wifi@1.0-service.rc
-vendor/lib64/vendor.oneplus.hardware.wifi@1.0.so
-vendor/lib64/vendor.oneplus.hardware.wifi@1.1.so

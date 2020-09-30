@@ -594,32 +594,6 @@ vendor/lib/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib/vendor.qti.hardware.data.qmi@1.0.so
 vendor/lib/vendor.qti.latency@2.0.so
 
-# DPM
-framework/tcmclient.jar
-framework/tcmiface.jar
-product/etc/dpm/dpm.conf
-product/etc/permissions/com.qti.dpmframework.xml
-product/etc/permissions/dpmapi.xml
-product/framework/dpmapi.jar
-product/framework/com.qti.dpmframework.jar
-product/lib64/com.qualcomm.qti.dpm.api@1.0.so
-product/lib64/libdpmctmgr.so
-product/lib64/libdpmfdmgr.so
-product/lib64/libdpmframework.so
-product/lib64/libdpmtcm.so
-product/lib/com.qualcomm.qti.dpm.api@1.0.so
-product/lib/libdpmctmgr.so
-product/lib/libdpmfdmgr.so
-product/lib/libdpmframework.so
-product/lib/libdpmtcm.so
--product/priv-app/dpmserviceapp/dpmserviceapp.apk
-vendor/bin/dpmQmiMgr
-vendor/etc/init/dpmQmiMgr.rc
-vendor/lib/com.qualcomm.qti.dpm.api@1.0.so
-vendor/lib/libdpmqmihal.so
-vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
-vendor/lib64/libdpmqmihal.so
-
 # DRM
 product/lib64/libGPTEE_system.qti.so
 product/lib64/libQTEEConnector_system.so
@@ -1369,16 +1343,6 @@ vendor/lib/libcppf.so
 # Wi-Fi
 vendor/bin/cnss_diag
 vendor/bin/cnss-daemon
-vendor/bin/fstman
-vendor/bin/wifilearner
-vendor/etc/init/vendor.qti.hardware.fstman@1.0-service.rc
-vendor/etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc
-vendor/etc/wifi/aoa_cldb_falcon.bin
-vendor/etc/wifi/aoa_cldb_swl14.bin
-vendor/lib64/libaoa.so
-vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.wifilearner@1.0.so
-vendor/lib/libaoa.so
 
 # Wi-Fi Display
 bin/wfdservice
