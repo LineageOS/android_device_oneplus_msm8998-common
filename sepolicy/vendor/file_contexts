@@ -52,6 +52,9 @@
 /vendor/usr/keylayout/synaptics.kl                              u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/synaptics_s3320.kl                        u:object_r:vendor_keylayout_file:s0
 
+# NFC
+/(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.1-service                                     u:object_r:hal_secure_element_default_exec:s0
+
 # Param
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.param@1\.0-service    u:object_r:hal_param_default_exec:s0
 
