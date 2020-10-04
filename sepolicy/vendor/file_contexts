@@ -90,6 +90,7 @@
 
 /firmware(/.*)?                                                 u:object_r:firmware_file:s0
 /bt_firmware(/.*)?                                              u:object_r:bt_firmware_file:s0
+/persist(/.*)?                                                  u:object_r:mnt_vendor_file:s0
 
 # Touch
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998    u:object_r:hal_touch_oneplus_msm8998_exec:s0
