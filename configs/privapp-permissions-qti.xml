@@ -70,16 +70,16 @@ It allows additional grants on top of privapp-permissions-platform.xml
     <privapp-permissions package="com.android.mms">
         <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
         <permission name="android.permission.WRITE_APN_SETTINGS"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="org.codeaurora.bluetooth.batestapp">
-        <permission name="android.permission.BLUETOOTH_PRIVILEGED"/>
-        <permission name="android.permission.LOCAL_MAC_ADDRESS"/>
+        <permission name="android.permission.CALL_PRIVILEGED"/>
     </privapp-permissions>
 
     <privapp-permissions package="org.codeaurora.snapcam">
         <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
         <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.gallery">
+        <permission name="android.permission.MODIFY_AUDIO_ROUTING"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.qualcomm.qti.callenhancement">
@@ -91,7 +91,8 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.VIBRATE" />
     </privapp-permissions>
 
-    <privapp-permissions package="com.qualcomm.location">
-        <permission name="android.permission.MANAGE_USERS"/>
+    <privapp-permissions package="com.skyhook.blp">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
     </privapp-permissions>
+
 </permissions>
