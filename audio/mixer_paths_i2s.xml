@@ -127,6 +127,10 @@
         <ctl name="COMP1 Switch" value="1" />
     </path>
 
+    <path name="speaker-safe">
+        <path name="speaker" />
+    </path>
+
    <path name="sidetone-iir">
         <ctl name="IIR1 Enable Band1" value="1" />
         <ctl name="IIR1 Enable Band2" value="1" />
@@ -223,7 +227,15 @@
         <ctl name="COMP0 Switch" value="1" />
     </path>
 
+    <path name="speaker-safe-and-headphones">
+        <path name="speaker-and-headphones" />
+    </path>
+
     <path name="speaker-and-line">
+        <path name="speaker-and-headphones" />
+    </path>
+
+    <path name="speaker-safe-and-line">
         <path name="speaker-and-headphones" />
     </path>
 
@@ -233,10 +245,6 @@
 
     <path name="camcorder-mic">
         <path name="handset-mic" />
-    </path>
-
-    <path name="unprocessed-stereo-mic">
-        <path name="voice-rec-dmic-ef" />
     </path>
 
 </mixer>
