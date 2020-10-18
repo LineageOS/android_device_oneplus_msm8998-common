@@ -891,14 +891,12 @@ vendor/lib/hw/keystore.msm8998.so
 vendor/lib64/hw/keystore.msm8998.so
 
 # Listen
+lib/liblistenjni.so:vendor/lib/liblistenjni.so
 lib/liblistensoundmodel2.so:vendor/lib/liblistensoundmodel2.so
-lib64/liblistensoundmodel2.so:vendor/lib64/liblistensoundmodel2.so
 vendor/lib/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libmulawdec.so
 vendor/lib/libsmwrapper.so
-vendor/lib64/hw/sound_trigger.primary.msm8998.so
-vendor/lib64/libmulawdec.so
 
 # Media
 lib/libmmosal.so
