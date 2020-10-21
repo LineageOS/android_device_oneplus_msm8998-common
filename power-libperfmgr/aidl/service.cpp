@@ -27,6 +27,7 @@
 #include "PowerExt.h"
 #include "disp-power/DisplayLowPower.h"
 
+using aidl::google::hardware::power::impl::pixel::DisplayLowPower;
 using aidl::google::hardware::power::impl::pixel::Power;
 using aidl::google::hardware::power::impl::pixel::PowerExt;
 using ::android::perfmgr::HintManager;
