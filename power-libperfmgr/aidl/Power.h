@@ -33,7 +33,6 @@ namespace power {
 namespace impl {
 namespace pixel {
 
-using ::InteractionHandler;
 using ::aidl::android::hardware::power::Boost;
 using ::aidl::android::hardware::power::Mode;
 using ::android::perfmgr::HintManager;

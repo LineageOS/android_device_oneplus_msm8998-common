@@ -24,6 +24,13 @@
 
 #include "DisplayLowPower.h"
 
+namespace aidl {
+namespace google {
+namespace hardware {
+namespace power {
+namespace impl {
+namespace pixel {
+
 DisplayLowPower::DisplayLowPower() : mFossStatus(false) {}
 
 void DisplayLowPower::Init() {
@@ -71,3 +78,10 @@ void DisplayLowPower::SetFoss(bool enable) {
         mFossStatus = enable;
     }
 }
+
+}  // namespace pixel
+}  // namespace impl
+}  // namespace power
+}  // namespace hardware
+}  // namespace google
+}  // namespace aidl
