@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ea9c31a_7fde3bb7",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 27322
+      },
+      "writtenOn": "2020-10-27T08:13:23Z",
+      "side": 1,
+      "message": "Ij",
+      "range": {
+        "startLine": 588,
+        "startChar": 42,
+        "endLine": 588,
+        "endChar": 50
+      },
+      "revId": "130ffbf7b3542c62fdb806969d7108425e190d04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
