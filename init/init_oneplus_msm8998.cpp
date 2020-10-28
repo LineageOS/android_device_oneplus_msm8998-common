@@ -53,7 +53,17 @@
 using android::base::Trim;
 using android::base::GetProperty;
 using android::base::ReadFileToString;
-using android::init::property_set;
+
+void property_override(char const prop[], char const value[], bool add = true)
+{
+    auto pi = (prop_info *) __system_property_find(prop);
+
+    if (pi != nullptr) {
+        __system_property_update(pi, value, strlen(value));
+    } else if (add) {
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+    }
+}
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -66,7 +76,7 @@ void property_override(const std::string& name, const std::string& value)
     else {
         int rc = __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
         if (rc < 0) {
-            LOG(ERROR) << "property_set(\"" << name << "\", \"" << value << "\") failed: "
+            LOG(ERROR) << "property_override(\"" << name << "\", \"" << value << "\") failed: "
                        << "__system_property_add failed";
         }
     }
@@ -82,23 +92,23 @@ void init_target_properties()
 
         if (!strncmp(device.c_str(), "16859", 5)) {
             // Oneplus 5
-            property_set("ro.display.series", "OnePlus 5");
+            property_override("ro.display.series", "OnePlus 5");
             unknownDevice = false;
         }
         else if (!strncmp(device.c_str(), "17801", 5)) {
             // Oneplus 5T
-            property_set("ro.display.series", "OnePlus 5T");
+            property_override("ro.display.series", "OnePlus 5T");
             unknownDevice = false;
         }
 
-        property_set("vendor.boot.project_name", device.c_str());
+        property_override("vendor.boot.project_name", device.c_str());
     }
     else {
         LOG(ERROR) << "Unable to read device info from " << DEVINFO_FILE;
     }
 
     if (unknownDevice) {
-        property_set("ro.display.series", "UNKNOWN");
+        property_override("ro.display.series", "UNKNOWN");
     }
 }
 
@@ -109,10 +119,10 @@ void init_fingerprint_properties()
     if (ReadFileToString(SENSOR_VERSION_FILE, &sensor_version)) {
         LOG(INFO) << "Loading Fingerprint HAL for sensor version " << sensor_version;
         if (Trim(sensor_version) == "1" || Trim(sensor_version) == "2") {
-            property_set("ro.hardware.fingerprint", "fpc");
+            property_override("ro.hardware.fingerprint", "fpc");
         }
         else if (Trim(sensor_version) == "3") {
-            property_set("ro.hardware.fingerprint", "goodix");
+            property_override("ro.hardware.fingerprint", "goodix");
         }
         else {
             LOG(ERROR) << "Unsupported fingerprint sensor: " << sensor_version;
@@ -145,41 +155,41 @@ void init_alarm_boot_properties()
          * 8 -> KPDPWR_N pin toggled (power key pressed)
          */
         if (Trim(boot_reason) == "0") {
-            property_set("ro.boot.bootreason", "invalid");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "invalid");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "1") {
-            property_set("ro.boot.bootreason", "hard_reset");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "hard_reset");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "2") {
-            property_set("ro.boot.bootreason", "smpl");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "smpl");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "3") {
-            property_set("ro.alarm_boot", "true");
+            property_override("ro.alarm_boot", "true");
             // disable boot animation for RTC wakeup
-            property_set("debug.sf.nobootanimation", "1");
+            property_override("debug.sf.nobootanimation", "1");
         }
         else if (Trim(boot_reason) == "4") {
-            property_set("ro.boot.bootreason", "dc_chg");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "dc_chg");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "5") {
-            property_set("ro.boot.bootreason", "usb_chg");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "usb_chg");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "6") {
-            property_set("ro.boot.bootreason", "pon1");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "pon1");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "7") {
-            property_set("ro.boot.bootreason", "cblpwr");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "cblpwr");
+            property_override("ro.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "8") {
-            property_set("ro.boot.bootreason", "kpdpwr");
-            property_set("ro.alarm_boot", "false");
+            property_override("ro.boot.bootreason", "kpdpwr");
+            property_override("ro.alarm_boot", "false");
         }
     }
     else {
