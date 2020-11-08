@@ -15,6 +15,7 @@
 cc_binary {
     name: "android.hardware.power@1.3-service.oneplus_msm8998",
     relative_install_path: "hw",
+    vintf_fragments: ["android.hardware.power@1.3-service.oneplus_msm8998.xml"],
     init_rc: ["android.hardware.power@1.3-service.oneplus_msm8998.rc"],
     srcs: ["service.cpp", "Power.cpp", "InteractionHandler.cpp", "power-helper.c"],
     cflags: [
