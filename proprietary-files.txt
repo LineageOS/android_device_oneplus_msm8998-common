@@ -2,9 +2,9 @@
 vendor/etc/firmware/tfa98xx.cnt:vendor/firmware/tfa98xx.cnt
 
 # Alipay
--priv-app/IFAAService/IFAAService.apk
 lib/vendor.oneplus.hardware.ifaa@2.0.so
 lib64/vendor.oneplus.hardware.ifaa@2.0.so
+-priv-app/IFAAService/IFAAService.apk
 vendor/bin/hw/vendor.oneplus.hardware.ifaa@2.0-service
 vendor/etc/init/vendor.oneplus.hardware.ifaa@2.0-service.rc
 vendor/lib64/vendor.oneplus.hardware.ifaa@2.0.so
@@ -19,43 +19,19 @@ vendor/etc/qdcm_calib_data_samsung_s6e3fa6_1080p_cmd_mode_dsi_panel.xml
 # DRM
 vendor/etc/init/vendor.oneplus.hardware.drmkey@1.0-service.rc
 vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
+vendor/lib/libDrmKry.so
 vendor/lib64/libDrmKry.so
 vendor/lib64/vendor.oneplus.hardware.drmkey@1.0.so
-vendor/lib/libDrmKry.so
 
 # Graphics firmware
-vendor/firmware/a225p5_pm4.fw
-vendor/firmware/a225_pfp.fw
-vendor/firmware/a225_pm4.fw
-vendor/firmware/a300_pfp.fw
-vendor/firmware/a300_pm4.fw
-vendor/firmware/a330_pfp.fw
-vendor/firmware/a330_pm4.fw
-vendor/firmware/a420_pfp.fw
-vendor/firmware/a420_pm4.fw
-vendor/firmware/a530_gpmu.fw2
 vendor/firmware/a530_pfp.fw
 vendor/firmware/a530_pm4.fw
-vendor/firmware/a530v1_pfp.fw
-vendor/firmware/a530v1_pm4.fw
-vendor/firmware/a530v2_seq.fw2
-vendor/firmware/a530v3_gpmu.fw2
-vendor/firmware/a530v3_seq.fw2
-vendor/firmware/a530_zap.b00
-vendor/firmware/a530_zap.b01
-vendor/firmware/a530_zap.b02
-vendor/firmware/a530_zap.elf
-vendor/firmware/a530_zap.mdt
 vendor/firmware/a540_gpmu.fw2
 vendor/firmware/a540_zap.b00
 vendor/firmware/a540_zap.b01
 vendor/firmware/a540_zap.b02
 vendor/firmware/a540_zap.elf
 vendor/firmware/a540_zap.mdt
-vendor/firmware/a630_gmu.bin
-vendor/firmware/a630_sqe.fw
-vendor/firmware/leia_pfp_470.fw
-vendor/firmware/leia_pm4_470.fw
 
 # IPA
 vendor/firmware/ipa_fws.b00
@@ -70,18 +46,18 @@ vendor/firmware/ipa_fws.mdt
 vendor/lib/libpn553_fw.so
 
 # NXP - ESE-Powermanager
-product/lib64/vendor.qti.esepowermanager@1.0.so
 product/lib/vendor.qti.esepowermanager@1.0.so
+product/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
 vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
+vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
+vendor/lib/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/ese_client.so
 vendor/lib64/ese_spi_nxp.so
 vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib64/ls_client.so
 vendor/lib64/vendor.nxp.eventprocessor@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
-vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib/vendor.qti.esepowermanager@1.0.so
 
 # Radio - factory
 -framework/vendor.oneplus.hardware.param-V1.0-java.jar
@@ -89,13 +65,13 @@ lib/vendor.oneplus.hardware.param@1.0.so
 lib64/vendor.oneplus.hardware.param@1.0.so
 vendor/bin/hw/vendor.oneplus.hardware.param@1.0-service
 vendor/etc/init/vendor.oneplus.hardware.param@1.0-service.rc
-vendor/lib64/vendor.oneplus.hardware.param@1.0.so
 vendor/lib/vendor.oneplus.hardware.param@1.0.so
+vendor/lib64/vendor.oneplus.hardware.param@1.0.so
 
 # Radio - MBN
 etc/firmware/mbn_ota/mbn_ota.txt:vendor/firmware/mbn_ota/mbn_ota.txt
-etc/firmware/tp/fw_synaptics_17801.img
 etc/firmware/tp/fw_synaptics_16859.img
+etc/firmware/tp/fw_synaptics_17801.img
 
 # Sensors
 vendor/etc/sensors/hals.conf
