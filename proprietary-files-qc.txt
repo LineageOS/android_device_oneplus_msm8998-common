@@ -147,6 +147,8 @@ vendor/etc/camera/imx398_chromatix.xml
 vendor/etc/camera/license.lic
 vendor/etc/scve/facereco/gModel.dat
 vendor/lib64/libcdsprpc.so
+vendor/lib64/libDeVIS.so
+vendor/lib64/libEIS.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
 vendor/lib64/libmmcamera2_q3a_core.so
@@ -157,6 +159,7 @@ vendor/lib64/libmmcamera_faceproc.so
 vendor/lib64/libmmcamera_faceproc2.so
 vendor/lib64/libmmcamera_tintless_algo.so
 vendor/lib64/libmmcamera_tintless_bg_pca_algo.so
+vendor/lib64/libOGLManager.so
 vendor/lib64/libscveBlobDescriptor.so
 vendor/lib64/libscveFaceRecognition.so
 vendor/lib64/libscvePanorama_lite.so
@@ -194,6 +197,8 @@ vendor/lib/libarcsoft_smart_denoise.so
 vendor/lib/libcamera_oneplus_bokeh_wrapper.so
 vendor/lib/libcdsprpc.so
 vendor/lib/libcvface_api.so
+vendor/lib/libDeVIS.so
+vendor/lib/libEIS.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
@@ -246,6 +251,7 @@ vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmqjpegdma.so
 vendor/lib/libmpbase.so
+vendor/lib/libOGLManager.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libqomx_jpegenc.so
