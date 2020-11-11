@@ -1,4 +1,5 @@
 type debugfs_power_stats, fs_type, debugfs_type;
+type debugfs_rpm, fs_type, debugfs_type;
 type debugfs_wlan, fs_type, debugfs_type;
 type proc_alarm_boot, fs_type, proc_type;
 type proc_touchpanel, fs_type, proc_type;
