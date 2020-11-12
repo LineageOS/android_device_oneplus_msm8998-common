@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "714ab54e_5b09332a",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-11-12T21:31:49Z",
+      "side": 1,
+      "message": "You could as well remove unused adreno firmware.",
+      "revId": "93f48069102f0de25569c1e7cae21f8b0d84dd36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
