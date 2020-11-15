@@ -8,3 +8,4 @@ allow vendor_init camera_data_file:dir { create_dir_perms w_dir_perms };
 allow vendor_init camera_data_file:file { create_file_perms w_file_perms };
 
 allow vendor_init sysfs_wifi:file { w_file_perms };
+
