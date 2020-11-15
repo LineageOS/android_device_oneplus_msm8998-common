@@ -1,8 +1,11 @@
-persist.sys.diag.max.size              u:object_r:diag_prop:s0
-persist.vendor.oem.dump                u:object_r:diag_prop:s0
-
-vendor.oem.device.imeicache0           u:object_r:radio_prop:s0
-vendor.oem.device.imeicache1           u:object_r:radio_prop:s0
+# Bluetooth
+bt.max.hfpclient.connections           u:object_r:vendor_bluetooth_prop:s0
+persist.vendor.bt.enable.splita2dp     u:object_r:vendor_bluetooth_prop:s0
+persist.vendor.bt.a2dp_offload_cap     u:object_r:vendor_bluetooth_prop:s0
+ro.vendor.bluetooth.emb_wp_mode        u:object_r:vendor_bluetooth_prop:s0
+ro.vendor.bluetooth.wipower            u:object_r:vendor_bluetooth_prop:s0
+vendor.bluetooth.emb_wp_mode           u:object_r:vendor_bluetooth_prop:s0
+vendor.bluetooth.wipower               u:object_r:vendor_bluetooth_prop:s0
 
 # Camera
 camera.on                              u:object_r:camera_prop:s0
@@ -13,8 +16,11 @@ persist.vendor.camera.                 u:object_r:camera_prop:s0
 ro.camera.                             u:object_r:camera_prop:s0
 ro.vendor.camera.                      u:object_r:camera_prop:s0
 vendor.camera.                         u:object_r:camera_prop:s0
-
 vendor.display.mode                    u:object_r:vendor_display_prop:s0
+
+# Diag
+persist.sys.diag.max.size              u:object_r:diag_prop:s0
+persist.vendor.oem.dump                u:object_r:diag_prop:s0
 
 # Fingerprint
 fpc_kpi                                u:object_r:vendor_fp_prop:s0
@@ -25,6 +31,32 @@ ro.boot.fpsensor                       u:object_r:vendor_fp_prop:s0
 ro.hardware.fp                         u:object_r:vendor_fp_prop:s0
 vendor.fps_hal.                        u:object_r:vendor_fp_prop:s0
 
+# Firmware
+ro.build.expect.                       u:object_r:exported_default_prop:s0
+
+# Radio
+persist.radio.always_send_plmn         u:object_r:vendor_radio_prop:s0
+persist.radio.aosp_usr_pref_sel        u:object_r:vendor_radio_prop:s0
+persist.radio.custom_ecc               u:object_r:vendor_radio_prop:s0
+persist.radio.calls.on.ims             u:object_r:vendor_radio_prop:s0
+persist.radio.data_con_rprt            u:object_r:vendor_radio_prop:s0
+persist.radio.data_ltd_sys_ind         u:object_r:vendor_radio_prop:s0
+persist.radio.hw_mbn_update            u:object_r:vendor_radio_prop:s0
+persist.radio.is_wps_enabled           u:object_r:vendor_radio_prop:s0
+persist.radio.RATE_ADAPT_ENABLE        u:object_r:vendor_radio_prop:s0
+persist.radio.ROTATION_ENABLE          u:object_r:vendor_radio_prop:s0
+persist.radio.sap_silent_pin           u:object_r:vendor_radio_prop:s0
+persist.radio.sw_mbn_update            u:object_r:vendor_radio_prop:s0
+persist.radio.sib16_support            u:object_r:vendor_radio_prop:s0
+persist.radio.videopause.mode          u:object_r:vendor_radio_prop:s0
+persist.radio.VT_CAM_INTERFACE         u:object_r:vendor_radio_prop:s0
+persist.radio.VT_ENABLE                u:object_r:vendor_radio_prop:s0
+persist.radio.VT_HYBRID_ENABLE         u:object_r:vendor_radio_prop:s0
+persist.vendor.ims.dropset_feature     u:object_r:vendor_radio_prop:s0
+ril.subscription.                      u:object_r:vendor_radio_prop:s0
+vendor.oem.device.imeicache0           u:object_r:vendor_radio_prop:s0
+vendor.oem.device.imeicache1           u:object_r:vendor_radio_prop:s0
+
 # RIL
 persist.sys.oem.region                 u:object_r:exported3_radio_prop:s0
 persist.sys.assert.panic               u:object_r:exported3_radio_prop:s0
@@ -33,3 +65,18 @@ persist.sys.assert.panic               u:object_r:exported3_radio_prop:s0
 persist.sys.thermal.                   u:object_r:thermal_engine_prop:s0
 sys.thermal.                           u:object_r:thermal_engine_prop:s0
 vendor.sys.thermal.                    u:object_r:thermal_engine_prop:s0
+
+# Vendor props
+gpu.stats.debug.level                  u:object_r:vendor_default_prop:s0
+media.aac_51_output_enabled            u:object_r:vendor_default_prop:s0
+mm.enable.smoothstreaming              u:object_r:vendor_default_prop:s0
+mmp.enable.3g2                         u:object_r:vendor_default_prop:s0
+persist.data.df.                       u:object_r:vendor_default_prop:s0
+persist.data.netmgrd.qos.enable        u:object_r:vendor_default_prop:s0
+persist.data.wda.enable                u:object_r:vendor_default_prop:s0
+persist.rild.nitz_                     u:object_r:vendor_default_prop:s0
+persist.rmnet.data.enable              u:object_r:vendor_default_prop:s0
+persist.timed.enable                   u:object_r:vendor_default_prop:s0
+rild.libpath                           u:object_r:vendor_default_prop:s0
+ro.qualcomm.                           u:object_r:vendor_default_prop:s0
+vidc.enc.dcvs.extra-buff-count         u:object_r:vendor_default_prop:s0
