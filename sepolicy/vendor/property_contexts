@@ -2,8 +2,10 @@
 bt.max.hfpclient.connections           u:object_r:vendor_bluetooth_prop:s0
 persist.vendor.bt.enable.splita2dp     u:object_r:vendor_bluetooth_prop:s0
 persist.vendor.bt.a2dp_offload_cap     u:object_r:vendor_bluetooth_prop:s0
+ro.bt.bdaddr_path                      u:object_r:vendor_bluetooth_prop:s0
 ro.vendor.bluetooth.emb_wp_mode        u:object_r:vendor_bluetooth_prop:s0
 ro.vendor.bluetooth.wipower            u:object_r:vendor_bluetooth_prop:s0
+ro.vendor.bt.bdaddr_path               u:object_r:vendor_bluetooth_prop:s0
 vendor.bluetooth.emb_wp_mode           u:object_r:vendor_bluetooth_prop:s0
 vendor.bluetooth.wipower               u:object_r:vendor_bluetooth_prop:s0
 
