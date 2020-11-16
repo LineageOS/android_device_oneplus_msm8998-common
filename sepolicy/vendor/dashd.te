@@ -10,3 +10,5 @@ allow dashd dash_device:chr_file { rw_file_perms };
 
 r_dir_file(dashd, sysfs_usb_supply);
 r_dir_file(dashd, sysfs_battery_supply);
+
+dontaudit dashd self:capability { dac_override dac_read_search };
