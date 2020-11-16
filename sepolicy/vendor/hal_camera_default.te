@@ -13,5 +13,6 @@ allow hal_camera_default mnt_vendor_file:file { rw_file_perms setattr };
 allow hal_camera_default sysfs:file { r_file_perms };
 
 get_prop(hal_camera_default, vendor_system_prop)
+get_prop(hal_camera_default, sensors_dbg_prop)
 set_prop(hal_camera_default, diag_prop)
 set_prop(hal_camera_default, camera_prop)
