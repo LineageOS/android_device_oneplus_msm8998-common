@@ -800,9 +800,8 @@ vendor/bin/qrtr-ns
 vendor/lib/libqrtr.so
 vendor/lib64/libqrtr.so
 
-# Radio - from xiaomi/daisy/daisy_sprout:10/QKQ1.191002.002/V11.0.4.0.QDLMIXM
-product/framework/qti-telephony-common.jar:system_ext/framework/qti-telephony-common.jar|11d6b89b31a9bf65218b3676c2bbd296275b1932
--product/priv-app/ims/ims.apk:system_ext/priv-app/ims/ims.apk|9c4ca91e0ec7a567d22251d7ca0640abf13fdd7b
+# Radio - from jasmine - V11.0.15.0.QDIMIXM
+product/framework/qti-telephony-common.jar:system_ext/framework/qti-telephony-common.jar|5b1c23ce0d42e1b666d387eedde3444dd07e61bc
 
 # Radio
 etc/permissions/qcnvitems.xml:product/etc/permissions/qcnvitems.xml
@@ -896,6 +895,11 @@ vendor/etc/init/vendor.oneplus.hardware.param@1.0-service.rc
 vendor/lib/vendor.oneplus.hardware.param@1.0.so
 vendor/lib64/vendor.oneplus.hardware.param@1.0.so
 
+# Radio - IMS - from jasmine - V11.0.15.0.QDIMIXM
+-product/priv-app/ims/ims.apk:system_ext/priv-app/ims/ims.apk|fe11b3fe75a52e586ca6390adbd1b234f4f565ed
+product/lib64/libimscamera_jni.so:system_ext/lib64/libimscamera_jni.so|7cb89110cca94d37d68c705f12a7a5a4ee106139
+product/lib64/libimsmedia_jni.so:system_ext/lib64/libimsmedia_jni.so|3540752cc3658261ea3c909f03018eea4398f84e
+
 # Radio - IMS
 -product/app/imssettings/imssettings.apk:system_ext/app/imssettings/imssettings.apk
 -product/app/uceShimService/uceShimService.apk:system_ext/app/uceShimService/uceShimService.apk
@@ -910,8 +914,6 @@ product/lib64/lib-imsvideocodec.so:system_ext/lib64/lib-imsvideocodec.so
 product/lib64/lib-imsvt.so:system_ext/lib64/lib-imsvt.so
 product/lib64/lib-imsvtextutils.so:system_ext/lib64/lib-imsvtextutils.so
 product/lib64/lib-imsvtutils.so:system_ext/lib64/lib-imsvtutils.so
-product/lib64/libimscamera_jni.so:system_ext/lib64/libimscamera_jni.so
-product/lib64/libimsmedia_jni.so:system_ext/lib64/libimsmedia_jni.so
 product/lib64/vendor.qti.hardware.radio.ims@1.0.so:system_ext/lib64/vendor.qti.hardware.radio.ims@1.0.so
 product/lib64/vendor.qti.hardware.radio.ims@1.1.so:system_ext/lib64/vendor.qti.hardware.radio.ims@1.1.so
 product/lib64/vendor.qti.hardware.radio.ims@1.2.so:system_ext/lib64/vendor.qti.hardware.radio.ims@1.2.so
