@@ -27,6 +27,8 @@ static constexpr int RAMP_SIZE = 8;
 static constexpr int RAMP_STEP_DURATION = 50;
 
 static constexpr int BRIGHTNESS_RAMP[RAMP_SIZE] = {0, 12, 25, 37, 50, 72, 85, 100};
+static constexpr int DEFAULT_MIN_BRIGHTNESS = 1;
+static constexpr int DEFAULT_SCALED_MIN_BRIGHTNESS = 1;
 static constexpr int DEFAULT_MAX_BRIGHTNESS = 255;
 
 static uint32_t rgbToBrightness(const LightState& state) {
@@ -144,7 +146,9 @@ void Light::setLcdBacklight(const LightState& state) {
     // apply linear scaling across the accepted range.
     if (mLcdBacklight.second != DEFAULT_MAX_BRIGHTNESS) {
         int old_brightness = brightness;
-        brightness = brightness * mLcdBacklight.second / DEFAULT_MAX_BRIGHTNESS;
+        brightness = (((mLcdBacklight.second - DEFAULT_SCALED_MIN_BRIGHTNESS) * (brightness - DEFAULT_MIN_BRIGHTNESS))
+                     / (DEFAULT_MAX_BRIGHTNESS - DEFAULT_MIN_BRIGHTNESS))
+                     + DEFAULT_SCALED_MIN_BRIGHTNESS;
         LOG(VERBOSE) << "scaling brightness " << old_brightness << " => " << brightness;
     }
 
