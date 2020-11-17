@@ -1107,11 +1107,10 @@ vendor/bin/qrtr-ns
 vendor/lib/libqrtr.so
 vendor/lib64/libqrtr.so
 
-# Radio (from xiaomi/daisy/daisy_sprout:10/QKQ1.191002.002/V11.0.4.0.QDLMIXM)
-product/framework/qti-telephony-common.jar|11d6b89b31a9bf65218b3676c2bbd296275b1932
--product/priv-app/ims/ims.apk|9c4ca91e0ec7a567d22251d7ca0640abf13fdd7b
+# RIL - from jasmine - V11.0.15.0.QDIMIXM
+product/framework/qti-telephony-common.jar|5b1c23ce0d42e1b666d387eedde3444dd07e61bc
 
-# Radio
+# RIL
 etc/permissions/qcnvitems.xml:product/etc/permissions/qcnvitems.xml
 framework/qcnvitems.jar:product/framework/qcnvitems.jar
 -product/app/QtiTelephonyService/QtiTelephonyService.apk
@@ -1205,7 +1204,10 @@ vendor/etc/init/vendor.oneplus.hardware.param@1.0-service.rc
 vendor/lib/vendor.oneplus.hardware.param@1.0.so
 vendor/lib64/vendor.oneplus.hardware.param@1.0.so
 
-# Radio - IMS
+# IMS - from jasmine - V11.0.15.0.QDIMIXM
+-product/priv-app/ims/ims.apk|fe11b3fe75a52e586ca6390adbd1b234f4f565ed
+
+# IMS
 -product/app/imssettings/imssettings.apk
 -product/app/uceShimService/uceShimService.apk
 product/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
