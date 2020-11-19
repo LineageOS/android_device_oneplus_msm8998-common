@@ -117,8 +117,8 @@
         <value>400.8</value>
         <value>469.3</value>
     </array>
-    <item name="cpu.idle">5</item>
-    <item name="cpu.awake">8</item>
+    <item name="cpu.suspend">5</item>
+    <item name="cpu.idle">8</item>
     <item name="battery.capacity">3300</item>
     <array name="wifi.batchedscan">
         <value>.0002</value>
