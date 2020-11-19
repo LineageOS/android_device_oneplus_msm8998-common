@@ -18,12 +18,12 @@ persist.camera.mobicat=2
 persist.camera.stats.debugexif=3080192
 persist.ts.rtmakeup=false
 
-# DPM
-persist.vendor.dpm.feature=0
-
 # Data
 persist.radio.aosp_usr_pref_sel=true
 persist.radio.custom_ecc=1
+
+# DPM
+persist.vendor.dpm.feature=1
 
 # Graphics
 persist.debug.wfd.enable=1 
