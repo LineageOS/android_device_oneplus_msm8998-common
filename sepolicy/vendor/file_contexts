@@ -23,6 +23,9 @@
 # Display
 /(product|system/product)/(lib|lib64)/vendor\.display\.config@1\.[0-9]\.so   u:object_r:same_process_hal_file:s0
 
+# DPM
+/system/bin/dpmd                                                u:object_r:vendor_dpmd_exec:s0
+
 # DRM
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.drmkey@1\.0-service    u:object_r:hal_drm_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.hdcpkey@1\.0-service   u:object_r:hal_hdcpkey_default_exec:s0
