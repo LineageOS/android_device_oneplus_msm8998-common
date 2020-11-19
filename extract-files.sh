@@ -69,12 +69,6 @@ function blob_fixup() {
         product/etc/permissions/qcnvitems.xml )
             sed -i "s/\/system\/framework\//\/system\/product\/framework\//g" "${2}"
             ;;
-        product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml )
-            sed -i "s/xml version=\"2.0\"/xml version=\"1.0\"/" "${2}"
-            ;;
-        product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml )
-            sed -i "s/xml version=\"2.0\"/xml version=\"1.0\"/" "${2}"
-            ;;
         product/etc/permissions/vendor.qti.hardware.factory.xml )
             sed -i "s/\/system\/framework\//\/system\/product\/framework\//g" "${2}"
             ;;
