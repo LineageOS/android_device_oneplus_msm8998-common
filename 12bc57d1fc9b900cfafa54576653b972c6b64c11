@@ -86,6 +86,30 @@
       "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca7f936_5ae5274f",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-11-29T17:53:50Z",
+      "side": 0,
+      "message": "Because at that time I only looked at the 32-bit libs that were in system.",
+      "parentUuid": "0cfda524_887a6b2b",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1302,
+        "endChar": 42
+      },
+      "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
