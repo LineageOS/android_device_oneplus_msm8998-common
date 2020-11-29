@@ -110,6 +110,30 @@
       "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622e3ca2_36044fa9",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-11-29T17:54:53Z",
+      "side": 0,
+      "message": "I did it here: https://review.lineageos.org/c/LineageOS/android_device_xiaomi_sdm845-common/+/294535",
+      "parentUuid": "dca7f936_5ae5274f",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1302,
+        "endChar": 42
+      },
+      "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
