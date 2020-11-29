@@ -62,6 +62,30 @@
       "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cfda524_887a6b2b",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2020-11-29T17:39:15Z",
+      "side": 0,
+      "message": "Thanks. Why did you leave these on pro1?",
+      "parentUuid": "7fe06189_e3f5751e",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1302,
+        "endChar": 42
+      },
+      "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
