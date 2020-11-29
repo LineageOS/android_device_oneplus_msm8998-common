@@ -134,6 +134,29 @@
       "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db5b01b_8f3f5d7d",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-11-29T20:18:48Z",
+      "side": 0,
+      "message": "Now you can remove this too: https://github.com/LineageOS/android_device_oneplus_msm8998-common/blob/d265d8fd8b7a7d3fff1709d8331436d1e6b7a471/extract-files.sh#L101-L111",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 73
+      },
+      "revId": "12bc57d1fc9b900cfafa54576653b972c6b64c11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
