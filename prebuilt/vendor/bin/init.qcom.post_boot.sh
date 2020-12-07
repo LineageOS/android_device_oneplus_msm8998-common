@@ -137,11 +137,11 @@ function configure_memory_parameters() {
 case "$target" in
     "msm8998" | "apq8098_latv")
 
-	# Enable sched systrace
-	echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
+    # Enable sched systrace
+    echo 1 >  /sys/kernel/debug/tracing/events/sched/sched_get_task_cpu_cycles/enable
 
-	# Enable Adaptive LMK denzel.chen
-	echo "18432,23040,27648,51256,150296,200640" > /sys/module/lowmemorykiller/parameters/minfree
+    # Enable Adaptive LMK denzel.chen
+    echo "18432,23040,27648,51256,150296,200640" > /sys/module/lowmemorykiller/parameters/minfree
 
         for cpubw in /sys/class/devfreq/*qcom,cpubw*
         do
@@ -168,26 +168,26 @@ case "$target" in
             echo 400 > $memlat/mem_latency/ratio_ceil
         done
         echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
-	if [ -f /sys/devices/soc0/soc_id ]; then
-		soc_id=`cat /sys/devices/soc0/soc_id`
-	else
-		soc_id=`cat /sys/devices/system/soc/soc0/id`
-	fi
+    if [ -f /sys/devices/soc0/soc_id ]; then
+        soc_id=`cat /sys/devices/soc0/soc_id`
+    else
+        soc_id=`cat /sys/devices/system/soc/soc0/id`
+    fi
 
-	if [ -f /sys/devices/soc0/hw_platform ]; then
-		hw_platform=`cat /sys/devices/soc0/hw_platform`
-	else
-		hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
-	fi
+    if [ -f /sys/devices/soc0/hw_platform ]; then
+        hw_platform=`cat /sys/devices/soc0/hw_platform`
+    else
+        hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+    fi
 
-	if [ -f /sys/devices/soc0/platform_version ]; then
-		platform_version=`cat /sys/devices/soc0/platform_version`
-		platform_major_version=$((10#${platform_version}>>16))
-	fi
+    if [ -f /sys/devices/soc0/platform_version ]; then
+        platform_version=`cat /sys/devices/soc0/platform_version`
+        platform_major_version=$((10#${platform_version}>>16))
+    fi
 
-	if [ -f /sys/devices/soc0/platform_subtype_id ]; then
-		platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
-	fi
+    if [ -f /sys/devices/soc0/platform_subtype_id ]; then
+        platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+    fi
 
         # Set Memory parameters
         configure_memory_parameters
