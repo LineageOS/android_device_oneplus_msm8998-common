@@ -612,12 +612,6 @@ on post-fs-data
     #Create dir for TUI
     mkdir /data/vendor/tui 0600 system drmrpc
 
-    #Start move time data to /data/vendor once post-fs-data done
-    start vendor.move_time_data
-
-    #Start move_wifi_data service.
-    start vendor.move_wifi_data
-
     # Trigger WLAN driver load
     write /sys/kernel/boot_wlan/boot_wlan 1
 
