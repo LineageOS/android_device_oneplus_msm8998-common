@@ -606,10 +606,6 @@ on post-fs-data
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
-    #create port-bridge log dir
-    mkdir /data/vendor/port_bridge 0770 radio radio
-    chmod 0770 /data/vendor/port_bridge
-
     #create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
@@ -1012,12 +1008,6 @@ service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     user root
     group bluetooth net_bt_admin misc diag net_bt
     disabled
-    oneshot
-
-service vendor.port-bridge /system/vendor/bin/port-bridge
-    class main
-    user radio
-    group radio system inet
     oneshot
 
 service vendor.netmgrd /vendor/bin/netmgrd
