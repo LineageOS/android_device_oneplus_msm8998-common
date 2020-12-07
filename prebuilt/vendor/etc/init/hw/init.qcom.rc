@@ -819,14 +819,7 @@ on property:vendor.bluetooth.startbtlogger=true
 on property:vendor.bluetooth.startbtlogger=false
     stop vendor.bt_logger
 
-service vendor.qcom-c_main-sh /vendor/bin/init.class_main.sh
-    class main
-    user root
-    group root system
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
-    start vendor.qcom-c_main-sh
     start wcnss-service
 
 on property:persist.env.fastdorm.enabled=true
@@ -874,31 +867,26 @@ service vendor.port-bridge /system/vendor/bin/port-bridge
     class main
     user radio
     group radio system inet
-    disabled
     oneshot
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
-    disabled
 
 service vendor.ipacm /vendor/bin/ipacm
     class main
     user radio
     group radio inet
-    disabled
 
 service vendor.dataqti /vendor/bin/qti
     class main
     user radio
     socket qti_dpm_uds_file dgram 660 radio radio
     group radio oem_2901 diag usb inet
-    disabled
 
 service vendor.dataadpl /vendor/bin/adpl
     class main
     user radio
     group radio oem_2901 diag usb net_admin
-    disabled
 
 service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
@@ -1041,14 +1029,6 @@ on property:ro.data.large_tcp_window_size=true
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
-service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
-    class main
-    user radio
-    disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
