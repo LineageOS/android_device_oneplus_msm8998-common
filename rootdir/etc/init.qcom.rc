@@ -142,9 +142,6 @@ on post-fs
     chown system system /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
     chmod 660 /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
 
-    # wangdongdong@MultiMediaService,2018/03/28,change the mode of the file
-    chmod 0664 /persist/spkr_calibration.bin
-
     # create a empty file for wifi hal to write mac address
     write /mnt/vendor/persist/wlan_mac.bin ""
     chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
@@ -228,8 +225,8 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    mkdir /persist/bluetooth 0770 bluetooth bluetooth
-    mkdir /persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /mnt/vendor/persist/alarm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
 
@@ -287,11 +284,10 @@ on boot
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
 
     # Create directory used for display
-    mkdir /persist/display 0770 system graphics
+    mkdir /mnt/vendor/persist/display 0770 system graphics
 
     # Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
-
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
