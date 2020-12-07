@@ -1,0 +1,3 @@
+diag_use(vendor_qcomsysd)
+get_prop(vendor_qcomsysd, diag_prop)
+allow vendor_qcomsysd self:socket create;
