@@ -326,17 +326,38 @@ on boot
     chmod 0666 /sys/module/opchain/parameters/boost_tl
 
     # wulaibin@bsp , 2015/11/18, Modify for RGB light support
-    chown system system /sys/class/leds/red/pause_lo
-    chown system system /sys/class/leds/blue/pause_lo
-    chown system system /sys/class/leds/green/pause_lo
-
-    chown system system /sys/class/leds/red/pause_hi
-    chown system system /sys/class/leds/blue/pause_hi
-    chown system system /sys/class/leds/green/pause_hi
-
     chown system system /sys/class/leds/red/blink
-    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/red/pause_hi
+    chown system system /sys/class/leds/red/pause_lo
+    chown system system /sys/class/leds/red/ramp_step_ms
     chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/duty_pcts
+    chown system system /sys/class/leds/green/pause_hi
+    chown system system /sys/class/leds/green/pause_lo
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/blue/pause_hi
+    chown system system /sys/class/leds/blue/pause_lo
+    chown system system /sys/class/leds/blue/ramp_step_ms
+
+    chmod 666 /sys/class/leds/red/brightness
+    chmod 660 /sys/class/leds/red/duty_pcts
+    chmod 660 /sys/class/leds/red/ramp_step_ms
+    chmod 666 /sys/class/leds/green/brightness
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 666 /sys/class/leds/blue/brightness
+    chmod 660 /sys/class/leds/blue/duty_pcts
+    chmod 660 /sys/class/leds/blue/ramp_step_ms
+
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chmod 666 /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chmod 666 /sys/class/leds/led:torch_1/brightness
+    chown system system /sys/class/leds/led:switch_0/brightness
+    chmod 666 /sys/class/leds/led:switch_0/brightness
 
     chown system system /proc/touchpanel/gesture_enable
     chown system system /proc/touchpanel/gesture_switch
@@ -354,30 +375,6 @@ on boot
     # camera. enable mobicat
     setprop persist.camera.mobicat 2
     setprop persist.camera.stats.debugexif 3080192
-
-    chown system system /sys/class/leds/led:torch_0/brightness
-    chmod 666 /sys/class/leds/led:torch_0/brightness
-    chown system system /sys/class/leds/led:torch_1/brightness
-    chmod 666 /sys/class/leds/led:torch_1/brightness
-    chown system system /sys/class/leds/led:switch_0/brightness
-    chmod 666 /sys/class/leds/led:switch_0/brightness
-
-    # wujialong , 2015/10/22, Add for RGB light support
-    chown system system /sys/class/leds/red/ramp_step_ms
-    chown system system /sys/class/leds/blue/ramp_step_ms
-    chown system system /sys/class/leds/green/ramp_step_ms
-    chown system system /sys/class/leds/red/duty_pcts
-    chown system system /sys/class/leds/blue/duty_pcts
-    chown system system /sys/class/leds/green/duty_pcts
-    chmod 660 /sys/class/leds/red/ramp_step_ms
-    chmod 660 /sys/class/leds/green/ramp_step_ms
-    chmod 660 /sys/class/leds/blue/ramp_step_ms
-    chmod 660 /sys/class/leds/red/duty_pcts
-    chmod 660 /sys/class/leds/green/duty_pcts
-    chmod 660 /sys/class/leds/blue/duty_pcts
-    chmod 666 /sys/class/leds/red/brightness
-    chmod 666 /sys/class/leds/green/brightness
-    chmod 666 /sys/class/leds/blue/brightness
 
     # lifeng@bsp tp 2015/6/3 for firmware update
     write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
