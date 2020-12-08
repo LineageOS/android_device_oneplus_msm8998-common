@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20d61da5_a45ccd35",
+        "filename": "common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2020-12-08T08:17:28Z",
+      "side": 1,
+      "message": "ueventd.rc to rootdir/ueventd.rc? Then could use same logic as earlier:\n$(call find-copy-subdir-files,*,${LOCAL_PATH}/rootdir,$(TARGET_COPY_OUT_VENDOR))",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 77
+      },
+      "revId": "a03246ed796df92fdc37395c7c30eb2ec9cb600b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
