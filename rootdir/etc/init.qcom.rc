@@ -869,22 +869,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     group root
 
 on charger
-    mkdir /dev/usb-ffs 0770 shell shell
-    mkdir /dev/usb-ffs/adb 0770 shell shell
-    mount configfs none /config
-    mkdir /config/usb_gadget/g1 0770 shell shell
-    mkdir /config/usb_gadget/g1/strings/0x409 0770 shell shell
-    write /config/usb_gadget/g1/bcdUSB 0x0200
-    write /config/usb_gadget/g1/os_desc/use 1
-    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    mkdir /config/usb_gadget/g1/functions/ffs.adb
-    mkdir /config/usb_gadget/g1/configs/b.1 0770 shell shell
-    mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
-    write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
-    write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
-    symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
-    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
-    setprop sys.usb.config mass_storage
     setprop sys.usb.configfs 1
 
     # from init.target.performance.rc
@@ -944,41 +928,6 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     onrestart restart audioserver
 
 # from init.oem.rc
-on property:sys.boot_completed=1 && property:persist.sys.usb.config=none && property:ro.boot.type=auto
-    setprop persist.sys.usb.config adb
-
-on property:sys.boot_completed=1
-    write /config/usb_gadget/g1/functions/gsi.rndis/rndis_class_id 1
-    write /config/usb_gadget/g1/functions/gsi.rndis/rndis_wceis 1
-
-on charger && property:ro.debuggable=1
-    setprop persist.sys.usb.config adb
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config adb
-
-on charger && property:ro.boot.type=auto
-    setprop persist.sys.usb.config adb
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config adb
-
-on charger && property:ro.boot.type=sdebug
-    setprop persist.sys.usb.config adb
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config adb
-
-on property:ro.boot.adb=true
-    write /dev/kmsg "ro.boot.adb=true, set adb port"
-    setprop persist.sys.usb.config adb
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config adb
-
-on charger
-    setprop sys.op_bootmode charger
-    start dashd
-
-on property:sys.op_bootmode=charger && property:sys.usb.config=none
-    setprop sys.usb.config mass_storage
-
 on property:sys.fastcharger=true
     write /sys/class/power_supply/battery/charging_enabled 1
 
@@ -1005,13 +954,6 @@ on property:sys.shutdown.requested=*
 on property:wlan.driver.status=ok
    insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
-#USB controller configuration
-    setprop vendor.usb.rndis.func.name "gsi"
-    setprop vendor.usb.rmnet.func.name "gsi"
-    setprop vendor.usb.rmnet.inst.name "rmnet"
-    setprop vendor.usb.dpl.inst.name "dpl"
-    setprop sys.usb.configfs 1
-
 #Peripheral manager
 service vendor.per_mgr /vendor/bin/pm-service
     class core
@@ -1031,9 +973,6 @@ on property:init.svc.vendor.per_mgr=running
 on property:sys.shutdown.requested=*
     stop vendor.cnss-daemon
     stop vendor.per_proxy
-
-on charger
-    setprop sys.usb.configfs 1
 
 service vendor.qseecomd /vendor/bin/qseecomd
    class core
