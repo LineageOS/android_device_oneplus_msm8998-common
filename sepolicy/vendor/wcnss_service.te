@@ -1,2 +1,0 @@
-allow wcnss_service sysfs_project_info:dir { search };
-allow wcnss_service sysfs_project_info:file { r_file_perms };
