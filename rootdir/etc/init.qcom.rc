@@ -175,6 +175,127 @@ on post-fs
     wait_for_prop vendor.sys.listeners.registered true
     write /dev/ipa 1
 
+on post-fs-data
+    #Create directory for tftp
+    mkdir /data/vendor/tombstones 0771 system system
+
+    # from init.oem.rc
+    # Nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+    # Radio
+    mkdir /data/vendor/oemnvitems 0771 radio radio
+
+    # Fingerprint
+    mkdir /data/vendor_de/silead 0770 system system
+    mkdir /mnt/vendor/persist/silead 0777 system system
+    mkdir /mnt/vendor/persist/goodix 0777 system system
+
+    # mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
+    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
+
+    mkdir /persist/hdcp  775 media mediadrm
+    mkdir /mnt/vendor/persist/hdcp  775 media mediadrm
+
+    mkdir /data/vendor/misc/qsee/face/  0770 system system
+
+    # from init.target.rc
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+
+    mkdir /data/vendor/ramdump 0771 root system
+    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
+    mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
+
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/vendor/wifi 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+
+    #create netmgr log dir
+    mkdir /data/vendor/netmgr 0770 radio radio
+    chmod 0770 /data/vendor/netmgr
+
+    #create ipacm log dir
+    mkdir /data/vendor/ipa 0770 radio radio
+    chmod 0770 /data/vendor/ipa
+
+    # Create the directories used by CnE subsystem
+    mkdir /data/vendor/connectivity 0771 radio radio
+    chown radio radio /data/vendor/connectivity
+
+    # Create directory used by audio subsystem
+    mkdir /data/vendor/audio 0770 audio audio
+
+    # Create directory for audio delta files
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
+
+    # Create directory used by the DASH client
+    mkdir /data/misc/dash 0770 media audio
+
+    mkdir /data/vendor/audio/ 0770 media audio
+
+    # Create a folder for audio delta files
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
+
+    # Create directory for radio
+    mkdir /data/vendor/radio 0770 system radio
+
+    # Create directory for modem_config
+    mkdir /data/vendor/modem_config 0570 radio root
+
+    #Create directories for Location services
+    mkdir /data/vendor/location 0770 gps gps
+    mkdir /data/vendor/location/mq 0770 gps gps
+    mkdir /data/vendor/location/xtwifi 0770 gps gps
+    mkdir /dev/socket/location 0770 gps gps
+    mkdir /dev/socket/location/mq 0770 gps gps
+    mkdir /dev/socket/location/xtra 0770 gps gps
+
+    #Create directory for hostapd
+    mkdir /data/vendor/hostapd 0770 system wifi
+
+    setprop vold.post_fs_data_done 1
+
+    #Create a folder for SRS to be able to create a usercfg file
+    #mkdir /data/data/media 0770 media media
+
+    # Mark the copy complete flag to not completed
+    write /data/vendor/radio/copy_complete 0
+    chown radio radio /data/vendor/radio/copy_complete
+    chmod 0660 /data/vendor/radio/copy_complete
+
+    # copy prebuilt qcril.db files always
+    copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
+    chown radio radio /data/vendor/radio/qcril_prebuilt.db
+    chmod 0660 /data/vendor/radio/qcril_prebuilt.db
+    # File flags for prebuilt ril db file
+    write /data/vendor/radio/prebuilt_db_support 1
+    chown radio radio /data/vendor/radio/prebuilt_db_support
+    chmod 0400 /data/vendor/radio/prebuilt_db_support
+    write /data/vendor/radio/db_check_done 0
+    chown radio radio /data/vendor/radio/db_check_done
+    chmod 0660 /data/vendor/radio/db_check_done
+
+    # Trigger WLAN driver load
+    write /sys/kernel/boot_wlan/boot_wlan 1
+
+    # from init.lineage.rc
+    # Generate wifi mac
+    start vendor.wifi-mac-generator
+
+    # Generate bt mac
+    start vendor.bt-mac-generator
+
+    # For oneplus camera hal
+    mkdir /data/misc/camera 775 system system
+    write /data/misc/camera/client_package_name "com.oneplus.camera"
+    chmod 0444 /data/misc/camera/client_package_name
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -453,126 +574,30 @@ on boot
     # init.qcom.sh
     write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
 
-on post-fs-data
-    #Create directory for tftp
-    mkdir /data/vendor/tombstones 0771 system system
+on charger
+    setprop sys.usb.configfs 1
 
-    # from init.oem.rc
-    # Nfc
-    mkdir /data/vendor/nfc 0770 nfc nfc
+    # from init.target.performance.rc
+    # Enable UFS powersaving
+    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
 
-    # Radio
-    mkdir /data/vendor/oemnvitems 0771 radio radio
+    write /sys/module/lpm_levels/parameters/sleep_disabled N
 
-    # Fingerprint
-    mkdir /data/vendor_de/silead 0770 system system
-    mkdir /mnt/vendor/persist/silead 0777 system system
-    mkdir /mnt/vendor/persist/goodix 0777 system system
+    # disable thermal core control
+    write /sys/module/msm_thermal/core_control/enabled 0
 
-    # mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
-    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
+    # online cpu 0 and set governor powersave
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
 
-    mkdir /persist/hdcp  775 media mediadrm
-    mkdir /mnt/vendor/persist/hdcp  775 media mediadrm
-
-    mkdir /data/vendor/misc/qsee/face/  0770 system system
-
-    # from init.target.rc
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
-
-    mkdir /data/vendor/ramdump 0771 root system
-    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
-    mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/vendor/wifi 0770 wifi wifi
-    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
-    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
-
-    #create netmgr log dir
-    mkdir /data/vendor/netmgr 0770 radio radio
-    chmod 0770 /data/vendor/netmgr
-
-    #create ipacm log dir
-    mkdir /data/vendor/ipa 0770 radio radio
-    chmod 0770 /data/vendor/ipa
-
-    # Create the directories used by CnE subsystem
-    mkdir /data/vendor/connectivity 0771 radio radio
-    chown radio radio /data/vendor/connectivity
-
-    # Create directory used by audio subsystem
-    mkdir /data/vendor/audio 0770 audio audio
-
-    # Create directory for audio delta files
-    mkdir /data/vendor/audio/acdbdata 0770 media audio
-    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
-
-    # Create directory used by the DASH client
-    mkdir /data/misc/dash 0770 media audio
-
-    mkdir /data/vendor/audio/ 0770 media audio
-
-    # Create a folder for audio delta files
-    mkdir /data/vendor/audio/acdbdata 0770 media audio
-    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
-
-    # Create directory for radio
-    mkdir /data/vendor/radio 0770 system radio
-
-    # Create directory for modem_config
-    mkdir /data/vendor/modem_config 0570 radio root
-
-    #Create directories for Location services
-    mkdir /data/vendor/location 0770 gps gps
-    mkdir /data/vendor/location/mq 0770 gps gps
-    mkdir /data/vendor/location/xtwifi 0770 gps gps
-    mkdir /dev/socket/location 0770 gps gps
-    mkdir /dev/socket/location/mq 0770 gps gps
-    mkdir /dev/socket/location/xtra 0770 gps gps
-
-    #Create directory for hostapd
-    mkdir /data/vendor/hostapd 0770 system wifi
-
-    setprop vold.post_fs_data_done 1
-
-    #Create a folder for SRS to be able to create a usercfg file
-    #mkdir /data/data/media 0770 media media
-
-    # Mark the copy complete flag to not completed
-    write /data/vendor/radio/copy_complete 0
-    chown radio radio /data/vendor/radio/copy_complete
-    chmod 0660 /data/vendor/radio/copy_complete
-
-    # copy prebuilt qcril.db files always
-    copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
-    chown radio radio /data/vendor/radio/qcril_prebuilt.db
-    chmod 0660 /data/vendor/radio/qcril_prebuilt.db
-    # File flags for prebuilt ril db file
-    write /data/vendor/radio/prebuilt_db_support 1
-    chown radio radio /data/vendor/radio/prebuilt_db_support
-    chmod 0400 /data/vendor/radio/prebuilt_db_support
-    write /data/vendor/radio/db_check_done 0
-    chown radio radio /data/vendor/radio/db_check_done
-    chmod 0660 /data/vendor/radio/db_check_done
-
-    # Trigger WLAN driver load
-    write /sys/kernel/boot_wlan/boot_wlan 1
-
-    # from init.lineage.rc
-    # Generate wifi mac
-    start vendor.wifi-mac-generator
-
-    # Generate bt mac
-    start vendor.bt-mac-generator
-
-    # For oneplus camera hal
-    mkdir /data/misc/camera 775 system system
-    write /data/misc/camera/client_package_name "com.oneplus.camera"
-    chmod 0444 /data/misc/camera/client_package_name
+    # offline remaining cores
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
 
 service vendor.qcomsysd /vendor/bin/qcom-system-daemon
     class main
@@ -867,31 +892,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     class core
     user root
     group root
-
-on charger
-    setprop sys.usb.configfs 1
-
-    # from init.target.performance.rc
-    # Enable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
-
-    write /sys/module/lpm_levels/parameters/sleep_disabled N
-
-    # disable thermal core control
-    write /sys/module/msm_thermal/core_control/enabled 0
-
-    # online cpu 0 and set governor powersave
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
-
-    # offline remaining cores
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu6/online 0
-    write /sys/devices/system/cpu/cpu7/online 0
 
 # Logcat dump daemon, dumps logs to logdump partition
 service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
