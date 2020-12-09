@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80cbb5a8_d7ec891a",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-12-09T08:28:04Z",
+      "side": 0,
+      "message": "It will be broken if you remove this.",
+      "revId": "c833283a239c6d6520782f7df0085e926243cced",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
