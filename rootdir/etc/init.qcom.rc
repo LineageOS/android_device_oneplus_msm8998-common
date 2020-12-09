@@ -39,6 +39,11 @@ on early-init
     write /proc/sys/kernel/sched_boost 1
 
 on init
+    # Disable UFS powersaving
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 0
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 0
+    write /sys/module/lpm_levels/parameters/sleep_disabled Y
+
     # from init.oem.rc
     mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
     mkdir /sys/fs/cgroup/freezer 0750 root system
@@ -63,11 +68,6 @@ on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     # from init.target.performance.rc
-    # Disable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 0
-
-    write /sys/module/lpm_levels/parameters/sleep_disabled Y
-
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
     write /dev/stune/schedtune.colocate 0
@@ -507,8 +507,8 @@ on charger
 
     # from init.target.performance.rc
     # Enable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
-
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
     write /sys/module/lpm_levels/parameters/sleep_disabled N
 
     # disable thermal core control
@@ -542,6 +542,11 @@ on property:persist.vendor.qcomsysd.enabled=0
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
 
+    # Enable UFS powersaving
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
+    write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
+    write /sys/module/lpm_levels/parameters/sleep_disabled N
+
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
@@ -557,10 +562,6 @@ on property:sys.boot_completed=1
     write /sys/block/sde/queue/read_ahead_kb 128
     write /sys/block/sde/queue/nr_requests 128
     write /sys/block/sde/queue/iostats 1
-
-    # Enable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
-    write /sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable 1
 
     # disable thermal core control until CPU is configured
     write /sys/module/msm_thermal/core_control/enabled 0
@@ -654,7 +655,6 @@ on property:sys.boot_completed=1
     write /sys/module/lpm_levels/system/pwr/pwr-l2-ret/idle_enabled N
     write /sys/module/lpm_levels/system/perf/perf-l2-dynret/idle_enabled N
     write /sys/module/lpm_levels/system/perf/perf-l2-ret/idle_enabled N
-    write /sys/module/lpm_levels/parameters/sleep_disabled N
 
     # Setup cpusets
     write /dev/cpuset/top-app/cpus 0-7
