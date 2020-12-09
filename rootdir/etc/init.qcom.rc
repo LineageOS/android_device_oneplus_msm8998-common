@@ -961,13 +961,13 @@ service vendor.ppd /vendor/bin/mm-pp-dpps
     disabled
 
 on property:init.svc.vendor.hwcomposer-2-1=stopped
-    stop ppd
+    stop vendor.ppd
 
 on property:init.svc.vendor.hwcomposer-2-1=running
-    start ppd
+    start vendor.ppd
 
 on property:init.svc.vendor.hwcomposer-2-1=restarting
-    stop ppd
+    stop vendor.ppd
 
 service dashd /vendor/xbin/dashd
      class core
