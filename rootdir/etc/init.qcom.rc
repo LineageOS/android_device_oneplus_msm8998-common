@@ -683,7 +683,13 @@ on property:sys.boot_completed=1
     setprop sys.io.scheduler "bfq"
 
     # QCOM post boot
-    start qcom-post-boot
+    start vendor.qcom-post-boot
+
+    # from init.oem.rc
+    write /sys/module/smb_lib/parameters/sys_boot_complete 1
+    #joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
+    chown system system /sys/module/lpm_levels/parameters/cluster_prediction
+    chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 
 service vendor.cnd /system/vendor/bin/cnd
     class main
@@ -794,9 +800,6 @@ service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     disabled
     oneshot
 
-on property:sys.boot_completed=1
-    start vendor.qcom-post-boot
-
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class main
     user system
@@ -867,12 +870,6 @@ on property:persist.sys.oem.otg_support=true
 
 on property:persist.sys.oem.otg_support=false
     write /sys/class/power_supply/usb/otg_switch 0
-
-on property:sys.boot_completed=1
-    write /sys/module/smb_lib/parameters/sys_boot_complete 1
-    #joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
-    chown system system /sys/module/lpm_levels/parameters/cluster_prediction
-    chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 
 on property:sys.shutdown.requested=*
     write /sys/module/oneplus_fastchg/parameters/mcu_reset 1
