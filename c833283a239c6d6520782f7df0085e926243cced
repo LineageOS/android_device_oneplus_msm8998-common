@@ -16,6 +16,24 @@
       "revId": "c833283a239c6d6520782f7df0085e926243cced",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83bc4e18_33999248",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-09T08:43:16Z",
+      "side": 0,
+      "message": "yeah, i was going to add it (and change the rfs/modem to rfs/slpi) in a separate commit, didnt want to change stuff in a revert",
+      "parentUuid": "80cbb5a8_d7ec891a",
+      "revId": "c833283a239c6d6520782f7df0085e926243cced",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
