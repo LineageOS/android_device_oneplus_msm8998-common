@@ -229,9 +229,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qsee=yes
 
 # QCOM
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qcomsysd.enabled=1
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.va_aosp.support=1
 
