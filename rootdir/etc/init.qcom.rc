@@ -87,11 +87,46 @@ on fs
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
     mount_all /vendor/etc/fstab.qcom
+
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
 
     restorecon_recursive /mnt/vendor/persist
+
+    # create a empty file for wifi hal to write mac address
+    write /mnt/vendor/persist/wlan_mac.bin ""
+
+    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /mnt/vendor/persist/camera
     mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/display 0770 system graphics
+    mkdir /mnt/vendor/persist/dual_camera_calibration 0777 system system
+    mkdir /mnt/vendor/persist/goodix 0777 system system
+    mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
+    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
+    mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
+    mkdir /mnt/vendor/persist/OPDiagnose
+    mkdir /mnt/vendor/persist/silead 0777 system system
+    mkdir /mnt/vendor/persist/secnvm 0770 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
+    mkdir /mnt/vendor/persist/vpp 0770 media media
+
+    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
+    chown system system /mnt/vendor/persist/camera
+    chown system system /mnt/vendor/persist/OPDiagnose
+
+    chown system system /mnt/vendor/persist/sensors
+    chown system system /mnt/vendor/persist/sensors/sns.reg
+    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
+    chown system system /mnt/vendor/persist/sensors/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
+    chown system system /mnt/vendor/persist/sensors/sensors_settings
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
+    chown system system /mnt/vendor/persist/sensors/registry/config
+
+    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on late-fs
     # from init.target.performance.rc
@@ -133,37 +168,6 @@ on post-fs
     chown system system /sys/module/param_read_write/parameters/update_count
     chown system system /sys/module/param_read_write/parameters/fastboot_count
     chown system system /sys/class/power_supply/bms/set_allow_read_extern_fg_iic
-    chown system system /persist/sensors/registry/registry/tmd3725_platform.rgb.rfac_cal
-    chmod 660 /persist/sensors/registry/registry/tmd3725_platform.rgb.rfac_cal
-    chown system system /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
-    chmod 660 /persist/sensors/registry/registry/tmd3725_platform.als.afac_cal
-
-    # create a empty file for wifi hal to write mac address
-    write /mnt/vendor/persist/wlan_mac.bin ""
-    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
-    mkdir /mnt/vendor/persist/engineermode
-    chown system system /mnt/vendor/persist/engineermode
-    mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
-    mkdir /mnt/vendor/persist/camera
-    chown system system /mnt/vendor/persist/camera
-    mkdir /mnt/vendor/persist/dual_camera_calibration 0777 system system
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/mpss/server_check.txt
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/mpss
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/adsp
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm/slpi
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/msm
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/apq/gnss
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/apq
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/adsp
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/mpss
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/slpi
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/mdm/tn
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared/server_info.txt
-    chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs
-    mkdir /mnt/vendor/persist/OPDiagnose
-    chown system system /mnt/vendor/persist/OPDiagnose
     chown system system /sys/class/power_supply/battery/connect_disable
 
     # from init.target.rc
@@ -181,14 +185,6 @@ on post-fs-data
 
     # Fingerprint
     mkdir /data/vendor_de/silead 0770 system system
-    mkdir /mnt/vendor/persist/silead 0777 system system
-    mkdir /mnt/vendor/persist/goodix 0777 system system
-
-    # mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
-    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
-
-    mkdir /persist/hdcp  775 media mediadrm
-    mkdir /mnt/vendor/persist/hdcp  775 media mediadrm
 
     mkdir /data/vendor/misc/qsee/face/  0770 system system
 
@@ -296,17 +292,6 @@ on early-boot
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
 
-    chown system system /mnt/vendor/persist/sensors
-    chown system system /mnt/vendor/persist/sensors/sns.reg
-    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
-    chown system system /mnt/vendor/persist/sensors/registry
-    chown system system /mnt/vendor/persist/sensors/registry/registry
-    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
-    chown system system /mnt/vendor/persist/sensors/sensors_settings
-    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
-    chown system system /mnt/vendor/persist/sensors/registry/config
-    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
-
 on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
@@ -330,11 +315,6 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
-
-    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
-    mkdir /mnt/vendor/persist/alarm 0770 system system
-    mkdir /mnt/vendor/persist/time 0770 system system
-    mkdir /mnt/vendor/persist/secnvm 0770 system system
 
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
@@ -361,19 +341,6 @@ on boot
 
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
-
-    # Create directory used for display
-    mkdir /mnt/vendor/persist/display 0770 system graphics
-
-    # Create vpp directory
-    mkdir /mnt/vendor/persist/vpp 0770 media media
-
-    # Create hvdcp_opti directory
-    mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
-
-    # chmod sns.reg file user and group for sensor
-    # VENDOR_EDIT aaron.qiu
-    chown system system /mnt/vendor/persist/sensors/sns.reg
 
     # from init.oem.rc
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
