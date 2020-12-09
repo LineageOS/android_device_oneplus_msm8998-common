@@ -880,10 +880,6 @@ on property:sys.shutdown.requested=*
     write /sys/module/oneplus_fastchg/parameters/mcu_reset 1
 
 # from init.target.rc
-#Load WLAN driver
-on property:wlan.driver.status=ok
-    insmod /vendor/lib/modules/qca_cld3_wlan.ko
-
 #Peripheral manager
 service vendor.per_mgr /vendor/bin/pm-service
     class core
