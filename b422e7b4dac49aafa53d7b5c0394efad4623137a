@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84d22135_0ad70818",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-09T13:27:10Z",
+      "side": 1,
+      "message": "oh hell i dont know, there were so many thousands of lines of crap... working through slowly, got blinded already i guess 😊",
+      "parentUuid": "9be7d8ea_a0641ea6",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 54
+      },
+      "revId": "b422e7b4dac49aafa53d7b5c0394efad4623137a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa59d01a_a7231230",
         "filename": "rootdir/etc/init.qcom.rc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-12-09T12:55:12Z",
       "side": 1,
       "message": "You could clean up this crap in a separate change.",
+      "range": {
+        "startLine": 876,
+        "startChar": 0,
+        "endLine": 880,
+        "endChar": 47
+      },
+      "revId": "b422e7b4dac49aafa53d7b5c0394efad4623137a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5bbe082_827860a3",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-09T13:27:10Z",
+      "side": 1,
+      "message": "see above ;)",
+      "parentUuid": "aa59d01a_a7231230",
       "range": {
         "startLine": 876,
         "startChar": 0,
