@@ -125,19 +125,6 @@ on fs
 
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
-on late-fs
-    # from init.target.performance.rc
-    # Enable boot time fs tuning (ro like system is on sde/f, rw like userdata is on sda)
-    write /sys/block/sda/queue/iostats 0
-    write /sys/block/sda/queue/nr_requests 256
-    write /sys/block/sda/queue/read_ahead_kb 2048
-    write /sys/block/sdf/queue/iostats 0
-    write /sys/block/sdf/queue/nr_requests 256
-    write /sys/block/sdf/queue/read_ahead_kb 2048
-    write /sys/block/sde/queue/iostats 0
-    write /sys/block/sde/queue/nr_requests 256
-    write /sys/block/sde/queue/read_ahead_kb 2048
-
 on post-fs
     # from init.oem.rc
     chown system system /proc/ship_mode
@@ -171,6 +158,19 @@ on post-fs
     start vendor.qseecomd
     wait_for_prop vendor.sys.listeners.registered true
     write /dev/ipa 1
+
+on late-fs
+    # from init.target.performance.rc
+    # Enable boot time fs tuning (ro like system is on sde/f, rw like userdata is on sda)
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sdf/queue/iostats 0
+    write /sys/block/sdf/queue/nr_requests 256
+    write /sys/block/sdf/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/nr_requests 256
+    write /sys/block/sde/queue/read_ahead_kb 2048
 
 on post-fs-data
     # from init.oem.rc
