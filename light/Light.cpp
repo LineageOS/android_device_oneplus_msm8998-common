@@ -61,7 +61,7 @@ namespace V2_0 {
 namespace implementation {
 
 Light::Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight,
-             std::vector<std::ofstream>&& button_backlight,
+             std::ofstream&& button_backlight,
              std::ofstream&& red_led, std::ofstream&& green_led, std::ofstream&& blue_led,
              std::ofstream&& red_duty_pcts, std::ofstream&& green_duty_pcts, std::ofstream&& blue_duty_pcts,
              std::ofstream&& red_start_idx, std::ofstream&& green_start_idx, std::ofstream&& blue_start_idx,
@@ -159,12 +159,8 @@ void Light::setLcdBacklight(const LightState& state) {
 
 void Light::setButtonsBacklight(const LightState& state) {
     std::lock_guard<std::mutex> lock(mLock);
-
     uint32_t brightness = rgbToBrightness(state);
-
-    for (auto& button : mButtonBacklight) {
-        button << brightness << std::endl;
-    }
+    mButtonBacklight << brightness << std::endl;
 }
 
 void Light::setBatteryLight(const LightState& state) {

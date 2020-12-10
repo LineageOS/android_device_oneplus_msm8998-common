@@ -31,8 +31,7 @@ namespace V2_0 {
 namespace implementation {
 
 struct Light : public ILight {
-    Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight,
-          std::vector<std::ofstream>&& button_backlight,
+    Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight, std::ofstream&& button_backlight,
           std::ofstream&& red_led, std::ofstream&& green_led, std::ofstream&& blue_led,
           std::ofstream&& red_duty_pcts, std::ofstream&& green_duty_pcts, std::ofstream&& blue_duty_pcts,
           std::ofstream&& red_start_idx, std::ofstream&& green_start_idx, std::ofstream&& blue_start_idx,
@@ -56,7 +55,7 @@ struct Light : public ILight {
     void setSpeakerLightLocked(const LightState& state);
 
     std::pair<std::ofstream, uint32_t> mLcdBacklight;
-    std::vector<std::ofstream> mButtonBacklight;
+    std::ofstream mButtonBacklight;
     std::ofstream mRedLed;
     std::ofstream mGreenLed;
     std::ofstream mBlueLed;
