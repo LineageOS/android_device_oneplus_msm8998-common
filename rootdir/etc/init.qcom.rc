@@ -32,7 +32,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
-    # from init.target.rc
     write /proc/sys/kernel/sched_boost 1
 
 on init
@@ -42,19 +41,6 @@ on init
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 0
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 0
     write /sys/module/lpm_levels/parameters/sleep_disabled Y
-
-    # from init.oem.rc
-    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
-    mkdir /sys/fs/cgroup/freezer 0750 root system
-    mount cgroup none /sys/fs/cgroup/freezer  freezer
-    chmod 777 /sys/fs/cgroup/freezer
-
-    mkdir /sys/fs/cgroup/net_cls 
-    chmod 777 /sys/fs/cgroup/net_cls 
-    mount cgroup  none /sys/fs/cgroup/net_cls net_cls
-    chmod 777 /sys/fs/cgroup/net_cls/tasks
-    mkdir /sys/fs/cgroup/net_cls/background 0777
-    chmod 777 /sys/fs/cgroup/net_cls/background/tasks
 
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
@@ -167,7 +153,6 @@ on init
     write /sys/class/devfreq/soc:qcom,mincpubw/governor "cpufreq"
 
 on fs
-    # from init.target.rc
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
 
@@ -224,7 +209,6 @@ on post-fs
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true
 
-    # from init.oem.rc
     chown system system /proc/ship_mode
     chown system system /dev/param
     chown system system /dev/block/mmcblk0p21
@@ -268,7 +252,6 @@ on late-fs
 
 
 on post-fs-data
-    # from init.oem.rc
     # Nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
 
@@ -278,9 +261,6 @@ on post-fs-data
     # Fingerprint
     mkdir /data/vendor_de/silead 0770 system system
 
-    mkdir /data/vendor/misc/qsee/face/  0770 system system
-
-    # from init.target.rc
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
@@ -312,6 +292,7 @@ on post-fs-data
     # Create directory used by the DASH client
     mkdir /data/misc/dash 0770 media audio
 
+    # Create directory used by audio subsystem
     mkdir /data/vendor/audio/ 0770 media audio
 
     # Create a folder for audio delta files
@@ -332,9 +313,6 @@ on post-fs-data
     mkdir /dev/socket/location/mq 0770 gps gps
     mkdir /dev/socket/location/xtra 0770 gps gps
 
-    #Create directory for hostapd
-    mkdir /data/vendor/hostapd 0770 system wifi
-
     setprop vold.post_fs_data_done 1
 
     #Create a folder for SRS to be able to create a usercfg file
@@ -349,6 +327,7 @@ on post-fs-data
     copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
     chown radio radio /data/vendor/radio/qcril_prebuilt.db
     chmod 0660 /data/vendor/radio/qcril_prebuilt.db
+
     # File flags for prebuilt ril db file
     write /data/vendor/radio/prebuilt_db_support 1
     chown radio radio /data/vendor/radio/prebuilt_db_support
@@ -360,7 +339,6 @@ on post-fs-data
     # Trigger WLAN driver load
     write /sys/kernel/boot_wlan/boot_wlan 1
 
-    # from init.lineage.rc
     # Generate wifi mac
     start vendor.wifi-mac-generator
 
@@ -429,7 +407,6 @@ on boot
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
-    # from init.oem.rc
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
@@ -534,7 +511,6 @@ on boot
     # joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
     mkdir /data/vendor/oiface 0700 system system
 
-    # from init.lineage.rc
     # Wifi driver state control
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
     # Wifi firmware reload path
@@ -566,7 +542,6 @@ on boot
 on charger
     setprop sys.usb.configfs 1
 
-    # from init.target.performance.rc
     # Enable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
@@ -610,8 +585,6 @@ on property:sys.boot_completed=1
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
-    # from init.oem.rc
-    write /sys/module/smb_lib/parameters/sys_boot_complete 1
     #joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
     chown system system /sys/module/lpm_levels/parameters/cluster_prediction
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
