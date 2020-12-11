@@ -32,7 +32,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
-    # from init.target.rc
     write /proc/sys/kernel/sched_boost 1
 
 on init
@@ -42,19 +41,6 @@ on init
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 0
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 0
     write /sys/module/lpm_levels/parameters/sleep_disabled Y
-
-    # from init.oem.rc
-    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
-    mkdir /sys/fs/cgroup/freezer 0750 root system
-    mount cgroup none /sys/fs/cgroup/freezer  freezer
-    chmod 777 /sys/fs/cgroup/freezer
-
-    mkdir /sys/fs/cgroup/net_cls 
-    chmod 777 /sys/fs/cgroup/net_cls 
-    mount cgroup  none /sys/fs/cgroup/net_cls net_cls
-    chmod 777 /sys/fs/cgroup/net_cls/tasks
-    mkdir /sys/fs/cgroup/net_cls/background 0777
-    chmod 777 /sys/fs/cgroup/net_cls/background/tasks
 
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
@@ -167,7 +153,6 @@ on init
     write /sys/class/devfreq/soc:qcom,mincpubw/governor "cpufreq"
 
 on fs
-    # from init.target.rc
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
 
@@ -224,7 +209,6 @@ on post-fs
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true
 
-    # from init.oem.rc
     chown system system /proc/ship_mode
     chown system system /dev/param
     chown system system /dev/block/mmcblk0p21
@@ -268,7 +252,6 @@ on late-fs
 
 
 on post-fs-data
-    # from init.oem.rc
     # Nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
 
@@ -278,9 +261,6 @@ on post-fs-data
     # Fingerprint
     mkdir /data/vendor_de/silead 0770 system system
 
-    mkdir /data/vendor/misc/qsee/face/  0770 system system
-
-    # from init.target.rc
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
@@ -290,11 +270,11 @@ on post-fs-data
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
-    #create netmgr log dir
+    # create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
 
-    #create ipacm log dir
+    # create ipacm log dir
     mkdir /data/vendor/ipa 0770 radio radio
     chmod 0770 /data/vendor/ipa
 
@@ -312,6 +292,7 @@ on post-fs-data
     # Create directory used by the DASH client
     mkdir /data/misc/dash 0770 media audio
 
+    # Create directory used by audio subsystem
     mkdir /data/vendor/audio/ 0770 media audio
 
     # Create a folder for audio delta files
@@ -332,13 +313,7 @@ on post-fs-data
     mkdir /dev/socket/location/mq 0770 gps gps
     mkdir /dev/socket/location/xtra 0770 gps gps
 
-    #Create directory for hostapd
-    mkdir /data/vendor/hostapd 0770 system wifi
-
     setprop vold.post_fs_data_done 1
-
-    #Create a folder for SRS to be able to create a usercfg file
-    #mkdir /data/data/media 0770 media media
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
@@ -349,6 +324,7 @@ on post-fs-data
     copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
     chown radio radio /data/vendor/radio/qcril_prebuilt.db
     chmod 0660 /data/vendor/radio/qcril_prebuilt.db
+
     # File flags for prebuilt ril db file
     write /data/vendor/radio/prebuilt_db_support 1
     chown radio radio /data/vendor/radio/prebuilt_db_support
@@ -360,7 +336,6 @@ on post-fs-data
     # Trigger WLAN driver load
     write /sys/kernel/boot_wlan/boot_wlan 1
 
-    # from init.lineage.rc
     # Generate wifi mac
     start vendor.wifi-mac-generator
 
@@ -393,7 +368,7 @@ on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
-    #Create QMUX deamon socket area
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -403,10 +378,10 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    #Create NETMGR daemon socket area
+    # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
-    #enable camera read sensors data
+    # enable camera read sensors data
     setprop persist.camera.gyro.disable 0
 
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
@@ -429,7 +404,6 @@ on boot
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
-    # from init.oem.rc
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
@@ -508,25 +482,9 @@ on boot
     chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
     chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
 
-    # shankai@bsp , 2017/12/29, Modify for rf_cable support
-    chown system system /proc/rf_cable_config
-
     # camera. enable mobicat
     setprop persist.camera.mobicat 2
-    setprop persist.camera.stats.debugexif 3080192
-
-    # lifeng@bsp tp 2015/6/3 for firmware update
-    write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
-
-    # Liyu.Tan, 2015.10.26, wifi test bin
-    chown system system /vendor/bin/pktlogconf
-    chmod 0777  /vendor/bin/pktlogconf
-    chown system system /vendor/bin/iwpriv
-    chmod 0777  /vendor/bin/iwpriv
-    chown system system /vendor/bin/iwlist
-    chmod 0777  /vendor/bin/iwlist
-    chown system system /vendor/bin/tcpdump
-    chmod 0777  /vendor/bin/tcpdump
+    setprop persist.camera.stats.debugexif 308019
 
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
@@ -534,7 +492,6 @@ on boot
     # joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
     mkdir /data/vendor/oiface 0700 system system
 
-    # from init.lineage.rc
     # Wifi driver state control
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
     # Wifi firmware reload path
@@ -566,7 +523,6 @@ on boot
 on charger
     setprop sys.usb.configfs 1
 
-    # from init.target.performance.rc
     # Enable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1
@@ -606,13 +562,11 @@ on property:sys.boot_completed=1
     write /sys/block/dm-0/queue/read_ahead_kb 512
     write /sys/block/dm-1/queue/read_ahead_kb 512
 
-    #WDSP FW boot sysfs node used by STHAL
+    # WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
-    # from init.oem.rc
-    write /sys/module/smb_lib/parameters/sys_boot_complete 1
-    #joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
+    # joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
     chown system system /sys/module/lpm_levels/parameters/cluster_prediction
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 
@@ -892,7 +846,6 @@ service vendor.time_daemon /vendor/bin/time_daemon
     group system
     capabilities SYS_TIME
 
-# from init.lineage.rc
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     class main
     user wifi
