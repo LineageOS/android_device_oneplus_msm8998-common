@@ -597,12 +597,6 @@ on property:sys.boot_completed=1
 
     write /dev/kmsg "Boot completed "
 
-service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
 service charger /system/bin/charger
     class charger
     user system
