@@ -685,116 +685,11 @@ on property:sys.boot_completed=1
 
     write /dev/kmsg "Boot completed "
 
-service vendor.cnd /system/vendor/bin/cnd
+service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
-    user system
-    group system wifi inet radio wakelock net_admin
-
-service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
-    class main
-    user system
-    group radio system
-
-service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
-    class core
-    user vendor_qrtr
-    group vendor_qrtr
-    capabilities NET_BIND_SERVICE
-
-service init-devstart-sh /vendor/bin/init.devstart.sh
-    class core
-    user root
-    group root
-    oneshot
-
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
-    class core
-    user root
-    oneshot
-
-service vendor.rmt_storage /vendor/bin/rmt_storage
-    class core
-    user root
-    shutdown critical
-    ioprio rt 0
-
-service vendor.tftp_server /vendor/bin/tftp_server
-    class core
-    user root
-
-service vendor.netmgrd /vendor/bin/netmgrd
-    class main
-
-service vendor.ipacm /vendor/bin/ipacm
-    class main
-    user radio
-    group radio inet
-
-service vendor.sensors.qti /vendor/bin/sensors.qti
-    class core
-    user system
-    group system
-
-service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
-    class late_start
-    user system
-    group system inet net_admin wifi
-    capabilities NET_ADMIN
-
-on property:sys.powerctl=*
-    stop vendor.cnss-daemon
-
-service vendor.ssgqmigd /vendor/bin/ssgqmigd
-    class late_start
-    user radio
-    group radio gps system
-    socket ssgqmig seqpacket 0660 radio inet
-
-service vendor.ssgtzd /vendor/bin/ssgtzd
-    class late_start
-    user system
-    group system
-    socket ssgtzd stream 0660 system inet
-
-service vendor.mlid /vendor/bin/mlid
-    class late_start
-    user gps
-    group gps
-    socket mlid stream 0666 gps gps
-
-service vendor.qdmastatsd /vendor/bin/qdmastatsd
-    class late_start
-    user system
-    group readproc system net_bw_stats radio vendor_rfs_shared
-
-service vendor.loc_launcher /vendor/bin/loc_launcher
-    class late_start
-    user gps
-    group gps
-
-service vendor.init-radio-sh /vendor/bin/init.radio.sh
-    class late_start
-    user root
-    group root system radio
-    oneshot
-
-service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
-    class late_start
-    user root
-    group root system wakelock graphics
     disabled
     oneshot
-
-service vendor.atfwd /vendor/bin/ATFWD-daemon
-    class main
-    user system
-    group system radio
-
-service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
-    class main
-    user radio
-    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    keycodes 114 115 116
 
 service charger /system/bin/charger
     class charger
@@ -804,46 +699,6 @@ service charger /system/bin/charger
     seclabel u:r:charger:s0
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
-    class core
-    user root
-    group root
-
-# Logcat dump daemon, dumps logs to logdump partition
-service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
-    class core
-    writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:logdumpd:s0
-    disabled
-
-# Logdumpd is enabled only for userdebug non-perf build
-on property:ro.logdumpd.enabled=1
-    start logdumpd
-
-service vendor.time_daemon /vendor/bin/time_daemon
-    class main
-    user system
-    group system
-    capabilities SYS_TIME
-
-service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
-service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
-    override
-    class hal
-    user audioserver
-    # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock system
-    capabilities BLOCK_SUSPEND SYS_NICE
-    ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
-    onrestart restart audioserver
-
-# from init.oem.rc
 on property:sys.fastcharger=true
     write /sys/class/power_supply/battery/charging_enabled 1
 
@@ -859,8 +714,153 @@ on property:persist.sys.oem.otg_support=false
 on property:sys.shutdown.requested=*
     write /sys/module/oneplus_fastchg/parameters/mcu_reset 1
 
-# from init.target.rc
-# Peripheral manager
+service dashd /vendor/xbin/dashd
+     class core
+     critical
+     seclabel u:r:dashd:s0
+     group root system
+
+service init-devstart-sh /vendor/bin/init.devstart.sh
+    class core
+    user root
+    group root
+    oneshot
+
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+    class core
+    user root
+    oneshot
+
+# Logcat dump daemon, dumps logs to logdump partition
+service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
+    class core
+    writepid /dev/cpuset/system-background/tasks
+    seclabel u:r:logdumpd:s0
+    disabled
+
+# Logdumpd is enabled only for userdebug non-perf build
+on property:ro.logdumpd.enabled=1
+    start logdumpd
+
+service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
+    class late_start
+    user root
+    group root system wakelock graphics
+    disabled
+    oneshot
+
+service vendor.adsprpcd /vendor/bin/adsprpcd
+    class main
+    user media
+    group media
+
+service vendor.atfwd /vendor/bin/ATFWD-daemon
+    class main
+    user system
+    group system radio
+
+service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
+    override
+    class hal
+    user audioserver
+    # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
+    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock system
+    capabilities BLOCK_SUSPEND SYS_NICE
+    ioprio rt 4
+    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
+    onrestart restart audioserver
+
+service vendor.bt-mac-generator /vendor/bin/bt-mac-generator
+    class main
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
+    seclabel u:r:bt_mac_generator:s0
+
+service vendor.cnd /system/vendor/bin/cnd
+    class main
+    user system
+    group system wifi inet radio wakelock net_admin
+
+service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
+    class late_start
+    user system
+    group system inet net_admin wifi
+    capabilities NET_ADMIN
+
+on property:sys.powerctl=*
+    stop vendor.cnss-daemon
+
+service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
+    class main
+    user system
+    group radio system
+
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
+    class main
+    user radio
+    socket ims_qmid stream 0660 system radio
+    group radio log vendor_qti_diag
+
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
+    class main
+    user radio
+    socket ims_datad stream 0660 system radio
+    group radio wifi inet log vendor_qti_diag
+    disabled
+
+on property:vendor.ims.QMI_DAEMON_STATUS=1
+    start vendor.imsdatadaemon
+
+service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
+    class main
+    user radio
+    group radio vendor_qti_diag inet log
+
+service vendor.imsrcsservice /vendor/bin/imsrcsd
+    class main
+    user radio
+    group radio vendor_qti_diag inet log wakelock
+
+on property:vendor.ims.DATA_DAEMON_STATUS=1
+    restart vendor.ims_rtp_daemon
+
+service vendor.init-radio-sh /vendor/bin/init.radio.sh
+    class late_start
+    user root
+    group root system radio
+    oneshot
+
+service vendor.ipacm /vendor/bin/ipacm
+    class main
+    user radio
+    group radio inet
+
+service vendor.loc_launcher /vendor/bin/loc_launcher
+    class late_start
+    user gps
+    group gps
+
+service vendor.mlid /vendor/bin/mlid
+    class late_start
+    user gps
+    group gps
+    socket mlid stream 0666 gps gps
+
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+    class core
+    user root
+    group root
+
+service vendor.netmgrd /vendor/bin/netmgrd
+    class main
+
+service vendor.pd_mapper /vendor/bin/pd-mapper
+     class core
+
 service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
@@ -880,59 +880,6 @@ on property:sys.shutdown.requested=*
     stop vendor.cnss-daemon
     stop vendor.per_proxy
 
-service vendor.qseecomd /vendor/bin/qseecomd
-    class core
-    user root
-    group root
-
-service vendor.thermal-engine /vendor/bin/thermal-engine
-    class main
-    user root
-    socket thermal-send-client stream 0666 system system
-    socket thermal-recv-client stream 0660 system system
-    socket thermal-recv-passive-client stream 0666 system system
-    socket thermal-send-rule stream 0660 system system
-    group root
-
-service vendor.adsprpcd /vendor/bin/adsprpcd
-    class main
-    user media
-    group media
-
-# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
-service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
-    class main
-    user radio
-    socket ims_qmid stream 0660 system radio
-    group radio log vendor_qti_diag
-
-# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
-service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
-    class main
-    user radio
-    socket ims_datad stream 0660 system radio
-    group radio wifi inet log vendor_qti_diag
-    disabled
-
-service vendor.pd_mapper /vendor/bin/pd-mapper
-     class core
-
-on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start vendor.imsdatadaemon
-
-service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
-    class main
-    user radio
-    group radio vendor_qti_diag inet log
-
-service vendor.imsrcsservice /vendor/bin/imsrcsd
-    class main
-    user radio
-    group radio vendor_qti_diag inet log wakelock
-
-on property:vendor.ims.DATA_DAEMON_STATUS=1
-    restart vendor.ims_rtp_daemon
-
 service vendor.ppd /vendor/bin/mm-pp-dpps
     class late_start
     user system
@@ -949,11 +896,69 @@ on property:init.svc.vendor.hwcomposer-2-1=running
 on property:init.svc.vendor.hwcomposer-2-1=restarting
     stop vendor.ppd
 
-service dashd /vendor/xbin/dashd
-     class core
-     critical
-     seclabel u:r:dashd:s0
-     group root system
+service vendor.qdmastatsd /vendor/bin/qdmastatsd
+    class late_start
+    user system
+    group readproc system net_bw_stats radio vendor_rfs_shared
+
+service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
+    class core
+    user vendor_qrtr
+    group vendor_qrtr
+    capabilities NET_BIND_SERVICE
+
+service vendor.qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+
+service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
+    class main
+    user radio
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+
+service vendor.rmt_storage /vendor/bin/rmt_storage
+    class core
+    user root
+    shutdown critical
+    ioprio rt 0
+
+service vendor.sensors.qti /vendor/bin/sensors.qti
+    class core
+    user system
+    group system
+
+service vendor.ssgtzd /vendor/bin/ssgtzd
+    class late_start
+    user system
+    group system
+    socket ssgtzd stream 0660 system inet
+
+service vendor.ssgqmigd /vendor/bin/ssgqmigd
+    class late_start
+    user radio
+    group radio gps system
+    socket ssgqmig seqpacket 0660 radio inet
+
+service vendor.tftp_server /vendor/bin/tftp_server
+    class core
+    user root
+
+service vendor.thermal-engine /vendor/bin/thermal-engine
+    class main
+    user root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
+    socket thermal-send-rule stream 0660 system system
+    group root
+
+service vendor.time_daemon /vendor/bin/time_daemon
+    class main
+    user system
+    group system
+    capabilities SYS_TIME
 
 # from init.lineage.rc
 service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
@@ -963,11 +968,3 @@ service vendor.wifi-mac-generator /vendor/bin/wifi-mac-generator
     oneshot
     disabled
     seclabel u:r:wifi_mac_generator:s0
-
-service vendor.bt-mac-generator /vendor/bin/bt-mac-generator
-    class main
-    user bluetooth
-    group bluetooth
-    oneshot
-    disabled
-    seclabel u:r:bt_mac_generator:s0
