@@ -481,12 +481,6 @@ on boot
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
-    #install video modules
-    insmod /system/lib/modules/msm-vidc-vmem.ko
-    insmod /system/lib/modules/msm-vidc.ko
-    insmod /system/lib/modules/msm-vidc-dyn-gov.ko
-    insmod /system/lib/modules/msm-vidc-table-gov.ko
-
     # from init.lineage.rc
     # Wifi driver state control
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
