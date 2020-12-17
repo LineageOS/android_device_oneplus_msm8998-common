@@ -1032,14 +1032,10 @@ product/lib64/libdiag_system.so
 vendor/bin/irsc_util
 vendor/bin/mlid
 vendor/bin/pd-mapper
-vendor/bin/ssgqmigd
-vendor/bin/ssgtzd
 vendor/lib/libdiag.so
 -vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
-vendor/lib/libminkdescriptor.so
-vendor/lib/libminksocket.so
 vendor/lib/libqcbor.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
@@ -1056,8 +1052,6 @@ vendor/lib64/libdiag.so
 -vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libidl.so
-vendor/lib64/libminkdescriptor.so
-vendor/lib64/libminksocket.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqdi.so
