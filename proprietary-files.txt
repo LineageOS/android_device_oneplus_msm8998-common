@@ -1,4 +1,4 @@
-# Common proprietary files - from 
+# Common proprietary files - from
 # OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2010292059, unless pinned
 
 # ADSP / CDSP / MDSP / SDSP

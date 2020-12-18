@@ -421,7 +421,7 @@ on boot
     chmod 0666 /dev/qseecom
     # liuyan 2017/7/27 add for goodix fp
     chmod 0666 /dev/goodix_fp
-    
+
     # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     setprop ro.nfc.port "I2C"
     chmod 0666 /dev/nq-nci
