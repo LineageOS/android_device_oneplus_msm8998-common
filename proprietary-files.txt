@@ -709,10 +709,8 @@ vendor/lib64/hw/gatekeeper.msm8998.so
 # GPS
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
-vendor/bin/qdmastatsd
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
-vendor/etc/init/init.qdmastats.rc
 -vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
 vendor/lib/hw/vendor.qti.gnss@3.0-impl.so
 vendor/lib/libdataitems.so
@@ -723,7 +721,6 @@ vendor/lib/libizat_core.so
 -vendor/lib/libloc_api_v02.so
 vendor/lib/liblocationservice.so
 vendor/lib/liblocationservice_glue.so
-vendor/lib/libqdma_file_agent.so
 vendor/lib/libslimclient.so
 vendor/lib/libxtadapter.so
 vendor/lib/vendor.qti.gnss@3.0-service.so
@@ -738,7 +735,6 @@ vendor/lib64/liblocationservice.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/liblowi_wifihal.so
-vendor/lib64/libqdma_file_agent.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/vendor.qti.gnss@3.0-service.so
