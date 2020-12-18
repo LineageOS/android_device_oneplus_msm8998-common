@@ -798,12 +798,6 @@ on property:init.svc.vendor.hwcomposer-2-1=running
 on property:init.svc.vendor.hwcomposer-2-1=restarting
     stop vendor.ppd
 
-service vendor.qdmastatsd /vendor/bin/qdmastatsd
-    class late_start
-    user system
-    group readproc system net_bw_stats radio vendor_rfs_shared
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     class core
     user vendor_qrtr
