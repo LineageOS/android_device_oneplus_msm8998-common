@@ -28,10 +28,9 @@ namespace livedisplay {
 namespace V2_0 {
 namespace implementation {
 
-#define PROPERTY_VENDOR_DISPLAY_MODE "vendor.display.mode"
-
+static constexpr const char* kDisplayModeProp = "vendor.display.mode";
 static const std::string kModeBasePath = "/sys/devices/virtual/graphics/fb0/";
-static constexpr const char* kDefaultPath = "/data/vendor/display/default_display_mode";
+static const std::string kDefaultPath = "/data/vendor/display/default_display_mode";
 
 const std::map<int32_t, DisplayModes::ModeInfo> DisplayModes::kModeMap = {
     {0, {"Standard", "default"}},
@@ -59,7 +58,7 @@ DisplayModes::DisplayModes() : mDefaultModeId(0) {
         // Check if default mode is a valid mode
         if (value == std::to_string(entry.first)) {
             mDefaultModeId = entry.first;
-            android::base::SetProperty(PROPERTY_VENDOR_DISPLAY_MODE, std::string(entry.second.node));
+            android::base::SetProperty(kDisplayModeProp, std::string(entry.second.node));
             LOG(DEBUG) << "Default display mode: " << std::string(entry.second.name);
             break;
         }
@@ -115,8 +114,6 @@ Return<void> DisplayModes::getDefaultDisplayMode(getDefaultDisplayMode_cb result
 }
 
 Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
-    std::string path;
-
     LOG(DEBUG) << "setDisplayMode()";
 
     // Disable all modes
@@ -124,12 +121,12 @@ Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
         if (entry.first == 0) {
             continue;
         }
-        path = kModeBasePath + std::string(entry.second.node);
-        std::ofstream modeFile(path.c_str());
+
+        std::ofstream modeFile(kModeBasePath + entry.second.node);
         if (!modeFile.fail()) {
             modeFile << 0;
         } else {
-            LOG(ERROR) << "Failed writing mode file " << std::string(entry.second.node)
+            LOG(ERROR) << "Failed writing mode file " << entry.second.node
                        << ". Result: " << modeFile.fail();
         }
     }
@@ -138,16 +135,15 @@ Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
         return false;
     }
     if (modeID != 0) {
-        LOG(INFO) << "Enabling display mode " << std::string(iter->second.name);
-        path = kModeBasePath + std::string(iter->second.node);
-        std::ofstream modeFile(path.c_str());
+        LOG(INFO) << "Enabling display mode " << iter->second.name;
+        std::ofstream modeFile(kModeBasePath + iter->second.node);
         modeFile << 1;
         if (modeFile.fail()) {
-            LOG(ERROR) << "Failed writing mode file " << std::string(iter->second.node)
+            LOG(ERROR) << "Failed writing mode file " << iter->second.node
                        << ". Result: " << modeFile.fail();
             return false;
         }
-        android::base::SetProperty(PROPERTY_VENDOR_DISPLAY_MODE, std::string(iter->second.node));
+        android::base::SetProperty(kDisplayModeProp, iter->second.node);
     }
 
     if (makeDefault) {
