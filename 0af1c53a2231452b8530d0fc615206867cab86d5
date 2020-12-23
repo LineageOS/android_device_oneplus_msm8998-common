@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47374787_398287ed",
+        "filename": "light/Light.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-23T16:41:34Z",
+      "side": 0,
+      "message": "probably unnecessary/unwanted formatting change to remove the blank line?",
+      "revId": "0af1c53a2231452b8530d0fc615206867cab86d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b32b5dee_8c4ea7b4",
+        "filename": "light/Light.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-23T16:41:34Z",
+      "side": 0,
+      "message": "this one too?",
+      "revId": "0af1c53a2231452b8530d0fc615206867cab86d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
