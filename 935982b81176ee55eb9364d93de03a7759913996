@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0cb3770_3aa637ef",
+        "filename": "livedisplay/vendor.lineage.livedisplay@2.0-service.oneplus_msm8998.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-23T16:47:10Z",
+      "side": 1,
+      "message": "those need 666 or can we do with 660?",
+      "revId": "935982b81176ee55eb9364d93de03a7759913996",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64cd88a7_e20f2486",
+        "filename": "livedisplay/vendor.lineage.livedisplay@2.0-service.oneplus_msm8998.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-23T16:47:10Z",
+      "side": 1,
+      "message": "are those really needed? they can\u0027t all be 1 after boot?",
+      "revId": "935982b81176ee55eb9364d93de03a7759913996",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
