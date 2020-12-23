@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af713a4_1a8ce1d9",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2020-12-23T17:37:18Z",
+      "side": 0,
+      "message": "Where are these set? Or not needed at all?",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 97
+      },
+      "revId": "de1e81f7fb57ff8e5db38822554995f388b4a4f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
