@@ -22,6 +22,30 @@
       "revId": "de1e81f7fb57ff8e5db38822554995f388b4a4f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31d6eb1_04e4a7d8",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2020-12-23T21:04:11Z",
+      "side": 0,
+      "message": "sleep_disabled - happens in init.qcom.rc:43\nsched_enable_power_aware \u0026 sched_enable_hmp - are in the dtsi for 8996, but nowhere to be found elsewhere in kernel or init. hmp is a compile-time flag though that we have enabled already.\n\nfrom kernel docs:\nThe kernel parses parameters from the kernel command line up to \"--\";\nif it doesn\u0027t recognize a parameter and it doesn\u0027t contain a \u0027.\u0027, the\nparameter gets passed to init: parameters with \u0027\u003d\u0027 go into init\u0027s\nenvironment, others are passed as command line arguments to init.\nEverything after \"--\" is passed as an argument to init.\n\nso we set up all sched related things in init, and we didnt do anything with these flags",
+      "parentUuid": "7af713a4_1a8ce1d9",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 97
+      },
+      "revId": "de1e81f7fb57ff8e5db38822554995f388b4a4f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
