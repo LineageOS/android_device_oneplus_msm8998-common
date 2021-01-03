@@ -15,6 +15,7 @@ ro.qualcomm.cabl=2
 vidc.enc.dcvs.extra-buff-count=2
 
 # Camera
+camera.disable_zsl_mode=1
 persist.camera.gyro.disable=0
 persist.camera.mobicat=2
 persist.camera.stats.debugexif=3080192
