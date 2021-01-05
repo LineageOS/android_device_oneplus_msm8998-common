@@ -3,5 +3,5 @@ allow init socket_device:sock_file { unlink setattr create };
 
 allow init sysfs_fpc:file { r_file_perms };
 allow init sysfs_data:file { r_file_perms };
+allow init sysfs_leds:lnk_file { read };
 allow init sysfs_project_info:file { r_file_perms };
-
