@@ -91,9 +91,6 @@ persist.vendor.data.iwlan.enable=true
 persist.vendor.data.mode=concurrent
 ro.vendor.use_data_netmgrd=true
 
-# DPM
-persist.vendor.dpm.feature=1
-
 # Graphics
 vendor.display.disable_partial_split=1
 vendor.display.disable_rotator_downscale=1
