@@ -22,6 +22,30 @@
       "revId": "8cc7ebe107b3c6917f1edf019f7d47d65f9b4d8c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b6ccdb_bf4c79de",
+        "filename": "common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-01-20T08:50:05Z",
+      "side": 1,
+      "message": "Non-a/b here ;)",
+      "parentUuid": "db1a18ce_a0b3a80d",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 47
+      },
+      "revId": "8cc7ebe107b3c6917f1edf019f7d47d65f9b4d8c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
