@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.power@-service.oneplus_msm8998-libperfmgr"
+#define LOG_TAG "powerhal-libperfmgr"
 
 #include <errno.h>
 #include <unistd.h>
