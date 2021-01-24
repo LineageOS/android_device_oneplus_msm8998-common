@@ -14,6 +14,24 @@
 // limitations under the License.
 
 cc_library {
+    name: "libadpf-msm8998",
+    relative_install_path: "hw",
+    proprietary: true,
+    vendor: true,
+    srcs: [
+        "adpf/PowerHintSession.cpp",
+    ],
+    shared_libs: [
+        "android.hardware.power-V2-ndk_platform",
+        "libbase",
+        "libbinder_ndk",
+        "libcutils",
+        "liblog",
+        "libutils",
+    ],
+}
+
+cc_library {
     name: "libdisppower-msm8998",
     proprietary: true,
     srcs: [
@@ -36,7 +54,8 @@ cc_binary {
     vintf_fragments: ["aidl/android.hardware.power-service.oneplus_msm8998.xml"],
     vendor: true,
     shared_libs: [
-        "android.hardware.power-V1-ndk_platform",
+        "android.hardware.power-V2-ndk_platform",
+        "libadpf-msm8998",
         "libbase",
         "libcutils",
         "liblog",
