@@ -381,9 +381,6 @@ on boot
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
-    # enable camera read sensors data
-    setprop persist.camera.gyro.disable 0
-
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  16777216
@@ -423,7 +420,6 @@ on boot
     chmod 0666 /dev/goodix_fp
 
     # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
-    setprop ro.nfc.port "I2C"
     chmod 0666 /dev/nq-nci
     chown nfc nfc /dev/nq-nci
 
@@ -481,10 +477,6 @@ on boot
 
     chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
     chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
-
-    # camera. enable mobicat
-    setprop persist.camera.mobicat 2
-    setprop persist.camera.stats.debugexif 308019
 
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
