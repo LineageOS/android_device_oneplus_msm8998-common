@@ -20,11 +20,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=1 \
     vendor.audio_hal.period_size=192 \
-    audio.offload.video=true \
-    audio.deep_buffer.media=true \
-    audio.offload.min.duration.secs=30 \
     persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
     persist.vendor.audio.hac.enable=false
 
@@ -35,7 +31,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicerec=true \
     persist.vendor.audio.fluence.speaker=true \
     vendor.audio.tunnel.encode=false \
-    ro.af.client_heap_size_kbyte=7168 \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
     persist.vendor.audio.ras.enabled=false \
     vendor.audio.offload.buffer.size.kb=32 \
@@ -100,23 +95,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.use.sw.ape.decoder=true \
     vendor.audio.hw.aac.encoder=true \
     vendor.fm.a2dp.conc.disabled=true \
-    vendor.audio.noisy.broadcast.delay=600 \
-    ro.config.media_vol_steps=25 \
-    ro.config.vc_call_vol_steps=11
+    vendor.audio.noisy.broadcast.delay=600
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.bluetooth.a2dp_offload.cap=false \
     vendor.qcom.bluetooth.soc=cherokee \
     persist.vendor.bluetooth.a4wp=false
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.aux.packagelist=com.oneplus.camera,org.lineageos.snap,com.google.android.Pixel2ModUrnyx05
-
-# Charger
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.charger.enable_suspend=true
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -136,43 +124,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.data.mode=concurrent \
     ro.vendor.use_data_netmgrd=true
 
-# DRM
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
-
-# FRP
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/bootdevice/by-name/config
-
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=420 \
-    ro.opengles.version=196610 \
-    debug.sf.hw=1 \
-    debug.sf.enable_hwc_vds=1 \
-    debug.sf.latch_unsignaled=1 \
-    debug.gralloc.enable_fb_ubwc=1 \
-    dev.pm.dyn_samplingrate=1 \
     persist.sys.force_sw_gles=0 \
-    persist.sys.wfd.virtual=0 \
     vendor.gralloc.enable_fb_ubwc=1 \
     vendor.gralloc.disable_wb_ubwc=1 \
     vendor.display.disable_partial_split=1 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1 \
-    vendor.display.perf_hint_window=50 \
-    debug.hwui.use_buffer_age=false
+    vendor.display.perf_hint_window=50
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.thumbnail.prefer_hw_codecs=true \
     vendor.vidc.debug.level=1 \
     vendor.swvdec.log.level=1
-
-# NFC
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.nfc_nci=nqx.default
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -193,14 +159,7 @@ PRODUCT_ODM_PROPERTIES += \
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    ro.telephony.default_network=22,20 \
-    telephony.lteOnCdmaDevice=1 \
-    ro.telephony.iwlan_operation_mode=legacy \
-    keyguard.no_require_sim=true \
-    ro.com.android.dataroaming=true \
-    ro.telephony.call_ring.multiple=false \
     persist.sys.oem_smooth=1 \
-    persist.radio.multisim.config=dsds \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.procedure_bytes=SKIP \
@@ -228,20 +187,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.multishake=true \
     persist.vendor.sensors.direct_channel=true
 
-# SurfaceFlinger
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
-    ro.surface_flinger.max_virtual_display_dimension=4096 \
-    ro.surface_flinger.protected_contents=true \
-    ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
-    ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_phase_offset_ns=1500000 \
-    debug.sf.early_app_phase_offset_ns=1500000 \
-    debug.sf.early_gl_phase_offset_ns=3000000 \
-    debug.sf.early_gl_app_phase_offset_ns=15000000
-
 # Timeservice
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.delta_time.enable=true
@@ -260,11 +205,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.dropset_feature=0 \
     persist.vendor.radio.add_power_save=1 \
-    persist.vendor.radio.force_on_dc=true \
-    persist.rcs.supported=0 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1
+    persist.vendor.radio.force_on_dc=true
 
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
