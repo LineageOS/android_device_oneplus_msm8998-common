@@ -45,6 +45,21 @@ on init
     chmod 660 /sys/class/leds/green/start_idx
     chmod 660 /sys/class/leds/blue/start_idx
 
+    # RGB light support
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/brightness
+    chmod 660 /sys/class/leds/red/brightness
+    chmod 660 /sys/class/leds/green/brightness
+    chmod 660 /sys/class/leds/blue/brightness
+
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chown system system /sys/class/leds/led:switch_0/brightness
+    chmod 660 /sys/class/leds/led:torch_0/brightness
+    chmod 660 /sys/class/leds/led:torch_1/brightness
+    chmod 660 /sys/class/leds/led:switch_0/brightness
+
     # Button backlight permissions
     chown system system /sys/class/leds/button-backlight/brightness
     chmod 660 /sys/class/leds/button-backlight/brightness
