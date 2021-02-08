@@ -46,6 +46,30 @@
       "revId": "34b3de8657e12d874df7cfbac308a651910389ef",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aeb1a41_beabfbd5",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-02-08T09:15:24Z",
+      "side": 0,
+      "message": "Update commit msg with that to be clear.",
+      "parentUuid": "3f2cd455_48c12b8a",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 14
+      },
+      "revId": "34b3de8657e12d874df7cfbac308a651910389ef",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
