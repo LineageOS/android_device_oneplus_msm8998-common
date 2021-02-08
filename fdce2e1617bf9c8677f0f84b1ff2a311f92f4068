@@ -22,6 +22,30 @@
       "revId": "fdce2e1617bf9c8677f0f84b1ff2a311f92f4068",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401ceccb_15868daa",
+        "filename": "sepolicy/vendor/genfs_contexts",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-02-08T06:38:27Z",
+      "side": 1,
+      "message": "these nodes have been labeled sysfs_graphics in other 8998 devices, so i went with it",
+      "parentUuid": "38b9a622_053e912a",
+      "range": {
+        "startLine": 14,
+        "startChar": 129,
+        "endLine": 14,
+        "endChar": 157
+      },
+      "revId": "fdce2e1617bf9c8677f0f84b1ff2a311f92f4068",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
