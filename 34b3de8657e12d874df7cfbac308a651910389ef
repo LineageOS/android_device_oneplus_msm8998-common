@@ -22,6 +22,30 @@
       "revId": "34b3de8657e12d874df7cfbac308a651910389ef",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2cd455_48c12b8a",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-02-08T09:10:18Z",
+      "side": 0,
+      "message": "fxtec kanged the blobs from jasmine as well, ours should have been identical to theirs methinks",
+      "parentUuid": "fc2de24e_693dcd43",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 14
+      },
+      "revId": "34b3de8657e12d874df7cfbac308a651910389ef",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
