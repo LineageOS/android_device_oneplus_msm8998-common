@@ -17,6 +17,8 @@
 #define ATRACE_TAG (ATRACE_TAG_POWER | ATRACE_TAG_HAL)
 #define LOG_TAG "android.hardware.power@1.3-service.oneplus_msm8998"
 
+#define DT2W_PATH "/proc/touchpanel/double_tap_enable"
+
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
@@ -226,8 +228,11 @@ Return<void> Power::powerHint(PowerHint_1_0 hint, int32_t data) {
     return Void();
 }
 
-Return<void> Power::setFeature(Feature /*feature*/, bool /*activate*/)  {
-    //Nothing to do
+Return<void> Power::setFeature(Feature feature, bool activate)  {
+    if (feature == Feature::POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
+        ALOGV("%s: %s double tap to wake", __func__, activate ? "enabling" : "disabling");
+        ::android::base::WriteStringToFile(activate ? "1" : "0", DT2W_PATH);
+    }
     return Void();
 }
 
