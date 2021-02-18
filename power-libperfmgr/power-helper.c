@@ -38,6 +38,7 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include <log/log.h>
 
@@ -173,4 +174,29 @@ int extract_platform_stats(uint64_t *list) {
 
 int extract_wlan_stats(uint64_t *list) {
     return extract_stats(list, WLAN_POWER_STAT, wlan_stat_map, ARRAY_SIZE(wlan_stat_map));
+}
+
+int sysfs_write(const char* path, char s) {
+    char buf[80];
+    int len;
+    int ret = 0;
+    int fd = open(path, O_WRONLY);
+
+    if (fd < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error opening %s: %s\n", path, buf);
+        return -1;
+    }
+
+    len = write(fd, &s, sizeof(s));
+    if (len < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error writing to %s: %s\n", path, buf);
+
+        ret = -1;
+    }
+
+    close(fd);
+
+    return ret;
 }

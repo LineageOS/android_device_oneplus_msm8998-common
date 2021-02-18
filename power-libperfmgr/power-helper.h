@@ -92,6 +92,7 @@ struct stat_pair {
 
 int extract_platform_stats(uint64_t *list);
 int extract_wlan_stats(uint64_t *list);
+int sysfs_write(const char* path, char s);
 
 #ifdef __cplusplus
 }
