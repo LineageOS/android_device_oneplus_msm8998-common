@@ -13,6 +13,10 @@ allow hal_power_default sysfs_msm_subsys:file rw_file_perms;
 allow hal_power_default sysfs_devices_system_cpu:file rw_file_perms;
 allow hal_power_default device_latency:chr_file rw_file_perms;
 
+# Enable DT2W
+allow hal_power_default proc_touchpanel:dir { search };
+allow hal_power_default proc_touchpanel:file { rw_file_perms };
+
 # To get/set powerhal state property
 set_prop(hal_power_default, vendor_power_prop)
 
