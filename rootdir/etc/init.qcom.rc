@@ -579,17 +579,6 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     oneshot
     writepid /dev/cpuset/system-background/tasks
 
-# Logcat dump daemon, dumps logs to logdump partition
-service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
-    class core
-    writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:logdumpd:s0
-    disabled
-
-# Logdumpd is enabled only for userdebug non-perf build
-on property:ro.logdumpd.enabled=1
-    start logdumpd
-
 service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
     user media
