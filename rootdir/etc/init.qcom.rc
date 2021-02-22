@@ -330,9 +330,8 @@ on post-fs-data
     write /data/misc/camera/client_package_name "com.oneplus.camera"
     chmod 0444 /data/misc/camera/client_package_name
 
-    # Set aggressive read ahead for dm-0 and dm-1 during boot up
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    # Set aggressive read ahead during boot up
+    write /sys/block/sda/queue/read_ahead_kb 2048
 
     # Setup permission for powerHAL
     chown system system /dev/stune/top-app/schedtune.boost
@@ -514,9 +513,8 @@ on property:sys.boot_completed=1
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/restricted/cpus 0-3
 
-    # Reset read ahead for dm-0 and dm-1 to 512kb
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
+    # Reset read ahead to 512kb
+    write /sys/block/sda/queue/read_ahead_kb 512
 
     # WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
