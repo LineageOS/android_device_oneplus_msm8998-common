@@ -617,9 +617,6 @@ service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     capabilities NET_ADMIN
     writepid /dev/cpuset/system-background/tasks
 
-on property:sys.powerctl=*
-    stop vendor.cnss-daemon
-
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
     class main
