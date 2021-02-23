@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7069fdd_2c94f330",
+        "filename": "sepolicy/vendor/property.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-02-23T15:13:46Z",
+      "side": 1,
+      "message": "Order",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 31
+      },
+      "revId": "6827595828aca64c2e04cc3f5a397cf9924a244c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
