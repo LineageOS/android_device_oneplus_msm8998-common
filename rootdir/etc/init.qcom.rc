@@ -540,12 +540,6 @@ service charger /system/bin/charger
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
 
-on property:persist.sys.oem.otg_support=true
-    write /sys/class/power_supply/usb/otg_switch 1
-
-on property:persist.sys.oem.otg_support=false
-    write /sys/class/power_supply/usb/otg_switch 0
-
 service dashd /vendor/xbin/dashd
      class core
      critical
