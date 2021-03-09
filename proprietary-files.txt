@@ -142,14 +142,10 @@ vendor/etc/camera/imx350_chromatix.xml
 vendor/etc/camera/imx371_chromatix.xml
 vendor/etc/camera/imx376k_chromatix.xml
 vendor/etc/camera/imx398_chromatix.xml
-vendor/etc/camera/license.lic
 vendor/etc/scve/facereco/gModel.dat
 vendor/lib/libDeVIS.so
 vendor/lib/libEIS.so
 vendor/lib/libOGLManager.so
-vendor/lib/libSTDualCamCaptureBokeh.so
-vendor/lib/libSTDualCamPreviewBokeh.so
-vendor/lib/libSTdisp.so
 vendor/lib/libSonyIMX350PdafLibrary.so
 vendor/lib/libSonyIMX371RmscLibrary.so
 vendor/lib/libUBWC.so
@@ -166,7 +162,6 @@ vendor/lib/libarcsoft_high_dynamic_range.so
 vendor/lib/libarcsoft_smart_denoise.so
 vendor/lib/libblur_channel.so
 vendor/lib/libcamera_oneplus_bokeh_wrapper.so
-vendor/lib/libcvface_api.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
@@ -391,7 +386,6 @@ vendor/etc/camera/ashdr/iso617_4608x3456.ncf
 vendor/etc/camera/ashdr/ncf_pack.ncf
 vendor/etc/camera/ashdr/ncf_pack_imx371.ncf
 vendor/etc/camera/ashdr/ncf_pack_imx519.ncf
-vendor/etc/camera/attribute.model
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_10_0.fw:vendor/firmware/cpp_firmware_v1_10_0.fw
