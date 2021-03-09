@@ -467,6 +467,7 @@ on boot
 
 on charger
     start dashd
+    start vendor.power_off_alarm
     setprop sys.usb.configfs 1
 
     # Enable UFS powersaving
