@@ -1,6 +1,4 @@
-type debugfs_power_stats, fs_type, debugfs_type;
 type debugfs_rpm, fs_type, debugfs_type;
-type debugfs_wlan, fs_type, debugfs_type;
 type proc_alarm_boot, fs_type, proc_type;
 type proc_touchpanel, fs_type, proc_type;
 type sysfs_fpc, fs_type, sysfs_type;
@@ -8,8 +6,8 @@ type sysfs_fpc_key, fs_type, sysfs_type;
 type sysfs_fpc_irq, fs_type, sysfs_type;
 type sysfs_fpc_screen, fs_type, sysfs_type;
 type sysfs_fpc_proximity, fs_type, sysfs_type;
+type sysfs_power_stats, fs_type, sysfs_type;
 type sysfs_project_info, fs_type, sysfs_type;
 type sysfs_msm_subsys, fs_type, sysfs_type;
-type sysfs_usb_device, sysfs_type, fs_type;
 type sysfs_wifi, fs_type, sysfs_type;
 type thermal_data_file, data_file_type, file_type;
