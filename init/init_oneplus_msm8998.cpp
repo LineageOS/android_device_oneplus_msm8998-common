@@ -122,7 +122,7 @@ void init_alarm_boot_properties()
 
     if (ReadFileToString(boot_reason_file, &boot_reason)) {
         /*
-         * Setup ro.alarm_boot value to true when it is RTC triggered boot up
+         * Setup ro.vendor.alarm_boot value to true when it is RTC triggered boot up
          * For existing PMIC chips, the following mapping applies
          * for the value of boot_reason:
          *
@@ -138,40 +138,40 @@ void init_alarm_boot_properties()
          */
         if (Trim(boot_reason) == "0") {
             property_override("ro.boot.bootreason", "invalid");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "1") {
             property_override("ro.boot.bootreason", "hard_reset");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "2") {
             property_override("ro.boot.bootreason", "smpl");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "3") {
-            property_override("ro.alarm_boot", "true");
+            property_override("ro.vendor.alarm_boot", "true");
             // disable boot animation for RTC wakeup
             property_override("debug.sf.nobootanimation", "1");
         }
         else if (Trim(boot_reason) == "4") {
             property_override("ro.boot.bootreason", "dc_chg");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "5") {
             property_override("ro.boot.bootreason", "usb_chg");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "6") {
             property_override("ro.boot.bootreason", "pon1");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "7") {
             property_override("ro.boot.bootreason", "cblpwr");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
         else if (Trim(boot_reason) == "8") {
             property_override("ro.boot.bootreason", "kpdpwr");
-            property_override("ro.alarm_boot", "false");
+            property_override("ro.vendor.alarm_boot", "false");
         }
     }
     else {
