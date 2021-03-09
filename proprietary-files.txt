@@ -142,7 +142,6 @@ vendor/etc/camera/imx350_chromatix.xml
 vendor/etc/camera/imx371_chromatix.xml
 vendor/etc/camera/imx376k_chromatix.xml
 vendor/etc/camera/imx398_chromatix.xml
-vendor/etc/camera/license.lic
 vendor/etc/scve/facereco/gModel.dat
 vendor/lib/libDeVIS.so
 vendor/lib/libEIS.so
