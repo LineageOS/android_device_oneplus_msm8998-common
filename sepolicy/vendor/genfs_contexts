@@ -1,5 +1,3 @@
-genfscon debugfs /p2p0/power_stats     u:object_r:debugfs_power_stats:s0
-genfscon debugfs /wlan0/power_stats    u:object_r:debugfs_power_stats:s0
 genfscon debugfs /system_stats         u:object_r:debugfs_rpm:s0
 genfscon debugfs /rmt_storage/rmts     u:object_r:qti_debugfs:s0
 genfscon debugfs /msm_core             u:object_r:qti_debugfs:s0
@@ -11,6 +9,8 @@ genfscon proc /sys/kernel/boot_reason  u:object_r:proc_alarm_boot:s0
 
 genfscon sysfs /devices/soc/soc:fingerprint_detect/sensor_version    u:object_r:sysfs_fpc:s0
 genfscon sysfs /project_info/project_name                            u:object_r:sysfs_project_info:s0
+
+genfscon sysfs /kernel/wlan/power_stats    u:object_r:sysfs_power_stats:s0
 
 genfscon sysfs /devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:gpio-leds/leds/button-backlight/brightness    u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/soc/800f000.qcom,spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pmi8998@3:qcom,leds@d000/leds/rgb/rgb_blink    u:object_r:sysfs_graphics:s0
