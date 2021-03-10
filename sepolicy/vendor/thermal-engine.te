@@ -10,5 +10,3 @@ r_dir_file(thermal-engine, sysfs_graphics)
 r_dir_file(thermal-engine, sysfs_thermal)
 
 set_prop(thermal-engine, thermal_engine_prop)
-
-dontaudit thermal-engine self:capability dac_override;
