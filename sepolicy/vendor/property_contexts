@@ -1,6 +1,3 @@
-persist.sys.diag.max.size              u:object_r:diag_prop:s0
-persist.vendor.oem.dump                u:object_r:diag_prop:s0
-
 vendor.oem.device.imeicache0           u:object_r:radio_prop:s0
 vendor.oem.device.imeicache1           u:object_r:radio_prop:s0
 

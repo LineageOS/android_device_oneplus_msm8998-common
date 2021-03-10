@@ -1,0 +1,5 @@
+
+dontaudit dashd self:capability { dac_override dac_read_search };
+dontaudit fsck self:capability { dac_override dac_read_search };
+dontaudit kernel self:capability { dac_override dac_read_search };
+dontaudit thermal-engine self:capability dac_override;
