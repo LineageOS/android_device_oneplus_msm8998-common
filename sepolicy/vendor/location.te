@@ -1,2 +1,0 @@
-allow location self:capability { net_raw };
-set_prop(location, diag_prop)
