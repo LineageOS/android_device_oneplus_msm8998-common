@@ -466,6 +466,7 @@ on boot
     write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
 
 on charger
+    start dashd
     setprop sys.usb.configfs 1
 
     # Enable UFS powersaving
