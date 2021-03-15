@@ -466,8 +466,6 @@ on boot
     write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
 
 on charger
-    setprop sys.usb.configfs 1
-
     # Enable UFS powersaving
     write /sys/devices/soc/${ro.boot.bootdevice}/clkscale_enable 1
     write /sys/devices/soc/${ro.boot.bootdevice}/clkgate_enable 1

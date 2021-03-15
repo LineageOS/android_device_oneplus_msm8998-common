@@ -69,6 +69,9 @@ on boot
     setprop sys.usb.controller "a800000.dwc3"
     setprop sys.usb.configfs 1
 
+on charger
+    setprop sys.usb.configfs 1
+
 # USB compositions
 on property:sys.usb.config=rndis && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x2717
