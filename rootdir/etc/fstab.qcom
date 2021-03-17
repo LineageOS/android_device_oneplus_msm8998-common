@@ -13,4 +13,4 @@
 /dev/block/bootdevice/by-name/dsp                            /vendor/dsp               ext4    ro,nosuid,nodev,barrier=1                                                                            wait
 /dev/block/bootdevice/by-name/persist                        /mnt/vendor/persist       ext4    noatime,nosuid,nodev,barrier=1                                                                       wait
 
-/devices/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.0.auto/usb* auto                      auto    defaults                                                                                             voldmanaged=usbdisk:auto
+/devices/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.0.auto/usb* auto                      auto    defaults                                                                                             voldmanaged=usb:auto
