@@ -447,7 +447,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    android.hardware.usb@1.1-service.oneplus_msm8998
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
