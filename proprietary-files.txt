@@ -965,8 +965,6 @@ vendor/lib64/vendor.qti.imsrtpservice@2.1.so
 
 # Radio - MBN
 etc/firmware/mbn_ota/mbn_ota.txt:vendor/firmware/mbn_ota/mbn_ota.txt
-etc/firmware/tp/fw_synaptics_16859.img
-etc/firmware/tp/fw_synaptics_17801.img
 
 # Sensors
 lib/libqmi_cci_system.so
@@ -1029,6 +1027,10 @@ vendor/lib64/libthermalioctl.so
 -vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
 -vendor/lib64/libtime_genoff.so
+
+# Touch panel
+etc/firmware/tp/fw_synaptics_16859.img
+etc/firmware/tp/fw_synaptics_17801.img
 
 # TUI
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
