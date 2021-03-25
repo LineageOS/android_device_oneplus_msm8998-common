@@ -17,13 +17,8 @@ if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt -o "$prev_version_info" != "
     # preserve the read only mode for all subdir and files
     cp --preserve=m -dr /vendor/firmware_mnt/image/modem_pr/mcfg/configs/* /data/vendor/modem_config
     cp --preserve=m -d /vendor/firmware_mnt/verinfo/ver_info.txt /data/vendor/modem_config/
-    cp --preserve=m -d /vendor/firmware_mnt/image/modem_pr/mbn_ota.txt /data/vendor/modem_config/
+    cp --preserve=m -d /vendor/firmware/mbn_ota/mbn_ota.txt /data/vendor/modem_config/
     # the group must be root, otherwise this script could not add "W" for group recursively
-
-#ifdef VENDOR_EDIT 20180601
-# zhouhanxin add for mbn_ota.txt , 201711277
-    cp -r /system/etc/firmware/mbn_ota/mbn_ota.txt /data/vendor/modem_config/mbn_ota.txt
-#endif VENDOR_END 20180601
     chown -hR radio.root /data/vendor/modem_config/*
 fi
 chmod g-w /data/vendor/modem_config
