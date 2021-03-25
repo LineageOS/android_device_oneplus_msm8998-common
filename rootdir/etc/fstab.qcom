@@ -14,3 +14,5 @@
 /dev/block/bootdevice/by-name/persist                        /mnt/vendor/persist       ext4    noatime,nosuid,nodev,barrier=1                                                                       wait
 
 /devices/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.0.auto/usb* auto                      auto    defaults                                                                                             voldmanaged=usb:auto
+
+/dev/block/zram0                                             none                      swap    defaults                                                                                             zramsize=50%,max_comp_streams=8
