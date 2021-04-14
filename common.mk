@@ -389,6 +389,7 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
+    CarrierConfigOverlay \
     ims-ext-common \
     telephony-ext \
     ims_ext_common.xml \
