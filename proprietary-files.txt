@@ -745,7 +745,7 @@ vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
 # PowerOffAlarm
--product/app/PowerOffAlarm/PowerOffAlarm.apk
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|177127967625fdc5320d40df734e97aac1391b9a
 product/framework/vendor.qti.hardware.alarm-V1.0-java.jar
 product/lib/vendor.qti.hardware.alarm@1.0.so
 product/lib64/vendor.qti.hardware.alarm@1.0.so
