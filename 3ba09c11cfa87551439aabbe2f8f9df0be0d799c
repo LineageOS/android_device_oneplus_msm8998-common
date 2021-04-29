@@ -16,6 +16,24 @@
       "revId": "3ba09c11cfa87551439aabbe2f8f9df0be0d799c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f94e9ac_a34d025c",
+        "filename": "configs/powerhint.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-04-29T18:10:58Z",
+      "side": 1,
+      "message": "You\u0027re right - also the intermediate has no user so better drop it.",
+      "parentUuid": "cd137d97_37d34b6c",
+      "revId": "3ba09c11cfa87551439aabbe2f8f9df0be0d799c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
