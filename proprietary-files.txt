@@ -101,8 +101,6 @@ vendor/lib64/libbtnv.so
 # Bluetooth (ANT+)
 -lib/libantradio.so
 -lib64/libantradio.so
-product/lib/com.qualcomm.qti.ant@1.0.so
-product/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib/com.qualcomm.qti.ant@1.0.so
 vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
 vendor/lib64/com.qualcomm.qti.ant@1.0.so
@@ -113,10 +111,6 @@ product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 
 # Bluetooth (Audio)
-product/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
-product/lib/vendor.qti.hardware.btconfigstore@1.0.so
-product/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
-product/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so
 vendor/lib/vendor.qti.hardware.fm@1.0.so
@@ -338,11 +332,6 @@ vendor/lib/libmmcamera_isp_sub_module.so
 etc/cne/Nexus/ATT/ATT_profiles.xml
 etc/cne/Nexus/ROW/ROW_profiles.xml
 etc/cne/Nexus/VZW/VZW_profiles.xml
-product/lib64/vendor.qti.hardware.data.connection@1.0.so
-product/lib64/vendor.qti.hardware.data.connection@1.1.so
-product/lib64/vendor.qti.hardware.data.iwlan@1.0.so
-product/lib64/vendor.qti.hardware.data.latency@1.0.so
-product/lib64/vendor.qti.latency@2.0.so
 -vendor/app/CACertService/CACertService.apk
 -vendor/app/CneApp/CneApp.apk
 -vendor/app/IWlanService/IWlanService.apk
@@ -432,8 +421,6 @@ vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|fbff6357ee46dd6d62f490a942ff567b6ce
 vendor/lib64/libdpmqmihal.so|30a170684219dd589d05ce5b446e73b7501f13e3
 
 # DRM
-product/lib/vendor.qti.hardware.qteeconnector@1.0.so
-product/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/bin/qseecomd
@@ -498,8 +485,6 @@ vendor/lib64/libwvhidl.so
 
 # Fingerprint sensor
 etc/permissions/com.fingerprints.extension.xml:vendor/etc/permissions/com.fingerprints.extension.xml
-product/lib/vendor.qti.hardware.fingerprint@1.0.so
-product/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib/fp_hal_extension.so
 vendor/lib/vendor.oneplus.fingerprint.extension@1.0.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
@@ -721,8 +706,6 @@ vendor/lib64/libgcs.so
 vendor/lib/libpn553_fw.so
 
 # NXP - ESE-Powermanager
-product/lib/vendor.qti.esepowermanager@1.0.so
-product/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
 vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
@@ -747,8 +730,6 @@ vendor/lib64/libperipheral_client.so
 # PowerOffAlarm
 -product/app/PowerOffAlarm/PowerOffAlarm.apk|177127967625fdc5320d40df734e97aac1391b9a
 product/framework/vendor.qti.hardware.alarm-V1.0-java.jar
-product/lib/vendor.qti.hardware.alarm@1.0.so
-product/lib64/vendor.qti.hardware.alarm@1.0.so
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
@@ -1004,8 +985,6 @@ vendor/etc/sensors/sensor_def_qcomdev.conf
 
 # Soter
 -app/SoterService/SoterService.apk
-product/lib/vendor.qti.hardware.soter@1.0.so
-product/lib64/vendor.qti.hardware.soter@1.0.so
 vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
 vendor/bin/vendor.qti.hardware.soter@1.0-provision
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
