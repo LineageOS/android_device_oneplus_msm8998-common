@@ -7,7 +7,7 @@ audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 ro.af.client_heap_size_kbyte=7168
 ro.config.media_vol_steps=25
-ro.config.vc_call_vol_steps=11
+ro.config.vc_call_vol_steps=6
 
 # Bluetooth
 bt.max.hfpclient.connections=1
