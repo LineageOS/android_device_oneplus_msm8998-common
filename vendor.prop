@@ -80,8 +80,7 @@ persist.vendor.bluetooth.a4wp=false
 vendor.qcom.bluetooth.soc=cherokee
 
 # Camera
-vendor.camera.aux.packagelist=com.oneplus.camera,org.lineageos.snap,com.google.android.Pixel2ModUrnyx05
-vendor.camera.hal1.packagelist=com.whatsapp
+vendor.camera.aux.packagelist=com.android.camera,com.oneplus.camera,org.codeaurora.snapcam,org.lineageos.snap
 
 # CNE
 persist.vendor.cne.feature=1
