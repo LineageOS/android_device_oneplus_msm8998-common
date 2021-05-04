@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0abe523c_44bf9c65",
+        "filename": "vendor.prop",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-05-04T12:43:31Z",
+      "side": 0,
+      "message": "This is used by system_ext/framework/qti-telephony-common.jar. Is it safe to remove?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "e2d4ce4367ae6c579f5c77514451d0f8b86ddacb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
