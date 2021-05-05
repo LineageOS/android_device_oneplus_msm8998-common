@@ -10,10 +10,7 @@ ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=6
 
 # Bluetooth
-bt.max.hfpclient.connections=1
 persist.bluetooth.a2dp_offload.cap=false
-ro.bluetooth.emb_wp_mode=false
-ro.bluetooth.wipower=false
 
 # Cabl
 ro.qualcomm.cabl=2

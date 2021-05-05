@@ -76,7 +76,7 @@ vendor.audio.use.sw.ape.decoder=true
 vendor.voice.path.for.pcm.voip=true
 
 # Bluetooth
-persist.vendor.bluetooth.a4wp=false
+ro.vendor.bluetooth.wipower=false
 vendor.qcom.bluetooth.soc=cherokee
 
 # Camera
