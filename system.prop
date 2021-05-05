@@ -45,10 +45,6 @@ ro.sf.lcd_density=420
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
 
-# NFC
-ro.hardware.nfc_nci=nqx.default
-ro.nfc.port=I2C
-
 # RIL
 keyguard.no_require_sim=true
 persist.radio.multisim.config=dsds
