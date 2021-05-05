@@ -43,10 +43,7 @@ ro.opengles.version=196610
 ro.sf.lcd_density=420
 
 # Media
-media.aac_51_output_enabled=true
 media.stagefright.thumbnail.prefer_hw_codecs=true
-mmp.enable.3g2=true
-persist.mm.enable.prefetch=true
 
 # NFC
 ro.hardware.nfc_nci=nqx.default
