@@ -114,8 +114,5 @@ persist.vendor.sensors.direct_channel=true
 # Timeservice
 persist.vendor.delta_time.enable=true
 
-# VNDK
-ro.vendor.vndk.version=28
-
 # VoLTE
 persist.vendor.qti.telephony.vt_cam_interface=1
