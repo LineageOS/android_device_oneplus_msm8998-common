@@ -134,9 +134,6 @@ persist.vendor.sensors.direct_channel=true
 # Timeservice
 persist.vendor.delta_time.enable=true
 
-# VNDK
-ro.vendor.vndk.version=28
-
 # VoLTE
 persist.vendor.ims.dropset_feature=0
 persist.vendor.radio.add_power_save=1
