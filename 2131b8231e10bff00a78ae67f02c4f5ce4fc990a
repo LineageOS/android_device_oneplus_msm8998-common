@@ -34,6 +34,24 @@
       "revId": "2131b8231e10bff00a78ae67f02c4f5ce4fc990a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ee753c_c6697b8a",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-05-06T08:58:46Z",
+      "side": 1,
+      "message": "nah, when reading this its not clear where the file is from, that should always be clear without checking the commit, hence marking them all. you could just go # Radio - from jasmine - V11. ... that avoids having to shuffle",
+      "parentUuid": "c8d8a7bb_edab735b",
+      "revId": "2131b8231e10bff00a78ae67f02c4f5ce4fc990a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
