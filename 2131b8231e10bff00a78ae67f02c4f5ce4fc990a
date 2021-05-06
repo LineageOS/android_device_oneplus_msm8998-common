@@ -52,6 +52,24 @@
       "revId": "2131b8231e10bff00a78ae67f02c4f5ce4fc990a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e130dc6_0674fce1",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-05-06T09:00:04Z",
+      "side": 1,
+      "message": "Oh, my bad - I though you meant to change \"Radio\" to \"RIL\"",
+      "parentUuid": "66ee753c_c6697b8a",
+      "revId": "2131b8231e10bff00a78ae67f02c4f5ce4fc990a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
