@@ -16,6 +16,24 @@
       "revId": "2131b8231e10bff00a78ae67f02c4f5ce4fc990a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d8a7bb_edab735b",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-05-06T08:11:08Z",
+      "side": 1,
+      "message": "I think it\u0027s more clear to follow what the file has at this time to avoid shuffling all titles.",
+      "parentUuid": "239dc01b_e47f2cb4",
+      "revId": "2131b8231e10bff00a78ae67f02c4f5ce4fc990a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
