@@ -29,12 +29,6 @@ PLATFORM_PATH := device/oneplus/msm8998-common
 
 BOARD_VENDOR := oneplus
 
-# we are too big to fit in
-PRODUCT_SKIP_FINGERPRINT_FROM_FILE := true
-
-# Compile libhwui in performance mode
-HWUI_COMPILE_FOR_PERF := true
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8998
 TARGET_NO_BOOTLOADER := true
@@ -207,7 +201,6 @@ BOARD_VNDK_VERSION := current
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
-BOARD_HAS_QCOM_WLAN_SDK := true
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
