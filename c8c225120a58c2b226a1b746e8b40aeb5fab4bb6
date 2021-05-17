@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94301410_7b484715",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2021-05-17T09:52:57Z",
+      "side": 1,
+      "message": "PLATFORM_PATH",
+      "range": {
+        "startLine": 165,
+        "startChar": 33,
+        "endLine": 165,
+        "endChar": 44
+      },
+      "revId": "c8c225120a58c2b226a1b746e8b40aeb5fab4bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
