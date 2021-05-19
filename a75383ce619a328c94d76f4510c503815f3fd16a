@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0417a7df_a4f09985",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2021-05-19T22:50:16Z",
+      "side": 1,
+      "message": "or this one",
+      "parentUuid": "54f332f9_4e6a5ac5",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "a75383ce619a328c94d76f4510c503815f3fd16a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46b08455_41956dc1",
         "filename": "BoardConfigCommon.mk",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a75383ce619a328c94d76f4510c503815f3fd16a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0a127e_c7523eb3",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2021-05-19T22:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b08455_41956dc1",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "a75383ce619a328c94d76f4510c503815f3fd16a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4597d138_b9289649",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2021-05-19T22:50:16Z",
+      "side": 1,
+      "message": "nor this one",
+      "parentUuid": "813cfa97_ed92c498",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "a75383ce619a328c94d76f4510c503815f3fd16a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4563a905_eea465be",
         "filename": "BoardConfigCommon.mk",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2021-05-19T22:39:58Z",
       "side": 1,
       "message": "https://review.lineageos.org/c/LineageOS/android_device_oneplus_sdm845-common/+/292265",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 40
+      },
+      "revId": "a75383ce619a328c94d76f4510c503815f3fd16a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4857e1d2_de830573",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2021-05-19T22:50:16Z",
+      "side": 1,
+      "message": "I don\u0027t think this one is",
+      "parentUuid": "4563a905_eea465be",
       "range": {
         "startLine": 102,
         "startChar": 0,
