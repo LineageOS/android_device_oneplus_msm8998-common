@@ -150,9 +150,6 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
-# RIL
-TARGET_USES_OLD_MNC_FORMAT := true
-
 # Root
 BOARD_ROOT_EXTRA_SYMLINKS += /vendor/dsp:/dsp
 BOARD_ROOT_EXTRA_SYMLINKS += /vendor/bt_firmware:/bt_firmware
