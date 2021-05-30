@@ -16,6 +16,24 @@
       "revId": "749e73dc0ce4eae819a892457584bf07dd73e5ce",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f00a9d_fbc719f4",
+        "filename": "rro_overlays/CarrierConfigOverlay/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-05-30T08:14:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d6df5fe_02761654",
+      "revId": "749e73dc0ce4eae819a892457584bf07dd73e5ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
