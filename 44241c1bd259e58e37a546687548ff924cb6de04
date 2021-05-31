@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89606abf_17b72bb3",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-05-31T12:19:28Z",
+      "side": 0,
+      "message": "Doing this enables the AOSP night light which practically duplicates what Livedisplay does - perhaps should be disabled to avoid confusion?",
+      "range": {
+        "startLine": 530,
+        "startChar": 16,
+        "endLine": 530,
+        "endChar": 58
+      },
+      "revId": "44241c1bd259e58e37a546687548ff924cb6de04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
