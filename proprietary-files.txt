@@ -46,7 +46,7 @@ vendor/lib/rfsa/adsp/libvpp_frc.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 
 # Alipay
-priv-app/IFAAService/IFAAService.apk:system_ext/priv-app/IFAAService/IFAAService.apk
+system/priv-app/IFAAService/IFAAService.apk:system_ext/priv-app/IFAAService/IFAAService.apk
 vendor/bin/hw/vendor.oneplus.hardware.ifaa@2.0-service
 vendor/etc/init/vendor.oneplus.hardware.ifaa@2.0-service.rc
 vendor/lib64/vendor.oneplus.hardware.ifaa@2.0.so
@@ -238,7 +238,7 @@ vendor/etc/camera/imx371_chromatix.xml
 vendor/etc/sensors/hals.conf
 
 # Camera firmware
-etc/firmware/cpp_firmware_v1_12_0.fw:vendor/firmware/cpp_firmware_v1_12_0.fw
+system/etc/firmware/cpp_firmware_v1_12_0.fw:vendor/firmware/cpp_firmware_v1_12_0.fw
 
 # Camera hidl
 vendor/bin/hw/vendor.oneplus.camera.CameraHIDL@1.0-service
@@ -771,7 +771,7 @@ vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so|fa120eaa7807ff43f3974a
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=_vendor|460e589128fce0b0e83bb3c75aa32f7e1a9494fd
 
 # Radio - MBN
-etc/firmware/mbn_ota/mbn_ota.txt:vendor/firmware/mbn_ota/mbn_ota.txt
+system/etc/firmware/mbn_ota/mbn_ota.txt:vendor/firmware/mbn_ota/mbn_ota.txt
 
 # Sensors
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
@@ -795,7 +795,7 @@ vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Soter
-app/SoterService/SoterService.apk:system_ext/app/SoterService/SoterService.apk
+system/app/SoterService/SoterService.apk:system_ext/app/SoterService/SoterService.apk
 vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
 vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
