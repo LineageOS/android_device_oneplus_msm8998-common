@@ -99,7 +99,7 @@ Power::Power(std::shared_ptr<HintManager> hm, std::shared_ptr<DisplayLowPower> d
 ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(DEBUG) << "Power setMode: " << toString(type) << " to: " << enabled;
     ATRACE_INT(toString(type).c_str(), enabled);
-    PowerSessionManager::getInstance().updateHintMode(toString(type), enabled);
+    PowerSessionManager::getInstance()->updateHintMode(toString(type), enabled);
     switch (type) {
         case Mode::LOW_POWER:
             mDisplayLowPower->SetDisplayLowPower(enabled);

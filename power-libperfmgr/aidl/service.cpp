@@ -68,8 +68,8 @@ int main() {
     LOG(INFO) << "Power HAL AIDL Service started.";
 
     if (::android::base::GetIntProperty("vendor.powerhal.adpf.rate", -1) != -1) {
-        PowerHintMonitor::getInstance().start();
-        PowerSessionManager::getInstance().setHintManager(hm);
+        PowerHintMonitor::getInstance()->start();
+        PowerSessionManager::getInstance()->setHintManager(hm);
     }
 
     std::thread initThread([&]() {
