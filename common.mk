@@ -95,7 +95,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.soundtrigger@2.2-impl:32 \
     audio.a2dp.default \
-    audio_amplifier.msm8998 \
     audio.primary.msm8998 \
     audio.r_submix.default \
     audio.usb.default \
