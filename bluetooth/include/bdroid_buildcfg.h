@@ -28,30 +28,15 @@
 #include <cutils/properties.h>
 #include <string.h>
 
-#include "osi/include/osi.h"
-
-typedef struct {
-    const char *product_device;
-    const char *product_model;
-} device_t;
-
-static const device_t devices[] = {
-    {"cheeseburger", "OnePlus 5"},
-    {"dumpling", "OnePlus 5T"},
-};
-
 static inline const char *BtmGetDefaultName()
 {
     char product_device[PROPERTY_VALUE_MAX];
     property_get("ro.lineage.device", product_device, "");
 
-    for (unsigned int i = 0; i < ARRAY_SIZE(devices); i++) {
-        device_t device = devices[i];
-
-        if (strcmp(device.product_device, product_device) == 0) {
-            return device.product_model;
-        }
-    }
+    if (strstr(product_device, "cheeseburger"))
+        return "OnePlus 5";
+    if (strstr(product_device, "dumpling"))
+        return "OnePlus 5T";
 
     // Fallback to ro.product.model
     return "";
