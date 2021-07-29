@@ -69,7 +69,6 @@
 /sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qpnp,fg/power_supply/bms(/.*)?               u:object_r:sysfs_battery_supply:s0
 
 # Ril
-/data/vendor/oemnvitems(/.*)?                                   u:object_r:vendor_radio_data_file:s0
 /(vendor|system/vendor)/bin/init\.radio\.sh                     u:object_r:init-radio-sh_exec:s0
 
 # Sysfs
@@ -101,4 +100,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998    u:object_r:hal_touch_oneplus_msm8998_exec:s0
 
 # Wifi
+/data/vendor/oemnvitems/4678_0                                  u:object_r:oem_nv_data_file:s0
+/data/vendor/oemnvitems/4678_1                                  u:object_r:oem_nv_data_file:s0
 /(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi-mac-generator_exec:s0

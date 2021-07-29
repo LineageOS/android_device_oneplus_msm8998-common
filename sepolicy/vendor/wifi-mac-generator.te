@@ -9,8 +9,8 @@ allow wifi-mac-generator vendor_shell_exec:file rx_file_perms;
 # Allow wifi-mac-generator to read and execute vendor_toolbox_exec
 allow wifi-mac-generator vendor_toolbox_exec:file rx_file_perms;
 
-# Allow wifi-mac-generator to read vendor_radio_data_file
-r_dir_file(wifi-mac-generator, vendor_radio_data_file)
+# Allow wifi-mac-generator to read oem_nv_data_file
+r_dir_file(wifi-mac-generator, oem_nv_data_file)
 
 # Allow wifi-mac-generator to read and write to mnt_vendor_file
 allow wifi-mac-generator mnt_vendor_file:dir search;
