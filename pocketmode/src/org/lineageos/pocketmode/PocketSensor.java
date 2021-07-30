@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2016 The CyanogenMod Project
- * Copyright (c) 2018 The LineageOS Project
+ *               2018-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,14 +22,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.lineageos.internal.util.FileUtils;
 
-public class ProximitySensor implements SensorEventListener {
+public class PocketSensor implements SensorEventListener {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "PocketModeProximity";
+    private static final String TAG = "PocketSensor";
 
     private static final String CHEESEBURGER_FILE =
             "/sys/devices/soc/soc:fpc_fpc1020/proximity_state";
@@ -41,11 +42,17 @@ public class ProximitySensor implements SensorEventListener {
     private Sensor mSensor;
     private Context mContext;
 
-    public ProximitySensor(Context context) {
+    public PocketSensor(Context context) {
         boolean found = false;
         mContext = context;
         mSensorManager = mContext.getSystemService(SensorManager.class);
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        for (Sensor sensor : mSensorManager.getSensorList(Sensor.TYPE_ALL)) {
+            if (TextUtils.equals(sensor.getStringType(), "com.oneplus.sensor.pocket")) {
+                mSensor = sensor;
+                break;
+            }
+        }
 
         if (FileUtils.fileExists(CHEESEBURGER_FILE)) {
             FPC_FILE = CHEESEBURGER_FILE;
