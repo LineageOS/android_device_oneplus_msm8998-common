@@ -9,6 +9,7 @@
 /dev/block/platform/soc/1da4000.ufshc/by-name/config            u:object_r:frp_block_device:s0
 
 # Bluetooth
+/data/vendor/oemnvitems/447                                     u:object_r:oem_nv_bt_data_file:s0
 /sys/devices/bt_wcn3990/rfkill/rfkill0/state                    u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/bt_wcn3990/extldo                                  u:object_r:sysfs_bluetooth_writable:s0
 
