@@ -25,6 +25,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class PocketModeService extends Service {
+
     private static final String TAG = "PocketModeService";
     private static final boolean DEBUG = false;
 
@@ -49,9 +50,9 @@ public class PocketModeService extends Service {
     @Override
     public void onDestroy() {
         if (DEBUG) Log.d(TAG, "Destroying service");
-        super.onDestroy();
         this.unregisterReceiver(mScreenStateReceiver);
         mProximitySensor.disable();
+        super.onDestroy();
     }
 
     @Override
@@ -59,23 +60,15 @@ public class PocketModeService extends Service {
         return null;
     }
 
-    private void onDisplayOn() {
-        if (DEBUG) Log.d(TAG, "Display on");
-        mProximitySensor.disable();
-    }
-
-    private void onDisplayOff() {
-        if (DEBUG) Log.d(TAG, "Display off");
-        mProximitySensor.enable();
-    }
-
     private BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                onDisplayOn();
+                if (DEBUG) Log.d(TAG, "Display on");
+                mProximitySensor.disable();
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                onDisplayOff();
+                if (DEBUG) Log.d(TAG, "Display off");
+                mProximitySensor.enable();
             }
         }
     };
