@@ -35,7 +35,8 @@ public class PocketModeService extends Service {
         if (DEBUG) Log.d(TAG, "Creating service");
         mPocketSensor = new PocketSensor(this);
 
-        IntentFilter screenStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        IntentFilter screenStateFilter = new IntentFilter();
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_ON);
         screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(mScreenStateReceiver, screenStateFilter);
     }
@@ -49,9 +50,9 @@ public class PocketModeService extends Service {
     @Override
     public void onDestroy() {
         if (DEBUG) Log.d(TAG, "Destroying service");
-        super.onDestroy();
         this.unregisterReceiver(mScreenStateReceiver);
         mPocketSensor.disable();
+        super.onDestroy();
     }
 
     @Override
@@ -59,23 +60,15 @@ public class PocketModeService extends Service {
         return null;
     }
 
-    private void onDisplayOn() {
-        if (DEBUG) Log.d(TAG, "Display on");
-        mPocketSensor.disable();
-    }
-
-    private void onDisplayOff() {
-        if (DEBUG) Log.d(TAG, "Display off");
-        mPocketSensor.enable();
-    }
-
     private BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-                onDisplayOn();
+                if (DEBUG) Log.d(TAG, "Display on");
+                mPocketSensor.disable();
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                onDisplayOff();
+                if (DEBUG) Log.d(TAG, "Display off");
+                mPocketSensor.enable();
             }
         }
     };
