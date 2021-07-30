@@ -22,6 +22,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.SystemProperties;
 import android.util.Log;
 
 import org.lineageos.internal.util.FileUtils;
@@ -31,10 +32,6 @@ public class ProximitySensor implements SensorEventListener {
     private static final boolean DEBUG = false;
     private static final String TAG = "PocketModeProximity";
 
-    private static final String CHEESEBURGER_FILE =
-            "/sys/devices/soc/soc:fpc_fpc1020/proximity_state";
-    private static final String DUMPLING_FILE =
-            "/sys/devices/soc/soc:goodix_fp/proximity_state";
     private final String FPC_FILE;
 
     private SensorManager mSensorManager;
@@ -42,24 +39,21 @@ public class ProximitySensor implements SensorEventListener {
     private Context mContext;
 
     public ProximitySensor(Context context) {
-        boolean found = false;
         mContext = context;
         mSensorManager = mContext.getSystemService(SensorManager.class);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
-        if (FileUtils.fileExists(CHEESEBURGER_FILE)) {
-            FPC_FILE = CHEESEBURGER_FILE;
-            found = true;
-        } else if (FileUtils.fileExists(DUMPLING_FILE)) {
-            FPC_FILE = DUMPLING_FILE;
-            found = true;
-        } else {
-            Log.e(TAG, "No proximity state file found!");
-            FPC_FILE = CHEESEBURGER_FILE;
-        }
-
-        if (found) {
-            if (DEBUG) Log.d(TAG, "Using proximity state from " + FPC_FILE);
+        switch (SystemProperties.get("ro.lineage.device", "")) {
+            case "cheeseburger":
+                FPC_FILE = "/sys/devices/soc/soc:fpc_fpc1020/proximity_state";
+                break;
+            case "dumpling":
+                FPC_FILE = "/sys/devices/soc/soc:goodix_fp/proximity_state";
+                break;
+            default:
+                FPC_FILE = "";
+                Log.e(TAG, "Device model for proximity state file not found!");
+                break;
         }
     }
 
