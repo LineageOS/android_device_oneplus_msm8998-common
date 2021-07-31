@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed5e73ae_84ef0eda",
+        "filename": "pocketmode/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-07-31T18:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de7073cd_de88dbff",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "1fbe5aba03191f14e09a26ee218a860f4cb81f25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "071ee354_ea64c3f6",
         "filename": "pocketmode/src/org/lineageos/pocketmode/PocketModeService.java",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "1fbe5aba03191f14e09a26ee218a860f4cb81f25",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c4e7f6_047ab680",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/PocketModeService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-07-31T18:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "071ee354_ea64c3f6",
+      "revId": "1fbe5aba03191f14e09a26ee218a860f4cb81f25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
