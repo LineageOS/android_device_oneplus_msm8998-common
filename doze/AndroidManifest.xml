@@ -41,9 +41,8 @@
             </intent-filter>
         </receiver>
 
-        <service
-            android:name=".DozeService"
-            android:permission="DozeService">
+        <service android:name=".DozeService"
+                 android:permission="OneplusDozeService">
         </service>
 
         <activity
