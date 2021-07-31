@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de7073cd_de88dbff",
+        "filename": "pocketmode/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-07-31T17:22:30Z",
+      "side": 1,
+      "message": "Space here too?",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "1fbe5aba03191f14e09a26ee218a860f4cb81f25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071ee354_ea64c3f6",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/PocketModeService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-07-31T17:22:30Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "1fbe5aba03191f14e09a26ee218a860f4cb81f25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
