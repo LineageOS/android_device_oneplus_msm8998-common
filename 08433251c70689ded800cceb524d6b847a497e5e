@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cb238f2_9d6a5461",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/PocketSensor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-07-31T13:42:19Z",
+      "side": 1,
+      "message": "do we even need a fallback?",
+      "revId": "08433251c70689ded800cceb524d6b847a497e5e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
