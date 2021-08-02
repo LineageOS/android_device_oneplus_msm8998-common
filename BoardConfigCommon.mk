@@ -132,7 +132,7 @@ TARGET_VENDOR_PROP += $(PLATFORM_PATH)/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS := $(PLATFORM_PATH)
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 
 # Releasetools
