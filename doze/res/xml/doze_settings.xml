@@ -16,12 +16,6 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:key="wake_on_gesture"
-        android:defaultValue="false"
-        android:title="@string/wake_on_gesture_title"
-        android:summary="@string/wake_on_gesture_summary" />
-
     <PreferenceCategory
         android:key="tilt_sensor"
         android:title="@string/tilt_sensor_title">
@@ -45,6 +39,14 @@
             android:summary="@string/hand_wave_gesture_summary"
             android:title="@string/hand_wave_gesture_title"
             android:icon="@drawable/ic_hand" />
+
+        <SwitchPreference
+            android:key="wake_on_gesture"
+            android:defaultValue="false"
+            android:dependency="gesture_hand_wave"
+            android:summary="@string/wake_on_gesture_summary"
+            android:title="@string/wake_on_gesture_title"
+            android:icon="@drawable/ic_wake" />
 
         <SwitchPreference
             android:defaultValue="false"
