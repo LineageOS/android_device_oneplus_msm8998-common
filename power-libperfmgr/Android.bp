@@ -36,7 +36,7 @@ cc_binary {
     vintf_fragments: ["aidl/android.hardware.power-service.oneplus_msm8998.xml"],
     vendor: true,
     shared_libs: [
-        "android.hardware.power-V2-ndk_platform",
+        "android.hardware.power-V2-ndk",
         "libbase",
         "libcutils",
         "liblog",
@@ -45,7 +45,7 @@ cc_binary {
         "libdisppower-msm8998",
         "libperfmgr",
         "libprocessgroup",
-        "pixel-power-ext-V1-ndk_platform",
+        "pixel-power-ext-V1-ndk",
     ],
     srcs: [
         "aidl/service.cpp",
