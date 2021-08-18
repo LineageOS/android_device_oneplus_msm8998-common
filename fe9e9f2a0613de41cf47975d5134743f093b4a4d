@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c96560c_3e2dbbfd",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-08-18T12:45:07Z",
+      "side": 0,
+      "message": "I think this is useful to have.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "fe9e9f2a0613de41cf47975d5134743f093b4a4d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
