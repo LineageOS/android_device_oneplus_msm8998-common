@@ -55,7 +55,7 @@ BUILD_BROKEN_DUP_RULES := true
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+# BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -71,8 +71,8 @@ BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
 # Audio
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
-BOARD_USES_ALSA_AUDIO := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
+BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
@@ -82,9 +82,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth/includ
 TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Display
-TARGET_USES_HWC2 := true
 TARGET_SCREEN_DENSITY := 420
 TARGET_USES_GRALLOC1 := true
+TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 
 # DRM
@@ -128,7 +128,6 @@ TARGET_VENDOR_PROP += $(PLATFORM_PATH)/vendor.prop
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS := $(PLATFORM_PATH)
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
-#TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus
