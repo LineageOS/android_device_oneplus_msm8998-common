@@ -111,7 +111,9 @@ public class PocketModeService extends Service {
                 screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
                 registerReceiver(mScreenStateReceiver, screenStateFilter);
             } else {
-                unregisterReceiver(mScreenStateReceiver);
+                try {
+                    unregisterReceiver(mScreenStateReceiver);
+                } catch(IllegalArgumentException e) {}
                 mProximitySensor.disable();
             }
         }
