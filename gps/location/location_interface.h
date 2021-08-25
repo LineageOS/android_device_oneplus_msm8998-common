@@ -31,6 +31,7 @@
 
 #include <LocationAPI.h>
 #include <gps_extended_c.h>
+#include <functional>
 
 /* Used for callback to deliver GNSS energy consumed */
 /** @fn
@@ -85,7 +86,7 @@ struct GnssInterface {
     void (*getGnssEnergyConsumed)(GnssEnergyConsumedCallback energyConsumedCb);
     void (*enableNfwLocationAccess)(bool enable);
     void (*nfwInit)(const NfwCbInfo& cbInfo);
-    void (*getPowerStateChanges)(void* powerStateCb);
+    void (*getPowerStateChanges)(std::function<void(bool)> powerStateCb);
     void (*injectLocationExt)(const GnssLocationInfoNotification &locationInfo);
     void (*updateBatteryStatus)(bool charging);
     void (*updateSystemPowerState)(PowerStateType systemPowerState);
@@ -96,6 +97,7 @@ struct GnssInterface {
     uint32_t (*gnssResetSvConfig)();
     uint32_t (*configLeverArm)(const LeverArmConfigInfo& configInfo);
     uint32_t (*configRobustLocation)(bool enable, bool enableForE911);
+    bool (*isSS5HWEnabled)();
 };
 
 struct BatchingInterface {
