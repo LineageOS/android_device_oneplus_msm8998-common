@@ -29,43 +29,36 @@
 #ifndef WIFI_DB_COMMON_H
 #define WIFI_DB_COMMON_H
 
-#include <functional>
-#include <vector>
-#include <string>
+#include <stdint.h>
 
-using namespace std;
-
-namespace nlp_api
-{
-
-enum ApBsListStatus {
+typedef enum {
     STD_CONT    = 0,
     STD_FINAL   = 1,
     SCAN_FINAL  = 2,
-};
+} ApBsListStatus;
 
-enum CellType {
+typedef enum {
     GSM   = 0,
     WCDMA = 1,
     CDMA  = 2,
     LTE   = 3,
-};
+} CellType;
 
-struct CellInfo {
+typedef struct {
     CellType cellType;
     uint16_t regionId1;
     uint16_t regionId2;
     uint16_t regionId3;
     uint16_t regionId4;
     uint32_t timestamp;
-};
+} CellInfo;
 
-enum LocationPositionSource : uint8_t {
+typedef enum LocationPositionSource : uint8_t {
     GPS    = (1<<0),
     HYBRID = (1<<1),
-};
+} LocationPositionSource;
 
-enum LocationFlagsBits : uint16_t {
+typedef enum NlpLocationFlagsBits : uint16_t {
     LAT_LONG_BIT          = (1<<0), // location has valid latitude and longitude
     ALTITUDE_BIT          = (1<<1), // location has valid altitude
     SPEED_BIT             = (1<<2), // location has valid speed
@@ -74,11 +67,11 @@ enum LocationFlagsBits : uint16_t {
     VERTICAL_ACCURACY_BIT = (1<<5), // location has valid vertical accuracy
     SPEED_ACCURACY_BIT    = (1<<6), // location has valid speed accuracy
     BEARING_ACCURACY_BIT  = (1<<7), // location has valid bearing accuracy
-};
+} NlpLocationFlagsBits;
 
-struct Location {
+typedef struct {
     LocationPositionSource positionSource;
-    LocationFlagsBits locationFlagsMask;
+    NlpLocationFlagsBits locationFlagsMask;
     uint64_t timestamp;
     double   latitude;
     double   longitude;
@@ -89,24 +82,36 @@ struct Location {
     float    verticalAccuracy;
     float    speedAccuracy;
     float    bearingAccuracy;
-};
+} NlpLocation;
 
-typedef function<void(
-)> ServiceRequest;
-
-enum OptInStatus {
+typedef enum {
     OPT_OUT = 0,
     OPT_IN  = 1,
-};
+} OptInStatus;
 
-typedef function<void(
-     OptInStatus optInStatus
-)> LocationOptInUpdate;
+typedef enum {
+    TYPE_MOBILE = 0,
+    TYPE_WIFI,
+    TYPE_ETHERNET,
+    TYPE_BLUETOOTH,
+    TYPE_MMS,
+    TYPE_SUPL,
+    TYPE_DUN,
+    TYPE_HIPRI,
+    TYPE_WIMAX,
+    TYPE_PROXY,
+    TYPE_UNKNOWN,
+} NetworkType;
 
-struct SystemStatusListener {
-    LocationOptInUpdate onLocationOptInUpdate;
-};
+typedef struct {
+    NetworkType networkType;
+    uint64_t networkHandle;
+} NlpNetwork;
 
-} // namespace nlp_api
+typedef struct {
+    void (*onLocationOptInUpdate)(OptInStatus optInStatus);
+    void (*onNetworkStatusUpdate)(bool isConected, const NlpNetwork* networksAvailable,
+            uint8_t networksAvailableCount);
+} SystemStatusListener;
 
 #endif /* WIFI_DB_COMMON_H */

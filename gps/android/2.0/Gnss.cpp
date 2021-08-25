@@ -43,6 +43,7 @@ namespace implementation {
 
 using ::android::hardware::gnss::visibility_control::V1_0::implementation::GnssVisibilityControl;
 static sp<Gnss> sGnss;
+static gnssStatusCb sGnssStatusCbRef = nullptr;
 static std::string getVersionString() {
     static std::string version;
     if (!version.empty())
@@ -96,8 +97,9 @@ void location_on_battery_status_changed(bool charging) {
 }
 Gnss::Gnss() {
     ENTRY_LOG_CALLFLOW();
-    sGnss = this;
-    mIsGnssClient = true;
+    if (sGnss == nullptr) {
+        sGnss = this;
+    }
     // initilize gnss interface at first in case needing notify battery status
     sGnss->getGnssInterface()->initialize();
     // register health client to listen on battery change
@@ -110,10 +112,11 @@ Gnss::Gnss() {
 Gnss::~Gnss() {
     ENTRY_LOG_CALLFLOW();
     if (mApi != nullptr) {
-        delete mApi;
+        mApi->destroy();
         mApi = nullptr;
     }
     sGnss = nullptr;
+    sGnssStatusCbRef = nullptr;
 }
 
 GnssAPIClient* Gnss::getApi() {
@@ -188,10 +191,10 @@ Return<bool> Gnss::setCallback(const sp<V1_0::IGnssCallback>& callback)  {
     if (mGnssCbIface != nullptr) {
         mGnssCbIface->linkToDeath(mGnssDeathRecipient, 0 /*cookie*/);
     }
-
+    //Send the gps enable signal
+    notifyGnssStatus();
     GnssAPIClient* api = getApi();
     if (api != nullptr) {
-        mIsGnssClient = true;
         api->gnssUpdateCallbacks(mGnssCbIface, mGnssNiCbIface);
         api->gnssEnable(LOCATION_TECHNOLOGY_TYPE_GNSS);
         api->requestCapabilities();
@@ -303,8 +306,20 @@ Return<void> Gnss::cleanup()  {
     if (mApi != nullptr) {
         mApi->gnssStop();
         mApi->gnssDisable();
-    }
+        // sGnssStatusCbRef will be NULL in case of Android OS,
+        // we need to retain mGnssCbIface* for Andorid, for SUPL ES.
+        // When location is disabled, GPS locked,
+        // we need a way to callback to AFW to request for DBH.
 
+        // sGnssStatusCbRef will be NOT be NULL in case of non-Android OS,
+        // in such case we don't want to retain the mGnssCbIface*, as DBH is
+        // handled internally, hence making below references as nullptr.
+        if (nullptr != sGnssStatusCbRef) {
+            mGnssCbIface = mGnssCbIface_1_1 = mGnssCbIface_2_0 = nullptr;
+            //Send gnss disable signal
+            notifyGnssStatus();
+        }
+    }
     return Void();
 }
 
@@ -323,6 +338,11 @@ Return<bool> Gnss::injectLocation(double latitudeDegrees,
 
 Return<bool> Gnss::injectTime(int64_t timeMs, int64_t timeReferenceMs,
                               int32_t uncertaintyMs) {
+    ENTRY_LOG_CALLFLOW();
+    const GnssInterface* gnssInterface = getGnssInterface();
+    if ((nullptr != gnssInterface) && (gnssInterface->isSS5HWEnabled())) {
+        gnssInterface->injectTime(timeMs, timeReferenceMs, uncertaintyMs);
+    }
     return true;
 }
 
@@ -335,16 +355,12 @@ Return<void> Gnss::deleteAidingData(V1_0::IGnss::GnssAidingData aidingDataFlags)
     return Void();
 }
 
-void Gnss::updateCallbacksByAccuracy(uint32_t preferredAccuracyMeters, GnssAPIClient* api) {
-    if (preferredAccuracyMeters >= MAX_GNSS_ACCURACY_ALLOWED && mIsGnssClient) {
-        // Swith to timebased FLP client, if request accuracy is very low
-        LOC_LOGd("Swith to timebased FlpClient due to low accuracy(m): %d",
-                preferredAccuracyMeters);
-        mIsGnssClient = false;
+void Gnss::updateCallbacksIfGnssStatusCbReg(GnssAPIClient* api) {
+    if (nullptr != sGnssStatusCbRef) {
+        // Swith to timebased FLP client, if gnssStatusCb is registered.
+        LOC_LOGd("Swith to timebased FlpClient as StatusCb is registerd(m):");
         api->gnssUpdateFlpCallbacks();
-    } else if (preferredAccuracyMeters < MAX_GNSS_ACCURACY_ALLOWED && !mIsGnssClient) {
-        LOC_LOGd("Swith to timebased GnssClient accuracy(m):%d", preferredAccuracyMeters);
-        mIsGnssClient = true;
+    } else {
         if (mGnssCbIface_2_0 != nullptr) {
             api->gnssUpdateCallbacks_2_0(mGnssCbIface_2_0);
         } else if (mGnssCbIface_1_1 != nullptr) {
@@ -366,7 +382,7 @@ Return<bool> Gnss::setPositionMode(V1_0::IGnss::GnssPositionMode mode,
     bool retVal = false;
     GnssAPIClient* api = getApi();
     if (api) {
-                updateCallbacksByAccuracy(preferredAccuracyMeters, api);
+                updateCallbacksIfGnssStatusCbReg(api);
                 retVal = api->gnssSetPositionMode(mode, recurrence, minIntervalMs,
                 preferredAccuracyMeters, preferredTimeMs);
     }
@@ -464,7 +480,7 @@ Return<bool> Gnss::setCallback_1_1(const sp<V1_1::IGnssCallback>& callback) {
     if (mGnssCbIface_1_1 != nullptr) {
         mGnssCbIface_1_1->linkToDeath(mGnssDeathRecipient, 0 /*cookie*/);
     }
-
+    notifyGnssStatus();
     const GnssInterface* gnssInterface = getGnssInterface();
     if (nullptr != gnssInterface) {
         OdcpiRequestCallback cb = [this](const OdcpiRequestInfo& odcpiRequest) {
@@ -475,7 +491,6 @@ Return<bool> Gnss::setCallback_1_1(const sp<V1_1::IGnssCallback>& callback) {
 
     GnssAPIClient* api = getApi();
     if (api != nullptr) {
-        mIsGnssClient = true;
         api->gnssUpdateCallbacks(mGnssCbIface_1_1, mGnssNiCbIface);
         api->gnssEnable(LOCATION_TECHNOLOGY_TYPE_GNSS);
         api->requestCapabilities();
@@ -494,7 +509,7 @@ Return<bool> Gnss::setPositionMode_1_1(V1_0::IGnss::GnssPositionMode mode,
     bool retVal = false;
     GnssAPIClient* api = getApi();
     if (api) {
-        updateCallbacksByAccuracy(preferredAccuracyMeters, api);
+        updateCallbacksIfGnssStatusCbReg(api);
         GnssPowerMode powerMode = lowPowerMode?
                 GNSS_POWER_MODE_M4 : GNSS_POWER_MODE_M2;
         retVal = api->gnssSetPositionMode(mode, recurrence, minIntervalMs,
@@ -534,7 +549,6 @@ Return<bool> Gnss::injectBestLocation(const GnssLocation& gnssLocation) {
 
 void Gnss::odcpiRequestCb(const OdcpiRequestInfo& request) {
     ENTRY_LOG_CALLFLOW();
-
     if (ODCPI_REQUEST_TYPE_STOP == request.type) {
         return;
     }
@@ -599,7 +613,7 @@ Return<bool> Gnss::setCallback_2_0(const sp<V2_0::IGnssCallback>& callback) {
     if (mGnssCbIface_2_0 != nullptr) {
         mGnssCbIface_2_0->linkToDeath(mGnssDeathRecipient, 0 /*cookie*/);
     }
-
+    notifyGnssStatus();
     const GnssInterface* gnssInterface = getGnssInterface();
     if (nullptr != gnssInterface) {
         OdcpiRequestCallback cb = [this](const OdcpiRequestInfo& odcpiRequest) {
@@ -610,7 +624,6 @@ Return<bool> Gnss::setCallback_2_0(const sp<V2_0::IGnssCallback>& callback) {
 
     GnssAPIClient* api = getApi();
     if (api != nullptr) {
-        mIsGnssClient = true;
         api->gnssUpdateCallbacks_2_0(mGnssCbIface_2_0);
         api->gnssEnable(LOCATION_TECHNOLOGY_TYPE_GNSS);
         api->requestCapabilities();
@@ -685,6 +698,25 @@ Return<sp<V2_0::IGnssDebug>> Gnss::getExtensionGnssDebug_2_0() {
 
 Return<sp<V2_0::IGnssBatching>> Gnss::getExtensionGnssBatching_2_0() {
     return nullptr;
+}
+
+void Gnss::notifyGnssStatus() {
+    if (nullptr != sGnssStatusCbRef) {
+        sGnssStatusCbRef(mGnssCbIface != nullptr || mGnssCbIface_1_1 != nullptr
+            || mGnssCbIface_2_0 != nullptr);
+    }
+}
+
+// Method that will register gnssStatusCallback,
+// only if the host FW is non-AFW and native NLP library
+// is available.
+void registerGnssStatusCallback(gnssStatusCb in) {
+    sGnssStatusCbRef = in;
+    if(nullptr != sGnssStatusCbRef && sGnss != nullptr) {
+        sGnss->notifyGnssStatus();
+    } else {
+        LOC_LOGe("Failed to register!!!");
+    }
 }
 
 V1_0::IGnss* HIDL_FETCH_IGnss(const char* hal) {

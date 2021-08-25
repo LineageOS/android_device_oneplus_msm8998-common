@@ -4548,39 +4548,25 @@ void LocApiV02 :: reportAtlRequest(
 {
   uint32_t connHandle = server_request_ptr->connHandle;
 
-  if(server_request_ptr->requestType == eQMI_LOC_SERVER_REQUEST_OPEN_V02 )
+  if (server_request_ptr->requestType == eQMI_LOC_SERVER_REQUEST_OPEN_V02)
   {
     LocAGpsType agpsType = LOC_AGPS_TYPE_ANY;
     LocApnTypeMask apnTypeMask = 0;
 
-    // Check if bearer type indicates WLAN
-    if (server_request_ptr->bearerType_valid) {
-        switch(server_request_ptr->bearerType) {
-        case eQMI_LOC_BEARER_TYPE_WLAN_V02:
-            agpsType = LOC_AGPS_TYPE_WIFI;
-            break;
-        default:
-            break;
-        }
-    }
-
-    // Check the WWAN Type
-    if (LOC_AGPS_TYPE_ANY == agpsType) {
-        switch(server_request_ptr->wwanType)
-        {
-        case eQMI_LOC_WWAN_TYPE_INTERNET_V02:
-          agpsType = LOC_AGPS_TYPE_WWAN_ANY;
-          break;
-        case eQMI_LOC_WWAN_TYPE_AGNSS_V02:
-          agpsType = LOC_AGPS_TYPE_SUPL;
-          break;
-        case eQMI_LOC_WWAN_TYPE_AGNSS_EMERGENCY_V02:
-          agpsType = LOC_AGPS_TYPE_SUPL_ES;
-          break;
-        default:
-          agpsType = LOC_AGPS_TYPE_WWAN_ANY;
-          break;
-        }
+    switch (server_request_ptr->wwanType)
+    {
+      case eQMI_LOC_WWAN_TYPE_INTERNET_V02:
+        agpsType = LOC_AGPS_TYPE_WWAN_ANY;
+        break;
+      case eQMI_LOC_WWAN_TYPE_AGNSS_V02:
+        agpsType = LOC_AGPS_TYPE_SUPL;
+        break;
+      case eQMI_LOC_WWAN_TYPE_AGNSS_EMERGENCY_V02:
+        agpsType = LOC_AGPS_TYPE_SUPL_ES;
+        break;
+      default:
+        agpsType = LOC_AGPS_TYPE_WWAN_ANY;
+        break;
     }
 
     if (server_request_ptr->apnTypeMask_valid) {
