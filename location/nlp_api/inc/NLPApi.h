@@ -29,17 +29,17 @@
 #ifndef NLP_API_H
 #define NLP_API_H
 
+#include <dlfcn.h>
+#include <stddef.h>
+#include <stdbool.h>
 #include <WiFiDBReceiver.h>
 #include <WiFiDBProvider.h>
 
-using namespace std;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-namespace nlp_api
-{
-
-class NLPApi
-{
-public:
+typedef struct {
     /** @brief
         Allows the registration of a SystemStatusListener to get updates on changes
         in system status.
@@ -47,10 +47,11 @@ public:
         @param
         listener: instance of SystemStatusListener,
         implementing the required callback functions.
+        Should not be freed until disconnect function is called.
 
         @return bool True if the connection is succesfull.
     */
-    static bool connectToSystemStatus(const shared_ptr<SystemStatusListener>& listener);
+    bool (*connectToSystemStatus)(const SystemStatusListener* listener);
 
     /** @brief
         Provides an instance of WiFiDBReceiver object with
@@ -59,11 +60,12 @@ public:
         @param
         listener: instance of WiFiDBReceiverResponseListener,
         implementing the required callback functions.
+        Should not be freed until disconnect function is called.
 
         @return WiFiDBReceiver
     */
-    static shared_ptr<WiFiDBReceiver> connectToWiFiDBReceiver(
-            const shared_ptr<WiFiDBReceiverResponseListener>& listener);
+    const WiFiDBReceiver* (*connectToWiFiDBReceiver)(
+            const WiFiDBReceiverResponseListener* listener);
 
     /** @brief
         Provides an instance of WiFiDBProvider object with
@@ -72,11 +74,12 @@ public:
         @param
         listener: instance of WiFiDBProviderResponseListener,
         implementing the required callback functions.
+        Should not be freed until disconnect function is called.
 
         @return WiFiDBProvider
     */
-    static shared_ptr<WiFiDBProvider> connectToWiFiDBProvider(
-            const shared_ptr<WiFiDBProviderResponseListener>& listener);
+    const WiFiDBProvider* (*connectToWiFiDBProvider)(
+            const WiFiDBProviderResponseListener* listener);
 
     /** @brief
         Disconnect the SystemStatusListener. Indicates that client process is not
@@ -86,8 +89,7 @@ public:
         listener: instance of WiFiDBReceiverResponseListener, previously provided
         in the connectToWiFiDBReceiver call.
     */
-    static void disconnectFromSystemStatus(
-            const shared_ptr<SystemStatusListener>& listener);
+    void (*disconnectFromSystemStatus)(const SystemStatusListener* listener);
 
     /** @brief
         Disconnect the WiFiDBReceiver associated with the provided listener.
@@ -96,8 +98,8 @@ public:
         listener: instance of WiFiDBReceiverResponseListener, previously provided
         in the connectToWiFiDBReceiver call.
     */
-    static void disconnectFromWiFiDBReceiver(
-            const shared_ptr<WiFiDBReceiverResponseListener>& listener);
+    void (*disconnectFromWiFiDBReceiver)(
+            const WiFiDBReceiverResponseListener* listener);
 
     /** @brief
         Disconnect the WiFiDBProvider associated with the provided listener.
@@ -106,10 +108,32 @@ public:
         listener: instance of WiFiDBProviderResponseListener, previously provided
         in the connectToWiFiDBProvider call.
     */
-    static void disconnectFromWiFiDBProvider(
-            const shared_ptr<WiFiDBProviderResponseListener>& listener);
-};
+    void (*disconnectFromWiFiDBProvider)(
+            const WiFiDBProviderResponseListener* listener);
+} NLPApi;
 
-} // namespace nlp_api
+/** @brief
+    Provides a C pointer to an instance of NLPApi struct after dynamic linking to lobnlp_api.so.
+*/
+inline const NLPApi* linkGetNLPApi() {
+    typedef void* (getNLPApi)();
+
+    getNLPApi* getter = NULL;
+    const char *error = NULL;
+    dlerror();
+    void *handle = dlopen("libnlp_api.so", RTLD_NOW);
+    if (NULL != handle || (error = dlerror()) == NULL)  {
+        getter = (getNLPApi*)dlsym(handle, "getNLPApi");
+        if ((error = dlerror()) != NULL)  {
+            getter = NULL;
+        }
+    }
+
+    return (NLPApi*)(*getter)();
+}
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* NLP_API_H */
