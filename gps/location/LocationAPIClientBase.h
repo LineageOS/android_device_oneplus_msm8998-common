@@ -200,9 +200,11 @@ private:
 class LocationAPIClientBase {
 public:
     LocationAPIClientBase();
-    virtual ~LocationAPIClientBase();
     LocationAPIClientBase(const LocationAPIClientBase&) = delete;
     LocationAPIClientBase& operator=(const LocationAPIClientBase&) = delete;
+
+    void destroy();
+    void onLocationApiDestroyCompleteCb();
 
     void locAPISetCallbacks(LocationCallbacks& locationCallbacks);
     void removeSession(uint32_t session);
@@ -282,6 +284,9 @@ public:
     inline virtual void onGnssNiResponseCb(LocationError /*error*/) {}
 
     inline virtual void onLocationSystemInfoCb(LocationSystemInfo /*locationSystemInfo*/) {}
+
+protected:
+    virtual ~LocationAPIClientBase();
 
 private:
     // private inner classes

@@ -29,59 +29,43 @@
 #ifndef WIFI_DB_PROV_H
 #define WIFI_DB_PROV_H
 
-#include <functional>
-#include <vector>
-#include <string>
 #include <DBCommon.h>
-
-using namespace std;
-
-namespace nlp_api
-{
 
 /******************************************************************************
 WiFiDBReceiver
 ******************************************************************************/
 
-class WiFiDBProvider
-{
-public:
-    virtual void requestAPObsLocData() = 0;
-    virtual ~WiFiDBProvider() { };
-};
+typedef struct {
+    void (*requestAPObsLocData)();
+} WiFiDBProvider;
 
 /******************************************************************************
 ResponseListener
 ******************************************************************************/
-struct ApScan {
-    string macAddress;
+typedef struct {
+    uint8_t macAddress[6];
     float rssi;
     uint64_t deltaTime;
-    string ssid;
+    char ssid[8];
     uint16_t channelNumber;
-};
+} ApScan;
 
-typedef vector<unique_ptr<ApScan>> ApScanList;
-
-struct APObsLocData {
-    Location location;
+typedef struct {
+    NlpLocation location;
     CellInfo cellInfo;
     uint64_t scanTimestamp;
-    ApScanList ApScanList;
-};
+    ApScan* ap_scan_list;
+    uint16_t ap_scan_list_count;
+} APObsLocData;
 
-typedef vector<unique_ptr<APObsLocData>> APObsLocDataList;
-
-typedef function<void(
-    unique_ptr<APObsLocDataList> ap_obs_list,
-    ApBsListStatus ap_status
-)> ApObsLocDataAvailable;
-
-struct WiFiDBProviderResponseListener {
-    ApObsLocDataAvailable onApObsLocDataAvailable;
-    ServiceRequest onServiceRequest;
-};
-
-} // namespace nlp_api
+/** @brief
+    All the memory pointers returned in these callbacks will be freed after call returns.
+    Implementation of these callbacks shall copy the needed data before returning.
+*/
+typedef struct {
+    void (*onApObsLocDataAvailable)(const APObsLocData* ap_obs_list, uint16_t ap_obs_list_count,
+            ApBsListStatus ap_status);
+    void (*onServiceRequest)();
+} WiFiDBProviderResponseListener;
 
 #endif /* WIFI_DB_PROV_H */

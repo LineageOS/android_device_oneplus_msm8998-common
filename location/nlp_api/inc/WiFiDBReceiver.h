@@ -29,111 +29,86 @@
 #ifndef WIFI_DB_REC_H
 #define WIFI_DB_REC_H
 
-#include <functional>
-#include <vector>
-#include <string>
 #include <DBCommon.h>
-
-using namespace std;
-
-namespace nlp_api
-{
 
 /******************************************************************************
 WiFiDBReceiver
 ******************************************************************************/
 
-enum ReliabilityTypes : uint8_t {
+typedef enum ReliabilityTypes : uint8_t {
     VERY_LOW  = 0,
     LOW       = 1,
     MEDIUM    = 2,
     HIGH      = 3,
     VERY_HIGH = 4,
-};
+} ReliabilityTypes;
 
-struct APLocationData {
-    string macAddress;
+typedef struct {
+    uint8_t macAddress[6];
     double latitude;
     double longitude;
     float max_antenna_range;
     float horizontal_error;
     ReliabilityTypes reliability;
-};
+} APLocationData;
 
-typedef vector<const shared_ptr<APLocationData>> APLocationDataList;
-
-enum APSpecialInfoType : uint8_t {
+typedef enum APSpecialInfoType : uint8_t {
     NO_INFO_AVAILABLE = 0,
     MOVING_AP      = 1,
-};
+} APSpecialInfoType;
 
-struct APSpecialInfo {
-    string macAddress;
+typedef struct {
+    uint8_t macAddress[6];
     APSpecialInfoType specialInfoType;
-};
+} APSpecialInfo;
 
-typedef vector<const shared_ptr<APSpecialInfo>> APSpecialInfoList;
-
-class WiFiDBReceiver
-{
-public:
-    virtual void requestAPList(int expire_in_days) = 0;
-    virtual void requestScanList() = 0;
-    virtual void pushWiFiDB(const shared_ptr<APLocationDataList> location_data,
-            const shared_ptr<APSpecialInfoList> special_info, int days_valid) = 0;
-    virtual void pushLookupResult(const shared_ptr<APLocationDataList> location_data,
-            const shared_ptr<APSpecialInfoList> special_info) = 0;
-    virtual ~WiFiDBReceiver() { };
-};
+/** @brief
+    All the memory pointers received will be never freed internally.
+    Caller shall manage the memory before and after calling these functions.
+*/
+typedef struct {
+    void (*requestAPList)(int expire_in_days);
+    void (*requestScanList)();
+    void (*pushWiFiDB)(const APLocationData* location_data, uint16_t location_data_count,
+            const APSpecialInfo* special_info, uint16_t special_info_count, int days_valid);
+    void (*pushLookupResult)(const APLocationData* location_data, uint16_t location_data_count,
+            const APSpecialInfo* special_info, uint16_t special_info_count);
+} WiFiDBReceiver;
 
 /******************************************************************************
 ResponseListener
 ******************************************************************************/
 
-enum FdalStatus : uint8_t {
+typedef enum FdalStatus : uint8_t {
     NOT_IN_FDAL = 0,
     IN_FDAL     = 1,
     BLACKLISTED = 2,
     NA          = 3,
-};
+} FdalStatus;
 
-struct APInfoExtra {
-    string ssid;
+typedef struct {
+    char ssid[8];
     CellInfo cellInfo;
-};
+} NlpAPInfoExtra;
 
-struct APInfo {
-    string macAddress;
+typedef struct {
+    uint8_t macAddress[6];
     uint64_t timestamp;
     FdalStatus fdalStatus;
-    APInfoExtra extra;
-};
+    NlpAPInfoExtra extra;
+} NlpAPInfo;
 
-typedef vector<unique_ptr<APInfo>> APInfoList;
-
-typedef function<void(
-    unique_ptr<APInfoList> ap_list,
-    ApBsListStatus ap_status,
-    Location location
-)> APListAvailable;
-
-typedef function<void(
-    unique_ptr<APInfoList> ap_list,
-    Location location
-)> LookupRequest;
-
-typedef function<void(
-    bool is_success,
-    string error
-)> StatusUpdate;
-
-struct WiFiDBReceiverResponseListener {
-    APListAvailable onAPListAvailable;
-    LookupRequest onLookupRequest;
-    StatusUpdate onStatusUpdate;
-    ServiceRequest onServiceRequest;
-};
-
-} // namespace nlp_api
+/** @brief
+    All the memory pointers returned in these callbacks will be freed after call returns.
+    Implementation of these callbacks shall copy the needed data before returning.
+*/
+typedef struct {
+    void (*onAPListAvailable)(const NlpAPInfo* ap_list, uint16_t ap_list_count,
+            ApBsListStatus ap_status, NlpLocation location);
+    void (*onLookupRequest)(const NlpAPInfo* ap_list, uint16_t ap_list_count, NlpLocation location,
+            bool is_emergency);
+    void (*onStatusUpdate)(bool is_success, const char* error);
+    void (*onServiceRequest)(bool is_emergency);
+} WiFiDBReceiverResponseListener;
 
 #endif /* WIFI_DB_REC_H */

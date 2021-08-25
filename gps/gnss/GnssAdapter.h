@@ -38,6 +38,7 @@
 #include <SystemStatus.h>
 #include <XtraSystemStatusObserver.h>
 #include <map>
+#include <functional>
 
 #define MAX_URL_LEN 256
 #define NMEA_SENTENCE_MAX_LENGTH 200
@@ -46,6 +47,7 @@
 #define LOC_NI_NO_RESPONSE_TIME 20
 #define LOC_GPS_NI_RESPONSE_IGNORE 4
 #define ODCPI_EXPECTED_INJECTION_TIME_MS 10000
+#define IS_SS5_HW_ENABLED (1)
 
 class GnssAdapter;
 
@@ -156,8 +158,6 @@ typedef std::function<void(
     uint64_t gnssEnergyConsumedFromFirstBoot
 )> GnssEnergyConsumedCallback;
 
-typedef void (*powerStateCallback)(bool on);
-
 class GnssAdapter : public LocAdapterBase {
 
     /* ==== Engine Hub ===================================================================== */
@@ -224,7 +224,7 @@ class GnssAdapter : public LocAdapterBase {
 
     /* === Misc callback from QMI LOC API ============================================== */
     GnssEnergyConsumedCallback mGnssEnergyConsumedCb;
-    powerStateCallback mPowerStateCb;
+    std::function<void(bool)> mPowerStateCb;
 
     /*==== CONVERSION ===================================================================*/
     static void convertOptions(LocPosMode& out, const TrackingOptions& trackingOptions);
@@ -305,6 +305,8 @@ public:
     void resetSvConfig(uint32_t sessionId);
     void configLeverArm(uint32_t sessionId, const LeverArmConfigInfo& configInfo);
     void configRobustLocation(uint32_t sessionId, bool enable, bool enableForE911);
+    inline bool isSS5HWEnabled()
+    { return ((mContext != NULL) && (IS_SS5_HW_ENABLED == mContext->mGps_conf.GNSS_DEPLOYMENT)); }
 
     /* ==== NI ============================================================================= */
     /* ======== COMMANDS ====(Called from Client Thread)==================================== */
@@ -508,10 +510,11 @@ public:
 
     /* ==== MISCELLANEOUS ================================================================== */
     /* ======== COMMANDS ====(Called from Client Thread)==================================== */
-    void getPowerStateChangesCommand(void* powerStateCb);
+    void getPowerStateChangesCommand(std::function<void(bool)> powerStateCb);
     /* ======== UTILITIES ================================================================== */
     void reportPowerStateIfChanged();
-    void savePowerStateCallback(powerStateCallback powerStateCb){ mPowerStateCb = powerStateCb; }
+    void savePowerStateCallback(std::function<void(bool)> powerStateCb){
+            mPowerStateCb = powerStateCb; }
     bool getPowerState() { return mPowerOn; }
     inline PowerStateType getSystemPowerState() { return mSystemPowerState; }
 
