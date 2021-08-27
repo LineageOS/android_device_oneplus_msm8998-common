@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92df59a6_d86b0b22",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/PocketModeService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2021-08-27T10:37:51Z",
+      "side": 1,
+      "message": "You meant `unregisterReceiver(mScreenStateReceiver);` ?",
+      "range": {
+        "startLine": 119,
+        "startChar": 20,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "5c7dd8b999d588770db31bf03f67f993acd93d16",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
