@@ -22,6 +22,30 @@
       "revId": "5c7dd8b999d588770db31bf03f67f993acd93d16",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d005874_4518bcbe",
+        "filename": "pocketmode/src/org/lineageos/pocketmode/PocketModeService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-08-28T15:32:59Z",
+      "side": 1,
+      "message": "Good call.",
+      "parentUuid": "92df59a6_d86b0b22",
+      "range": {
+        "startLine": 119,
+        "startChar": 20,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "5c7dd8b999d588770db31bf03f67f993acd93d16",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
