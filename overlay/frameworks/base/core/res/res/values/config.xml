@@ -464,9 +464,6 @@
     <bool name="config_enableBurnInProtection">true</bool>
 
     <string-array name="config_mobile_tcp_buffers">
-        <item>5gnr:2097152,6291456,16777216,512000,2097152,8388608</item>
-        <item>lte:524288,1048576,8388608,262144,524288,4194304</item>
-        <item>lte_ca:1048576,2097152,16777216,524288,1048576,8388608</item>
         <item>umts:131072,262144,1452032,4096,16384,399360</item>
         <item>hspa:131072,262144,2441216,4096,16384,399360</item>
         <item>hsupa:131072,262144,2441216,4096,16384,399360</item>
@@ -476,7 +473,7 @@
         <item>gprs:4096,8192,24576,4096,8192,24576</item>
         <item>1xrtt:16384,32768,131070,4096,16384,102400</item>
         <item>evdo:131072,262144,1048576,4096,16384,524288</item>
-        <item>ehrpd:4094,87380,1048576,4096,16384,262144</item>
+        <item>lte:524288,1048576,8388608,262144,524288,4194304</item>
     </string-array>
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
