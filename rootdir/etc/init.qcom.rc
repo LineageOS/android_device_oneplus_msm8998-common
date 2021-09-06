@@ -438,9 +438,6 @@ on boot
     chown system system /proc/tri-state-key/keyCode_bottom
     chmod 0660 /proc/tri-state-key/keyCode_bottom
 
-    # init.qcom.sh
-    write /proc/sys/net/ipv6/conf/default/accept_ra_defrtr 1
-
 on charger
     start dashd
     start vendor.power_off_alarm
