@@ -16,9 +16,15 @@
     implied.  See the License for the specific language governing
     permissions and limitations under the License. -->
 
+<!-- NOTE: Many variables that used to be in this file have been migrated to
+     CarrierConfigManager.java. Please consider whether new variables belong
+     there before adding to this file. Variables here should be more closely
+     related to devices than to networks. -->
+
 <!-- Phone app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
+
     <!-- Flag indicating if the phone is a world phone -->
     <bool name="world_phone">true</bool>
 
@@ -50,4 +56,5 @@
 
     <!-- String indicating the package name of the device ImsService implementation for RCS. -->
     <string name="config_ims_rcs_package" translatable="false">org.codeaurora.ims</string>
+
 </resources>

@@ -15,6 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+
 <resources>
 
     <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
