@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d281a066_6cd83224",
+        "filename": "overlay-lineage/packages/apps/Snap/res/values/config.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-09-06T07:51:02Z",
+      "side": 0,
+      "message": "Don\u0027t enable?",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "8ae9192fd9741aa25d6405927f13b1380eb7ee04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
