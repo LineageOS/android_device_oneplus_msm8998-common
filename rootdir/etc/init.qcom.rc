@@ -199,18 +199,6 @@ on post-fs
 
     chown system system /proc/ship_mode
     chown system system /dev/param
-    chown system system /sys/class/timed_output/vibrator/vmax_mv
-    chown system system /sys/class/timed_output/vibrator/wf_s0
-    chown system system /sys/class/timed_output/vibrator/wf_s1
-    chown system system /sys/class/timed_output/vibrator/wf_s2
-    chown system system /sys/class/timed_output/vibrator/wf_s3
-    chown system system /sys/class/timed_output/vibrator/wf_s4
-    chown system system /sys/class/timed_output/vibrator/wf_s5
-    chown system system /sys/class/timed_output/vibrator/wf_s6
-    chown system system /sys/class/timed_output/vibrator/wf_s7
-    chown system system /sys/class/timed_output/vibrator/wf_update
-    chown system system /sys/class/timed_output/vibrator/wf_rep
-    chown system system /sys/class/timed_output/vibrator/wf_s_rep
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 
 on late-fs
