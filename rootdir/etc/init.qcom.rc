@@ -410,15 +410,6 @@ on boot
     # Goodix Fingerprint (dumpling)
     chmod 0666 /dev/goodix_fp
 
-    chmod 0666 /dev/qseecom
-
-    # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
-    chmod 0666 /dev/nq-nci
-    chown nfc nfc /dev/nq-nci
-
-    chmod 0666 /dev/p73
-    chown secure_element secure_element /dev/p73
-
     chmod 0666 /dev/dash
     restorecon /dev/dash
 
