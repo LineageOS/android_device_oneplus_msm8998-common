@@ -166,7 +166,6 @@ on fs
     mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
     mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
-    mkdir /mnt/vendor/persist/OPDiagnose
     mkdir /mnt/vendor/persist/silead 0777 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
@@ -174,7 +173,6 @@ on fs
 
     chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
     chown system system /mnt/vendor/persist/camera
-    chown system system /mnt/vendor/persist/OPDiagnose
 
     chown system system /mnt/vendor/persist/sensors
     chown system system /mnt/vendor/persist/sensors/sns.reg
@@ -201,8 +199,6 @@ on post-fs
 
     chown system system /proc/ship_mode
     chown system system /dev/param
-    chown system system /dev/block/mmcblk0p21
-    chmod 660 /dev/block/mmcblk0p21
     chown system system /sys/class/timed_output/vibrator/vmax_mv
     chown system system /sys/class/timed_output/vibrator/wf_s0
     chown system system /sys/class/timed_output/vibrator/wf_s1
@@ -215,16 +211,7 @@ on post-fs
     chown system system /sys/class/timed_output/vibrator/wf_update
     chown system system /sys/class/timed_output/vibrator/wf_rep
     chown system system /sys/class/timed_output/vibrator/wf_s_rep
-    chown system system /sys/devices/soc/c179000.i2c/i2c-5/5-0020/tp_grip_ctrl
-    chown system log /sys/fs/pstore/console-ramoops-0
-    chmod 0440 /sys/fs/pstore/console-ramoops-0
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
-    chown system system /sys/module/param_read_write/parameters/normal_reboot_count
-    chown system system /sys/module/param_read_write/parameters/abnormal_reboot_count
-    chown system system /sys/module/param_read_write/parameters/update_count
-    chown system system /sys/module/param_read_write/parameters/fastboot_count
-    chown system system /sys/class/power_supply/bms/set_allow_read_extern_fg_iic
-    chown system system /sys/class/power_supply/battery/connect_disable
 
 on late-fs
     # Start devices by sysfs trigger
@@ -413,8 +400,6 @@ on boot
     chmod 0666 /dev/dash
     restorecon /dev/dash
 
-    chmod 0666 /sys/module/opchain/parameters/boost_tl
-
     chown system system /proc/touchpanel/gesture_enable
     chown system system /proc/touchpanel/gesture_switch
     chown system system /proc/touchpanel/key_switch
@@ -427,9 +412,6 @@ on boot
 
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
-
-    # joseph.huang@oneplus.com, 2018/06/01, add for oiface feature
-    mkdir /data/vendor/oiface 0700 system system
 
     # Wifi driver state control
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
@@ -516,10 +498,6 @@ on property:sys.boot_completed=1
     # WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
-
-    # joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
-    chown system system /sys/module/lpm_levels/parameters/cluster_prediction
-    chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 
     # Let kernel know our image version/variant/crm_version
     write /sys/devices/soc0/select_image 10
