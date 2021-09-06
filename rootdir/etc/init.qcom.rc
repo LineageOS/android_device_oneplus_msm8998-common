@@ -389,6 +389,11 @@ on boot
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
+    # Fingerprint detect
+    chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
+    chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
+
+    # FPC Fingerprint (Cheeseburger)
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
@@ -399,12 +404,10 @@ on boot
     chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
     chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
-    chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
     chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
 
-    # liuyan 2017/7/27 add for goodix fp
+    # Goodix Fingerprint (dumpling)
     chmod 0666 /dev/goodix_fp
 
     # NFC, ruanbanmao add for 15801 nfc. 2015/10/19
