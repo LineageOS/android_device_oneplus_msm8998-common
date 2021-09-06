@@ -22,6 +22,30 @@
       "revId": "8ae9192fd9741aa25d6405927f13b1380eb7ee04",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2892878_7d7d1a4a",
+        "filename": "overlay-lineage/packages/apps/Snap/res/values/config.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-09-06T08:15:22Z",
+      "side": 0,
+      "message": "from the commit msg: * Img stab deactivates by missing KEY_QC_SUPPORTED_DIS_MODES\nwhich is the case for us, so no need to deactivate explicitly afaics",
+      "parentUuid": "d281a066_6cd83224",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "8ae9192fd9741aa25d6405927f13b1380eb7ee04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
