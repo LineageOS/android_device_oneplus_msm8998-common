@@ -203,18 +203,6 @@ on post-fs
     chown system system /dev/param
     chown system system /dev/block/mmcblk0p21
     chmod 660 /dev/block/mmcblk0p21
-    chown system system /sys/class/timed_output/vibrator/vmax_mv
-    chown system system /sys/class/timed_output/vibrator/wf_s0
-    chown system system /sys/class/timed_output/vibrator/wf_s1
-    chown system system /sys/class/timed_output/vibrator/wf_s2
-    chown system system /sys/class/timed_output/vibrator/wf_s3
-    chown system system /sys/class/timed_output/vibrator/wf_s4
-    chown system system /sys/class/timed_output/vibrator/wf_s5
-    chown system system /sys/class/timed_output/vibrator/wf_s6
-    chown system system /sys/class/timed_output/vibrator/wf_s7
-    chown system system /sys/class/timed_output/vibrator/wf_update
-    chown system system /sys/class/timed_output/vibrator/wf_rep
-    chown system system /sys/class/timed_output/vibrator/wf_s_rep
     chown system system /sys/devices/soc/c179000.i2c/i2c-5/5-0020/tp_grip_ctrl
     chown system log /sys/fs/pstore/console-ramoops-0
     chmod 0440 /sys/fs/pstore/console-ramoops-0
