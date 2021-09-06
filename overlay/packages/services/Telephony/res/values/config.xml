@@ -16,9 +16,8 @@
     implied.  See the License for the specific language governing
     permissions and limitations under the License. -->
 
-<!-- Phone app resources that may need to be customized
-     for different hardware or product builds. -->
 <resources>
+
     <!-- Flag indicating if the phone is a world phone -->
     <bool name="world_phone">true</bool>
 
@@ -50,4 +49,5 @@
 
     <!-- String indicating the package name of the device ImsService implementation for RCS. -->
     <string name="config_ims_rcs_package" translatable="false">org.codeaurora.ims</string>
+
 </resources>
