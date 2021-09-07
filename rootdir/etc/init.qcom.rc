@@ -166,7 +166,6 @@ on fs
     mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
     mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
-    mkdir /mnt/vendor/persist/silead 0777 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/vpp 0770 media media
@@ -220,9 +219,6 @@ on post-fs-data
 
     # Radio
     mkdir /data/vendor/oemnvitems 0771 radio radio
-
-    # Fingerprint
-    mkdir /data/vendor_de/silead 0770 system system
 
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
 
