@@ -39,15 +39,15 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/rtc0                 0660   system     system
 /dev/rmnet_ctrl           0660   usb        usb
 
-#permissions for CSVT
+# CSVT
 /dev/smd11                0660   radio      radio
 
-#permsissions for BT/FM
+# BT/FM
 /dev/smd7                 0660   bluetooth  bluetooth
 /dev/btpower              0660   bluetooth  system
 /dev/ttyHS0               0660   bluetooth  net_bt
 
-#permissions for pta
+# pta
 /dev/pta                  0660   system     system
 
 /dev/ipa                  0660   radio      radio
@@ -70,7 +70,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/adsprpc-smd          0664   system     system
 /dev/adsprpc-smd-secure   0644   system     system
 
-#permissions for audio
+# audio
 /dev/wcd-dsp-glink        0660   system     audio
 /dev/msm_qcelp            0660   system     audio
 /dev/msm_evrc             0660   system     audio
@@ -91,36 +91,36 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_audio_cal        0660   system     audio
 /dev/msm_hweffects        0660   system     audio
 /dev/msm_rtac             0660   system     audio
-/dev/i2c-5                0660   media       media
+/dev/i2c-5                0660   media      media
 /dev/avtimer              0660   system     audio
 
 # sensors
 /dev/sensors              0660   system     system
 
-#nfc permissions
-/dev/nq-nci               0660    nfc         nfc
+# nfc
+/dev/nq-nci               0660   nfc        nfc
 
-# UIO devices
+# UIO
 /dev/uio0                 0660   system     system
 /dev/uio1                 0660   system     system
 
-# SSR devices
-/dev/subsys_*         0640   system     system
+# SSR
+/dev/subsys_*             0640   system     system
 
-# Ultrasound device
+# Ultrasound
 /dev/usf1                 0660   system     system
 
-# Ramdump devices
+# Ramdump
 /dev/ramdump*             0640   system     system
 
-# Kmsg device
-/dev/kmsg                                               0620   root       system
+# Kmsg
+/dev/kmsg                 0620   root       system
 
 # Add device block for FRP
-/dev/block/platform/soc/1da4000.ufshc/by-name/config    0600   system     system
-/dev/block/platform/soc/1da4000.ufshc/by-name/frp       0600   system     system
+/dev/block/platform/soc/1da4000.ufshc/by-name/config   0600   system  system
+/dev/block/platform/soc/1da4000.ufshc/by-name/frp      0600   system  system
 
 # USB role switch
-/sys/class/dual_role_usb/*	data_role	0660	system	system
-/sys/class/dual_role_usb/*	power_role	0660	system	system
-/sys/class/dual_role_usb/*	mode		0660	system	system
+/sys/class/dual_role_usb/*    data_role    0660   system  system
+/sys/class/dual_role_usb/*    power_role   0660   system  system
+/sys/class/dual_role_usb/*    mode         0660   system  system
