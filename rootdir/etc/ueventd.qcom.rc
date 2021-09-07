@@ -37,24 +37,26 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/kgsl-3d0             0666   system     system
 /dev/ion                  0664   system     system
 /dev/rtc0                 0660   system     system
-/dev/smd7                 0660   bluetooth  bluetooth
-/dev/ipa                  0660   radio      radio
-/dev/wwan_ioctl           0660   radio      radio
-/dev/ipaNatTable          0660   radio      radio
 /dev/rmnet_ctrl           0660   usb        usb
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
 
 #permsissions for BT/FM
+/dev/smd7                 0660   bluetooth  bluetooth
 /dev/btpower              0660   bluetooth  system
+/dev/ttyHS0               0660   bluetooth  net_bt
 
 #permissions for pta
 /dev/pta                  0660   system     system
 
+/dev/ipa                  0660   radio      radio
+/dev/wwan_ioctl           0660   radio      radio
+/dev/ipaNatTable          0660   radio      radio
 /dev/smdcntl8             0640   radio      radio
 /dev/at_usb0              0640   radio      radio
 /dev/at_mdm0              0640   radio      radio
+
 /dev/video*               0660   system     camera
 /dev/media*               0660   system     camera
 /dev/v4l-subdev*          0660   system     camera
@@ -89,7 +91,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_audio_cal        0660   system     audio
 /dev/msm_hweffects        0660   system     audio
 /dev/msm_rtac             0660   system     audio
-/dev/ttyHS0               0660   bluetooth  net_bt
 /dev/i2c-5                0660   media       media
 /dev/avtimer              0660   system     audio
 
@@ -112,12 +113,12 @@ firmware_directories /vendor/firmware_mnt/image/
 # Ramdump devices
 /dev/ramdump*             0640   system     system
 
+# Kmsg device
+/dev/kmsg                                               0620   root       system
+
 # Add device block for FRP
 /dev/block/platform/soc/1da4000.ufshc/by-name/config    0600   system     system
 /dev/block/platform/soc/1da4000.ufshc/by-name/frp       0600   system     system
-
-# Kmsg device
-/dev/kmsg                                               0620   root       system
 
 # USB role switch
 /sys/class/dual_role_usb/*	data_role	0660	system	system
