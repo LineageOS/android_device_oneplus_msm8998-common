@@ -224,9 +224,7 @@ on post-fs-data
     # Fingerprint
     mkdir /data/vendor_de/silead 0770 system system
 
-    mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
-    mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
