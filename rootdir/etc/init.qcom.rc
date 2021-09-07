@@ -155,6 +155,7 @@ on fs
 
     # create a empty file for wifi hal to write mac address
     write /mnt/vendor/persist/wlan_mac.bin ""
+    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
 
     mkdir /mnt/vendor/persist/alarm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
@@ -170,7 +171,6 @@ on fs
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
-    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
     chown system system /mnt/vendor/persist/sensors
     chown system system /mnt/vendor/persist/sensors/sns.reg
     chown system system /mnt/vendor/persist/sensors/sensors_list.txt
@@ -212,7 +212,6 @@ on late-fs
     # Mount RW partitions which need to run fsck
     mount_all /vendor/etc/fstab.qcom --late
 
-
 on post-fs-data
     # Nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
@@ -220,6 +219,7 @@ on post-fs-data
     # Radio
     mkdir /data/vendor/oemnvitems 0771 radio radio
 
+    # Bluetooth
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
@@ -256,7 +256,7 @@ on post-fs-data
     # Create directory for modem_config
     mkdir /data/vendor/modem_config 0570 radio root
 
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
     mkdir /data/vendor/location/mq 0770 gps gps
     mkdir /data/vendor/location/xtwifi 0770 gps gps
@@ -371,9 +371,11 @@ on boot
     # Goodix Fingerprint (dumpling)
     chmod 0666 /dev/goodix_fp
 
+    # DASH charger
     chmod 0666 /dev/dash
     restorecon /dev/dash
 
+    # Touch panel (cheeseburger)
     chown system system /proc/touchpanel/gesture_enable
     chown system system /proc/touchpanel/gesture_switch
     chown system system /proc/touchpanel/key_switch
@@ -381,6 +383,7 @@ on boot
     chown system system /proc/touchpanel/tpedge_limit_enable
     chown system system /proc/touchpanel/tp_debug_log
 
+    # Hardware nav keys (cheeseburger)
     chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
     chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
 
@@ -405,10 +408,8 @@ on boot
     # Tri-State-Key
     chown system system /proc/tri-state-key/keyCode_top
     chmod 0660 /proc/tri-state-key/keyCode_top
-
     chown system system /proc/tri-state-key/keyCode_middle
     chmod 0660 /proc/tri-state-key/keyCode_middle
-
     chown system system /proc/tri-state-key/keyCode_bottom
     chmod 0660 /proc/tri-state-key/keyCode_bottom
 
