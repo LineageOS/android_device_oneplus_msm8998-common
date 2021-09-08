@@ -274,7 +274,6 @@ vendor/etc/camera/ashdr/ncf_pack.ncf
 vendor/etc/camera/ashdr/ncf_pack_imx371.ncf
 vendor/etc/camera/camera_config.xml
 vendor/etc/camera/imx371_chromatix.xml
-vendor/etc/camera/imx398_chromatix.xml
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_12_0.fw:vendor/firmware/cpp_firmware_v1_12_0.fw
