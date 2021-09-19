@@ -174,7 +174,7 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    OnePlusDoze
+    OnePlus5Doze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -410,7 +410,8 @@ PRODUCT_SHIPPING_API_LEVEL := 25
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/google/pixel
+    hardware/google/pixel \
+    hardware/oneplus
 
 # Tetheroffload
 PRODUCT_PACKAGES += \
@@ -419,7 +420,7 @@ PRODUCT_PACKAGES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus_msm8998
+    vendor.lineage.touch@1.0-service.oneplus
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -475,8 +476,8 @@ PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
 
-# Inherit from oppo-common
-$(call inherit-product, device/oppo/common/common.mk)
-
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Inherit from oppo-common
+$(call inherit-product, device/oppo/common/common.mk)
