@@ -174,7 +174,7 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    OnePlusDoze
+    OnePlus5Doze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -273,7 +273,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.oneplus_msm8998
+    vendor.lineage.livedisplay@2.1-service.oneplus_msm8998
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -410,7 +410,8 @@ PRODUCT_SHIPPING_API_LEVEL := 25
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/google/pixel
+    hardware/google/pixel \
+    hardware/oneplus
 
 # Tetheroffload
 PRODUCT_PACKAGES += \
@@ -419,7 +420,12 @@ PRODUCT_PACKAGES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus_msm8998
+    vendor.lineage.touch@1.0-service.oneplus
+
+# tri-state-key
+PRODUCT_PACKAGES += \
+    KeyHandler \
+    tri-state-key_daemon.vendor
 
 # Trust HAL
 PRODUCT_PACKAGES += \
