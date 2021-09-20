@@ -39,7 +39,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.oneplus_msm8998    u:object_r:hal_light_default_exec:s0
 
 # LiveDisplay
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service.oneplus_msm8998    u:object_r:hal_livedisplay_oneplus_msm8998_exec:s0
+/(system_ext|system/system_ext)/bin/hw/lineage\.livedisplay@2\.0-service.oneplus_msm8998    u:object_r:hal_livedisplay_oneplus_msm8998_exec:s0
 /sys/devices/virtual/graphics/fb0/adaption_mode                 u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/adobe_rgb                     u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay_tuneable:s0
