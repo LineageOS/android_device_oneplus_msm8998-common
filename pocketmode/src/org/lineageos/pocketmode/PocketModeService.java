@@ -34,13 +34,13 @@ public class PocketModeService extends Service {
     private static final String TAG = "PocketModeService";
     private static final boolean DEBUG = false;
 
-    private ProximitySensor mProximitySensor;
+    private PocketSensor mPocketSensor;
     private SettingsObserver mSettingsObserver;
 
     @Override
     public void onCreate() {
         if (DEBUG) Log.d(TAG, "Creating service");
-        mProximitySensor = new ProximitySensor(this);
+        mPocketSensor = new PocketSensor(this);
         mSettingsObserver = new SettingsObserver(new Handler());
         mSettingsObserver.register();
     }
@@ -55,7 +55,7 @@ public class PocketModeService extends Service {
     public void onDestroy() {
         if (DEBUG) Log.d(TAG, "Destroying service");
         this.unregisterReceiver(mScreenStateReceiver);
-        mProximitySensor.disable();
+        mPocketSensor.disable();
         mSettingsObserver.unregister();
         super.onDestroy();
     }
@@ -70,10 +70,10 @@ public class PocketModeService extends Service {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
                 if (DEBUG) Log.d(TAG, "Display on");
-                mProximitySensor.disable();
+                mPocketSensor.disable();
             } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
                 if (DEBUG) Log.d(TAG, "Display off");
-                mProximitySensor.enable();
+                mPocketSensor.enable();
             }
         }
     };
@@ -114,7 +114,7 @@ public class PocketModeService extends Service {
                 registerReceiver(mScreenStateReceiver, screenStateFilter);
                 mIsRegistered = true;
             } else {
-                mProximitySensor.disable();
+                mPocketSensor.disable();
                 if (mIsRegistered) {
                     unregisterReceiver(mScreenStateReceiver);
                     mIsRegistered = false;

@@ -24,16 +24,17 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.FileUtils;
 import android.os.SystemProperties;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ProximitySensor implements SensorEventListener {
+public class PocketSensor implements SensorEventListener {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "PocketModeProximity";
+    private static final String TAG = "PocketSensor";
 
     private final String FPC_FILE;
 
@@ -42,11 +43,17 @@ public class ProximitySensor implements SensorEventListener {
     private Context mContext;
     private ExecutorService mExecutorService;
 
-    public ProximitySensor(Context context) {
+    public PocketSensor(Context context) {
         mContext = context;
         mSensorManager = mContext.getSystemService(SensorManager.class);
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         mExecutorService = Executors.newSingleThreadExecutor();
+
+        for (Sensor sensor : mSensorManager.getSensorList(Sensor.TYPE_ALL)) {
+            if (TextUtils.equals(sensor.getStringType(), "com.oneplus.sensor.pocket")) {
+                mSensor = sensor;
+                break;
+            }
+        }
 
         switch (SystemProperties.get("ro.lineage.device", "")) {
             case "cheeseburger":
