@@ -418,10 +418,6 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus
-
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
