@@ -418,10 +418,6 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.oneplus
-
 # tri-state-key
 PRODUCT_PACKAGES += \
     KeyHandler \
