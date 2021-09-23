@@ -27,6 +27,8 @@
 
 PLATFORM_PATH := device/oneplus/msm8998-common
 
+TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8998
 TARGET_NO_BOOTLOADER := true
