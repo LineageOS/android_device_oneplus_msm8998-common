@@ -418,6 +418,11 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# tri-state-key
+PRODUCT_PACKAGES += \
+    KeyHandler \
+    tri-state-key_daemon.vendor
+
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
@@ -474,6 +479,3 @@ PRODUCT_PACKAGES += \
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
-# Inherit from oppo-common
-$(call inherit-product, device/oppo/common/common.mk)
