@@ -414,6 +414,10 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# Tri-state-key
+PRODUCT_PACKAGES += \
+    KeyHandler
+
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
