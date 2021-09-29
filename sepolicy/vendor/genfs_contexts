@@ -10,6 +10,7 @@ genfscon proc /sys/kernel/boot_reason  u:object_r:proc_alarm_boot:s0
 genfscon sysfs /devices/soc/soc:fingerprint_detect/sensor_version    u:object_r:sysfs_fpc:s0
 genfscon sysfs /project_info                                         u:object_r:sysfs_project_info:s0
 
+genfscon sysfs /kernel/boot_wlan           u:object_r:sysfs_wifi:s0
 genfscon sysfs /kernel/wlan/power_stats    u:object_r:sysfs_power_stats:s0
 
 genfscon sysfs /devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:gpio-leds/leds/button-backlight/brightness    u:object_r:sysfs_graphics:s0
