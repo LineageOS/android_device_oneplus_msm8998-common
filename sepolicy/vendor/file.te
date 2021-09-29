@@ -12,4 +12,3 @@ type sysfs_power_stats, fs_type, sysfs_type;
 type sysfs_project_info, fs_type, sysfs_type;
 type sysfs_msm_subsys, fs_type, sysfs_type;
 type sysfs_wifi, fs_type, sysfs_type;
-type thermal_data_file, data_file_type, file_type;
