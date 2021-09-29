@@ -63,16 +63,8 @@
 # Ril
 /(vendor|system/vendor)/bin/init\.radio\.sh                     u:object_r:init-radio-sh_exec:s0
 
-# Sysfs
-/sys/devices/soc/8c0000\.qcom,msm-cam/video4linux(/.*)?          u:object_r:sysfs_graphics:s0
-/sys/devices/virtual/graphics/fb0(/.*)?                         u:object_r:sysfs_graphics:s0
-/sys/kernel/boot_wlan(/.*)?                                     u:object_r:sysfs_wifi:s0
-
-/sys/project_info(/.*)?                                         u:object_r:sysfs_project_info:s0
-
-/sys/devices/soc/780000.qcom,msm-core/uio(/.*)?                 u:object_r:sysfs_uio:s0
-
-/persist(/.*)?                                                  u:object_r:mnt_vendor_file:s0
+# Root symlink
+/persist                                                        u:object_r:mnt_vendor_file:s0
 
 # Wifi
 /data/vendor/oemnvitems/4678_0                                  u:object_r:oem_nv_data_file:s0
