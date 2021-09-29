@@ -1,3 +1,5 @@
+gpu.stats.debug.level                  u:object_r:vendor_display_prop:s0
+
 vendor.oem.device.imeicache0           u:object_r:radio_prop:s0
 vendor.oem.device.imeicache1           u:object_r:radio_prop:s0
 
