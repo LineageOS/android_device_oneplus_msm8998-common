@@ -120,6 +120,10 @@ ro.vendor.sensors.dpc=true
 ro.vendor.sensors.multishake=true
 persist.vendor.sensors.direct_channel=true
 
+# Soc
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=MSM8998
+
 # Timeservice
 persist.vendor.delta_time.enable=true
 
