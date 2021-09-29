@@ -1,10 +1,8 @@
 type hal_ifaa_default, domain;
 type hal_ifaa_default_exec, exec_type, vendor_file_type, file_type;
 
+hal_server_domain(hal_ifaa_default, hal_ifaa)
 init_daemon_domain(hal_ifaa_default)
-
-hwbinder_use(hal_ifaa_default)
-add_hwservice(hal_ifaa_default, hal_ifaa_hwservice)
 
 allow hal_ifaa_default tee_device:chr_file { rw_file_perms };
 allow hal_ifaa_default ion_device:chr_file { r_file_perms };
