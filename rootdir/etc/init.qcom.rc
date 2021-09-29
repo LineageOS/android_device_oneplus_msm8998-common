@@ -341,14 +341,6 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
-    # Tri-State-Key
-    chown system system /proc/tri-state-key/keyCode_top
-    chmod 0660 /proc/tri-state-key/keyCode_top
-    chown system system /proc/tri-state-key/keyCode_middle
-    chmod 0660 /proc/tri-state-key/keyCode_middle
-    chown system system /proc/tri-state-key/keyCode_bottom
-    chmod 0660 /proc/tri-state-key/keyCode_bottom
-
 on charger
     start dashd
     start vendor.power_off_alarm
