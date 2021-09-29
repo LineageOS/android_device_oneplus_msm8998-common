@@ -3,10 +3,10 @@
 
 # Block devices
 # We have a couple of non-standard NV partitions
-/dev/block/platform/soc/1da4000.ufshc/by-name/oem_dycnvbk       u:object_r:modem_efs_partition_device:s0
-/dev/block/platform/soc/1da4000.ufshc/by-name/oem_stanvbk       u:object_r:modem_efs_partition_device:s0
+/dev/block/platform/soc/1da4000\.ufshc/by-name/oem_dycnvbk       u:object_r:modem_efs_partition_device:s0
+/dev/block/platform/soc/1da4000\.ufshc/by-name/oem_stanvbk       u:object_r:modem_efs_partition_device:s0
 # FRP partition
-/dev/block/platform/soc/1da4000.ufshc/by-name/config            u:object_r:frp_block_device:s0
+/dev/block/platform/soc/1da4000\.ufshc/by-name/config            u:object_r:frp_block_device:s0
 
 # Bluetooth
 /data/vendor/oemnvitems/447                                     u:object_r:oem_nv_bt_data_file:s0
@@ -36,10 +36,10 @@
 /(vendor|system/vendor)/bin/init\.devstart\.sh                  u:object_r:init-devstart-sh_exec:s0
 
 # Lights
-/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.oneplus_msm8998    u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus_msm8998    u:object_r:hal_light_default_exec:s0
 
 # LiveDisplay
-/(system_ext|system/system_ext)/bin/hw/lineage\.livedisplay@2\.0-service.oneplus_msm8998    u:object_r:hal_livedisplay_oneplus_msm8998_exec:s0
+/(system_ext|system/system_ext)/bin/hw/lineage\.livedisplay@2\.0-service\.oneplus_msm8998    u:object_r:hal_livedisplay_oneplus_msm8998_exec:s0
 /sys/devices/virtual/graphics/fb0/adaption_mode                 u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/adobe_rgb                     u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay_tuneable:s0
@@ -57,17 +57,17 @@
 
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/main(/.*)?       u:object_r:sysfs_usb_supply:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb(/.*)?        u:object_r:sysfs_usb_supply:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/battery(/.*)?    u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/dc(/.*)?         u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qpnp,fg/power_supply/bms(/.*)?               u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/main(/.*)?       u:object_r:sysfs_usb_supply:s0
+/sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb(/.*)?        u:object_r:sysfs_usb_supply:s0
+/sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/battery(/.*)?    u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/dc(/.*)?         u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qpnp,fg/power_supply/bms(/.*)?               u:object_r:sysfs_battery_supply:s0
 
 # Ril
 /(vendor|system/vendor)/bin/init\.radio\.sh                     u:object_r:init-radio-sh_exec:s0
 
 # Sysfs
-/sys/devices/soc/8c0000.qcom,msm-cam/video4linux(/.*)?          u:object_r:sysfs_graphics:s0
+/sys/devices/soc/8c0000\.qcom,msm-cam/video4linux(/.*)?          u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb0(/.*)?                         u:object_r:sysfs_graphics:s0
 /sys/kernel/boot_wlan(/.*)?                                     u:object_r:sysfs_wifi:s0
 
