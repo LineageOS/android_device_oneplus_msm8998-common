@@ -4,4 +4,10 @@ type hal_param_default_exec, exec_type, vendor_file_type, file_type;
 hal_server_domain(hal_param_default, hal_param)
 init_daemon_domain(hal_param_default)
 
-get_prop(hal_param_default, hwservicemanager_prop)
+allow hal_param_default self:socket create_socket_perms_no_ioctl;
+
+# Allow hal_param_default to read files in sysfs_project_info
+r_dir_file(hal_param_default, sysfs_project_info)
+
+# Allow hal_param_default to read and write to param_device
+allow hal_param_default param_device:chr_file rw_file_perms;
