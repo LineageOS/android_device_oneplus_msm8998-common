@@ -74,9 +74,6 @@
 
 /persist(/.*)?                                                  u:object_r:mnt_vendor_file:s0
 
-# Thermal
-/data/vendor/thermal(/.*)?                                      u:object_r:thermal_data_file:s0
-
 # Wifi
 /data/vendor/oemnvitems/4678_0                                  u:object_r:oem_nv_data_file:s0
 /data/vendor/oemnvitems/4678_1                                  u:object_r:oem_nv_data_file:s0
