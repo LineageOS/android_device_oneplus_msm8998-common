@@ -11,6 +11,7 @@
 
 # Devices
 /dev/dash                                                       u:object_r:dash_device:s0
+/dev/param                                                      u:object_r:param_device:s0
 
 # Fingerprint
 /sys/devices/soc/soc:fingerprint_detect/sensor_version          u:object_r:sysfs_fpc:s0
