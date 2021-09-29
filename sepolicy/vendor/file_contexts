@@ -1,42 +1,36 @@
-# Alipay
-/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.ifaa@2\.0-service    u:object_r:hal_ifaa_default_exec:s0
-
 # Block devices
-# We have a couple of non-standard NV partitions
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_dycnvbk       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_stanvbk       u:object_r:modem_efs_partition_device:s0
-# FRP partition
 /dev/block/platform/soc/1da4000\.ufshc/by-name/config            u:object_r:frp_block_device:s0
 
 # Bluetooth
 /data/vendor/oemnvitems/447                                     u:object_r:oem_nv_bt_data_file:s0
 
-# Camera
-/(product|system/product)/(lib|lib64)/vendor\.qti\.hardware\.camera\.device@1\.0\.so   u:object_r:same_process_hal_file:s0
-
 # Dash
-/dev/dash                                                       u:object_r:dash_device:s0
 /vendor/xbin/dashd                                              u:object_r:dashd_exec:s0
 
-# Display
-/(product|system/product)/(lib|lib64)/vendor\.display\.config@1\.[0-9]\.so   u:object_r:same_process_hal_file:s0
-
-# DRM
-/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.drmkey@1\.0-service    u:object_r:hal_drm_default_exec:s0
+# Devices
+/dev/dash                                                       u:object_r:dash_device:s0
 
 # Fingerprint
 /sys/devices/soc/soc:fingerprint_detect/sensor_version          u:object_r:sysfs_fpc:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom    u:object_r:hal_fingerprint_default_exec:s0
 /data/system/users/0/fpdata(/.*)?                               u:object_r:fingerprintd_data_file:s0
+
+# HALs
+/(product|system/product)/(lib|lib64)/vendor\.display\.config@1\.[0-9]\.so                       u:object_r:same_process_hal_file:s0
+/(product|system/product)/(lib|lib64)/vendor\.qti\.hardware\.camera\.device@1\.0\.so             u:object_r:same_process_hal_file:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom    u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus_msm8998            u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.3-service\.oneplus_msm8998            u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service\.oneplus_msm8998        u:object_r:hal_livedisplay_oneplus_msm8998_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.drmkey@1\.0-service                    u:object_r:hal_drm_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.ifaa@2\.0-service                      u:object_r:hal_ifaa_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.param@1\.0-service                     u:object_r:hal_param_default_exec:s0
 
 # Init
 /(vendor|system/vendor)/bin/init\.devstart\.sh                  u:object_r:init-devstart-sh_exec:s0
 
-# Lights
-/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus_msm8998    u:object_r:hal_light_default_exec:s0
-
 # LiveDisplay
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service\.oneplus_msm8998    u:object_r:hal_livedisplay_oneplus_msm8998_exec:s0
 /sys/devices/virtual/graphics/fb0/adaption_mode                 u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/adobe_rgb                     u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay_tuneable:s0
@@ -45,12 +39,6 @@
 /sys/devices/virtual/graphics/fb0/oneplus_mode                  u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/panel_serial_number           u:object_r:sysfs_livedisplay_tuneable:s0
 /sys/devices/virtual/graphics/fb0/srgb                          u:object_r:sysfs_livedisplay_tuneable:s0
-
-# Param
-/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.param@1\.0-service    u:object_r:hal_param_default_exec:s0
-
-# Power
-/vendor/bin/hw/android\.hardware\.power@1\.3-service\.oneplus_msm8998      u:object_r:hal_power_default_exec:s0
 
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
