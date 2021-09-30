@@ -1,9 +1,0 @@
-type hal_hdcpkey_default, domain;
-type hal_hdcpkey_default_exec, exec_type, vendor_file_type, file_type;
-
-init_daemon_domain(hal_hdcpkey_default)
-
-hwbinder_use(hal_hdcpkey_default)
-add_hwservice(hal_hdcpkey_default, hal_hdcpkey_hwservice)
-
-get_prop(hal_hdcpkey_default, hwservicemanager_prop)
