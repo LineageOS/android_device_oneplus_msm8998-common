@@ -25,7 +25,6 @@
 
 # DRM
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.drmkey@1\.0-service    u:object_r:hal_drm_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.hdcpkey@1\.0-service   u:object_r:hal_hdcpkey_default_exec:s0
 
 # Fingerprint
 /sys/devices/soc/soc:fingerprint_detect/sensor_version          u:object_r:sysfs_fpc:s0
