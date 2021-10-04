@@ -1,4 +1,5 @@
-allow qtidataservices_app self:socket create;
+allow qtidataservices_app self:socket create_socket_perms;
+
 allow qtidataservices_app system_app_data_file:dir create_dir_perms;
 allow qtidataservices_app system_app_data_file:file create_file_perms;
 
