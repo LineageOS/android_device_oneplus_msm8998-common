@@ -1,6 +1,3 @@
-vendor.oem.device.imeicache0           u:object_r:radio_prop:s0
-vendor.oem.device.imeicache1           u:object_r:radio_prop:s0
-
 # Bluetooth
 ro.vendor.bt.bdaddr_path               u:object_r:vendor_bluetooth_prop:s0
 
