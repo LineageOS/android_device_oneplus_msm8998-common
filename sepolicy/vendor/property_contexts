@@ -4,36 +4,18 @@ vendor.oem.device.imeicache0           u:object_r:radio_prop:s0
 vendor.oem.device.imeicache1           u:object_r:radio_prop:s0
 
 # Bluetooth
-ro.bt.bdaddr_path                      u:object_r:vendor_bluetooth_prop:s0
 ro.vendor.bt.bdaddr_path               u:object_r:vendor_bluetooth_prop:s0
 
 # Camera
 camera.on                              u:object_r:camera_prop:s0
 persist.camera.                        u:object_r:camera_prop:s0
-persist.debug.set.fixedfps             u:object_r:camera_prop:s0
-persist.debug.sf.showfps               u:object_r:camera_prop:s0
 persist.vendor.camera.                 u:object_r:camera_prop:s0
-ro.camera.                             u:object_r:camera_prop:s0
-ro.vendor.camera.                      u:object_r:camera_prop:s0
 vendor.camera.                         u:object_r:camera_prop:s0
 
 vendor.display.mode                    u:object_r:vendor_display_prop:s0
 
-# Fingerprint
-fpc_kpi                                u:object_r:vendor_fp_prop:s0
-gf.debug.                              u:object_r:vendor_fp_prop:s0
-persist.sys.fp.                        u:object_r:vendor_fp_prop:s0
-persist.vendor.sys.fp.                 u:object_r:vendor_fp_prop:s0
-ro.boot.fpsensor                       u:object_r:vendor_fp_prop:s0
-ro.hardware.fp                         u:object_r:vendor_fp_prop:s0
-vendor.fps_hal.                        u:object_r:vendor_fp_prop:s0
-
 # Firmware
 ro.build.expect.                       u:object_r:exported_default_prop:s0
-
-# RIL
-persist.sys.oem.region                 u:object_r:exported3_radio_prop:s0
-persist.sys.assert.panic               u:object_r:exported3_radio_prop:s0
 
 # Thermal
 sys.thermal.                           u:object_r:thermal_engine_prop:s0
