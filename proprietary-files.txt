@@ -79,9 +79,6 @@ vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
 
-# Audio firmware
-vendor/etc/firmware/tfa98xx.cnt:vendor/firmware/tfa98xx.cnt
-
 # Audio FX modules
 etc/permissions/audiosphere.xml
 framework/audiosphere.jar
