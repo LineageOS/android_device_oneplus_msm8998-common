@@ -18,7 +18,10 @@ cc_binary {
     relative_install_path: "hw",
     init_rc: ["android.hardware.light@2.0-service.oneplus_msm8998.rc"],
     vintf_fragments: ["android.hardware.light@2.0-service.oneplus_msm8998.xml"],
-    srcs: ["service.cpp", "Light.cpp"],
+    srcs: [
+        "service.cpp",
+        "Light.cpp",
+    ],
     shared_libs: [
         "libbase",
         "libcutils",

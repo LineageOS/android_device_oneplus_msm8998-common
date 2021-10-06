@@ -14,9 +14,9 @@
 
 cc_binary {
     name: "vendor.lineage.livedisplay@2.0-service.oneplus_msm8998",
+    defaults: ["hidl_defaults"],
     init_rc: ["vendor.lineage.livedisplay@2.0-service.oneplus_msm8998.rc"],
     vintf_fragments: ["vendor.lineage.livedisplay@2.0-service.oneplus_msm8998.xml"],
-    defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     srcs: [
         ":vendor.lineage.livedisplay@2.0-sdm-pa",
