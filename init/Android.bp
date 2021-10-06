@@ -20,9 +20,9 @@ cc_library_static {
     srcs: ["init_oneplus_msm8998.cpp"],
     include_dirs: [
         "system/core/base/include",
-        "system/core/init"
+        "system/core/init",
     ],
     shared_libs: [
         "libbase",
-    ]
+    ],
 }
