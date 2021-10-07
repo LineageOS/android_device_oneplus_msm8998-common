@@ -17,6 +17,8 @@
 #define ATRACE_TAG (ATRACE_TAG_POWER | ATRACE_TAG_HAL)
 #define LOG_TAG "android.hardware.power-service.oneplus_msm8998-libperfmgr"
 
+#define DT2W_PATH "/proc/touchpanel/double_tap_enable"
+
 #include "Power.h"
 
 #include <mutex>
@@ -123,12 +125,13 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
                 mVRModeOn = false;
             }
             break;
+        case Mode::DOUBLE_TAP_TO_WAKE:
+            ::android::base::WriteStringToFile(enabled ? "1" : "0", DT2W_PATH);
+            break;
         case Mode::LAUNCH:
             if (mVRModeOn || mSustainedPerfModeOn) {
                 break;
             }
-            [[fallthrough]];
-        case Mode::DOUBLE_TAP_TO_WAKE:
             [[fallthrough]];
         case Mode::FIXED_PERFORMANCE:
             [[fallthrough]];
@@ -164,6 +167,9 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 
 ndk::ScopedAStatus Power::isModeSupported(Mode type, bool *_aidl_return) {
     bool supported = mHintManager->IsHintSupported(toString(type));
+    if (type == Mode::DOUBLE_TAP_TO_WAKE) {
+        supported = true;
+    }
     LOG(INFO) << "Power mode " << toString(type) << " isModeSupported: " << supported;
     *_aidl_return = supported;
     return ndk::ScopedAStatus::ok();
