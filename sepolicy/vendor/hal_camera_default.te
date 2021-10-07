@@ -3,11 +3,6 @@ hal_client_domain(hal_camera_default, hal_graphics_allocator)
 
 allow hal_camera_default system_server:unix_stream_socket { read write };
 
-# /data/misc/camera/client_package_name
-typeattribute hal_camera_default data_between_core_and_vendor_violators;
-allow hal_camera_default camera_data_file:dir { search };
-allow hal_camera_default camera_data_file:file { r_file_perms };
-
 allow hal_camera_default mnt_vendor_file:file { rw_file_perms setattr };
 
 allow hal_camera_default sysfs:file { r_file_perms };
