@@ -26,6 +26,7 @@
 #
 
 import /vendor/etc/init/hw/init.qcom.usb.rc
+import /vendor/etc/init/hw/init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -341,38 +342,9 @@ on boot
     chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
     chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
 
-    # FPC Fingerprint (cheeseburger)
-    chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_key
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_key
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-
-    # Goodix Fingerprint (dumpling)
-    chmod 0666 /dev/goodix_fp
-
     # DASH charger
     chmod 0666 /dev/dash
     restorecon /dev/dash
-
-    # Touch panel (cheeseburger)
-    chown system system /proc/touchpanel/gesture_enable
-    chown system system /proc/touchpanel/gesture_switch
-    chown system system /proc/touchpanel/key_switch
-    chown system system /proc/touchpanel/key_disable
-    chown system system /proc/touchpanel/tpedge_limit_enable
-    chown system system /proc/touchpanel/tp_debug_log
-
-    # Hardware nav keys (cheeseburger)
-    chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
-    chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
 
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
@@ -381,16 +353,6 @@ on boot
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
-
-    # Proximity state
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
-    chown system system /sys/devices/soc/soc:goodix_fp/proximity_state
-    chmod 0660 /sys/devices/soc/soc:goodix_fp/proximity_state
-
-    # For KeyDisabler
-    chown system system /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
-    chmod 0666 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
 
     # Tri-State-Key
     chown system system /proc/tri-state-key/keyCode_top
