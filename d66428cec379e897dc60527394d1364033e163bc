@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5193d54a_32a61d5d",
+        "filename": "power-libperfmgr/aidl/Power.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-10-10T09:55:39Z",
+      "side": 1,
+      "message": "This seems odd. Doesn\u0027t mHintManager-\u003eIsHintSupported(toString(type)); work?",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 24
+      },
+      "revId": "d66428cec379e897dc60527394d1364033e163bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
