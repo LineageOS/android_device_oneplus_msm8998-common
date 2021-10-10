@@ -22,6 +22,30 @@
       "revId": "d66428cec379e897dc60527394d1364033e163bc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b341b1_9285e853",
+        "filename": "power-libperfmgr/aidl/Power.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-10-10T19:27:21Z",
+      "side": 1,
+      "message": "it probably would if we had a hint defined for DOUBLE_TAP_TO_WAKE - can be implemented either way i guess, so i was lazy and edited just one file",
+      "parentUuid": "5193d54a_32a61d5d",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 24
+      },
+      "revId": "d66428cec379e897dc60527394d1364033e163bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
