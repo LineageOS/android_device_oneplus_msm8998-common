@@ -258,10 +258,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# Keyboard
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/gf_input.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/gf_input.idc
-
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
