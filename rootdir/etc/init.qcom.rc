@@ -343,6 +343,9 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    start vendor.qcrild
+    start vendor.qcrild2
+
 on charger
     start vendor.dashd
     start vendor.power_off_alarm
@@ -555,12 +558,6 @@ service vendor.qseecomd /vendor/bin/qseecomd
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
-
-service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
-    class main
-    user radio
-    group radio cache inet misc audio log readproc wakelock oem_2901
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
