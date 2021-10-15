@@ -112,7 +112,6 @@ persist.vendor.radio.ignore_dom_time=10
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
-vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 
 # Sensors
 ro.vendor.sensors.dev_ori=true
