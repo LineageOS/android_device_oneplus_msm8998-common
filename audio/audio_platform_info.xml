@@ -342,6 +342,7 @@
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="QUAT_MI2S_RX-and-SLIMBUS_7_RX"/>
 
         <device name="SND_DEVICE_OUT_SPEAKER" backend="quat_i2s" />
+        <device name="SND_DEVICE_OUT_SPEAKER_SAFE" backend="quat_i2s" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="quat_i2s" />
     </backend_names>
 
