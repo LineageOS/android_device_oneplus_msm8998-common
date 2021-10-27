@@ -773,7 +773,6 @@ product/framework/qti-telephony-common.jar:system_ext/framework/qti-telephony-co
 etc/permissions/qcnvitems.xml:product/etc/permissions/qcnvitems.xml
 framework/qcnvitems.jar:product/framework/qcnvitems.jar
 -product/app/QtiTelephonyService/QtiTelephonyService.apk:system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
--product/app/datastatusnotification/datastatusnotification.apk:system_ext/app/datastatusnotification/datastatusnotification.apk
 product/etc/permissions/qcrilhook.xml:system_ext/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephonyservice.xml:system_ext/etc/permissions/telephonyservice.xml
 product/framework/qcrilhook.jar:system_ext/framework/qcrilhook.jar
