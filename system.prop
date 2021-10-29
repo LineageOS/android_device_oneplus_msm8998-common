@@ -7,9 +7,6 @@ ro.af.client_heap_size_kbyte=7168
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=6
 
-# Bluetooth
-persist.bluetooth.a2dp_offload.cap=false
-
 # Cabl
 ro.qualcomm.cabl=2
 vidc.enc.dcvs.extra-buff-count=2
