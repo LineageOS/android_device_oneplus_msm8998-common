@@ -60,6 +60,7 @@ vendor.audio.use.sw.ape.decoder=true
 vendor.voice.path.for.pcm.voip=true
 
 # Bluetooth
+persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
 ro.vendor.bluetooth.wipower=false
 vendor.qcom.bluetooth.soc=cherokee
 
