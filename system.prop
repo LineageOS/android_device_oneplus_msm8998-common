@@ -45,6 +45,9 @@ ro.opengles.version=196610
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
 
+# OEM Unlock
+ro.oem_unlock_supported=1
+
 # RIL
 keyguard.no_require_sim=true
 persist.radio.multisim.config=dsds
