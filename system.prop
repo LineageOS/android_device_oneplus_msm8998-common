@@ -7,10 +7,6 @@ ro.af.client_heap_size_kbyte=7168
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=6
 
-# Cabl
-ro.qualcomm.cabl=2
-vidc.enc.dcvs.extra-buff-count=2
-
 # Camera
 camera.disable_zsl_mode=1
 persist.camera.gyro.disable=0
@@ -41,6 +37,7 @@ ro.opengles.version=196610
 
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
+vidc.enc.dcvs.extra-buff-count=2
 
 # OEM Unlock
 ro.oem_unlock_supported=1
