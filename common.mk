@@ -163,9 +163,10 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     gralloc.msm8998 \
     hwcomposer.msm8998 \
-    memtrack.msm8998 \
     libdisplayconfig \
-    libqdMetaData.system
+    libqdMetaData.system \
+    libtinyxml \
+    memtrack.msm8998
 
 PRODUCT_PACKAGES += \
     vendor.display.config@1.9 \

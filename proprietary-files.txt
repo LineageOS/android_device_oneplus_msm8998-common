@@ -712,6 +712,16 @@ vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
+# Postprocessing
+vendor/bin/hw/vendor.display.color@1.0-service
+vendor/bin/mm-pp-dpps
+vendor/etc/init/vendor.display.color@1.0-service.rc
+vendor/lib64/libdisp-aba.so
+vendor/lib64/vendor.display.color@1.0.so
+vendor/lib64/vendor.display.color@1.1.so
+vendor/lib64/vendor.display.color@1.2.so
+vendor/lib64/vendor.display.postproc@1.0.so
+
 # PowerOffAlarm
 -product/app/PowerOffAlarm/PowerOffAlarm.apk|177127967625fdc5320d40df734e97aac1391b9a
 product/framework/vendor.qti.hardware.alarm-V1.0-java.jar
