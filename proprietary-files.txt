@@ -510,6 +510,7 @@ vendor/lib64/hw/gatekeeper.msm8998.so
 # GPS
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
+vendor/bin/mlid
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
 -vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
@@ -752,6 +753,7 @@ vendor/lib64/libdiag.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libidl.so
 vendor/lib64/libmdmdetect.so
+vendor/lib64/libminksocket.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
 vendor/lib64/libqmi.so
