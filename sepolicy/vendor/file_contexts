@@ -31,16 +31,6 @@
 # Init
 /(vendor|system/vendor)/bin/init\.devstart\.sh                  u:object_r:init-devstart-sh_exec:s0
 
-# LiveDisplay
-/sys/devices/virtual/graphics/fb0/adaption_mode                 u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/adobe_rgb                     u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/hbm                           u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/night_mode                    u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/oneplus_mode                  u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/panel_serial_number           u:object_r:sysfs_livedisplay_tuneable:s0
-/sys/devices/virtual/graphics/fb0/srgb                          u:object_r:sysfs_livedisplay_tuneable:s0
-
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
 /sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/main(/.*)?       u:object_r:sysfs_usb_supply:s0
