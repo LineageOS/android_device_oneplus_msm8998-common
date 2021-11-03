@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
+#include <livedisplay/sdm/SDMController.h>
 #include <vendor/lineage/livedisplay/2.0/IDisplayModes.h>
 #include <map>
 
@@ -34,7 +35,12 @@ using ::android::sp;
 
 class DisplayModes : public IDisplayModes {
   public:
-    DisplayModes();
+    DisplayModes(std::shared_ptr<V2_0::sdm::SDMController> controller);
+
+    using DisplayModeSetCallback = std::function<void()>;
+    inline void registerDisplayModeSetCallback(DisplayModeSetCallback callback) {
+        mOnDisplayModeSet = callback;
+    }
 
     // Methods from ::vendor::lineage::livedisplay::V2_0::IDisplayModes follow.
     Return<void> getDisplayModes(getDisplayModes_cb resultCb) override;
@@ -48,7 +54,10 @@ class DisplayModes : public IDisplayModes {
         std::string node;
     };
     static const std::map<int32_t, ModeInfo> kModeMap;
+    std::shared_ptr<V2_0::sdm::SDMController> mController;
+    int32_t mCurrentModeId;
     int32_t mDefaultModeId;
+    DisplayModeSetCallback mOnDisplayModeSet;
 };
 
 }  // namespace implementation
