@@ -21,6 +21,3 @@ service vendor.livedisplay-hal-2-0 /vendor/bin/hw/vendor.lineage.livedisplay@2.0
     class late_start
     user system
     group system
-
-on property:sys.boot_completed=1
-    write /sys/devices/virtual/graphics/fb0/${vendor.display.mode} 1
