@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "LineageHW-DisplayModesService"
+#define LOG_TAG "DisplayModesService"
 
-#include <android-base/properties.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <fstream>
 
 #include "DisplayModes.h"
@@ -28,7 +28,6 @@ namespace livedisplay {
 namespace V2_0 {
 namespace implementation {
 
-static constexpr const char* kDisplayModeProp = "vendor.display.mode";
 static const std::string kModeBasePath = "/sys/devices/virtual/graphics/fb0/";
 static const std::string kDefaultPath = "/data/vendor/display/default_display_mode";
 
@@ -42,37 +41,21 @@ const std::map<int32_t, DisplayModes::ModeInfo> DisplayModes::kModeMap = {
     {6, {"sRGB", "srgb"}},
 };
 
-DisplayModes::DisplayModes() : mDefaultModeId(0) {
+DisplayModes::DisplayModes(std::shared_ptr<V2_0::sdm::SDMController> controller)
+    : mController(std::move(controller)), mCurrentModeId(0), mDefaultModeId(0) {
     std::ifstream defaultFile(kDefaultPath);
-    std::string value;
-    defaultFile >> value;
 
-    LOG(DEBUG) << "DisplayModes()";
+    defaultFile >> mDefaultModeId;
+    LOG(DEBUG) << "Default file read result " << mDefaultModeId << " fail " << defaultFile.fail();
 
-    if (defaultFile.fail()) {
-        LOG(ERROR) << "Default file read result " << value << " fail " << defaultFile.fail();
-        return;
-    }
-
-    for (const auto& entry : kModeMap) {
-        // Check if default mode is a valid mode
-        if (value == std::to_string(entry.first)) {
-            mDefaultModeId = entry.first;
-            android::base::SetProperty(kDisplayModeProp, std::string(entry.second.node));
-            LOG(DEBUG) << "Default display mode: " << std::string(entry.second.name);
-            break;
-        }
-    }
+    setDisplayMode(mDefaultModeId, false);
 }
 
-// Methods from ::vendor::lineage::livedisplay::V2_0::IDisplayModes follow.
+// Methods from ::vendor::lineage::livedisplay::V2_1::IDisplayModes follow.
 Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
-    std::vector<DisplayMode> modes;
-
-    LOG(DEBUG) << "getDisplayModes()";
+    std::vector<V2_0::DisplayMode> modes;
 
     for (const auto& entry : kModeMap) {
-        LOG(DEBUG) << "Adding mode: " << std::string(entry.second.name);
         modes.push_back({entry.first, entry.second.name});
     }
     resultCb(modes);
@@ -80,82 +63,43 @@ Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
 }
 
 Return<void> DisplayModes::getCurrentDisplayMode(getCurrentDisplayMode_cb resultCb) {
-    int32_t currentModeId = mDefaultModeId;
-    std::string path;
-    std::string value;
-
-    LOG(DEBUG) << "getCurrentDisplayMode()";
-
-    for (const auto& entry : kModeMap) {
-        if (entry.first == 0) {
-            continue;
-        }
-        path = kModeBasePath + std::string(entry.second.node);
-        std::ifstream modeFile(path.c_str());
-        if (!modeFile.fail()) {
-            modeFile >> value;
-            if (value == "1") {
-                currentModeId = entry.first;
-                break;
-            }
-        } else {
-            LOG(ERROR) << "Failed reading mode file " << std::string(entry.second.node)
-                       << ". Result: " << modeFile.fail();
-        }
-    }
-    resultCb({currentModeId, kModeMap.at(currentModeId).name});
+    resultCb({mCurrentModeId, kModeMap.at(mCurrentModeId).name});
     return Void();
 }
 
 Return<void> DisplayModes::getDefaultDisplayMode(getDefaultDisplayMode_cb resultCb) {
-    LOG(DEBUG) << "getDefaultDisplayMode()";
     resultCb({mDefaultModeId, kModeMap.at(mDefaultModeId).name});
     return Void();
 }
 
 Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
-    LOG(DEBUG) << "setDisplayMode()";
-
-    // Disable all modes
-    for (const auto& entry : kModeMap) {
-        if (entry.first == 0) {
-            continue;
-        }
-
-        std::ofstream modeFile(kModeBasePath + entry.second.node);
-        if (!modeFile.fail()) {
-            modeFile << 0;
-        } else {
-            LOG(ERROR) << "Failed writing mode file " << entry.second.node
-                       << ". Result: " << modeFile.fail();
-        }
-    }
     const auto iter = kModeMap.find(modeID);
     if (iter == kModeMap.end()) {
         return false;
     }
-    if (modeID != 0) {
-        LOG(INFO) << "Enabling display mode " << iter->second.name;
-        std::ofstream modeFile(kModeBasePath + iter->second.node);
-        modeFile << 1;
-        if (modeFile.fail()) {
-            LOG(ERROR) << "Failed writing mode file " << iter->second.node
-                       << ". Result: " << modeFile.fail();
-            return false;
+    for (const auto& entry : kModeMap) {
+        if (entry.first == 0) {
+            continue;
         }
-        android::base::SetProperty(kDisplayModeProp, iter->second.node);
+        std::ofstream file(kModeBasePath + entry.second.node);
+        file << ((entry.first == modeID) ? 1 : 0);
+        if (file.fail()) {
+            LOG(ERROR) << "Failed to write to " << (kModeBasePath +  entry.second.node);
+        }
     }
-
+    mController->setActiveDisplayMode(iter->first);
+    mCurrentModeId = iter->first;
     if (makeDefault) {
         std::ofstream defaultFile(kDefaultPath);
         defaultFile << iter->first;
-        if (defaultFile.fail()) {
-            LOG(ERROR) << "Failed writing default file. Result: " << defaultFile.fail();
-            return false;
+        if (!defaultFile.fail()) {
+            mController->setDefaultDisplayMode(iter->first);
+            mDefaultModeId = iter->first;
         }
-        mDefaultModeId = iter->first;
     }
-
+    if (mOnDisplayModeSet) {
+        mOnDisplayModeSet();
+    }
     return true;
 }
 
