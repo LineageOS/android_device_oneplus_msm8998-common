@@ -34,11 +34,9 @@ static const std::string kDefaultPath = "/data/vendor/display/default_display_mo
 const std::map<int32_t, DisplayModes::ModeInfo> DisplayModes::kModeMap = {
     {0, {"Standard", "default"}},
     {1, {"Adaptive", "adaption_mode"}},
-    {2, {"Adobe RGB", "adobe_rgb"}},
-    {3, {"DCI P3", "dci_p3"}},
-    {4, {"Night", "night_mode"}},
-    {5, {"OnePlus", "oneplus_mode"}},
-    {6, {"sRGB", "srgb"}},
+    {2, {"DCI-P3", "dci_p3"}},
+    {3, {"OnePlus", "oneplus_mode"}},
+    {4, {"sRGB", "srgb"}},
 };
 
 DisplayModes::DisplayModes(std::shared_ptr<V2_0::sdm::SDMController> controller)
