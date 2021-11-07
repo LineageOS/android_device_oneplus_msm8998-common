@@ -22,6 +22,30 @@
       },
       "revId": "3eee22f33d5837bee669132b397682e5684aa2af",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77267f36_d4a0151a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-11-07T15:51:32Z",
+      "side": 1,
+      "message": "we have a night light feature anyway, none of our fellow op devices expose one, and it looks visually indistinguishable to the others. seems like a bit of \"lets show everything in the ui that the sysfs exposes\" syndrome to me, like it was with adobe rgb",
+      "parentUuid": "7c92338c_4e80ef38",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "3eee22f33d5837bee669132b397682e5684aa2af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
