@@ -11,3 +11,9 @@ r_dir_file(hal_param_default, sysfs_project_info)
 
 # Allow hal_param_default to read and write to param_device
 allow hal_param_default param_device:chr_file rw_file_perms;
+
+allow hal_param_default sysfs_data:file r_file_perms;
+
+unix_socket_connect(hal_param_default, property, init)
+
+set_prop(hal_param_default, vendor_param_prop)
