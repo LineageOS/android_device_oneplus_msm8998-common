@@ -22,6 +22,12 @@ vendor.qcom.devup                      u:object_r:vendor_device_prop:s0
 # Mediacodec
 gpu.stats.debug.level                  u:object_r:vendor_video_prop:s0
 
+# Param HAL
+ro.boot.prmfc                          u:object_r:vendor_param_prop:s0
+ro.boot.prmuc                          u:object_r:vendor_param_prop:s0
+ro.boot.stg                            u:object_r:vendor_param_prop:s0
+ro.boot.msz                            u:object_r:vendor_param_prop:s0
+
 # Power HAL
 vendor.powerhal.                       u:object_r:vendor_power_prop:s0
 
