@@ -21,22 +21,30 @@
 #include <hidl/HidlTransportSupport.h>
 #include <livedisplay/sdm/PictureAdjustment.h>
 
+#include "AdaptiveBacklight.h"
 #include "DisplayModes.h"
 
 using ::vendor::lineage::livedisplay::V2_0::IDisplayModes;
 using ::vendor::lineage::livedisplay::V2_0::IPictureAdjustment;
 using ::vendor::lineage::livedisplay::V2_0::implementation::DisplayModes;
+using ::vendor::lineage::livedisplay::V2_0::sdm::AdaptiveBacklight;
 using ::vendor::lineage::livedisplay::V2_0::sdm::PictureAdjustment;
 using ::vendor::lineage::livedisplay::V2_0::sdm::SDMController;
 
 int main() {
     std::shared_ptr<SDMController> controller = std::make_shared<SDMController>();
+    android::sp<AdaptiveBacklight> abService = new AdaptiveBacklight();
     android::sp<IDisplayModes> modesService = new DisplayModes(controller);
     android::sp<IPictureAdjustment> paService = new PictureAdjustment(controller);
 
     LOG(DEBUG) << "LiveDisplay HAL service is starting.";
 
     android::hardware::configureRpcThreadpool(1 /*threads*/, true /*callerWillJoin*/);
+
+    if (abService->registerAsService() != android::OK) {
+        LOG(ERROR) << "Cannot register adaptive backlight HAL service.";
+        return 1;
+    }
 
     if (modesService->registerAsService() != android::OK) {
         LOG(ERROR) << "Cannot register display modes HAL service.";
