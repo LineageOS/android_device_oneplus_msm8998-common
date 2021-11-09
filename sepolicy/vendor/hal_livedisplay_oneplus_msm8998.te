@@ -17,3 +17,6 @@ allow hal_livedisplay_oneplus_msm8998 sysfs_livedisplay_tuneable:file rw_file_pe
 # Store files in /data/vendor/display and access them
 allow hal_livedisplay_oneplus_msm8998 display_vendor_data_file:dir rw_dir_perms;
 allow hal_livedisplay_oneplus_msm8998 display_vendor_data_file:file create_file_perms;
+
+# Access postprocessing daemon
+unix_socket_connect(hal_livedisplay_oneplus_msm8998, pps, mm-pp-daemon)
