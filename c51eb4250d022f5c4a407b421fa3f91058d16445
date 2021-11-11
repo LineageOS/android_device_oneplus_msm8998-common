@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32c7fd0_a5c1acb2",
+        "filename": "common.mk",
+        "patchSetId": 16
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-11-11T07:24:09Z",
+      "side": 1,
+      "message": "This could be a required module on livedisplay/Android.bp, like the rc-files.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 85
+      },
+      "revId": "c51eb4250d022f5c4a407b421fa3f91058d16445",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
