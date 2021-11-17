@@ -260,6 +260,11 @@ vendor/etc/camera/imx371_chromatix.xml
 # Camera firmware
 etc/firmware/cpp_firmware_v1_12_0.fw:vendor/firmware/cpp_firmware_v1_12_0.fw
 
+# Camera hidl - from OnePlus5T:10/QKQ1.191014.012/2010292059
+vendor/bin/hw/vendor.oneplus.camera.CameraHIDL@1.0-service
+vendor/etc/init/vendor.oneplus.camera.CameraHIDL@1.0-service.rc
+vendor/lib64/vendor.oneplus.camera.CameraHIDL@1.0.so
+
 # Camera postprocessing
 vendor/etc/GyroOffset_db.config
 vendor/etc/fsync_db.config
