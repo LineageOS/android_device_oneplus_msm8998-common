@@ -22,6 +22,30 @@
       },
       "revId": "f8ec14cb5041759877d7d57309526270f0708e89",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9189116f_c8c11b66",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-11-18T10:31:36Z",
+      "side": 1,
+      "message": "yes they do - check the system partition, not the vendor partition. /system/lib \u0026 lib64",
+      "parentUuid": "1acaa753_68676e1c",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 0
+      },
+      "revId": "f8ec14cb5041759877d7d57309526270f0708e89",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
