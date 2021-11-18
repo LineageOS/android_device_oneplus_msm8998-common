@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acaa753_68676e1c",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-11-18T10:29:09Z",
+      "side": 1,
+      "message": "These don\u0027t exist.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 0
+      },
+      "revId": "f8ec14cb5041759877d7d57309526270f0708e89",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
