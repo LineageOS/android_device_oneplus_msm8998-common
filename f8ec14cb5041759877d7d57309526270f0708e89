@@ -46,6 +46,30 @@
       },
       "revId": "f8ec14cb5041759877d7d57309526270f0708e89",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac10b7b_19249ffe",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2021-11-18T10:42:05Z",
+      "side": 1,
+      "message": "Not on cheeseburger OTA, which is where they\u0027re supposed to be from:\n\nls ~/ota/oneplus/oneplus5/system/system/lib/hw/\nandroid.hardware.tests.libhwbinder@1.0-impl.so\naudio.a2dp.default.so\nandroid.hidl.memory@1.0-impl.so                \nvendor.qti.hardware.sigma_miracast@1.0-impl.so",
+      "parentUuid": "9189116f_c8c11b66",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 0
+      },
+      "revId": "f8ec14cb5041759877d7d57309526270f0708e89",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
