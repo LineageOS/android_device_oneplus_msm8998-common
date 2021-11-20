@@ -190,6 +190,10 @@ vendor/lib64/libseemore.so
 # Camera actuators
 vendor/lib/libactuator_lc898217xc_imx398.so
 
+# Camera app
+-priv-app/OnePlusCamera/OnePlusCamera.apk;OVERRIDES=Snap,Camera2
+-priv-app/OnePlusCameraService/OnePlusCameraService.apk
+
 # Camera chromatix
 vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_auto_hdr.so
 vendor/lib/libchromatix_imx371_3a_2304x1728_30fps_hdr.so
