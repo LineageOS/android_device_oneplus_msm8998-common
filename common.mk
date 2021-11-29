@@ -371,12 +371,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlay \
     ims-ext-common \
-    telephony-ext \
     ims_ext_common.xml \
     qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
-    qti_telephony_utils.xml
+    qti_telephony_hidl_wrapper.xml \
+    qti_telephony_utils.xml \
+    telephony-ext
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
