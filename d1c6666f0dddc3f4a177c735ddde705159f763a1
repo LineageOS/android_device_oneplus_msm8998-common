@@ -72,6 +72,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0846d80_a776f150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2021-12-01T14:05:31Z",
+      "side": 1,
+      "message": "ah, okay :) well, i would leave it this way for now - as with the other sections (camera, pp daemon, ...) we can re-order them once we have some actual change to make",
+      "revId": "d1c6666f0dddc3f4a177c735ddde705159f763a1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d2e528e_4d991fca",
