@@ -272,9 +272,6 @@ on post-fs-data
     chown radio radio /data/vendor/radio/qcril_prebuilt.db
     chmod 0660 /data/vendor/radio/qcril_prebuilt.db
 
-    # Trigger WLAN driver load
-    write /sys/kernel/boot_wlan/boot_wlan 1
-
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -336,8 +333,6 @@ on boot
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
-    # Wifi driver state control
-    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
