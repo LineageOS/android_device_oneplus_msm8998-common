@@ -770,7 +770,6 @@ vendor/lib64/libqrtr.so
 
 # Radio - from m690-user-11-RKQ1.210607.001-00WW_3_490-release-keys
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk|692d3d439cdee075729799e571113f6f8fe3e786
--system_ext/app/datastatusnotification/datastatusnotification.apk|21afad94737c029d38f4157a2816613e2c1dded9
 system_ext/etc/permissions/qcrilhook.xml|30397e293b2c40e6b7a1d11c2a615cdd05de625a
 system_ext/etc/permissions/telephonyservice.xml|b7831598d3c19c6ce4ef431d1cc44d94c3c35a8d
 system_ext/framework/qcrilhook.jar|f2888f922b8347417dfa86741feb8348795fce6f
