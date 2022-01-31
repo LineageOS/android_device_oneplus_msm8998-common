@@ -124,3 +124,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/dual_role_usb/*    data_role    0660   system  system
 /sys/class/dual_role_usb/*    power_role   0660   system  system
 /sys/class/dual_role_usb/*    mode         0660   system  system
+
+# KGSL
+/sys/class/kgsl/kgsl-3d0      perfcounter  0660   root    shell
