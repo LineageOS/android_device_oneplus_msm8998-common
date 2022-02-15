@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea3fe96_385567dd",
+        "filename": "common.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-02-15T14:02:48Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 29
+      },
+      "revId": "db744fc4d0f4045c409db6efd471709351638f99",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
