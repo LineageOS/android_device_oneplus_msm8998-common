@@ -16,6 +16,24 @@
       "message": "do not remove org.codeaurora.snapcam - thats one of the popular package names for gcam mods",
       "revId": "b968a8fb51166bfd406ff5e4290cc53a8e5b07b8",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e256892c_9564538a",
+        "filename": "vendor.prop",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-02-18T09:08:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "bf63dd14_a2cb30d1",
+      "revId": "b968a8fb51166bfd406ff5e4290cc53a8e5b07b8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
