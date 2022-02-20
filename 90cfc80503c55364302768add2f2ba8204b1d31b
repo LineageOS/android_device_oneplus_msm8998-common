@@ -16,6 +16,23 @@
       "message": "These props aren\u0027t set to anything.",
       "revId": "90cfc80503c55364302768add2f2ba8204b1d31b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6950e9b8_11b96b0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-02-20T19:28:23Z",
+      "side": 1,
+      "message": "true, but the ril still tries to access them. having this is rather cheap for having at least a few less denials ",
+      "revId": "90cfc80503c55364302768add2f2ba8204b1d31b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
