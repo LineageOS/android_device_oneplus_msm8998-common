@@ -341,6 +341,9 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    # Symlink used by time daemon
+    symlink /mnt/vendor/persist/time /data/vendor/time
+
 on charger
     start dashd
     start vendor.power_off_alarm
