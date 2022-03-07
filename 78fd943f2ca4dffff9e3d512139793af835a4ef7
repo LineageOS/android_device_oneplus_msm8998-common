@@ -52,6 +52,24 @@
       "parentUuid": "92ff4ac6_9f44aef8",
       "revId": "78fd943f2ca4dffff9e3d512139793af835a4ef7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77d9ede_479dfe2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-03-07T12:02:12Z",
+      "side": 1,
+      "message": "That\u0027s already set in vendor.prop as persist.vendor.delta_time.enable\u003dtrue. Sepolicy should also be fine in legacy-um, but it just doesn\u0027t work.",
+      "parentUuid": "304b00ce_1e298b31",
+      "revId": "78fd943f2ca4dffff9e3d512139793af835a4ef7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
