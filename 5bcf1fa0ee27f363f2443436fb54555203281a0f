@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a49ebd0_1d5f3dd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-03-14T11:43:23Z",
+      "side": 1,
+      "message": "we might be able to reconfig to proximity instead of dropping it entirely",
+      "revId": "5bcf1fa0ee27f363f2443436fb54555203281a0f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
