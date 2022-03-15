@@ -48,16 +48,16 @@ public class ProximitySensor implements SensorEventListener {
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         mExecutorService = Executors.newSingleThreadExecutor();
 
-        switch (SystemProperties.get("ro.lineage.device", "")) {
-            case "cheeseburger":
+        switch (android.os.Build.DEVICE) {
+            case "OnePlus5":
                 FPC_FILE = "/sys/devices/soc/soc:fpc_fpc1020/proximity_state";
                 break;
-            case "dumpling":
+            case "OnePlus5T":
                 FPC_FILE = "/sys/devices/soc/soc:goodix_fp/proximity_state";
                 break;
             default:
                 FPC_FILE = "";
-                Log.e(TAG, "Device model for proximity state file not found!");
+                Log.e(TAG, "Invalid device model found: " + android.os.Build.DEVICE);
                 break;
         }
     }
