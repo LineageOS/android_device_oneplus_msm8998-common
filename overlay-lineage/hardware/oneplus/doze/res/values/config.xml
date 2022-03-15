@@ -15,6 +15,9 @@
 -->
 <resources>
     <!-- Sensor types -->
-    <string name="pickup_sensor_type">com.oneplus.sensor.pickup</string>
-    <string name="pocket_sensor_type">com.oneplus.sensor.pocket</string>
+    <string name="pickup_sensor_type">android.sensor.tilt_detector</string>
+    <string name="pocket_sensor_type">android.sensor.proximity</string>
+
+    <!-- Sensor trigger values -->
+    <item name="pocket_sensor_value" format="float" type="dimen">5.0002785</item>
 </resources>
