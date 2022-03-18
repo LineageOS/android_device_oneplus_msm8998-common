@@ -1,2 +1,1 @@
-user=system seinfo=platform name=org.lineageos.pocketmode domain=pocketmode_app type=system_app_data_file
 user=radio seinfo=platform name=.qtidataservices domain=qtidataservices_app type=radio_data_file
