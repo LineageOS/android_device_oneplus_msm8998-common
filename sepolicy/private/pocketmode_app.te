@@ -1,4 +1,5 @@
 type pocketmode_app, domain;
+typeattribute pocketmode_app mlstrustedsubject;
 
 app_domain(pocketmode_app)
 
