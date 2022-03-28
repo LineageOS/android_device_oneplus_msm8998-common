@@ -18,8 +18,6 @@
 /data/system/users/0/fpdata(/.*)?                               u:object_r:fingerprintd_data_file:s0
 
 # HALs
-/(product|system/product)/(lib|lib64)/vendor\.display\.config@1\.[0-9]\.so                       u:object_r:same_process_hal_file:s0
-/(product|system/product)/(lib|lib64)/vendor\.qti\.hardware\.camera\.device@1\.0\.so             u:object_r:same_process_hal_file:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom    u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus_msm8998            u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.oneplus_msm8998-libperfmgr      u:object_r:hal_power_default_exec:s0
