@@ -374,22 +374,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.1.vendor \
     android.hardware.radio.config@1.0.vendor \
-    android.hardware.secure_element@1.0.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.secure_element@1.0.vendor \
     librmnetctl \
     libxml2 \
     libprotobuf-cpp-full
 
-# IMS
 PRODUCT_PACKAGES += \
     CarrierConfigOverlay \
     ims-ext-common \
-    telephony-ext \
     ims_ext_common.xml \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
-    qti_telephony_utils.xml
+    qti_telephony_utils.xml \
+    telephony-ext
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
