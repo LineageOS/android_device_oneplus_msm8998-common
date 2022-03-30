@@ -16,6 +16,23 @@
       "message": "I\u0027m not sure if this is correct but it works.",
       "revId": "dbb3cff04d483af9415f85095511d8f9f177b7ac",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5a3d3d_a93e3f0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-03-30T09:34:31Z",
+      "side": 1,
+      "message": "that\u0027s curing a symptom we should not have.\nwe could try something like: https://review.lineageos.org/c/LineageOS/android_device_oneplus_msm8998-common/+/327620\n\nuntested tho",
+      "revId": "dbb3cff04d483af9415f85095511d8f9f177b7ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
