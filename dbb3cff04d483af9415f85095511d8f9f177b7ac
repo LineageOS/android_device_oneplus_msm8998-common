@@ -51,6 +51,24 @@
       "parentUuid": "0d5a3d3d_a93e3f0b",
       "revId": "dbb3cff04d483af9415f85095511d8f9f177b7ac",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c81b29_8ff17310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-03-30T14:45:34Z",
+      "side": 1,
+      "message": "and we\u0027ll prolly not need either, pending that test. the denials trigger when trying to access ce storage before user unlocks the phone on boot. it works fine afterwards tho, so theoretically, it can even be ignored for pocketmode at least.",
+      "parentUuid": "32e659f6_b1f585a5",
+      "revId": "dbb3cff04d483af9415f85095511d8f9f177b7ac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
