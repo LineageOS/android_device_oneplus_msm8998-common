@@ -3,4 +3,7 @@ allow vendor_init tmpfs:dir { create rw_dir_perms };
 
 allow vendor_init sysfs_wifi:file { w_file_perms };
 
-set_prop(vendor_init, vendor_power_prop)
+set_prop(vendor_init, camera_prop);
+set_prop(vendor_init, vendor_power_prop);
+set_prop(vendor_init, vendor_qcom_ims_prop);
+set_prop(vendor_init, vendor_time_service_prop);
