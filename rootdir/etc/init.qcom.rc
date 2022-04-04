@@ -236,9 +236,6 @@ on post-fs-data
     mkdir /data/vendor/audio/acdbdata 0770 media audio
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
-    # Create directory used by the DASH client
-    mkdir /data/misc/dash 0770 media audio
-
     # Create directory used by audio subsystem
     mkdir /data/vendor/audio/ 0770 media audio
 
