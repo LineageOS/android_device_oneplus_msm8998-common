@@ -16,6 +16,24 @@
       "message": "don\u0027t see any related denials",
       "revId": "754de03b06526ff763a3adf98d872cdcae79b64f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2aec07d_a68a66e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-04-12T17:27:23Z",
+      "side": 1,
+      "message": "04-12 19:14:49.157  1081  1081 W rild    : type\u003d1400 audit(0.0:32): avc: denied { write } for name\u003d\"oemnvitems\" dev\u003d\"sda13\" ino\u003d2375686 scontext\u003du:r:rild:s0 tcontext\u003du:object_r:vendor_data_file:s0 tclass\u003ddir permissive\u003d0",
+      "parentUuid": "4c120dd6_b58cf895",
+      "revId": "754de03b06526ff763a3adf98d872cdcae79b64f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
