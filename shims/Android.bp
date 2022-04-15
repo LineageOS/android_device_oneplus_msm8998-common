@@ -22,3 +22,13 @@ cc_library_shared {
     srcs: ["libshim_imsmedia.cpp"],
     system_ext_specific: true,
 }
+
+
+cc_library_shared {
+    name: "libshim_qmi",
+    compile_multilib: "64",
+    shared_libs: [
+        "liblog",
+    ],
+    system_ext_specific: true,
+}

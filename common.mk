@@ -385,6 +385,7 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml \
     libshim_imsmedia \
+    libshim_qmi \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
