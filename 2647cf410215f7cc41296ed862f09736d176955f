@@ -16,6 +16,24 @@
       "message": "missing the source file to actually be compiled...",
       "revId": "2647cf410215f7cc41296ed862f09736d176955f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b415f0d_843b1a9a",
+        "filename": "shims/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-04-15T12:52:15Z",
+      "side": 1,
+      "message": "Would you believe if I told you that this is not ready?",
+      "parentUuid": "07ad9f10_a658fb20",
+      "revId": "2647cf410215f7cc41296ed862f09736d176955f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
