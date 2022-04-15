@@ -85,6 +85,9 @@ function blob_fixup() {
         system_ext/lib64/lib-imsvideocodec.so)
             "${PATCHELF}" --add-needed libshim_imsmedia.so "${2}"
             ;;
+        vendor/lib64/libril-qc-qmi-1.so)
+            "${PATCHELF}" --add-needed libshim_qmi.so "${2}"
+            ;;
     esac
 }
 

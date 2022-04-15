@@ -22,3 +22,16 @@ cc_library_shared {
     srcs: ["libshim_imsmedia.cpp"],
     system_ext_specific: true,
 }
+
+
+cc_library_shared {
+    name: "libshim_qmi",
+    compile_multilib: "64",
+    shared_libs: [
+        "liblog",
+        "libril-qc-qmi-1",
+    ],
+    srcs: ["libshim_qmi.cpp"],
+    system_ext_specific: true,
+    include_dirs: ["external/nanopb-c"],
+}
