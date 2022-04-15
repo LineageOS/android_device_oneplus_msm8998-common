@@ -148,6 +148,10 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/private
 PRODUCT_PUBLIC_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/public
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /vendor/lib64/libril.so|libshim_qmi.so
+
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 TARGET_COPY_OUT_VENDOR := vendor
