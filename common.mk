@@ -464,7 +464,6 @@ PRODUCT_PACKAGES += \
     wificond \
     wpa_supplicant \
     wpa_supplicant.conf \
-    TetheringConfigOverlay \
     WifiOverlay \
     wifi-mac-generator
 
