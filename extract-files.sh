@@ -82,9 +82,6 @@ function blob_fixup() {
         vendor/etc/permissions/com.fingerprints.extension.xml )
             sed -i "s|/system/framework/|/vendor/framework/|g" "${2}"
             ;;
-        system_ext/lib64/lib-imsvideocodec.so)
-            "${PATCHELF}" --add-needed libshim_imsmedia.so "${2}"
-            ;;
     esac
 }
 
