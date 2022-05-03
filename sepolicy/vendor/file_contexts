@@ -6,8 +6,8 @@
 # Bluetooth
 /data/vendor/oemnvitems/447                                     u:object_r:oem_nv_bt_data_file:s0
 
-# Dash
-/vendor/xbin/dashd                                              u:object_r:dashd_exec:s0
+# DASH
+/vendor/bin/dashd                                               u:object_r:dashd_exec:s0
 
 # Devices
 /dev/dash                                                       u:object_r:dash_device:s0
