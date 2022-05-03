@@ -16,6 +16,24 @@
       "message": "See the original (and proper) change: https://review.lineageos.org/c/LineageOS/android_device_motorola_nash/+/268413",
       "revId": "662bbd7be1a3c8ece2f9b394cae81e2bccfa38ce",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf2e14a_0b3fc750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-05-03T11:20:43Z",
+      "side": 1,
+      "message": "Actually, the proper one is this one: https://review.lineageos.org/q/Iacdb5604a682b8462d16297f4b543928bb100282 (correct metadata and id)",
+      "parentUuid": "75b24bc4_7f7347f8",
+      "revId": "662bbd7be1a3c8ece2f9b394cae81e2bccfa38ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
