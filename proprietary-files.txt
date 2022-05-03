@@ -389,7 +389,7 @@ vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 vendor/lib64/vendor.qti.latency@2.0.so
 
 # Dash
-vendor/xbin/dashd
+vendor/xbin/dashd:vendor/bin/dashd
 
 # DPM - from jasmine V11.0.15.0.QDIMIXM
 product/bin/dpmd:system_ext/bin/dpmd|49caa8e7d8af8055efdd7ebc0d7f7d67bc600041

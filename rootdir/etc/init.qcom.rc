@@ -339,7 +339,7 @@ on boot
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 on charger
-    start dashd
+    start vendor.dashd
     start vendor.power_off_alarm
     setprop sys.usb.configfs 1
 
@@ -414,13 +414,6 @@ service charger /system/bin/charger
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
 
-service dashd /vendor/xbin/dashd
-     class core
-     critical
-     seclabel u:r:dashd:s0
-     group root system
-     writepid /dev/cpuset/system-background/tasks
-
 service init-devstart-sh /vendor/bin/init.devstart.sh
     class core
     user root
@@ -462,6 +455,12 @@ service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     group system inet net_admin wifi
     capabilities NET_ADMIN
     writepid /dev/cpuset/system-background/tasks
+
+service vendor.dashd /vendor/bin/dashd
+     class core
+     critical
+     group root system
+     writepid /dev/cpuset/system-background/tasks
 
 service vendor.init-radio-sh /vendor/bin/init.radio.sh
     class late_start
