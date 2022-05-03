@@ -420,11 +420,11 @@ service init-devstart-sh /vendor/bin/init.devstart.sh
     group root radio
     oneshot
 
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
-    class core
+service init-radio-sh /vendor/bin/init.radio.sh
+    class late_start
     user root
+    group root system radio
     oneshot
-    writepid /dev/cpuset/system-background/tasks
 
 service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
@@ -462,10 +462,9 @@ service vendor.dashd /vendor/bin/dashd
      group root system
      writepid /dev/cpuset/system-background/tasks
 
-service vendor.init-radio-sh /vendor/bin/init.radio.sh
-    class late_start
+service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+    class core
     user root
-    group root system radio
     oneshot
     writepid /dev/cpuset/system-background/tasks
 
