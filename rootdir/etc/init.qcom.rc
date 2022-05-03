@@ -427,9 +427,10 @@ service init-devstart-sh /vendor/bin/init.devstart.sh
     group root radio
     oneshot
 
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
-    class core
+service init-radio-sh /vendor/bin/init.radio.sh
+    class late_start
     user root
+    group root system radio
     oneshot
     writepid /dev/cpuset/system-background/tasks
 
@@ -463,10 +464,9 @@ service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     capabilities NET_ADMIN
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.init-radio-sh /vendor/bin/init.radio.sh
-    class late_start
+service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+    class core
     user root
-    group root system radio
     oneshot
     writepid /dev/cpuset/system-background/tasks
 
