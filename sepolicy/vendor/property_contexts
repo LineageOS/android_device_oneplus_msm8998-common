@@ -16,9 +16,6 @@ gf.debug.dump_data                     u:object_r:vendor_default_prop:s0
 # Firmware
 ro.build.expect.                       u:object_r:exported_default_prop:s0
 
-# Init
-vendor.qcom.devup                      u:object_r:vendor_device_prop:s0
-
 # Mediacodec
 gpu.stats.debug.level                  u:object_r:vendor_video_prop:s0
 
