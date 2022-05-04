@@ -35,6 +35,13 @@ on early-init
     write /proc/sys/kernel/sched_boost 1
 
 on init
+    # qseecomd needs /dev/block/bootdevice
+    wait /dev/block/platform/soc/1da4000.ufshc
+    symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
+
+    # vold needs keymaster that needs qseecomd
+    start vendor.qseecomd
+
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     # Disable UFS powersaving
@@ -139,10 +146,7 @@ on init
     write /sys/bus/msm_subsys/devices/subsys6/restart_level RELATED
 
 on fs
-    wait /dev/block/platform/soc/1da4000.ufshc
-    symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
-
-    mount_all /vendor/etc/fstab.qcom --early
+    mount_all /vendor/etc/fstab.qcom
 
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
@@ -179,34 +183,15 @@ on fs
 
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
-    # Start HW service manager early
-    start hwservicemanager
-
-    # qseecomd needs /dev/block/bootdevice
-    # vold needs keymaster that needs qseecomd
-    start vendor.qseecomd
-
 on post-fs
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true
 
+    write /dev/ipa 1
+
     chown system system /proc/ship_mode
     chown system system /dev/param
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
-
-on late-fs
-    # Start devices by sysfs trigger
-    start init-devstart-sh
-
-    # Start services for bootanim
-    start surfaceflinger
-    start bootanim
-    start vendor.hwcomposer-2-1
-    start vendor.configstore-hal
-    start vendor.gralloc-2-0
-
-    # Mount RW partitions which need to run fsck
-    mount_all /vendor/etc/fstab.qcom --late
 
 on post-fs-data
     # Nfc
@@ -276,8 +261,10 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    # wait for devices
-    wait_for_prop vendor.qcom.devup 1
+    # Boot devices
+    write /sys/kernel/boot_adsp/boot 1
+    write /sys/kernel/boot_cdsp/boot 1
+    write /sys/kernel/boot_slpi/boot 1
 
 on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -413,12 +400,6 @@ service charger /system/bin/charger
     group system graphics input
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
-
-service init-devstart-sh /vendor/bin/init.devstart.sh
-    class core
-    user root
-    group root radio
-    oneshot
 
 service init-radio-sh /vendor/bin/init.radio.sh
     class late_start

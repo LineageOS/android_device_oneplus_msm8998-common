@@ -239,7 +239,6 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.devstart.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.radio.sh \

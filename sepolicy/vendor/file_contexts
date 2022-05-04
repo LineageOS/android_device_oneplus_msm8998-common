@@ -27,9 +27,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.ifaa@2\.0-service                      u:object_r:hal_ifaa_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.param@1\.0-service                     u:object_r:hal_param_default_exec:s0
 
-# Init
-/(vendor|system/vendor)/bin/init\.devstart\.sh                  u:object_r:init-devstart-sh_exec:s0
-
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
 /sys/devices/soc/800f000\.qcom,spmi/spmi-0/spmi0-02/800f000\.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/main(/.*)?       u:object_r:sysfs_usb_supply:s0
