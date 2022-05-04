@@ -16,6 +16,23 @@
       "message": "This is used for other things too. Not all values are default.",
       "revId": "f47a37d43de01087151d9f43d23d228ba922eb2e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f57eccc_8577ef44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-05-04T10:40:32Z",
+      "side": 1,
+      "message": "i was aware not everything was default, but i assumed we could revert to defaults -- we cant, though, because i.e. we have wlan0 and wlan1 interfaces :(\nchanged this one to remove the dhcp ranges, which are utterly pointless to be defined here, defaults are okay for them.",
+      "revId": "f47a37d43de01087151d9f43d23d228ba922eb2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
