@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621764de_708c6e0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-05-15T12:16:21Z",
+      "side": 1,
+      "message": "please roll this into the \"switch to qcril\" commit. aosp ril works without this.",
+      "revId": "17cacb35a74c5eb71b21077ca1587178c84ecd0d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
