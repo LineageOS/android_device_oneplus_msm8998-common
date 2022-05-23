@@ -184,12 +184,12 @@ on fs
     start vendor.qseecomd
 
 on post-fs
-    # Wait for qseecomd started
-    wait_for_prop vendor.sys.listeners.registered true
-
     chown system system /proc/ship_mode
     chown system system /dev/param
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+
+    # Wait for qseecomd started
+    wait_for_prop vendor.sys.listeners.registered true
 
 on late-fs
     # Start devices by sysfs trigger
