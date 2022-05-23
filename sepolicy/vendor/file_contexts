@@ -29,6 +29,7 @@
 
 # Init
 /(vendor|system/vendor)/bin/init\.devstart\.sh                  u:object_r:init-devstart-sh_exec:s0
+/(vendor|system/vendor)/bin/init\.ipastart\.sh                  u:object_r:init-ipastart-sh_exec:s0
 
 # Power supply
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
