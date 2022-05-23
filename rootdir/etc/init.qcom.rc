@@ -189,8 +189,9 @@ on post-fs
     chown system system /dev/param
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 
-    # Wait for qseecomd started
-    wait_for_prop vendor.sys.listeners.registered true
+on property:vendor.sys.listeners.registered=true
+    # load IPA FWs
+    start init-ipastart-sh
 
 on late-fs
     # Start devices by sysfs trigger
@@ -428,7 +429,14 @@ service charger /system/bin/charger
 service init-devstart-sh /vendor/bin/init.devstart.sh
     class main
     user root
-    group root radio
+    group root
+    disabled
+    oneshot
+
+service init-ipastart-sh /vendor/bin/init.ipastart.sh
+    class main
+    user radio
+    group radio
     disabled
     oneshot
 
