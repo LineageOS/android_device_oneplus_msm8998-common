@@ -1,0 +1,6 @@
+type init-ipastart-sh, domain;
+type init-ipastart-sh_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(init-ipastart-sh)
+
+allow init-ipastart-sh ipa_dev:chr_file w_file_perms;
