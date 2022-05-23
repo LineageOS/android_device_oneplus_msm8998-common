@@ -425,9 +425,10 @@ service charger /system/bin/charger
     seclabel u:r:charger:s0
 
 service init-devstart-sh /vendor/bin/init.devstart.sh
-    class core
+    class main
     user root
     group root radio
+    disabled
     oneshot
 
 service init-radio-sh /vendor/bin/init.radio.sh
