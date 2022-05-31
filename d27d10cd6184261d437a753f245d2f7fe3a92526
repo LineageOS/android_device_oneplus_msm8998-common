@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c388da_08b28114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-05-31T09:22:48Z",
+      "side": 1,
+      "message": "check if this topic still causes troubles for you, users confirmed it to be ok on multiple devices",
+      "revId": "d27d10cd6184261d437a753f245d2f7fe3a92526",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
