@@ -189,10 +189,6 @@ on post-fs
     chown system system /dev/param
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 
-on property:vendor.sys.listeners.registered=true
-    # load IPA FWs
-    start init-ipastart-sh
-
 on late-fs
     # Start devices by sysfs trigger
     start init-devstart-sh
@@ -280,6 +276,13 @@ on post-fs-data
     # keep that at the end of on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
+
+    # Wait qseecomd started
+    wait_for_prop vendor.sys.listeners.registered true
+
+    # load IPA FWs
+    # This must be started when vendor.sys.listeners.registered is true
+    start ipastart_sh
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
