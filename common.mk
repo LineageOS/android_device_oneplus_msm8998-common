@@ -228,6 +228,9 @@ PRODUCT_PACKAGES += \
     init.radio.sh \
     ueventd.qcom.rc
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.qcom
+
 # IFAA (Fingerprint support for Alipay)
 PRODUCT_PACKAGES += \
     org.ifaa.android.manager
