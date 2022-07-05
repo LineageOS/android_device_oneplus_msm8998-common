@@ -365,14 +365,14 @@
 
     <!-- IWLAN data service package name to bind to by default. If none is specified in an overlay, an
          empty string is passed in -->
-    <string name="config_wlan_data_service_package">vendor.qti.iwlan</string>
+    <string name="config_wlan_data_service_package" translatable="false">vendor.qti.iwlan</string>
 
     <!-- IWLAN network service package name to bind to by default. If none is specified in an overlay, an
          empty string is passed in -->
-    <string name="config_wlan_network_service_package">vendor.qti.iwlan</string>
+    <string name="config_wlan_network_service_package" translatable="false">vendor.qti.iwlan</string>
 
     <!-- Telephony qualified networks service package name to bind to by default. -->
-    <string name="config_qualified_networks_service_package">vendor.qti.iwlan</string>
+    <string name="config_qualified_networks_service_package" translatable="false">vendor.qti.iwlan</string>
 
     <!-- Config determines whether to update phone object when voice registration
          state changes. Voice radio tech change will always trigger an update of
@@ -405,7 +405,7 @@
 
     <!-- Enable doze mode
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->
-    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
+    <string name="config_dozeComponent" translatable="false">com.android.systemui/com.android.systemui.doze.DozeService</string>
 
     <!-- Control whether the always on display mode is available. This should only be enabled on
          devices where the display has been tuned to be power efficient in DOZE and/or DOZE_SUSPEND
