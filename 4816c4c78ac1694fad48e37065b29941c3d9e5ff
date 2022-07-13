@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8004b1c2_43e2864b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-07-13T04:49:40Z",
+      "side": 1,
+      "message": "i really can\u0027t reproduce that, and i saw no users having suchs troubles. also, you yourself said sometime back this was \"better\"?",
+      "revId": "4816c4c78ac1694fad48e37065b29941c3d9e5ff",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
