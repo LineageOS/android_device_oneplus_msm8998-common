@@ -1,0 +1,15 @@
+//
+// Copyright (C) 2022 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library {
+    name: "lib-imsvtshim",
+    system_ext_specific: true,
+    srcs: ["lib-imsvtshim.cpp"],
+    shared_libs: [
+        "libgui",
+        "libutils",
+    ],
+}
