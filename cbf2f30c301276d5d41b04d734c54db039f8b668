@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "368aa017_d7574fe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-07-24T17:00:43Z",
+      "side": 1,
+      "message": "WHy is this needed? Isn\u0027t the normal fastboot just fine?",
+      "revId": "cbf2f30c301276d5d41b04d734c54db039f8b668",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
