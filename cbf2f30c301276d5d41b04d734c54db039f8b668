@@ -16,6 +16,23 @@
       "message": "WHy is this needed? Isn\u0027t the normal fastboot just fine?",
       "revId": "cbf2f30c301276d5d41b04d734c54db039f8b668",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719d83a8_9e718134",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-07-25T20:45:26Z",
+      "side": 1,
+      "message": "yeah, was experimenting with this... seems our bootloader is playing nice tho",
+      "revId": "cbf2f30c301276d5d41b04d734c54db039f8b668",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
