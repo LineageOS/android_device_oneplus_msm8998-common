@@ -1006,7 +1006,6 @@ vendor/bin/time_daemon
 -vendor/lib64/libtime_genoff.so
 
 # Touch panel
-etc/firmware/tp/fw_synaptics_16859.img
 etc/firmware/tp/fw_synaptics_17801.img
 
 # TUI
