@@ -38,8 +38,12 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_MIC" acdb_id="147"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_USB_HEADSET_MIC" acdb_id="133"/>
 
-        <!-- Extracted from stock HAL blobs -->
+        <!-- Improved speaker volume -->
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15"/>
+
+        <!-- Improved stereo recording volume -->
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_STEREO" acdb_id="118"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_STEREO" acdb_id="118"/>
     </acdb_ids>
 
     <bit_width_configs>
