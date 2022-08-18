@@ -40,7 +40,9 @@
 
         <!-- Extracted from stock HAL blobs -->
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15"/>
-    </acdb_ids>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_STEREO" acdb_id="162"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_STEREO" acdb_id="162"/>
+  </acdb_ids>
 
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
