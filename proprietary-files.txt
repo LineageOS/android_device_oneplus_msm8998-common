@@ -84,10 +84,11 @@ vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
 
-# Audio FX modules
+# Audio FX modules - Dirac module from enchilada RKQ1.201217.002
 etc/permissions/audiosphere.xml
 framework/audiosphere.jar
 vendor/lib/soundfx/libasphere.so
+vendor/lib/soundfx/libdiraceffect.so|94b90f7edcc122e8dd465318577714db464b7657
 vendor/lib64/soundfx/libasphere.so
 
 # Bluetooth - from jasmine V11.0.15.0.QDIMIXM
