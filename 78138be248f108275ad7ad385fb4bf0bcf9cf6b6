@@ -16,6 +16,24 @@
       "message": "You probably need libdiracgefwrapper and https://review.lineageos.org/c/LineageOS/android_device_oneplus_sdm845-common/+/327338",
       "revId": "78138be248f108275ad7ad385fb4bf0bcf9cf6b6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96306897_8921a11f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-08-22T14:40:06Z",
+      "side": 1,
+      "message": "i don\u0027t think we need the wrapper, as per the log?:\nse.dirac.gef: Did not find libdiracapwrapper.so, not needed for GEF\nse.dirac.gef: Did not find usecase manager, not needed for GEF\nse.dirac.gef: Did not find plugin manager, not needed for GEF\nse.dirac.gef: Did not find the command handler, not needed for GEF\nse.dirac.gef: Did not find the gef handler, needed for GEF\n\n\nthanks for the other hint, i\u0027ll look into it",
+      "parentUuid": "63c60ffc_ea3bbdb4",
+      "revId": "78138be248f108275ad7ad385fb4bf0bcf9cf6b6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
