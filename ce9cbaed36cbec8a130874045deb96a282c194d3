@@ -16,6 +16,23 @@
       "message": "What about changing default for next version instead?",
       "revId": "ce9cbaed36cbec8a130874045deb96a282c194d3",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56071c8_0baedf66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-01T12:14:45Z",
+      "side": 1,
+      "message": "i think its such a minor cosmetic thing that no one will really care ;) it\u0027ll only affect fresh installs anyway - but better ui imo",
+      "revId": "ce9cbaed36cbec8a130874045deb96a282c194d3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
