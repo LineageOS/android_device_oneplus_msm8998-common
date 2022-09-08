@@ -1,4 +1,6 @@
 # Block devices
+/dev/block/platform/soc/1da4000\.ufshc/by-name/system            u:object_r:system_block_device:s0
+/dev/block/platform/soc/1da4000\.ufshc/by-name/vendor            u:object_r:system_block_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_dycnvbk       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_stanvbk       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/config            u:object_r:frp_block_device:s0
