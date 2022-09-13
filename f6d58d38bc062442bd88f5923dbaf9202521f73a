@@ -16,6 +16,24 @@
       "message": "which issues? is this new to 20?",
       "revId": "f6d58d38bc062442bd88f5923dbaf9202521f73a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4d48c5_b3bc929c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-09-13T13:05:39Z",
+      "side": 1,
+      "message": "It would go dark on task switch for example. New to 20.",
+      "parentUuid": "f5ec745d_f40a6a1b",
+      "revId": "f6d58d38bc062442bd88f5923dbaf9202521f73a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
