@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae4c5f8_f9345fb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-13T13:03:08Z",
+      "side": 1,
+      "message": "\"not supported on a13\" is wrong, only 4.4 kernels panic with this. dnm until we know more",
+      "revId": "2633290def65d7fe14e7de645c43a85ba35f44d1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
