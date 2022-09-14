@@ -279,11 +279,6 @@
         <item>10</item>
     </integer-array>
 
-    <!-- Enables or disables haptic effect when the text insertion/selection handle is moved
-         manually by the user. Off by default, since the expected haptic feedback may not be
-         available on some devices. -->
-    <bool name="config_enableHapticTextHandle">true</bool>
-
     <!-- Setting this true forces the headset jack switches to use the/dev/input/event subsystem
          rather than the uevent framework. -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>
