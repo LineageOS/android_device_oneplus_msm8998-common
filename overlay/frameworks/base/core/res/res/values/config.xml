@@ -516,11 +516,6 @@
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
 
-    <!-- When true, indicates that the vendor's IMS implementation requires a workaround when
-         sending a request to enable or disable the camera while the video session is also
-         paused. -->
-    <bool name="config_useVideoPauseWorkaround">true</bool>
-
     <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
          when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
          where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
