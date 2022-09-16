@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00844d80_1e3ff826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-16T08:20:45Z",
+      "side": 1,
+      "message": "for reference: this should be fixable by patching the kernel with prjquota support because google updated their mount options in vold for android 13.\nsee upstream kernel commits :\n040cb3786d9b25293b8b0b05b90da0f871e1eb9b\n689c958cbe6be4f211b40747951a3ba2c73b6715\n49da939272f417ff94c40f132a308748b46efe68\n\nand friends",
+      "revId": "a646248e40cfe156f4a4ef35780ba352a5cd2153",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
