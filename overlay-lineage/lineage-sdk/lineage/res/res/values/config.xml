@@ -70,8 +70,4 @@
          OLED displays and can cause a bit of discoloration. Reinvestigate after tuning -->
     <bool name="config_defaultCABC">false</bool>
 
-    <!-- Whether to cleanup fingerprints upon connection to the daemon and when
-         user switches -->
-    <bool name="config_cleanupUnusedFingerprints">false</bool>
-
 </resources>
