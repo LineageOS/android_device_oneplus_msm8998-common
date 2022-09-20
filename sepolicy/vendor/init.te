@@ -1,4 +1,4 @@
-allow init proc_alarm_boot:file { r_file_perms };
+allow init proc_alarm_boot:file r_file_perms;
 allow init socket_device:sock_file { unlink setattr create };
 
 allow init bt_firmware_file:filesystem getattr;
