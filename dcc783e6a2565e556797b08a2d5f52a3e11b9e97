@@ -16,6 +16,24 @@
       "message": "Hmmmm, why did you remove the hidl hal in this change?",
       "revId": "dcc783e6a2565e556797b08a2d5f52a3e11b9e97",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24461ef_20cfcd02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-21T21:48:36Z",
+      "side": 1,
+      "message": "because thats what the original patch did (see commit message)",
+      "parentUuid": "448419c1_dd1771d4",
+      "revId": "dcc783e6a2565e556797b08a2d5f52a3e11b9e97",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
