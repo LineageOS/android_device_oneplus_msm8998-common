@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "448419c1_dd1771d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-09-21T21:31:30Z",
+      "side": 1,
+      "message": "Hmmmm, why did you remove the hidl hal in this change?",
+      "revId": "dcc783e6a2565e556797b08a2d5f52a3e11b9e97",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
