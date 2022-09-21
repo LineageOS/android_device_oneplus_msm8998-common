@@ -34,6 +34,24 @@
       "parentUuid": "448419c1_dd1771d4",
       "revId": "dcc783e6a2565e556797b08a2d5f52a3e11b9e97",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8809753a_08b13bab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-09-21T23:43:15Z",
+      "side": 1,
+      "message": "Got it. I was a bit confused because there are variations of this change here in gerrit.",
+      "parentUuid": "d24461ef_20cfcd02",
+      "revId": "dcc783e6a2565e556797b08a2d5f52a3e11b9e97",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
