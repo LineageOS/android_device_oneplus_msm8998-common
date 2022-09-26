@@ -22,6 +22,30 @@
       },
       "revId": "1b85bdb7b521efebea14431a7235202224861007",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423a16cc_ca878abe",
+        "filename": "common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-09-26T20:28:54Z",
+      "side": 0,
+      "message": "ver 1.1 does exist though and is in\n/vendor/bin/hw/android.hardware.configstore@1.1-service",
+      "parentUuid": "52ae48b2_c4e7278a",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "1b85bdb7b521efebea14431a7235202224861007",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
