@@ -38,7 +38,7 @@ on boot
     write /config/usb_gadget/g1/os_desc/use 1
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.manufacturer}
-    write /config/usb_gadget/g1/strings/0x409/product ${ro.product.model}
+    write /config/usb_gadget/g1/strings/0x409/product ${vendor.usb.product_string}
 
     # Create gadget functions
     mkdir /config/usb_gadget/g1/functions/mass_storage.0
