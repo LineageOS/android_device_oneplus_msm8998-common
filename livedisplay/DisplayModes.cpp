@@ -22,15 +22,10 @@ static const std::string kAvailableModesPath = "/sys/devices/virtual/graphics/fb
 static const std::string kDefaultPath = "/data/vendor/display/default_display_mode";
 
 const std::map<int32_t, std::string> DisplayModes::kModeMap = {
-    {0, "Standard"},
-    {1, "sRGB"},
-    {2, "DCI-P3"},
-    {3, "OnePlus"},
-    {4, "Adaptive"},
+        {0, "Standard"}, {1, "sRGB"}, {2, "DCI-P3"}, {3, "OnePlus"}, {4, "Adaptive"},
 };
 
-DisplayModes::DisplayModes()
-    : mCurrentModeId(0), mDefaultModeId(0) {
+DisplayModes::DisplayModes() : mCurrentModeId(0), mDefaultModeId(0) {
     std::ifstream defaultFile(kDefaultPath);
 
     defaultFile >> mDefaultModeId;
@@ -52,8 +47,7 @@ Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
     if (maxModeCount > 0) {
         for (const auto& entry : kModeMap) {
             modes.push_back({entry.first, entry.second});
-            if (entry.first == maxModeCount - 1)
-                break;
+            if (entry.first == maxModeCount - 1) break;
         }
     }
     resultCb(modes);
