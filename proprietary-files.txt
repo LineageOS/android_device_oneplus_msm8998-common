@@ -824,8 +824,6 @@ vendor/lib64/vendor.oneplus.hardware.param@1.0.so
 # Radio - IMS - from m690-user-11-RKQ1.210607.001-00WW_3_490-release-keys
 system_ext/app/imssettings/imssettings.apk|516d8be0f869e1733d0287722897420c57c73be5
 system_ext/app/uceShimService/uceShimService.apk|cdffe76fca53131f68eb996005a35304b924206e
-system_ext/lib64/libimscamera_jni.so:system_ext/lib64/libimscamera_jni.so|486abdb09a82ccee5e49307a17ba3dc9efdf5e9d
-system_ext/lib64/libimsmedia_jni.so:system_ext/lib64/libimsmedia_jni.so|f8be2575f8eaef8bb89a4bc049381ebffe857831
 system_ext/lib64/com.qualcomm.qti.imscmservice@1.0.so|edf4941798ce879de80112d3453dba5b541dd9dd
 system_ext/lib64/com.qualcomm.qti.imscmservice@2.0.so|2359b4a42b9f009cc574b1b149040fd7751d3bab
 system_ext/lib64/com.qualcomm.qti.imscmservice@2.1.so|e10101f34b09634689aaba2f58521af2e5c8690f
@@ -839,7 +837,12 @@ system_ext/lib64/lib-imsvideocodec.so|47512183b3330ad566d241149c4e16f33122dab1
 system_ext/lib64/lib-imsvt.so|4f96cc5f27551d0b6cb11ad6447d9ce8829dde47
 system_ext/lib64/lib-imsvtextutils.so|336c0ffed49a0a4605f41b488771ee0217fa80f0
 system_ext/lib64/lib-imsvtutils.so|b4a39a247f767723ce67182ee92f526c029a019d
-system_ext/priv-app/ims/ims.apk:system_ext/priv-app/ims/ims.apk|bed959752f39386d6a7045f8cf96226a14e31dfd
+system_ext/lib64/libgralloc.qti.so|cb1bb32923a147c8c982dc50432fa75988e777eb
+system_ext/lib64/libimscamera_jni.so|486abdb09a82ccee5e49307a17ba3dc9efdf5e9d
+system_ext/lib64/libimsmedia_jni.so|f8be2575f8eaef8bb89a4bc049381ebffe857831
+system_ext/lib64/libqdMetaData.so|4a5af4a974e6baf73a1f9617c50763a3de428636
+system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|460e589128fce0b0e83bb3c75aa32f7e1a9494fd
+system_ext/priv-app/ims/ims.apk|bed959752f39386d6a7045f8cf96226a14e31dfd
 vendor/bin/ims_rtp_daemon|ed5c13c758080d79a9371061d53127d406475614
 vendor/bin/imsdatadaemon|701f9a2eaa2674bcaa7e69817bdcb656e99fcac9
 vendor/bin/imsqmidaemon|5fde955e71392479b2f3e6aaf6005fa54b618678
