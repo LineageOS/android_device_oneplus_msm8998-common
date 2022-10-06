@@ -397,8 +397,6 @@ vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|fbff6357ee46dd6d62f490a942ff567b6ce
 vendor/lib64/libdpmqmihal.so|30a170684219dd589d05ce5b446e73b7501f13e3
 
 # DRM
-product/lib/vendor.qti.hardware.qteeconnector@1.0.so
-product/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/bin/qseecomd
@@ -463,8 +461,6 @@ vendor/lib64/libwvhidl.so
 
 # Fingerprint sensor
 etc/permissions/com.fingerprints.extension.xml:vendor/etc/permissions/com.fingerprints.extension.xml
-product/lib/vendor.qti.hardware.fingerprint@1.0.so
-product/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib/fp_hal_extension.so
 vendor/lib/vendor.oneplus.fingerprint.extension@1.0.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
@@ -642,8 +638,6 @@ vendor/lib64/libgcs.so
 vendor/lib/libpn553_fw.so
 
 # NXP - ESE-Powermanager
-product/lib/vendor.qti.esepowermanager@1.0.so
-product/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
 vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
@@ -907,11 +901,9 @@ lib64/libqmi_cci_system.so
 lib64/libsdsprpc_system.so
 lib64/libsensor1.so
 lib64/libsensor_reg_system.so
-product/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/bin/sensors.qti
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
-vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml:product/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
 vendor/lib/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
