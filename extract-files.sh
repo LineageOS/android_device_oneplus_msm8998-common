@@ -69,6 +69,10 @@ function blob_fixup() {
         system_ext/etc/permissions/com.qti.dpmframework.xml | system_ext/etc/permissions/dpmapi.xml)
             sed -i "s|/product/framework/|/system_ext/framework/|g" "${2}"
             ;;
+        system_ext/lib64/lib-imsvideocodec.so)
+            "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
+            "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
+            ;;
         system_ext/lib64/libdpmframework.so )
             sed -i "s|libhidltransport.so|libcutils-v29.so\x00\x00\x00|" "${2}"
             ;;
