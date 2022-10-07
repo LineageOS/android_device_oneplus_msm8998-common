@@ -27,22 +27,22 @@ import android.os.IBinder;
 import android.os.UserHandle;
 import android.util.Log;
 
-import lineageos.providers.LineageSettings;
-
 public class PocketModeService extends Service {
 
     private static final String TAG = "PocketModeService";
     private static final boolean DEBUG = false;
 
     private ProximitySensor mProximitySensor;
-    private SettingsObserver mSettingsObserver;
 
     @Override
     public void onCreate() {
         if (DEBUG) Log.d(TAG, "Creating service");
         mProximitySensor = new ProximitySensor(this);
-        mSettingsObserver = new SettingsObserver(new Handler());
-        mSettingsObserver.register();
+
+        IntentFilter screenStateFilter = new IntentFilter();
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_ON);
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        registerReceiver(mScreenStateReceiver, screenStateFilter);
     }
 
     @Override
@@ -56,7 +56,6 @@ public class PocketModeService extends Service {
         if (DEBUG) Log.d(TAG, "Destroying service");
         this.unregisterReceiver(mScreenStateReceiver);
         mProximitySensor.disable();
-        mSettingsObserver.unregister();
         super.onDestroy();
     }
 
@@ -77,49 +76,4 @@ public class PocketModeService extends Service {
             }
         }
     };
-
-    private final class SettingsObserver extends ContentObserver {
-        private boolean mIsRegistered = false;
-
-        private SettingsObserver(Handler handler) {
-            super(handler);
-        }
-
-        public void register() {
-            getContentResolver().registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.PROXIMITY_ON_WAKE), false, this);
-
-            update();
-        }
-
-        public void unregister() {
-            getContentResolver().unregisterContentObserver(this);
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            update();
-        }
-
-        private void update() {
-            boolean defaultProximity = getResources().getBoolean(
-                    org.lineageos.platform.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
-            boolean proximityWakeCheckEnabled = LineageSettings.System.getIntForUser(
-                    getContentResolver(), LineageSettings.System.PROXIMITY_ON_WAKE, defaultProximity
-                    ? 1 : 0, UserHandle.USER_CURRENT) == 1;
-
-            if (proximityWakeCheckEnabled) {
-                IntentFilter screenStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-                screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
-                registerReceiver(mScreenStateReceiver, screenStateFilter);
-                mIsRegistered = true;
-            } else {
-                mProximitySensor.disable();
-                if (mIsRegistered) {
-                    unregisterReceiver(mScreenStateReceiver);
-                    mIsRegistered = false;
-                }
-            }
-        }
-    }
 }
