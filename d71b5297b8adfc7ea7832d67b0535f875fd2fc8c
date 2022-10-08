@@ -50,6 +50,23 @@
       "message": "Do you really need this? QCOM stopped using it long ago: https://git.codelinaro.org/clo/la/platform/vendor/qcom/falcon_64/-/commit/0ec78a50e7583738afca2cfeac2c12fc335be0e0",
       "revId": "d71b5297b8adfc7ea7832d67b0535f875fd2fc8c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5789241d_c687ecc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-08T15:05:15Z",
+      "side": 1,
+      "message": "trying to figure that out actually, first wanted to just remove the manifest entry, now investigating why it would be needed. documentation would be appreciated tho. same goes for other stuff like qseecomd / qseecom hidl and friends.",
+      "revId": "d71b5297b8adfc7ea7832d67b0535f875fd2fc8c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
