@@ -33,6 +33,23 @@
       "message": "i didnt remove them at all, they were removed in e8fcb8cbfaf3c901a8172c49091bcb926a03f350 together with lots of other stuff. i couldnt say why though. also, manifest entries hadn\u0027t been removed. come to think of it, should probably restore most of them.",
       "revId": "d71b5297b8adfc7ea7832d67b0535f875fd2fc8c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34f45a6_c23c2fdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2022-10-08T13:27:56Z",
+      "side": 1,
+      "message": "Do you really need this? QCOM stopped using it long ago: https://git.codelinaro.org/clo/la/platform/vendor/qcom/falcon_64/-/commit/0ec78a50e7583738afca2cfeac2c12fc335be0e0",
+      "revId": "d71b5297b8adfc7ea7832d67b0535f875fd2fc8c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
