@@ -16,6 +16,23 @@
       "message": "Why did you remove in the first place? And what was the side-effect?",
       "revId": "d71b5297b8adfc7ea7832d67b0535f875fd2fc8c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb040a82_6ede3770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-08T10:19:35Z",
+      "side": 1,
+      "message": "i didnt remove them at all, they were removed in e8fcb8cbfaf3c901a8172c49091bcb926a03f350 together with lots of other stuff. i couldnt say why though. also, manifest entries hadn\u0027t been removed. come to think of it, should probably restore most of them.",
+      "revId": "d71b5297b8adfc7ea7832d67b0535f875fd2fc8c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
