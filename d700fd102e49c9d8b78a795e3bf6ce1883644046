@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b564564e_cff04194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-10-09T14:02:58Z",
+      "side": 1,
+      "message": "Didn\u0027t you (or a tester) recently verify that this is not needed (Ic7e30656bc87f39295539bd5085fca66bd346a88)?",
+      "revId": "d700fd102e49c9d8b78a795e3bf6ce1883644046",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
