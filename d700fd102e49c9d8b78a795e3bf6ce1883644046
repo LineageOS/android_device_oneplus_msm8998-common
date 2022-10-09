@@ -16,6 +16,24 @@
       "message": "Didn\u0027t you (or a tester) recently verify that this is not needed (Ic7e30656bc87f39295539bd5085fca66bd346a88)?",
       "revId": "d700fd102e49c9d8b78a795e3bf6ce1883644046",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd67ebea_a7bd9aec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-09T14:22:41Z",
+      "side": 1,
+      "message": "no, you claimed that in de8849e242bf1b3ff53edb2f9529377a3cc5b902, but actually lib-imsvideocodec didnt load due to missing libgralloc \u0026 friends (see 340996) after you imported blobs from sld_sprout, as they landed in system_ext. in fact now i am thinking we move this stuff away from system_ext (as it was before), because the required libs are already in /system\ncurrently investigating that, -1 for now on this",
+      "parentUuid": "b564564e_cff04194",
+      "revId": "d700fd102e49c9d8b78a795e3bf6ce1883644046",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
