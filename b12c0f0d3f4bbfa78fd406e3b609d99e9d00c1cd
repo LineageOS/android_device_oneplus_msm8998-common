@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58da9fb_5de2f0f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-09T16:08:09Z",
+      "side": 1,
+      "message": "actually have another solution that doesnt require extra adjustments here, see 341015",
+      "revId": "b12c0f0d3f4bbfa78fd406e3b609d99e9d00c1cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
