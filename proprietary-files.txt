@@ -398,8 +398,11 @@ vendor/lib64/libdpmqmihal.so|30a170684219dd589d05ce5b446e73b7501f13e3
 
 # DRM
 vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
+vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
 vendor/bin/qseecomd
 vendor/etc/init/vendor.oneplus.hardware.drmkey@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc
+vendor/lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so
 vendor/lib64/libDrmKry.so
 vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
@@ -422,6 +425,7 @@ vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.oneplus.hardware.drmkey@1.0.so
+vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 
 # DRM (Widevine)
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine
