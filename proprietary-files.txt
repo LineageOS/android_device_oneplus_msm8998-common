@@ -550,6 +550,10 @@ vendor/lib64/hw/keystore.msm8998.so
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8998.so
 vendor/lib/libadpcmdec.so
+vendor/lib/libgcs-calwrapper.so
+vendor/lib/libgcs-ipc.so
+vendor/lib/libgcs-osal.so
+vendor/lib/libgcs.so
 vendor/lib/libmulawdec.so
 vendor/lib/libsmwrapper.so
 
@@ -592,17 +596,6 @@ vendor/lib64/libOmxQcelp13Dec.so
 vendor/lib64/libOmxVpp.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libgpustats.so
-
-# Misc
-vendor/etc/graphite_ipc_platform_info.xml
-vendor/lib/libgcs-calwrapper.so
-vendor/lib/libgcs-ipc.so
-vendor/lib/libgcs-osal.so
-vendor/lib/libgcs.so
-vendor/lib64/libgcs-calwrapper.so
-vendor/lib64/libgcs-ipc.so
-vendor/lib64/libgcs-osal.so
-vendor/lib64/libgcs.so
 
 # NFC
 vendor/lib/libpn553_fw.so
