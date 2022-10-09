@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd31d4bc_5eefc8f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-09T15:06:03Z",
+      "side": 1,
+      "message": "ok, trouble is: the lib-imsvideocodec.so we kanged wants to load libqdMetaData (as opposed to libqdMetaData.system.so), which would be in /vendor if we built it.\nthe one that\u0027s originally in /system/ext on sld_sprout also needs libgralloc.qti.so ... which is probably bad.",
+      "revId": "2f056610dc317f2e1cc7e6ea7c4d80322cb31f47",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
