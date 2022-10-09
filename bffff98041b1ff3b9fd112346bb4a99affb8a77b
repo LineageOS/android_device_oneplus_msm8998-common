@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d80413_79734edc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-09T14:23:21Z",
+      "side": 1,
+      "message": "now thinking we move the ril blobs out of system_ext, will investigate and check with other 8998 platforms",
+      "revId": "bffff98041b1ff3b9fd112346bb4a99affb8a77b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
