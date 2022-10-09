@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27eecf4_7729c434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-09T16:10:19Z",
+      "side": 1,
+      "message": "replacing libqdMetaData with libqdMetaData.system works, as we already build this one, so no additional libs required, and no need to kang lib-imsvideocodec from somewhere else",
+      "revId": "642ee0257003ebed62a77e25cfd73a4f8b563441",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
