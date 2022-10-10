@@ -77,8 +77,8 @@ bluetooth.profile.pan.panu.enabled=true
 bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.sap.server.enabled=true
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
+persist.vendor.qcom.bluetooth.soc=cherokee
 ro.vendor.bluetooth.wipower=false
-vendor.qcom.bluetooth.soc=cherokee
 
 # Camera
 vendor.camera.aux.packagelist=com.android.camera,com.oneplus.camera,org.codeaurora.snapcam
