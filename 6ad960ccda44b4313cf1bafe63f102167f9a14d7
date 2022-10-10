@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf2ea83_da9e01bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-10T10:11:56Z",
+      "side": 1,
+      "message": "argh. this needs to be pulled out of the chain, related to sepolicy denials",
+      "revId": "6ad960ccda44b4313cf1bafe63f102167f9a14d7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
