@@ -633,16 +633,13 @@ vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.color@1.2.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
-# PowerOffAlarm
-product/app/PowerOffAlarm/PowerOffAlarm.apk|177127967625fdc5320d40df734e97aac1391b9a
-product/framework/vendor.qti.hardware.alarm-V1.0-java.jar
-vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
-vendor/bin/power_off_alarm
-vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib/vendor.qti.hardware.alarm@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.alarm@1.0.so
+# PowerOffAlarm - from oneplus_sdm845-common / lineage-19.1 (021835890)
+product/app/PowerOffAlarm/PowerOffAlarm.apk|24ddc9e4a900b34ea376f1759ba85eb9da87a9b0
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|6f58edbe898a0582b02b688ec8a47a57a50707ec
+vendor/bin/power_off_alarm|21d09b2c83d227072e11e0f0a594baf2ecca9eed
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|0119fa4d87505bc5d9426ec8ffe56d9dd3bc9e4f
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so|c7c418cfc889a89ea4f21bf828f626c75a2017c3
 
 # QMI - from sld_sprout RKQ1.210607.001-00WW_3_490
 etc/permissions/qti_libpermissions.xml:system_ext/etc/permissions/qti_libpermissions.xml|593bcb72cce68ceb0a70f50bcae7d460114e7c62
