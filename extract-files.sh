@@ -64,8 +64,12 @@ function blob_fixup() {
             sed -i "s|/system/framework/|/system/product/framework/|g" "${2}"
             ;;
         system_ext/lib64/lib-imsvideocodec.so)
-            "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
-            "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
+            for LIBGUI_SHIM in $(grep -L "libgui_shim.so" "${2}"); do
+                "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
+            done
+            for LIBQDMETA_REPLACE in $(grep -L "libqdMetaData.system.so" "${2}"); do
+                "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
+            done
             ;;
         vendor/etc/permissions/com.fingerprints.extension.xml )
             sed -i "s|/system/framework/|/vendor/framework/|g" "${2}"
