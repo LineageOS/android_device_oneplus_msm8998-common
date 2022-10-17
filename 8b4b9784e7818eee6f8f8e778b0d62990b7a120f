@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ccf4f8_132db344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-17T18:15:45Z",
+      "side": 1,
+      "message": "this may be cleaner to add to manifest though, not sure. opinions?",
+      "revId": "8b4b9784e7818eee6f8f8e778b0d62990b7a120f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
