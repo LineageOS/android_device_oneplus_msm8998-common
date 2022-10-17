@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcf3498_1b5d44eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-17T20:40:18Z",
+      "side": 1,
+      "message": "confirmed to fix gnss lock (tested glonass, galileo, gps). without this, only gps would actually lock.",
+      "revId": "53be5f96015d6ee8952bbdba9de8df1c406baa92",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
