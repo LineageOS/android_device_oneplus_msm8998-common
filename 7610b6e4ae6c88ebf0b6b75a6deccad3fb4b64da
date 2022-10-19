@@ -16,6 +16,24 @@
       "message": "looks started to me:\n\n\nlshal | grep imscm\nDM    Y com.qualcomm.qti.imscmservice@2.0::IImsCmService/qti.ims.connectionmanagerservice         0/1        1193   697\nDM    Y com.qualcomm.qti.imscmservice@2.1::IImsCmService/qti.ims.connectionmanagerservice         0/1        1193   697\nDM    Y com.qualcomm.qti.imscmservice@2.2::IImsCmService/qti.ims.connectionmanagerservice         0/1        1193   697",
       "revId": "7610b6e4ae6c88ebf0b6b75a6deccad3fb4b64da",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0cd5b47_0fe5c16d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-10-19T17:20:23Z",
+      "side": 1,
+      "message": "What about UCE? I have this spam:\n\n  W libc    : Unable to set property \"ctl.interface_start\" to \"com.qualcomm.qti.uceservice@2.3::IUceService/com.qualcomm.qti.uceservice\": error code: 0x20",
+      "parentUuid": "3101d40e_4f80728f",
+      "revId": "7610b6e4ae6c88ebf0b6b75a6deccad3fb4b64da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
