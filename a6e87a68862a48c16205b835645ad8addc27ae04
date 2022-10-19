@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c368ab0_57d5d523",
+        "filename": "extract-files.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-10-19T15:45:30Z",
+      "side": 1,
+      "message": "You don\u0027t need it here. Only when using --add-needed.",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 138
+      },
+      "revId": "a6e87a68862a48c16205b835645ad8addc27ae04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
