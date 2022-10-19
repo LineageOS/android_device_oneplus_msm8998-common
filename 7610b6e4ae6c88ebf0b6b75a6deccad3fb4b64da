@@ -52,6 +52,23 @@
       "parentUuid": "e0cd5b47_0fe5c16d",
       "revId": "7610b6e4ae6c88ebf0b6b75a6deccad3fb4b64da",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d70e76_831bdf93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-10-19T21:16:45Z",
+      "side": 1,
+      "message": "uce is started for me as well. getting some poweroffalarm deja vu right now...:\n\nOnePlus5T:/ # lshal | grep uce\nX     Y android.hidl.base@1.0::IBase/com.qualcomm.qti.uceservice                                  0/1        1193   2895 697\nDM    Y com.qualcomm.qti.uceservice@2.0::IUceService/com.qualcomm.qti.uceservice                  0/1        1193   2895 697\nDM    Y com.qualcomm.qti.uceservice@2.1::IUceService/com.qualcomm.qti.uceservice                  0/1        1193   2895 697\nDM    Y com.qualcomm.qti.uceservice@2.2::IUceService/com.qualcomm.qti.uceservice                  0/1        1193   2895 697\nDM    Y com.qualcomm.qti.uceservice@2.3::IUceService/com.qualcomm.qti.uceservice                  0/1        1193   2895 697",
+      "revId": "7610b6e4ae6c88ebf0b6b75a6deccad3fb4b64da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
