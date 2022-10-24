@@ -589,10 +589,3 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
     socket thermal-send-rule stream 0660 system system
     group root
     writepid /dev/cpuset/system-background/tasks
-
-service vendor.time_daemon /vendor/bin/time_daemon
-    class main
-    user system
-    group system
-    capabilities SYS_TIME
-    writepid /dev/cpuset/system-background/tasks
