@@ -227,9 +227,6 @@ on post-fs-data
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
-    # create netmgr log dir
-    mkdir /data/vendor/netmgr 0770 radio radio
-
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
 
@@ -307,14 +304,6 @@ on boot
     mkdir /dev/socket/qmux_audio 2770 media audio
     mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
     mkdir /dev/socket/qmux_gps 2770 gps gps
-
-    # Create NETMGR daemon socket area
-    mkdir /dev/socket/netmgr 0750 radio radio
-
-    # Assign TCP buffer thresholds to be ceiling value of technology maximums
-    # Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max  16777216
-    write /proc/sys/net/core/wmem_max  8388608
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
@@ -498,10 +487,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.netmgrd /vendor/bin/netmgrd
-    class main
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.pd_mapper /vendor/bin/pd-mapper
      class core
 
@@ -562,22 +547,10 @@ service vendor.qseecomd /vendor/bin/qseecomd
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.rmt_storage /vendor/bin/rmt_storage
-    class core
-    user root
-    shutdown critical
-    ioprio rt 0
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
     user system
     group system
-    writepid /dev/cpuset/system-background/tasks
-
-service vendor.tftp_server /vendor/bin/tftp_server
-    class core
-    user root
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.thermal-engine /vendor/bin/thermal-engine
@@ -588,11 +561,4 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
     socket thermal-recv-passive-client stream 0666 system system
     socket thermal-send-rule stream 0660 system system
     group root
-    writepid /dev/cpuset/system-background/tasks
-
-service vendor.time_daemon /vendor/bin/time_daemon
-    class main
-    user system
-    group system
-    capabilities SYS_TIME
     writepid /dev/cpuset/system-background/tasks

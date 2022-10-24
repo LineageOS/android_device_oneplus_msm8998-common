@@ -720,7 +720,10 @@ vendor/bin/rmt_storage|5ee4fca4b5d914e28d0f3ce6a0df273fa14227e0
 vendor/bin/tftp_server|1d9d9378b18d24d966d281fdad54678ea38c524c
 vendor/etc/data/dsi_config.xml|6b7260635ce43e26f2abce9d14a060ebafae1813
 vendor/etc/data/netmgr_config.xml|2df0b0bfb4a90b77cf83339332a04a0e41ed8fba
+vendor/etc/init/netmgr.rc|5c592bd2cf775462e147d3def97e99abbac4631e
 vendor/etc/init/qcrild.rc|17cf4934bf443cf6469d8b3ff622eeb0e4a0aac6
+vendor/etc/init/vendor.qti.rmt_storage.rc|bc212c6353c2ded44ae4d759605fbbe55aa4fa3f
+vendor/etc/init/vendor.qti.tftp.rc|b27f188cbffba470a4510d50e46ff7c8446c22cb
 vendor/etc/seccomp_policy/atfwd@2.0.policy|74fdb7d47bdb6d0cb06b13701a96a76c9171ab5d
 -vendor/lib/libqsocket.so|50079ff493b17465ff8f44d8210d26e3c7279065
 vendor/lib64/libconfigdb.so|384a92f75e1de720214ab1ba0c021f5fac7c81ac
@@ -905,6 +908,7 @@ vendor/lib64/libthermalioctl.so
 # Time services
 vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
+vendor/etc/init/init.time_daemon.rc
 -vendor/lib64/libtime_genoff.so
 
 # Touch panel
