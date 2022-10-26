@@ -2,12 +2,6 @@
 # OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2010292059, unless pinned
 
 # ADSP / CDSP / MDSP / SDSP
-lib/libadsprpc_system.so
-lib/libcdsprpc_system.so
-lib/libmdsprpc_system.so
-lib64/libadsprpc_system.so
-lib64/libcdsprpc_system.so
-lib64/libmdsprpc_system.so
 vendor/bin/adsprpcd
 vendor/bin/cdsprpcd
 vendor/etc/dirac/interfacedb
