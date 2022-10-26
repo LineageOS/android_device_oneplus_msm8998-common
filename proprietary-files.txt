@@ -61,6 +61,7 @@ vendor/lib64/vendor.oneplus.hardware.ifaa@2.0.so
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so|87dc1a131534659173e71e108e7a3ffe6325845f
 
 # Audio
+vendor/lib/soundfx/libasphere.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -71,20 +72,6 @@ vendor/lib/libaudioalsa.so
 vendor/lib/libaudioparsers.so
 vendor/lib/libdrc.so
 vendor/lib/libqtigef.so
-vendor/lib64/libacdb-fts.so
-vendor/lib64/libacdbloader.so
-vendor/lib64/libacdbrtac.so
-vendor/lib64/libadiertac.so
-vendor/lib64/libaudcal.so
-vendor/lib64/libaudioalsa.so
-vendor/lib64/libaudioparsers.so
-vendor/lib64/libqtigef.so
-
-# Audio FX modules
-etc/permissions/audiosphere.xml
-framework/audiosphere.jar
-vendor/lib/soundfx/libasphere.so
-vendor/lib64/soundfx/libasphere.so
 
 # Bluetooth - from sld_sprout RKQ1.210607.001-00WW_3_490
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|07d96d0d3c4a500b14ea3c97e02b9eb5ee2bbc4d
