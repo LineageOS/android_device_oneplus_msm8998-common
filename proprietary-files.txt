@@ -907,9 +907,6 @@ vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
 -vendor/lib64/libtime_genoff.so
 
-# Touch panel
-etc/firmware/tp/fw_synaptics_17801.img
-
 # Trusted Execution Environment connector
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
