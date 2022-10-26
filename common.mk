@@ -288,13 +288,9 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service \
+    android.hardware.secure_element@1.2.vendor \
     com.android.nfc_extras \
-    NfcNci \
-    SecureElement \
     Tag
-
-PRODUCT_PACKAGES += \
-    libchrome.vendor \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
@@ -357,7 +353,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.2.vendor \
     librmnetctl \
     libxml2 \
     libprotobuf-cpp-full
