@@ -418,6 +418,12 @@ vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
 vendor/lib/libcppf.so
 vendor/lib64/libwvhidl.so
 
+# ESE Powermanager
+vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
+vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
+vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
+vendor/lib64/vendor.qti.esepowermanager@1.0.so
+
 # Fingerprint sensor
 etc/permissions/com.fingerprints.extension.xml:vendor/etc/permissions/com.fingerprints.extension.xml
 vendor/lib/fp_hal_extension.so
@@ -597,18 +603,6 @@ vendor/lib64/libgpustats.so
 
 # NFC
 vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
-
-# NXP - ESE-Powermanager
-vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
-vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
-vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib/vendor.qti.esepowermanager@1.0.so
-vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib64/ese_client.so
-vendor/lib64/ese_spi_nxp.so
-vendor/lib64/ls_client.so
-vendor/lib64/vendor.nxp.eventprocessor@1.0.so
-vendor/lib64/vendor.qti.esepowermanager@1.0.so
 
 # Perf
 vendor/bin/energy-awareness
