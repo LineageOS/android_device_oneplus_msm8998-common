@@ -1,3 +1,5 @@
+vendor.nxp.nxpnfc::INxpNfc                                u:object_r:hal_nfc_hwservice:s0
+
 vendor.oneplus.fingerprint.extension::IVendorFingerprintExtensions u:object_r:hal_fingerprint_hwservice:s0
 
 vendor.oneplus.camera.CameraHIDL::IOnePlusCameraProvider  u:object_r:hal_cameraHIDL_hwservice:s0
