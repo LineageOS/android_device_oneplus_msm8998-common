@@ -76,5 +76,7 @@
         <item>com.android.camera</item>
         <item>com.oneplus.camera</item>
         <item>org.codeaurora.snapcam</item>
+        <item>org.lineageos.aperture</item>
+        <item>org.lineageos.aperture.dev</item>
     </string-array>
 </resources>
