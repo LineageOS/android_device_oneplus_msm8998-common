@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deedc65f_e66eb8fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 15609
+      },
+      "writtenOn": "2022-11-14T18:03:29Z",
+      "side": 1,
+      "message": "Looks good to me. My tests with Aperture:\n- before the commit, only primary back camera was used and only primary back camera could be selected. Verified this covering the secondary back camera and observing that video and photo were takes at any zoom with the primary back camera.\n- After the commit, a new button \u00271.3x\u0027 appears on Aperture and the secondary back camera can be selected and used (pressing on this button).",
+      "revId": "cc493f13180df1f4f7379eb3e09b0a801fcf9f1a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
