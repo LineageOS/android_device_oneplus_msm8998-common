@@ -16,6 +16,24 @@
       "message": "what\u0027s that for?",
       "revId": "4bae3376559afb8a1242e69b6a8897680fcab835",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e53667_90fb074d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-11-14T08:06:45Z",
+      "side": 1,
+      "message": "W fingerprintd: type\u003d1400 audit(0.0:190): avc: denied { read } for name\u003d\"u:object_r:default_prop:s0\" dev\u003d\"tmpfs\" ino\u003d10415 scontext\u003du:r:hal_fingerprint_default:s0 tcontext\u003du:object_r:default_prop:s0 tclass\u003dfile permissive\u003d0\n...\nW libc    : Access denied finding property \"fpc_kpi\"",
+      "parentUuid": "208134b6_6323edd7",
+      "revId": "4bae3376559afb8a1242e69b6a8897680fcab835",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
