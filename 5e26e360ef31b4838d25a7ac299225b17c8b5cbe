@@ -51,6 +51,40 @@
       "message": "repopick -t op8998-sepodecom\n\nshould resolve the whole thing",
       "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724ee2d6_dc032e34",
+        "filename": "sepolicy/vendor/hal_fingerprint_default.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2022-11-17T12:05:53Z",
+      "side": 1,
+      "message": "no need for `;` here.",
+      "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326744eb_5c14548a",
+        "filename": "sepolicy/vendor/property_contexts",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2022-11-17T12:05:53Z",
+      "side": 1,
+      "message": "no dot?",
+      "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
