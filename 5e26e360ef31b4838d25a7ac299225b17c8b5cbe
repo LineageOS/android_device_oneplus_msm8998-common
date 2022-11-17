@@ -34,6 +34,23 @@
       "parentUuid": "e58e8fe8_979ade36",
       "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9707cb_5a2d3e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2022-11-17T12:03:13Z",
+      "side": 1,
+      "message": "repopick -t op8998-sepodecom\n\nshould resolve the whole thing",
+      "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
