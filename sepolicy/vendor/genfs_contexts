@@ -6,7 +6,7 @@ genfscon proc /touchpanel              u:object_r:proc_touchpanel:s0
 genfscon proc /tri-state-key           u:object_r:proc_touchpanel:s0
 genfscon proc /sys/kernel/boot_reason  u:object_r:proc_alarm_boot:s0
 
-genfscon sysfs /devices/soc/soc:fingerprint_detect/sensor_version    u:object_r:sysfs_fpc:s0
+genfscon sysfs /devices/soc/soc:fingerprint_detect/sensor_version    u:object_r:sysfs_fp_detect:s0
 genfscon sysfs /devices/virtual/graphics/fb0                         u:object_r:sysfs_graphics:s0
 
 # LiveDisplay
