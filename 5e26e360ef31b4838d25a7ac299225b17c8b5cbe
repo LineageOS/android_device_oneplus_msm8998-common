@@ -70,6 +70,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "726ffb2c_b15d53b0",
+        "filename": "sepolicy/vendor/hal_fingerprint_default.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-11-17T16:39:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "724ee2d6_dc032e34",
+      "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "326744eb_5c14548a",
@@ -83,6 +101,24 @@
       "writtenOn": "2022-11-17T12:05:53Z",
       "side": 1,
       "message": "no dot?",
+      "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2af16b_6ade2882",
+        "filename": "sepolicy/vendor/property_contexts",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-11-17T16:39:25Z",
+      "side": 1,
+      "message": "No.",
+      "parentUuid": "326744eb_5c14548a",
       "revId": "5e26e360ef31b4838d25a7ac299225b17c8b5cbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
