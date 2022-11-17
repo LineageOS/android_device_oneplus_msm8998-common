@@ -14,7 +14,6 @@
 /dev/param                                                      u:object_r:param_device:s0
 
 # Fingerprint
-/sys/devices/soc/soc:fingerprint_detect/sensor_version          u:object_r:sysfs_fpc:s0
 /data/system/users/0/fpdata(/.*)?                               u:object_r:fingerprintd_data_file:s0
 
 # HALs
