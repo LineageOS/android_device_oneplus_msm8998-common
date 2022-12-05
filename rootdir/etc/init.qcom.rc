@@ -328,9 +328,6 @@ on boot
     # Set TCP MTU probing to automatic
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
-    # Wifi firmware reload path
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
-
     start vendor.qcrild
     start vendor.qcrild2
 
