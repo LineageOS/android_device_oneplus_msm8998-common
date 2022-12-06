@@ -14,4 +14,4 @@ r_dir_file(wifi-mac-generator, oem_nv_data_file)
 
 # Allow wifi-mac-generator to read and write to mnt_vendor_file
 allow wifi-mac-generator mnt_vendor_file:dir search;
-allow wifi-mac-generator mnt_vendor_file:file rw_file_perms;
+allow wifi-mac-generator mnt_vendor_file:file w_file_perms;
