@@ -154,10 +154,6 @@ on fs
 
     restorecon_recursive /mnt/vendor/persist
 
-    # create a empty file for wifi hal to write mac address
-    write /mnt/vendor/persist/wlan_mac.bin ""
-    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
-
     mkdir /mnt/vendor/persist/alarm 0777 system system
     chmod 0666 /mnt/vendor/persist/alarm/data
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
@@ -214,9 +210,6 @@ on late-fs
 on post-fs-data
     # Nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
-
-    # Radio
-    mkdir /data/vendor/oemnvitems 0771 radio radio
 
     # Bluetooth
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
