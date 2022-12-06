@@ -42,8 +42,3 @@
 
 # Root symlink
 /persist                                                        u:object_r:mnt_vendor_file:s0
-
-# Wifi
-/data/vendor/oemnvitems/4678_0                                  u:object_r:oem_nv_data_file:s0
-/data/vendor/oemnvitems/4678_1                                  u:object_r:oem_nv_data_file:s0
-/(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi-mac-generator_exec:s0
