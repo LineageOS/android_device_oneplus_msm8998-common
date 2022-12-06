@@ -3,9 +3,6 @@
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_stanvbk       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/config            u:object_r:frp_block_device:s0
 
-# Bluetooth
-/data/vendor/oemnvitems/447                                     u:object_r:oem_nv_bt_data_file:s0
-
 # DASH
 /vendor/bin/dashd                                               u:object_r:dashd_exec:s0
 
@@ -44,6 +41,4 @@
 /persist                                                        u:object_r:mnt_vendor_file:s0
 
 # Wifi
-/data/vendor/oemnvitems/4678_0                                  u:object_r:oem_nv_data_file:s0
-/data/vendor/oemnvitems/4678_1                                  u:object_r:oem_nv_data_file:s0
 /(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi-mac-generator_exec:s0
