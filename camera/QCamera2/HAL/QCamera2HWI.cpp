@@ -49,6 +49,8 @@
 #include "QCameraTrace.h"
 #include "QCameraDisplay.h"
 
+#include "Additions.h"
+
 extern "C" {
 #include "mm_camera_dbg.h"
 }

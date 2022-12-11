@@ -42,6 +42,8 @@
 #include "QCamera2HWI.h"
 #include "QCamera3HWI.h"
 
+#include "Additions.h"
+
 extern "C" {
 #include "mm_camera_dbg.h"
 }

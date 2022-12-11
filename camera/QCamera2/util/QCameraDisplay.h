@@ -38,7 +38,6 @@
 #include <android/frameworks/displayservice/1.0/IEventCallback.h>
 #include <android/frameworks/displayservice/1.0/IDisplayEventReceiver.h>
 #include <android/hidl/manager/1.0/IServiceNotification.h>
-#include <android/looper.h>
 #include <utils/Looper.h>
 
 using ::android::frameworks::displayservice::V1_0::IDisplayEventReceiver;
