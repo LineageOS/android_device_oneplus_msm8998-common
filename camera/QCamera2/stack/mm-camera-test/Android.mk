@@ -2,7 +2,6 @@ OLD_LOCAL_PATH := $(LOCAL_PATH)
 LOCAL_PATH:=$(call my-dir)
 
 # Build command line test app: mm-qcamera-app
-include $(LOCAL_PATH)/../../../common.mk
 include $(CLEAR_VARS)
 
 LOCAL_HEADER_LIBRARIES := libutils_headers
