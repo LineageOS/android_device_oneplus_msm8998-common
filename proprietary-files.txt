@@ -751,12 +751,6 @@ vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql|fcb2cba3bfd71
 vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql|0fdf4b6ccb48906b37885e060429f79c9fd6bdbf
 vendor/radio/qcril_database/qcril.db|86286c24a227cb968dac1f7ccfe0ad26fe4fd462
 
-# Radio - factory
-vendor/bin/hw/vendor.oneplus.hardware.param@1.0-service
-vendor/etc/init/vendor.oneplus.hardware.param@1.0-service.rc
-vendor/lib/vendor.oneplus.hardware.param@1.0.so
-vendor/lib64/vendor.oneplus.hardware.param@1.0.so
-
 # Radio - IMS - from sld_sprout RKQ1.210607.001-00WW_3_490
 system_ext/app/imssettings/imssettings.apk|516d8be0f869e1733d0287722897420c57c73be5
 system_ext/app/uceShimService/uceShimService.apk|cdffe76fca53131f68eb996005a35304b924206e
