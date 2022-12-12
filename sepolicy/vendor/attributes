@@ -6,7 +6,3 @@ attribute hal_cameraHIDL_server;
 attribute hal_ifaa;
 attribute hal_ifaa_client;
 attribute hal_ifaa_server;
-
-attribute hal_param;
-attribute hal_param_client;
-attribute hal_param_server;
