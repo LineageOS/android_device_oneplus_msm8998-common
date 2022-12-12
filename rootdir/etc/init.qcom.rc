@@ -187,7 +187,6 @@ on fs
 
 on post-fs
     chown system system /proc/ship_mode
-    chown system system /dev/param
 
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true

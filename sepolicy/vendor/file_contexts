@@ -11,7 +11,6 @@
 
 # Devices
 /dev/dash                                                       u:object_r:dash_device:s0
-/dev/param                                                      u:object_r:param_device:s0
 
 # Fingerprint
 /data/system/users/0/fpdata(/.*)?                               u:object_r:fingerprintd_data_file:s0
@@ -24,7 +23,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.camera\.CameraHIDL@1\.0-service                  u:object_r:hal_cameraHIDL_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.drmkey@1\.0-service                    u:object_r:hal_drm_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.ifaa@2\.0-service                      u:object_r:hal_ifaa_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.hardware\.param@1\.0-service                     u:object_r:hal_param_default_exec:s0
 
 # Init
 /(vendor|system/vendor)/bin/init\.devstart\.sh                  u:object_r:init-devstart-sh_exec:s0
