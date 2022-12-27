@@ -138,6 +138,10 @@ PRODUCT_PUBLIC_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/public
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 TARGET_COPY_OUT_VENDOR := vendor
 
+# Verity
+# Only needed for signing
+BOARD_AVB_ENABLE := false
+
 # VNDK
 BOARD_VNDK_VERSION := current
 
