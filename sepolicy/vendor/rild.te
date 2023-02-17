@@ -1,5 +1,1 @@
-allow rild oem_nv_data_file:file w_file_perms;
-allow rild oem_nv_bt_data_file:file w_file_perms;
-allow rild vendor_data_file:file w_file_perms;
-
 binder_call(rild, qtidataservices_app)
