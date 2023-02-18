@@ -85,9 +85,10 @@ void Light::setRgbLight(const LightState& state, size_t index) {
     }
 
     std::map<std::string, int> colorValues;
-    colorValues["red"] = (stateToUse.color >> 16) & 0xff;
-    colorValues["green"] = ((stateToUse.color >> 8) & 0xff);
-    colorValues["blue"] = (stateToUse.color & 0xff);
+    int brightness = (stateToUse.color >> 24) & 0xff;
+    colorValues["red"] = ((stateToUse.color >> 16) & 0xff) * brightness / 0xff;
+    colorValues["green"] = ((stateToUse.color >> 8) & 0xff) * brightness / 0xff;
+    colorValues["blue"] = (stateToUse.color & 0xff) * brightness / 0xff;
 
     int onMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOnMs : 0;
     int offMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOffMs : 0;
