@@ -440,10 +440,10 @@ service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.dashd /vendor/bin/dashd
-     class core
-     critical
-     group root system
-     writepid /dev/cpuset/system-background/tasks
+    class core
+    critical
+    group root system
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
@@ -471,7 +471,7 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
-     class core
+    class core
 
 service vendor.per_mgr /vendor/bin/pm-service
     class core
