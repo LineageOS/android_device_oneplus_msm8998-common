@@ -34,6 +34,23 @@
       "parentUuid": "4068eca5_51177420",
       "revId": "15a5efbaf036b46c3d81f409a7b9ca892c4a6251",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd0fb11_3af6ec40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-04-12T19:05:17Z",
+      "side": 1,
+      "message": "This commit is confusing, you say it\u0027s supported yet you remove the flag instead of switching to true?",
+      "revId": "15a5efbaf036b46c3d81f409a7b9ca892c4a6251",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
