@@ -43,7 +43,7 @@ class DisplayModes : public IDisplayModes {
         std::string name;
         std::string node;
     };
-    static const std::map<int32_t, ModeInfo> kModeMap;
+    static const std::map<int32_t, std::string> kModeMap;
     std::shared_ptr<V2_0::sdm::SDMController> mController;
     int32_t mCurrentModeId;
     int32_t mDefaultModeId;
