@@ -12,6 +12,7 @@ cc_binary {
     srcs: [
         ":vendor.lineage.livedisplay@2.0-sdm-pa",
         ":vendor.lineage.livedisplay@2.0-sdm-utils",
+        ":vendor.lineage.livedisplay@2.0-sysfs-sre",
         "DisplayModes.cpp",
         "service.cpp",
     ],
@@ -24,6 +25,7 @@ cc_binary {
     ],
     header_libs: [
         "vendor.lineage.livedisplay@2.0-sdm-headers",
+        "vendor.lineage.livedisplay@2.0-sysfs-headers",
     ],
     proprietary: true,
 }
