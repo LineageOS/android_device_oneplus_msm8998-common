@@ -1,5 +1,7 @@
 on init
+    chown system graphics /sys/devices/virtual/graphics/fb0/hbm
     chown system graphics /sys/devices/virtual/graphics/fb0/preset
+    chmod 0660 /sys/devices/virtual/graphics/fb0/hbm
     chmod 0660 /sys/devices/virtual/graphics/fb0/preset
 
 on post-fs-data
