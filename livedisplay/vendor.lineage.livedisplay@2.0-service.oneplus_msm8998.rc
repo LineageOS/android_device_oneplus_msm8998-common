@@ -1,12 +1,6 @@
 on init
-    chown system graphics /sys/devices/virtual/graphics/fb0/adaption_mode
-    chown system graphics /sys/devices/virtual/graphics/fb0/dci_p3
-    chown system graphics /sys/devices/virtual/graphics/fb0/oneplus_mode
-    chown system graphics /sys/devices/virtual/graphics/fb0/srgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/adaption_mode
-    chmod 0660 /sys/devices/virtual/graphics/fb0/dci_p3
-    chmod 0660 /sys/devices/virtual/graphics/fb0/oneplus_mode
-    chmod 0660 /sys/devices/virtual/graphics/fb0/srgb
+    chown system graphics /sys/devices/virtual/graphics/fb0/preset
+    chmod 0660 /sys/devices/virtual/graphics/fb0/preset
 
 on post-fs-data
     mkdir /data/vendor/display/ 0770 system graphics
