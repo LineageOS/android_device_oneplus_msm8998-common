@@ -17,15 +17,15 @@ namespace livedisplay {
 namespace V2_0 {
 namespace implementation {
 
-static const std::string kModeBasePath = "/sys/devices/virtual/graphics/fb0/";
+static const std::string kModeBasePath = "/sys/devices/virtual/graphics/fb0/preset";
 static const std::string kDefaultPath = "/data/vendor/display/default_display_mode";
 
-const std::map<int32_t, DisplayModes::ModeInfo> DisplayModes::kModeMap = {
-    {0, {"Standard", "default"}},
-    {1, {"Adaptive", "adaption_mode"}},
-    {2, {"DCI-P3", "dci_p3"}},
-    {3, {"OnePlus", "oneplus_mode"}},
-    {4, {"sRGB", "srgb"}},
+const std::map<int32_t, std::string> DisplayModes::kModeMap = {
+    {0, "Standard"},
+    {1, "sRGB"},
+    {2, "DCI-P3"},
+    {3, "OnePlus"},
+    {4, "Adaptive"},
 };
 
 DisplayModes::DisplayModes()
@@ -43,19 +43,19 @@ Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
     std::vector<V2_0::DisplayMode> modes;
 
     for (const auto& entry : kModeMap) {
-        modes.push_back({entry.first, entry.second.name});
+        modes.push_back({entry.first, entry.second});
     }
     resultCb(modes);
     return Void();
 }
 
 Return<void> DisplayModes::getCurrentDisplayMode(getCurrentDisplayMode_cb resultCb) {
-    resultCb({mCurrentModeId, kModeMap.at(mCurrentModeId).name});
+    resultCb({mCurrentModeId, kModeMap.at(mCurrentModeId)});
     return Void();
 }
 
 Return<void> DisplayModes::getDefaultDisplayMode(getDefaultDisplayMode_cb resultCb) {
-    resultCb({mDefaultModeId, kModeMap.at(mDefaultModeId).name});
+    resultCb({mDefaultModeId, kModeMap.at(mDefaultModeId)});
     return Void();
 }
 
@@ -64,20 +64,10 @@ Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
     if (iter == kModeMap.end()) {
         return false;
     }
-    for (const auto& entry : kModeMap) {
-        if (entry.first == 0) {
-            continue;
-        }
-        std::ofstream file(kModeBasePath + entry.second.node);
-        file << 0;
-        if (file.fail()) {
-            LOG(ERROR) << "Failed to write to " << (kModeBasePath +  entry.second.node);
-        }
-    }
-    std::ofstream file(kModeBasePath + iter->second.node);
-    file << 1;
+    std::ofstream file(kModeBasePath);
+    file << modeID;
     if (file.fail()) {
-        LOG(ERROR) << "Failed to write to " << (kModeBasePath +  iter->second.node);
+        LOG(ERROR) << "Failed to write to " << (kModeBasePath);
     }
     mCurrentModeId = iter->first;
     if (makeDefault) {
