@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354e0ad9_ba1bf289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2023-05-05T13:08:50Z",
+      "side": 1,
+      "message": "Isn\u0027t auto brightness values handled by the other arrays (config_autoBrightnessLevels)?",
+      "revId": "4c305e8673bb1b6f48293417a9e786418d98cf37",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }
