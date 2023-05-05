@@ -29,8 +29,8 @@ const std::map<int32_t, DisplayModes::ModeInfo> DisplayModes::kModeMap = {
     {4, {"sRGB", "srgb"}},
 };
 
-DisplayModes::DisplayModes(std::shared_ptr<V2_0::sdm::SDMController> controller)
-    : mController(std::move(controller)), mCurrentModeId(0), mDefaultModeId(0) {
+DisplayModes::DisplayModes()
+    : mCurrentModeId(0), mDefaultModeId(0) {
     std::ifstream defaultFile(kDefaultPath);
 
     defaultFile >> mDefaultModeId;
@@ -80,13 +80,11 @@ Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
     if (file.fail()) {
         LOG(ERROR) << "Failed to write to " << (kModeBasePath +  iter->second.node);
     }
-    mController->setActiveDisplayMode(iter->first);
     mCurrentModeId = iter->first;
     if (makeDefault) {
         std::ofstream defaultFile(kDefaultPath);
         defaultFile << iter->first;
         if (!defaultFile.fail()) {
-            mController->setDefaultDisplayMode(iter->first);
             mDefaultModeId = iter->first;
         }
     }
