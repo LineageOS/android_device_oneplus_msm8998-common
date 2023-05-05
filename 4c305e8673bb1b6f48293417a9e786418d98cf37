@@ -16,6 +16,23 @@
       "message": "Isn\u0027t auto brightness values handled by the other arrays (config_autoBrightnessLevels)?",
       "revId": "4c305e8673bb1b6f48293417a9e786418d98cf37",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49713dc_7fcac769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-05-05T14:26:03Z",
+      "side": 1,
+      "message": "autobrightness is, but with the previous minimum of 1 you could manually pull the slider all the way to the left... and that would result in what i described in the commit msg. switching on extra dim mode has almost the same effect without the discoloration, though... and night mode is coming with the kernel update",
+      "revId": "4c305e8673bb1b6f48293417a9e786418d98cf37",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
