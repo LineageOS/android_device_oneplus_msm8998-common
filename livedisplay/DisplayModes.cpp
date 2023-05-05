@@ -18,6 +18,7 @@ namespace V2_0 {
 namespace implementation {
 
 static const std::string kModeBasePath = "/sys/devices/virtual/graphics/fb0/preset";
+static const std::string kAvailableModesPath = "/sys/devices/virtual/graphics/fb0/num_presets";
 static const std::string kDefaultPath = "/data/vendor/display/default_display_mode";
 
 const std::map<int32_t, std::string> DisplayModes::kModeMap = {
@@ -41,9 +42,19 @@ DisplayModes::DisplayModes()
 // Methods from ::vendor::lineage::livedisplay::V2_0::IDisplayModes follow.
 Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
     std::vector<V2_0::DisplayMode> modes;
+    std::ifstream numFile(kAvailableModesPath);
+    int32_t maxModeCount;
 
-    for (const auto& entry : kModeMap) {
-        modes.push_back({entry.first, entry.second});
+    numFile >> maxModeCount;
+    if (numFile.fail()) {
+        LOG(ERROR) << "Failed to read available display modes " << numFile.fail();
+    }
+    if (maxModeCount > 0) {
+        for (const auto& entry : kModeMap) {
+            modes.push_back({entry.first, entry.second});
+            if (entry.first == maxModeCount - 1)
+                break;
+        }
     }
     resultCb(modes);
     return Void();
