@@ -22,6 +22,30 @@
       },
       "revId": "6768cb4a45039527bbcdd8afefd7dab68eba86da",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caec88bf_827cf158",
+        "filename": "livedisplay/DisplayModes.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-05-06T13:34:07Z",
+      "side": 0,
+      "message": "i\u0027d like to, but:\na) it didnt really work in the way we had it implemented, so at least its not getting worse\nb) the way to do this with the new implementation is going to be by switching off the previous mode via our hal, so we will need to be a bit more clever about it and define presets for switching off each mode... and that will be in a new patch",
+      "parentUuid": "790f4593_37c2feaa",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "6768cb4a45039527bbcdd8afefd7dab68eba86da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
