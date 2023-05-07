@@ -70,6 +70,30 @@
       },
       "revId": "6768cb4a45039527bbcdd8afefd7dab68eba86da",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "655e6a84_58fb0012",
+        "filename": "livedisplay/DisplayModes.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2023-05-07T08:54:14Z",
+      "side": 0,
+      "message": "Ok. It did work though (at least there was a \"normal\" mode), not sure what you mean by that it\u0027s not getting any worse.\nBut do not merge until that is done, please.",
+      "parentUuid": "d44bb563_f96ec154",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "6768cb4a45039527bbcdd8afefd7dab68eba86da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
