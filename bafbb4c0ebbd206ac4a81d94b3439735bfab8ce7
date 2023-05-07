@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a87b80_b8b0fbf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-05-07T10:38:05Z",
+      "side": 1,
+      "message": "nothing here will be merged until the kernel is verified anyway, which is not the case",
+      "revId": "bafbb4c0ebbd206ac4a81d94b3439735bfab8ce7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
