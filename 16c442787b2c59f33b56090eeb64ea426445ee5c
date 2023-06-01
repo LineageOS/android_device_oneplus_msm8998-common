@@ -16,6 +16,24 @@
       "message": "i\u0027ve re-visited this, all the apps i tried work fine. not sure if this is still a thing, please take a look if it causes any troubles.",
       "revId": "16c442787b2c59f33b56090eeb64ea426445ee5c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803d5195_59743a30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2023-06-01T11:44:27Z",
+      "side": 1,
+      "message": "You can test ZSL on Aperture fyi",
+      "parentUuid": "78f42e7e_e48e0f53",
+      "revId": "16c442787b2c59f33b56090eeb64ea426445ee5c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
