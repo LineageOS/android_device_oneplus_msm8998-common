@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "881b9883_4f0352b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-06-01T12:01:45Z",
+      "side": 1,
+      "message": "that was never really the problem. when timi committed this, some apps using api1 wouldnt work with the front camera if zsl wasnt disabled, such as whatsapp, iirc.",
+      "revId": "84055b6f08363556fe33e115031a0c4303af6065",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
