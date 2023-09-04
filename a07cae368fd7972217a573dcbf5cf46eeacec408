@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96e886f_46892aad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-09-04T05:48:26Z",
+      "side": 1,
+      "message": "with the new kernel, this doesn\u0027t crash on MTP mode changes anymore, but i guess better to give it some more testing",
+      "revId": "a07cae368fd7972217a573dcbf5cf46eeacec408",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
