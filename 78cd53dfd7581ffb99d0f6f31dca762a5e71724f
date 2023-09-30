@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0795110f_854e0cac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14734
+      },
+      "writtenOn": "2023-09-30T18:36:39Z",
+      "side": 1,
+      "message": "Could you guys confirm that the issue can actually be fixed with 367485?",
+      "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
