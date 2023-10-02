@@ -84,6 +84,24 @@
       "message": "Look at my first comment, and now at what you are asking about.\n\nI can confirm this for 8976 and 8937/439 (ig) based devices, but would like to know if this applies to other socs",
       "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12c7f55_456aba66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14734
+      },
+      "writtenOn": "2023-10-02T14:57:03Z",
+      "side": 1,
+      "message": "In my opinion, a kernel-side fix has always been preferable. Moreover, in case you want to switch to AIDL health HAL in the future, you will face this issue because charger props are deprecated (including this one). Of course, if your devices really suffer from this issue. That can be checked by deleting property.",
+      "parentUuid": "af46ed9c_af3ad7f1",
+      "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
