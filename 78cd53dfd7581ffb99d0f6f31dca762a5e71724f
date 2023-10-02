@@ -102,6 +102,23 @@
       "parentUuid": "af46ed9c_af3ad7f1",
       "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d945ff6b_34ebb2ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-10-02T22:29:40Z",
+      "side": 1,
+      "message": "you uploaded this to oneplus msm8998, it doesn\u0027t matter if you verified it somewhere else then. -1 for that, and -1 for the attitude.",
+      "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
