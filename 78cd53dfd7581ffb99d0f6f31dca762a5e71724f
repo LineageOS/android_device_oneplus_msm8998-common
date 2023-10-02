@@ -67,6 +67,23 @@
       "message": "you didn\u0027t test this before uploading it?",
       "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af46ed9c_af3ad7f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14734
+      },
+      "writtenOn": "2023-10-02T14:46:50Z",
+      "side": 1,
+      "message": "Look at my first comment, and now at what you are asking about.\n\nI can confirm this for 8976 and 8937/439 (ig) based devices, but would like to know if this applies to other socs",
+      "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
