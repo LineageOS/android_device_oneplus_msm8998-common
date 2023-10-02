@@ -16,6 +16,23 @@
       "message": "Could you guys confirm that the issue can actually be fixed with 367485?",
       "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2edfd1a_3b06fe35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2023-10-02T10:43:52Z",
+      "side": 1,
+      "message": "see my comment on the kernel change.",
+      "revId": "78cd53dfd7581ffb99d0f6f31dca762a5e71724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
