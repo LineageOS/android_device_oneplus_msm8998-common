@@ -73,6 +73,9 @@ function blob_fixup() {
         vendor/etc/permissions/com.fingerprints.extension.xml)
             sed -i "s|/system/framework/|/vendor/framework/|g" "${2}"
             ;;
+        vendor/lib/libSonyIMX371RmscLibrary.so|vendor/lib/libmms_gyro_vstab.so|vendor/lib/libmms_gyro_vstab_auth.so)
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;
     esac
 }
 
