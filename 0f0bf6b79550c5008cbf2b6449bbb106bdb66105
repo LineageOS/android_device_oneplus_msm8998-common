@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5046ce4f_73482ef4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2023-11-02T09:33:14Z",
+      "side": 1,
+      "message": "I deleted whole verity section in my og change FYI. Now that I moved to first stage init, it doesn\u0027t do anything.",
+      "revId": "0f0bf6b79550c5008cbf2b6449bbb106bdb66105",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
