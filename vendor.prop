@@ -87,6 +87,7 @@ persist.vendor.cne.feature=1
 persist.vendor.data.iwlan.enable=true
 
 # Display
+ro.surface_flinger.enable_frame_rate_override=false
 ro.vendor.display.sensortype=3
 ro.vendor.display.paneltype=1
 ro.vendor.display.foss=1
