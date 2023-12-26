@@ -20,6 +20,9 @@ drm.service.enabled=true
 # Fastbootd
 ro.fastbootd.available=true
 
+# Filesystem
+fs_mgr.overlayfs.prefer_cache_backing_storage=true
+
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/config
 
