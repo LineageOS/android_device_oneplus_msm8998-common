@@ -178,6 +178,7 @@ PRODUCT_PACKAGES += \
 # GMS
 ifeq ($(WITH_GMS),true)
 GMS_MAKEFILE=gms_minimal.mk
+WITH_GMS_COMMS_SUITE := false
 endif
 
 # GPS / Location
