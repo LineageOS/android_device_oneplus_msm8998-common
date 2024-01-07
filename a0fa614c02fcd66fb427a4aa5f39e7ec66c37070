@@ -33,6 +33,23 @@
       "message": "no idea what \"older modems\" that referred to specifically, but uceservice and imscm start fine \u0026 you didnt reply to any of my messages, so removing this from my list. if you have an update, let me know.",
       "revId": "a0fa614c02fcd66fb427a4aa5f39e7ec66c37070",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42b8548_12a548d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-01-07T14:48:27Z",
+      "side": 1,
+      "message": "Georg, this is a legitimate issue, modem firmware can differ between devices (this is what \"modem\" is referring to), it\u0027s fine to just set the HIDL interface version to the lowest supported between all devices, looks like Timi has a possibly older device with older fw",
+      "revId": "a0fa614c02fcd66fb427a4aa5f39e7ec66c37070",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
