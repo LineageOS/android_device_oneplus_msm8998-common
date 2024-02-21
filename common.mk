@@ -309,8 +309,8 @@ PRODUCT_PACKAGES += \
     OnePlusPocketMode
 
 # Power
-PRODUCT_PACKAGES += \
-    android.hardware.power-service.oneplus_msm8998-libperfmgr
+$(call inherit-product, hardware/oneplus/libqti-perfd-client/libqti-perfd-client.mk)
+$(call inherit-product, hardware/oneplus/power-libperfmgr/power-libperfmgr.mk)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
