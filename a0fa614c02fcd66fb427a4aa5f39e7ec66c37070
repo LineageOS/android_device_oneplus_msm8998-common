@@ -50,6 +50,23 @@
       "message": "Georg, this is a legitimate issue, modem firmware can differ between devices (this is what \"modem\" is referring to), it\u0027s fine to just set the HIDL interface version to the lowest supported between all devices, looks like Timi has a possibly older device with older fw",
       "revId": "a0fa614c02fcd66fb427a4aa5f39e7ec66c37070",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d252fd0_047d1194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2024-03-04T20:53:11Z",
+      "side": 1,
+      "message": "i am not contesting it cant be an actual issue, but i have a cheeseburger here by now, and i still dont see it. timi did not reply after that, so i didnt have it on the radar. going to remove myself from this. if there is further info, feel free to re-add me",
+      "revId": "a0fa614c02fcd66fb427a4aa5f39e7ec66c37070",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
