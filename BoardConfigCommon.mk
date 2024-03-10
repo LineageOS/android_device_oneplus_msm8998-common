@@ -44,6 +44,10 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
 
+# Boot image signing
+BOARD_CUSTOM_BOOTIMG := true
+BOARD_CUSTOM_BOOTIMG_MK=$(PLATFORM_PATH)/mkbootimg.mk
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
