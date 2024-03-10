@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3017ee52_a84af2ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33554
+      },
+      "writtenOn": "2024-03-10T18:52:09Z",
+      "side": 1,
+      "message": "The fixes for https://android-review.googlesource.com/q/bug:241044073 removed the support for creating signed boot images. Due to this Lineage 21 images for OnePlus 5 and 5T can no longer be used with locked bootloader. This PR brings support for the same.\n\nTechnically we can just revert the needed changes, but I was not sure if booting Lineage on locked bootloader was supported for other devices or not. Hence I have added it back using the BOARD_CUSTOM_BOOTIMG_MK functionality",
+      "revId": "8d8f4e8f156049747ddc2acf59b9e7e4b7f1abab",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
