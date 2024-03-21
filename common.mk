@@ -394,13 +394,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     KeyHandler
 
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    android.hardware.usb@1.3-service.dual_role_usb
 
 # Vibrator
 PRODUCT_PACKAGES += \
