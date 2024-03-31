@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff42f777_60ef81b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 15609
+      },
+      "writtenOn": "2024-03-31T19:17:25Z",
+      "side": 1,
+      "message": "Does data on SIM2 work with this?\nDuring my tests, using radio@1.1 I don\u0027t have data working on SIM2.",
+      "revId": "d8d54c43141c9631c260cb2d04569dc556f17b20",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }
