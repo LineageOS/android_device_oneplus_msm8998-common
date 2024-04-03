@@ -1,4 +1,5 @@
 # Bluetooth
+persist.vendor.bt.address              u:object_r:vendor_bluetooth_prop:s0
 ro.vendor.bt.bdaddr_path               u:object_r:vendor_bluetooth_prop:s0
 
 # Camera
