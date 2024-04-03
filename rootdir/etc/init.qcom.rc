@@ -315,6 +315,7 @@ on boot
 
     start vendor.qcrild
     start vendor.qcrild2
+    start vendor.dataqti
 
 on charger
     start vendor.dashd
