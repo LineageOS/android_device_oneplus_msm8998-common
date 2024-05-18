@@ -1,14 +1,7 @@
-r_dir_file(hal_power_default, debugfs_rpm)
-r_dir_file(hal_power_default, sysfs_devfreq)
 r_dir_file(hal_power_default, sysfs_graphics)
 r_dir_file(hal_power_default, sysfs_kgsl)
 
 # To do powerhint on nodes defined in powerhint.json
-allow hal_power_default sysfs_devfreq:file w_file_perms;
-allow hal_power_default sysfs_kgsl:file w_file_perms;
-allow hal_power_default sysfs_msm_subsys:dir search;
-allow hal_power_default sysfs_msm_subsys:file rw_file_perms;
-allow hal_power_default sysfs_devices_system_cpu:file rw_file_perms;
 allow hal_power_default device_latency:chr_file rw_file_perms;
 
 # Enable DT2W
@@ -17,9 +10,3 @@ allow hal_power_default proc_touchpanel:file rw_file_perms;
 
 # Connect to PPS
 unix_socket_connect(hal_power_default, pps, mm-pp-daemon)
-
-# To get/set powerhal state property
-set_prop(hal_power_default, vendor_power_prop)
-
-# To dump
-allow hal_power_default cgroup:file rw_file_perms;
