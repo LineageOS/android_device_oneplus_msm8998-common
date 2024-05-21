@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830588fe_2401d114",
+        "filename": "sepolicy/vendor/hal_power_default.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-05-21T20:47:26Z",
+      "side": 1,
+      "message": "These can go too",
+      "revId": "349bd4f39cc624d02729745d23cec6a0bf35b193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51009730_5a9460b5",
+        "filename": "sepolicy/vendor/hal_power_default.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2024-05-21T20:47:26Z",
+      "side": 1,
+      "message": "Can be removed",
+      "revId": "349bd4f39cc624d02729745d23cec6a0bf35b193",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
