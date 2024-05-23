@@ -22,6 +22,30 @@
       },
       "revId": "40e29dc4b2c825cb9fc063ef5545a2dbcb6ba548",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3939389_6e33f844",
+        "filename": "sepolicy/vendor/hal_power_default.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2024-05-23T11:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd937dd_ba785ba4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 41
+      },
+      "revId": "40e29dc4b2c825cb9fc063ef5545a2dbcb6ba548",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
