@@ -121,7 +121,6 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
@@ -129,12 +128,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.device@3.4:64 \
     android.hardware.camera.provider@2.4-impl:32 \
-    android.hardware.camera.provider@2.4-service \
-    android.hardware.camera.provider@2.6:64 \
-    libstdc++_vendor \
-    vendor.qti.hardware.camera.device@1.0
+    android.hardware.camera.provider@2.4-service
+
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -149,8 +145,6 @@ PRODUCT_PACKAGES += \
     gralloc.msm8998 \
     hwcomposer.qcom \
     libdisplayconfig \
-    libqdMetaData.system \
-    libtinyxml \
     vendor.qti.hardware.memtrack-service
 
 PRODUCT_COPY_FILES += \
@@ -162,7 +156,6 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.2.vendor \
     android.hardware.drm-service.clearkey \
     libcrypto_shim.vendor
 
@@ -176,16 +169,13 @@ PRODUCT_PACKAGES += \
 
 # Framework detect
 PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service \
-    libion.vendor
+    android.hardware.gatekeeper@1.0-service
 
 # GMS
 ifeq ($(WITH_GMS),true)
@@ -193,9 +183,6 @@ GMS_MAKEFILE=gms_minimal.mk
 endif
 
 # GPS / Location
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.0.vendor
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
     $(LOCAL_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
@@ -215,8 +202,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0.vendor \
     libhidlmemory.vendor:64 \
-    libhidltransport \
-    libhidltransport.vendor \
     libhwbinder \
     libhwbinder.vendor
 
@@ -276,7 +261,6 @@ PRODUCT_COPY_FILES += \
 
 # Media Extensions
 PRODUCT_PACKAGES += \
-    libavservices_minijail.vendor \
     libmediametrics \
     libregistermsext \
     mediametrics
@@ -284,10 +268,6 @@ PRODUCT_PACKAGES += \
 # Native Public Libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
-
-# Netd
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -302,7 +282,6 @@ PRODUCT_COPY_FILES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libmm-omxcore \
     libOmxCore \
     libOmxVdec \
     libOmxVenc \
@@ -319,7 +298,6 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
-    android.hardware.power@1.2.vendor \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -329,9 +307,7 @@ PRODUCT_COPY_FILES += \
 
 # Protobuf
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
+    libprotobuf-cpp-full-vendorcompat
 
 # Properties
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
@@ -340,24 +316,13 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/qti_whitelist.xml
 
-# QMI
-PRODUCT_PACKAGES += \
-    libjson
-
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_oneplus
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.5.vendor \
-    android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.2.vendor \
-    librmnetctl \
-    libsqlite.vendor \
     libsysutils.vendor \
-    libxml2 \
     libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 PRODUCT_PACKAGES += \
@@ -382,15 +347,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors@1.0-impl:64 \
-    android.hardware.sensors@1.0-service \
-    libpower.vendor \
-    libsensorndkbridge
-
-# Shims
-PRODUCT_PACKAGES += \
-    libgui_shim
+    android.hardware.sensors@1.0-service
 
 # Shipping API level (for CTS backward compatibility)
 PRODUCT_SHIPPING_API_LEVEL := 25
