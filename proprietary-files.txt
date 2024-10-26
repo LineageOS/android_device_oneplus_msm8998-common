@@ -407,8 +407,6 @@ vendor/lib64/libsi.so
 vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib64/libwms.so
-vendor/lib64/libwqe.so
 vendor/lib64/vendor.oneplus.hardware.drmkey@1.0.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 
