@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14543d58_95f0ab64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34396
+      },
+      "writtenOn": "2024-11-26T06:42:55Z",
+      "side": 1,
+      "message": "The point of these changes is to fix user variant builds of for example dumpling",
+      "revId": "dff17ff200251e0082cd91d4f80227dc67c9c413",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
