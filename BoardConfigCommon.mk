@@ -30,8 +30,6 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
-BUILD_BROKEN_DUP_RULES := true
-
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048
