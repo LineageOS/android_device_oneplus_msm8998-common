@@ -7,7 +7,6 @@
 #
 
 import common
-import hashlib
 import os
 import re
 
