@@ -1,0 +1,16 @@
+//
+// SPDX-FileCopyrightText: 2024 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_static {
+    srcs: ["recovery_updater.cpp"],
+    name: "librecovery_updater_oneplus",
+    include_dirs: [
+        "bootable/deprecated-ota/edify/include",
+        "bootable/deprecated-ota/updater/include",
+        "bootable/recovery",
+        "bootable/recovery/otautil/include",
+        "system/libbase/include",
+    ],
+}
