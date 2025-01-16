@@ -6,30 +6,28 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-import hashlib
 import common
+import hashlib
 import re
 
 def FullOTA_Assertions(info):
   AddVendorAssertion(info)
 
-  if "RADIO/filemap" not in info.input_zip.namelist():
+  firmware_files = [
+    item.split("/")[1]
+    for item in info.input_zip.namelist()
+    if item.startswith("RADIO/")
+  ]
+
+  if not firmware_files:
+    # Firmware files not present, assert
     AddModemAssertion(info)
     return
-
-  filemap = info.input_zip.read("RADIO/filemap").decode('utf-8').splitlines()
-
-  for file in filemap:
-    filename = file.split(" ")[0]
-    if "RADIO/{}".format(filename) not in info.input_zip.namelist():
-      # Firmware files not present, assert
-      AddModemAssertion(info)
-      return
 
   # Firmware files present, copy to OTA zip
   CopyBlobs(info.input_zip, info.output_zip)
   # And flash if necessary
-  AddFirmwareUpdate(info, filemap)
+  AddFirmwareUpdate(info, firmware_files)
   return
 
 def IncrementalOTA_Assertions(info):
@@ -79,9 +77,8 @@ def AddFirmwareUpdate(info, filemap):
       info.script.AppendExtra('(')
       info.script.AppendExtra('  ui_print("Upgrading firmware to ' + version_firmware + '");')
       for file in filemap:
-        filename = file.split(" ")[0]
-        filepath = file.split(" ")[-1]
-        info.script.AppendExtra('package_extract_file("firmware-update/' + filename + '", "' + filepath + '");')
+        partname = file.split(".")[0]
+        info.script.AppendExtra('package_extract_file("firmware-update/' + file + '", "/dev/block/bootdevice/by-name/' + partname + '");')
       info.script.AppendExtra('),')
       info.script.AppendExtra('(')
       info.script.AppendExtra('  ui_print("Firmware is up-to-date");')
