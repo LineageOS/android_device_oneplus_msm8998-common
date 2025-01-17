@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b706a1f_6bae0a51",
+        "filename": "releasetools/releasetools.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-17T09:02:42Z",
+      "side": 1,
+      "message": "os.path.basename(item)",
+      "revId": "8e6aaacb9bf33758680377ed27d7918c019fae15",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d7815b_f8dffd0a",
+        "filename": "releasetools/releasetools.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-17T09:02:42Z",
+      "side": 1,
+      "message": "os.path.splitext(file)[0]",
+      "revId": "8e6aaacb9bf33758680377ed27d7918c019fae15",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
