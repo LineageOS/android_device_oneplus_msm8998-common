@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf285a5_210a5ae4",
+        "filename": "common.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-01-20T15:29:55Z",
+      "side": 1,
+      "message": "Have to add `fstab.qcom_ramdisk`",
+      "revId": "18f8b53b7026e762e19a6b8399b1b49143374be6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f8c1aa_469ba425",
+        "filename": "common.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-01-20T15:29:55Z",
+      "side": 1,
+      "message": "Recovery doesn\u0027t need this, it uses the one specified in the BoardConfig flag",
+      "revId": "18f8b53b7026e762e19a6b8399b1b49143374be6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
