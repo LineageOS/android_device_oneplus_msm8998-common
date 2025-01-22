@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afb8dd5_80f2844a",
+        "filename": "common.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2025-01-22T19:53:06Z",
+      "side": 1,
+      "message": "not quite. fstab.qcom.ramdisk",
+      "parentUuid": "ddf285a5_210a5ae4",
+      "revId": "18f8b53b7026e762e19a6b8399b1b49143374be6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f8c1aa_469ba425",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-20T15:29:55Z",
       "side": 1,
       "message": "Recovery doesn\u0027t need this, it uses the one specified in the BoardConfig flag",
+      "revId": "18f8b53b7026e762e19a6b8399b1b49143374be6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e42077_9f92a53d",
+        "filename": "common.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2025-01-22T19:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f8c1aa_469ba425",
       "revId": "18f8b53b7026e762e19a6b8399b1b49143374be6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
