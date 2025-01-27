@@ -190,11 +190,6 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     libion.vendor
 
-# GMS
-ifeq ($(WITH_GMS),true)
-GMS_MAKEFILE=gms_minimal.mk
-endif
-
 # GPS / Location
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.0.vendor
