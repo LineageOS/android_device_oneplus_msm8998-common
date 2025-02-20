@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6441d6d_d32b2e6a",
+        "filename": "sepolicy/vendor/genfs_contexts",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 34396
+      },
+      "writtenOn": "2025-02-20T20:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c86b5e5_a2020be2",
+      "revId": "89109bb3d59f9818b565b8f466be33adccddce2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07856696_7c8b2b34",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-18T13:11:15Z",
       "side": 1,
       "message": "here too",
+      "revId": "89109bb3d59f9818b565b8f466be33adccddce2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f10384f_b378bc76",
+        "filename": "sepolicy/vendor/hal_camera_default.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 34396
+      },
+      "writtenOn": "2025-02-20T20:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07856696_7c8b2b34",
       "revId": "89109bb3d59f9818b565b8f466be33adccddce2e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
