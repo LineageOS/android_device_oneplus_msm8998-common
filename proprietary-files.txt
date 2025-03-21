@@ -1,6 +1,16 @@
 # Common proprietary files - from
 # OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2010292059, unless pinned
 
+# Current blobs with ELF checks disabled:
+# vendor/lib64/lib-imsrcs-v2.so depends on lib-rcsconfig.so
+# vendor/lib*/libOGLManager.so depends on unresolved symbols AHardwareBuffer_allocate@LIBNATIVEWINDOW, AHardwareBuffer_describe@LIBNATIVEWINDOW, AHardwareBuffer_lock@LIBNATIVEWINDOW, AHardwareBuffer_release@LIBNATIVEWINDOW, AHardwareBuffer_unlock@LIBNATIVEWINDOW
+# vendor/lib*/libOmxVpp.so depends on libvpplibrary.so and libvpphvx.so
+# vendor/lib/libarcsoft_hdr_denoise_api.so depends on libarcsoft_high_dynamic_range.so and libarcsoft_smart_denoise.so
+# vendor/bin/lowi-server, vendor/lib64/libcne.so, vendor/bin/imsdatadaemon depends on libwpa_client.so which is a gnu makefile target
+# vendor/lib*/libEIS.so depends on unresolved symbols __aeabi_uldivmod
+# vendor/lib*/libmmcamera_faceproc.so depends on unresolved symbols __aeabi_memcpy@LIBC_PRIVATE, __aeabi_memset@LIBC_PRIVATE, __gnu_Unwind_Find_exidx@LIBC_PRIVATE
+# system_ext/lib64/lib-imscamera.so depends on unresolved symbols _ZN7android7SurfaceC1ERKNS_2spINS_22IGraphicBufferProducerEEEb
+
 # ADSP / CDSP / MDSP / SDSP
 vendor/bin/adsprpcd
 vendor/bin/cdsprpcd
@@ -86,15 +96,15 @@ vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 
 # Camera
 vendor/lib/libDeVIS.so
-vendor/lib/libEIS.so
-vendor/lib/libOGLManager.so
+vendor/lib/libEIS.so;DISABLE_CHECKELF
+vendor/lib/libOGLManager.so;DISABLE_CHECKELF
 vendor/lib/libSonyIMX371RmscLibrary.so
 vendor/lib/libVDBlurlessAPI_v2.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
 vendor/lib/libVDHDRAPI.so
 vendor/lib/libVDSuperPhotoAPI.so
 vendor/lib/libarcsoft_dualcam_bokeh_api.so
-vendor/lib/libarcsoft_hdr_denoise_api.so
+vendor/lib/libarcsoft_hdr_denoise_api.so;DISABLE_CHECKELF
 vendor/lib/libcamera_oneplus_bokeh_wrapper.so
 vendor/lib/libcvface_api.so
 vendor/lib/libflash_pmic.so
@@ -118,7 +128,7 @@ vendor/lib/libmmcamera_dummyalgo.so
 vendor/lib/libmmcamera_eeprom_util.so
 vendor/lib/libmmcamera_eztune_module.so
 vendor/lib/libmmcamera_facedetection_lib.so
-vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_faceproc.so;DISABLE_CHECKELF
 vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_imglib.so
@@ -151,15 +161,15 @@ vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libseemore.so
 vendor/lib/libstblur_capture_api.so
 vendor/lib64/libDeVIS.so
-vendor/lib64/libEIS.so
-vendor/lib64/libOGLManager.so
+vendor/lib64/libEIS.so;DISABLE_CHECKELF
+vendor/lib64/libOGLManager.so;DISABLE_CHECKELF
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
 vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libmmcamera2_stats_algorithm.so
 vendor/lib64/libmmcamera2_stats_lib.so
 vendor/lib64/libmmcamera_dbg.so
-vendor/lib64/libmmcamera_faceproc.so
+vendor/lib64/libmmcamera_faceproc.so;DISABLE_CHECKELF
 vendor/lib64/libmmcamera_faceproc2.so
 vendor/lib64/libmmcamera_tintless_algo.so
 vendor/lib64/libseemore.so
@@ -331,7 +341,7 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml|ff91feb5060a6df07e3e4d9bc99ae58bcc
 vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml|f76c894f3c6d5b6ed35113a088dc3174c900501b
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml|14d136e7fcc682311757d3edc0b9d3eaeba11815
 vendor/etc/init/cnd.rc|3a5183df3479500fb729493bc56c71166fc10bce
-vendor/lib64/libcne.so|f7565b0b97975e7021bd007b8387ccc839a8dad9
+vendor/lib64/libcne.so;DISABLE_CHECKELF|f7565b0b97975e7021bd007b8387ccc839a8dad9
 vendor/lib64/libcneapiclient.so|b6479678e5b0e8b46d8df5eb8bd610aa17be00d0
 vendor/lib64/libcneoplookup.so|3ce1039ad657d889f90140cb630eb487d2e711df
 vendor/lib64/libcneqmiutils.so|582c925ce11d12bd2dd15a5927623835bce06a01
@@ -434,7 +444,7 @@ vendor/lib64/hw/gatekeeper.msm8998.so
 # GPS
 vendor/bin/hw/android.hardware.gnss@2.0-service-qti
 vendor/bin/loc_launcher
-vendor/bin/lowi-server
+vendor/bin/lowi-server;DISABLE_CHECKELF
 vendor/bin/mlid
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
@@ -552,8 +562,8 @@ vendor/lib/libmulawdec.so
 vendor/lib/libsmwrapper.so
 
 # Media
-vendor/lib/libOmxVpp.so
-vendor/lib64/libOmxVpp.so
+vendor/lib/libOmxVpp.so;DISABLE_CHECKELF
+vendor/lib64/libOmxVpp.so;DISABLE_CHECKELF
 
 # NFC
 vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
@@ -705,7 +715,7 @@ vendor/radio/qcril_database/upgrade/8_version_update_ecc_table.sql|a0603a5c46e8e
 vendor/radio/qcril_database/upgrade/9_version_update_ecc_table.sql|4701219a79190995eda651e5c45e11c9b111a478
 
 # Radio - IMS - from FP3 - 6.A.025.0
-system_ext/lib64/lib-imscamera.so|8170256dbf9120ff05f193ba937c718d9c580881
+system_ext/lib64/lib-imscamera.so;DISABLE_CHECKELF|8170256dbf9120ff05f193ba937c718d9c580881
 system_ext/lib64/lib-imsvideocodec.so|3e364441c9dce63d74fbc78c4781a84080513d8a|e09b2bba52d2de6975772228745203d8691e06b8
 system_ext/lib64/lib-imsvt.so|4f96cc5f27551d0b6cb11ad6447d9ce8829dde47
 system_ext/lib64/lib-imsvtextutils.so|1acf1de305e455a3a924483e5652b37133d10fd1
@@ -715,7 +725,7 @@ system_ext/lib64/libimsmedia_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/li
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|4cf9e97f526c6278c5e2136e00d1fb800fb941aa
 system_ext/priv-app/ims/ims.apk|16b82e1e0113beb7fb3a62a9a5513b317675d96e
 vendor/bin/ims_rtp_daemon|32a3ce381b0f85f53a2e9afd7215b3585afef0d6
-vendor/bin/imsdatadaemon|3f044f84eb4049f1ce8a26af6a6026c1776d22dd
+vendor/bin/imsdatadaemon;DISABLE_CHECKELF|3f044f84eb4049f1ce8a26af6a6026c1776d22dd
 vendor/bin/imsqmidaemon|756dcc2d6c7fa26916bc28dedf0c513b1d5e5bfe
 vendor/bin/imsrcsd|bf29aac14856f29268c01599e5f6c7c6ae520685
 vendor/etc/init/ims_rtp_daemon_legacy.rc|104b2a879db4d3dd44e74a3d7f6e69f6972c9129
@@ -734,7 +744,7 @@ vendor/lib64/lib-imsSDP.so|4d19d270ea4ecde57d3fe2c5435379558ca94a52
 vendor/lib64/lib-imscmservice.so|1256a36db63ed10e3f7f6c659d5086bf1ed8752f
 vendor/lib64/lib-imsdpl.so|18c2071b74fc8dfefeabf0c2e075720ebaa81ab2
 vendor/lib64/lib-imsqimf.so|d0813dc6a1360c31bc2736b6d59d2fa3a0c614f8
-vendor/lib64/lib-imsrcs-v2.so|3937e675ce460f3950e04aef67b1d17e7fd227a5
+vendor/lib64/lib-imsrcs-v2.so;DISABLE_CHECKELF|3937e675ce460f3950e04aef67b1d17e7fd227a5
 vendor/lib64/lib-imsrcsbaseimpl.so|8b765d37ac42cb813cf28995fb1359f42f26912f
 vendor/lib64/lib-imsvtcore.so|c3354efe3909f2971a0a4f847c4dddca02bdb81b
 vendor/lib64/lib-imsxml.so|25d01eaf4d9a1a0d5002e8ad27500d19b9adbbe5
