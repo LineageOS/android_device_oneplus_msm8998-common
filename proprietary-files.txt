@@ -337,7 +337,6 @@ vendor/lib64/libcneapiclient.so|b6479678e5b0e8b46d8df5eb8bd610aa17be00d0
 vendor/lib64/libcneoplookup.so|3ce1039ad657d889f90140cb630eb487d2e711df
 vendor/lib64/libcneqmiutils.so|582c925ce11d12bd2dd15a5927623835bce06a01
 vendor/lib64/libwms.so|1b91f43e9e9a8f143cddd1d945c63d384c65541c
-vendor/lib64/libwqe.so|5561170b3ee4d9233a0e4f384be08e2e1d01f0f5
 vendor/lib64/libxml.so|f9b20632e9fd324810caf865faea93e4ff505d91
 vendor/lib64/vendor.qti.data.factory@2.0.so|748bfbaa57a409b8962e2b1725e1415e423a7315
 vendor/lib64/vendor.qti.data.factory@2.1.so|bb1f3fa22563282ee24bf03ca681fdc45551feef
@@ -413,7 +412,6 @@ vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 # DRM (Widevine)
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
-vendor/lib/libcppf.so
 vendor/lib64/libhdcpsrm.so
 vendor/lib64/liboemcrypto.so
 vendor/lib64/libwvhidl.so
@@ -522,14 +520,11 @@ vendor/firmware/a540_zap.elf
 vendor/firmware/a540_zap.mdt
 
 # Graphics - HDR
-vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
 # Graphics - SDM
-vendor/lib/libsdedrm.so
 vendor/lib/libsdm-disp-vndapis.so
 vendor/lib64/libqseed3.so
-vendor/lib64/libsdedrm.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
 vendor/lib64/libsdm-disp-vndapis.so
@@ -563,10 +558,7 @@ vendor/lib/libsmwrapper.so
 
 # Media
 vendor/lib/libOmxVpp.so
-vendor/lib/libgpustats.so
-vendor/lib/libvqzip.so
 vendor/lib64/libOmxVpp.so
-vendor/lib64/libgpustats.so
 
 # NFC
 vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
@@ -612,7 +604,6 @@ vendor/bin/irsc_util|e590882aefe9da28c1d57e9bf46962198f1dabcd
 vendor/lib/libdiag.so|0a9a6aa74b1728bfb9c6b3ccd7cf0a5bdbc29434
 vendor/lib/libdsutils.so|60135d6d64ecba72fa0eb637a434578290beaaff
 vendor/lib/libidl.so|dc8d161c035f70e7e6c55461b0238fbe916c5a7d
-vendor/lib/libqcci_legacy.so|fa7f0fe72c0246633d842891bb0187867930f63b
 vendor/lib/libqdi.so|6fbd9d89b27a7f54925a6a174b75dfaab450c59b
 vendor/lib/libqdp.so|9d9058f4761990d09acd5610e281a5cee4bd5e95
 vendor/lib/libqmi.so|08e30ffe119992357de2e8f02b2cd3ea1fed6a50
@@ -626,7 +617,6 @@ vendor/lib/libqmiservices.so|52244e9d54c4d352d148d276044a4b7cc4c78bf4
 vendor/lib64/libdiag.so|174ff3f940288d2d1503230465dfe917ab9d155b
 vendor/lib64/libdsutils.so|0b466344eb6628feb1b5aba00d1ef3f680e5aa9a
 vendor/lib64/libidl.so|79ebe1a5b1fb81d9cdc972c71cec2667cdcf6599
-vendor/lib64/libqcci_legacy.so|d4643c6a585a62d9249acc841a4137c097299e4c
 vendor/lib64/libqcrildatactl.so|b3dccb609cfdc64b7bc74d9d3204904d8972df4d
 vendor/lib64/libqdi.so|c9e0b315edfb6a8f6e6afb5370e9dff5e934c78c
 vendor/lib64/libqdp.so|f83527aa6b6aa45c6495056dc830affbe889fb18
