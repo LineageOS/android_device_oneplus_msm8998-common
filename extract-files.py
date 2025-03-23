@@ -40,7 +40,6 @@ lib_fixups: lib_fixups_user_type = {
     (
         'libarcsoft_smart_denoise',
         'libarcsoft_high_dynamic_range',
-        'libvpplibrary',
         'libwpa_client',
         'lib-rcsconfig',
     ): lib_fixup_remove,
