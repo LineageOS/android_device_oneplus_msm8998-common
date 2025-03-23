@@ -4,7 +4,6 @@
 # Current blobs with ELF checks disabled:
 # vendor/lib64/lib-imsrcs-v2.so depends on lib-rcsconfig.so
 # vendor/lib*/libOGLManager.so depends on unresolved symbols AHardwareBuffer_allocate@LIBNATIVEWINDOW, AHardwareBuffer_describe@LIBNATIVEWINDOW, AHardwareBuffer_lock@LIBNATIVEWINDOW, AHardwareBuffer_release@LIBNATIVEWINDOW, AHardwareBuffer_unlock@LIBNATIVEWINDOW
-# vendor/lib*/libOmxVpp.so depends on libvpplibrary.so and libvpphvx.so
 # vendor/lib/libarcsoft_hdr_denoise_api.so depends on libarcsoft_high_dynamic_range.so and libarcsoft_smart_denoise.so
 # vendor/bin/lowi-server, vendor/lib64/libcne.so, vendor/bin/imsdatadaemon depends on libwpa_client.so which is a gnu makefile target
 # vendor/lib*/libEIS.so depends on unresolved symbols __aeabi_uldivmod
@@ -563,8 +562,12 @@ vendor/lib/libmulawdec.so
 vendor/lib/libsmwrapper.so
 
 # Media
-vendor/lib/libOmxVpp.so;DISABLE_CHECKELF
-vendor/lib64/libOmxVpp.so;DISABLE_CHECKELF
+vendor/lib/libOmxVpp.so
+vendor/lib/libvpphvx.so
+vendor/lib/libvpplibrary.so
+vendor/lib64/libOmxVpp.so
+vendor/lib64/libvpphvx.so
+vendor/lib64/libvpplibrary.so
 
 # NFC
 vendor/lib/libpn553_fw.so:vendor/lib64/libpn553_fw.so
