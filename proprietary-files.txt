@@ -2,7 +2,6 @@
 # OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2010292059, unless pinned
 
 # Current blobs with ELF checks disabled:
-# vendor/lib*/libOGLManager.so depends on unresolved symbols AHardwareBuffer_allocate@LIBNATIVEWINDOW, AHardwareBuffer_describe@LIBNATIVEWINDOW, AHardwareBuffer_lock@LIBNATIVEWINDOW, AHardwareBuffer_release@LIBNATIVEWINDOW, AHardwareBuffer_unlock@LIBNATIVEWINDOW
 # vendor/lib/libarcsoft_hdr_denoise_api.so depends on libarcsoft_high_dynamic_range.so and libarcsoft_smart_denoise.so
 # vendor/lib*/libEIS.so depends on unresolved symbols __aeabi_uldivmod
 # vendor/lib*/libmmcamera_faceproc.so depends on unresolved symbols __aeabi_memcpy@LIBC_PRIVATE, __aeabi_memset@LIBC_PRIVATE, __gnu_Unwind_Find_exidx@LIBC_PRIVATE
@@ -94,7 +93,7 @@ vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 # Camera
 vendor/lib/libDeVIS.so
 vendor/lib/libEIS.so;DISABLE_CHECKELF
-vendor/lib/libOGLManager.so;DISABLE_CHECKELF
+vendor/lib/libOGLManager.so|e543835588c82ccba118d7ad6ef0fb2fbe82ebb5|f0bb2aed0e52077728217f9be4cfd400392250b0
 vendor/lib/libSonyIMX371RmscLibrary.so
 vendor/lib/libVDBlurlessAPI_v2.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
@@ -159,7 +158,7 @@ vendor/lib/libseemore.so
 vendor/lib/libstblur_capture_api.so
 vendor/lib64/libDeVIS.so
 vendor/lib64/libEIS.so;DISABLE_CHECKELF
-vendor/lib64/libOGLManager.so;DISABLE_CHECKELF
+vendor/lib64/libOGLManager.so|2695d414f4428d692174af14a88fadc8f977e984|ccd8c1f97d6e19f7f97cca6d5f2995bcec1953ab
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
 vendor/lib64/libmmcamera2_q3a_core.so
