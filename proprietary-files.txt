@@ -1,9 +1,6 @@
 # Common proprietary files - from
 # OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2010292059, unless pinned
 
-# Current blobs with ELF checks disabled:
-# vendor/lib/libarcsoft_hdr_denoise_api.so depends on libarcsoft_high_dynamic_range.so and libarcsoft_smart_denoise.so
-
 # ADSP / CDSP / MDSP / SDSP
 vendor/bin/adsprpcd
 vendor/bin/cdsprpcd
@@ -97,7 +94,9 @@ vendor/lib/libVDDualCameraBlurlessAPI.so
 vendor/lib/libVDHDRAPI.so
 vendor/lib/libVDSuperPhotoAPI.so
 vendor/lib/libarcsoft_dualcam_bokeh_api.so
-vendor/lib/libarcsoft_hdr_denoise_api.so;DISABLE_CHECKELF
+vendor/lib/libarcsoft_hdr_denoise_api.so
+vendor/lib/libarcsoft_high_dynamic_range.so
+vendor/lib/libarcsoft_smart_denoise.so
 vendor/lib/libcamera_oneplus_bokeh_wrapper.so
 vendor/lib/libcvface_api.so
 vendor/lib/libflash_pmic.so
