@@ -38,8 +38,6 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.imsrtpservice@3.0',
     ): lib_fixup_vendor_suffix,
     (
-        'libarcsoft_smart_denoise',
-        'libarcsoft_high_dynamic_range',
     ): lib_fixup_remove,
 }
 
