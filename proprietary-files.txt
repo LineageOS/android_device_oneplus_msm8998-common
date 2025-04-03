@@ -88,7 +88,7 @@ vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 vendor/lib/libDeVIS.so
 vendor/lib/libEIS.so|9f24cc0dc12ae1088c89707c6ba19a73f8429ce2|a411b58f79fe351bf8784860e718728106e99eae
 vendor/lib/libOGLManager.so|e543835588c82ccba118d7ad6ef0fb2fbe82ebb5|f0bb2aed0e52077728217f9be4cfd400392250b0
-vendor/lib/libSonyIMX371RmscLibrary.so
+vendor/lib/libSonyIMX371RmscLibrary.so|cff61a74bc69a433b5a7f9bf2b6f0ed7c071dbd3|485c2364082044abaed26a1d5d93e44a2a73656b
 vendor/lib/libVDBlurlessAPI_v2.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
 vendor/lib/libVDHDRAPI.so
@@ -249,8 +249,8 @@ vendor/etc/GyroOffset_db.config
 vendor/etc/fsync_db.config
 vendor/lib/lib_oneplus_facebeauty.so
 vendor/lib/lib_oneplus_watermark.so
-vendor/lib/libmms_gyro_vstab.so
-vendor/lib/libmms_gyro_vstab_auth.so
+vendor/lib/libmms_gyro_vstab.so|56d9ff2f39ff976951955bc2a89ad6e643ea2b94|e8e0cd1859f20e7d41b23493bdc306676510ebe3
+vendor/lib/libmms_gyro_vstab_auth.so|c33d6e34a9fe807144449725854a581602e77b2b|ea6232915242386e01c7ec28b519a9e329df203a
 vendor/lib/libopcamera_native_modules.so
 
 # Camera sensors
@@ -414,7 +414,7 @@ vendor/bin/hw/android.hardware.drm@1.2-service.widevine
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
 vendor/lib64/libhdcpsrm.so
 vendor/lib64/liboemcrypto.so
-vendor/lib64/libwvhidl.so
+vendor/lib64/libwvhidl.so|e1ca411ef0a9a3e451c476f2aa94a4300593b62e|ed5fbeba1f74955f800203d3c59454ce79f50411
 
 # ESE Powermanager
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
@@ -423,7 +423,7 @@ vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 
 # Fingerprint sensor
-etc/permissions/com.fingerprints.extension.xml:vendor/etc/permissions/com.fingerprints.extension.xml
+etc/permissions/com.fingerprints.extension.xml:vendor/etc/permissions/com.fingerprints.extension.xml|581e694124ca2c241339e1bd686a63fcf61d00db|de711d8827e1d321b22b60fd75a204e8928f9c6d
 vendor/lib/fp_hal_extension.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/fp_hal_extension.so
