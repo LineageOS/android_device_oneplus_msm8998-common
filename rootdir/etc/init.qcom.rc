@@ -188,7 +188,6 @@ on late-fs
     start surfaceflinger
     start bootanim
     start vendor.hwcomposer-2-1
-    start vendor.configstore-hal
     start vendor.gralloc-2-0
 
     # Mount RW partitions which need to run fsck
