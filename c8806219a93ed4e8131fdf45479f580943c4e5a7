@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c44d76f_02e5f3be",
+        "filename": "extract-files.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-05T17:38:55Z",
+      "side": 1,
+      "message": "this change doesn\u0027t be long here",
+      "range": {
+        "startLine": 83,
+        "startChar": 36,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "c8806219a93ed4e8131fdf45479f580943c4e5a7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
