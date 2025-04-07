@@ -16,6 +16,23 @@
       "message": "still applies\nalso its been a year and I still cant effectively work with repo using my real email\nsorry about bugging yall here, but I dont know where else I can...\n\nhttps://gitlab.com/LineageOS/issues/infra/-/issues/150",
       "revId": "ce986971ab5777912975ba899d0b9f7ee159bee7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4bba31_1ebd3a66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2025-04-07T18:43:30Z",
+      "side": 1,
+      "message": "waiting with the review until you have upped the device commits",
+      "revId": "ce986971ab5777912975ba899d0b9f7ee159bee7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
