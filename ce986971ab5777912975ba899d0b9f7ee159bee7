@@ -33,6 +33,24 @@
       "message": "waiting with the review until you have upped the device commits",
       "revId": "ce986971ab5777912975ba899d0b9f7ee159bee7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0333c7d2_4095f50b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31841
+      },
+      "writtenOn": "2025-04-08T16:43:26Z",
+      "side": 1,
+      "message": "Do you mean uploading to 22.2? I Can not do that because the branch does not exist.\n\n ! [remote rejected] HEAD -\u003e refs/for/lineage-22.2 (branch lineage-22.2 not found)\n\nI booted 22.2 on my cheeseburger successfully though.\n\nhttps://private-user-images.githubusercontent.com/79085035/430739622-f77d1af3-90e1-4a8d-806f-cbda7769cad1.png?jwt\u003deyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQxMzA4MTMsIm5iZiI6MTc0NDEzMDUxMywicGF0aCI6Ii83OTA4NTAzNS80MzA3Mzk2MjItZjc3ZDFhZjMtOTBlMS00YThkLTgwNmYtY2JkYTc3NjljYWQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA4VDE2NDE1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVmYzFkOGIzNzI1MGY1ZmMyNzFmZWEzYmU0NDJjYzFmZDM3YWNlZWE4MWE3YjRjOGI2ODRjZmQ3NTJmZDVjNzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.fHd1nFEzvFK1YhJ5BUEQt85xMmU4LIK-48Lh5diEzi0",
+      "parentUuid": "8b4bba31_1ebd3a66",
+      "revId": "ce986971ab5777912975ba899d0b9f7ee159bee7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
