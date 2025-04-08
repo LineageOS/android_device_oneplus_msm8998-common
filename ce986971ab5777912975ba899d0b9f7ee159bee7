@@ -68,6 +68,24 @@
       "message": "no its okay, leave them here, i will create the branches",
       "revId": "ce986971ab5777912975ba899d0b9f7ee159bee7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74fbdb92_27f3d0f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31841
+      },
+      "writtenOn": "2025-04-08T20:24:24Z",
+      "side": 1,
+      "message": "Yea, dk how to get around that, Ig only the one pushing the changes can move the branch. Sorry about all the struggle, mb someone else can rebase n stuff...",
+      "parentUuid": "32368257_f7062296",
+      "revId": "ce986971ab5777912975ba899d0b9f7ee159bee7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
