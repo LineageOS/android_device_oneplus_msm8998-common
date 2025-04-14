@@ -299,6 +299,13 @@ vendor/lib/libmmcamera_isp_sce40.so
 vendor/lib/libmmcamera_isp_snr47.so
 vendor/lib/libmmcamera_isp_sub_module.so
 
+# Camera Dummy Libs
+vendor/lib/libmmcamera2_iface_modules.so;DUMMY_SHARED_LIB
+vendor/lib/libmmcamera2_imglib_modules.so;DUMMY_SHARED_LIB
+vendor/lib/libmmcamera2_mct.so;DUMMY_SHARED_LIB
+vendor/lib/libmmcamera2_sensor_modules.so;DUMMY_SHARED_LIB
+vendor/lib/libmmcamera2_stats_modules.so;DUMMY_SHARED_LIB
+
 # CNE - from FP3 - 6.A.025.0
 vendor/app/CneApp/CneApp.apk|551d0e3251eeda3af8dfa8bb55cd83b858365db8
 vendor/app/IWlanService/IWlanService.apk|a8bdac9638bc711e23269d2eead3f46a7b3b6a25
