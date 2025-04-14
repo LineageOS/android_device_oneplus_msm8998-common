@@ -16,6 +16,24 @@
       "message": "Adding vendor/oneplus/cheeseburger and dumpling causes issues if only one of these trees exist. Will disable elf for affected libs in a follow up commit.",
       "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b407765_601ded52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19252
+      },
+      "writtenOn": "2025-04-14T13:03:32Z",
+      "side": 1,
+      "message": "The issue is adding both cheeseburger and dumpling to the namespace on lines 26 and 27. If you remove that then it\u0027ll fix the duplicate error",
+      "parentUuid": "9c877bd1_73af762c",
+      "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
