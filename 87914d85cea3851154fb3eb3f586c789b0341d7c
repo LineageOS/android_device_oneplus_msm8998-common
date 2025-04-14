@@ -52,6 +52,23 @@
       "parentUuid": "9b407765_601ded52",
       "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ed971e_18ca8df8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31841
+      },
+      "writtenOn": "2025-04-14T19:58:25Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_device_oneplus_msm8998-common/+/427276",
+      "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
