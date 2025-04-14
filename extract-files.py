@@ -23,8 +23,6 @@ namespace_imports = [
     'hardware/qcom-caf/msm8998',
     'hardware/qcom-caf/wlan',
     'hardware/oneplus',
-    'vendor/oneplus/cheeseburger',
-    'vendor/oneplus/dumpling',
     'vendor/qcom/opensource/dataservices',
 ]
 
