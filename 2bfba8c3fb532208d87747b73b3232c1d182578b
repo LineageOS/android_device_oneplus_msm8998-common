@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f197d8_89dbf651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31841
+      },
+      "writtenOn": "2025-04-14T20:11:23Z",
+      "side": 1,
+      "message": "Would you mind creating the 22.2 branch for the vendor tree(s)?\nThank you very much in advance :)",
+      "revId": "2bfba8c3fb532208d87747b73b3232c1d182578b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
