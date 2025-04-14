@@ -34,6 +34,24 @@
       "parentUuid": "9c877bd1_73af762c",
       "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceab34be_0a20e80f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31841
+      },
+      "writtenOn": "2025-04-14T13:17:09Z",
+      "side": 1,
+      "message": "Yes, but some libs depend on that import, which would require to drop elf for them.\nLuk gave pointed me towards SHARED_DUMMY_LIB, which should solve the issue.\nhttps://review.lineageos.org/c/LineageOS/android_device_samsung_a71/+/424641\n\nThank you for the input tho, Ill prob push the above commit separately in the chain...",
+      "parentUuid": "9b407765_601ded52",
+      "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
