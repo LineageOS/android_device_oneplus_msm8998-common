@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c877bd1_73af762c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31841
+      },
+      "writtenOn": "2025-04-14T10:12:40Z",
+      "side": 1,
+      "message": "Adding vendor/oneplus/cheeseburger and dumpling causes issues if only one of these trees exist. Will disable elf for affected libs in a follow up commit.",
+      "revId": "87914d85cea3851154fb3eb3f586c789b0341d7c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
