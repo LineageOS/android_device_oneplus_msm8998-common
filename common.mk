@@ -128,7 +128,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl:32 \
     android.hardware.camera.provider@2.4-service
 
-
 # Configstore
 PRODUCT_PACKAGES += \
     disable_configstore
@@ -239,6 +238,8 @@ PRODUCT_PACKAGES += \
 # Lineage Health
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
+
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
