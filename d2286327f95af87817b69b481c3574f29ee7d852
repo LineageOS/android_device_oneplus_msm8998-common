@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4ed61c8_96be7799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2025-07-04T05:08:05Z",
+      "side": 1,
+      "message": "why? we have so far never needed this, because our blob situation is a bit unique :) has something changed?",
+      "revId": "d2286327f95af87817b69b481c3574f29ee7d852",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
