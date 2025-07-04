@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c899ece_90ff4818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2025-07-04T05:07:13Z",
+      "side": 1,
+      "message": "can you back this up with data or a benchmark? i would take the values in that commit you referenced with a grain of salt. i doubt that a jump of 8MHz from 1,8GHz would decrease overall efficiency by 15%. since we basically nicked this config from google, i would trust them to have done their homework",
+      "revId": "ba59adc1e3dc6b27ee03a12edf8e6bb40fd12ad0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
