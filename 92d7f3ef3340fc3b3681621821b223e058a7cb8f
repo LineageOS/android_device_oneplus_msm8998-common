@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3308ed3d_d22db19e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5911
+      },
+      "writtenOn": "2025-07-08T08:13:33Z",
+      "side": 1,
+      "message": "yeah, i saw... but it seems weird. and none of the \"major\" msm8998 platforms has this, or merged by someone like mike or bruno (where i would trust it blindly)",
+      "revId": "92d7f3ef3340fc3b3681621821b223e058a7cb8f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
