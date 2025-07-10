@@ -367,6 +367,9 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# Touch
+$(call soong_config_set,ONEPLUS_LINEAGE_TOUCH_HAL,INCLUDE_DIR,$(LOCAL_PATH)/touch/include)
+
 # Tri-state-key
 PRODUCT_PACKAGES += \
     KeyHandler
