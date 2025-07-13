@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2021 The LineageOS Project
- *
+ * SPDX-FileCopyrightText: 2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -9,11 +8,10 @@
 
 #include <map>
 
+namespace aidl {
 namespace vendor {
 namespace lineage {
 namespace touch {
-namespace V1_0 {
-namespace implementation {
 
 const std::map<int32_t, TouchscreenGesture::GestureInfo> kGestureInfoMap = {
     {0, {251, "Two fingers down swipe", "/proc/touchpanel/double_swipe_enable"}},
@@ -31,10 +29,9 @@ const std::map<int32_t, TouchscreenGesture::GestureInfo> kGestureInfoMap = {
     {12, {246, "Letter W", "/proc/touchpanel/letter_w_enable"}},
 };
 
-}  // namespace implementation
-}  // namespace V1_0
 }  // namespace touch
 }  // namespace lineage
 }  // namespace vendor
+}  // namespace aidl
 
 #endif  // TOUCH_ONEPLUS_TOUCHSCREENGESTURE_H
