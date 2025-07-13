@@ -5,6 +5,8 @@ init_daemon_domain(hal_touch_oneplus_msm8998)
 
 hal_server_domain(hal_touch_oneplus_msm8998, hal_lineage_touch)
 
+allow hal_touch_oneplus_msm8998 servicemanager:binder { call transfer };
+
 # Allow access to gesture enable nodes
 allow hal_touch_oneplus_msm8998 proc_touchpanel:dir search;
 allow hal_touch_oneplus_msm8998 proc_touchpanel:file rw_file_perms;
