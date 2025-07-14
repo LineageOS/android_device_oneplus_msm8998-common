@@ -16,6 +16,24 @@
       "message": "This goes after I431298336dd49b0ebd70a95e148bffc8f2f41e54",
       "revId": "92b577f5dd8d4a0b8f96fca6e8ce5a54602bdcc5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b1216e_d8320716",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35605
+      },
+      "writtenOn": "2025-07-14T01:30:30Z",
+      "side": 1,
+      "message": "Here is the change for the 23.0 branch, I just placed it on 22.2 for now. These were submitted together: https://review.lineageos.org/c/LineageOS/android_device_oneplus_cheeseburger/+/437274",
+      "parentUuid": "92f4e326_510407d4",
+      "revId": "92b577f5dd8d4a0b8f96fca6e8ce5a54602bdcc5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
