@@ -16,6 +16,24 @@
       "message": "Is this ready?",
       "revId": "ab640fc41487ed3b81ecfcfd3e2c124bf9356cbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cf3d6a_39dd2866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35605
+      },
+      "writtenOn": "2025-07-16T17:47:55Z",
+      "side": 1,
+      "message": "Of course.",
+      "parentUuid": "55e2d471_0546cf2f",
+      "revId": "ab640fc41487ed3b81ecfcfd3e2c124bf9356cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
