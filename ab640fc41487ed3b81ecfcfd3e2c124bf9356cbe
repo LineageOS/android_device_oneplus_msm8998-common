@@ -51,6 +51,24 @@
       "message": "Test: Booted up. Disable and swap hardware buttons work. Touchscreen gestures are working.",
       "revId": "ab640fc41487ed3b81ecfcfd3e2c124bf9356cbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58efe877_7c854df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16779
+      },
+      "writtenOn": "2025-07-16T17:56:51Z",
+      "side": 1,
+      "message": "Vote accordingly then, AIDL hal was merged",
+      "parentUuid": "641c2a60_2b769c5a",
+      "revId": "ab640fc41487ed3b81ecfcfd3e2c124bf9356cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
