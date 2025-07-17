@@ -69,6 +69,23 @@
       "parentUuid": "641c2a60_2b769c5a",
       "revId": "ab640fc41487ed3b81ecfcfd3e2c124bf9356cbe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa7395b_857d1199",
+        "filename": "sepolicy/vendor/hal_touch_oneplus_msm8998.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-07-17T07:12:48Z",
+      "side": 1,
+      "message": "```suggestion\nbinder_call(hal_touch_oneplus_msm8998, servicemanager)\n```",
+      "revId": "ab640fc41487ed3b81ecfcfd3e2c124bf9356cbe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
