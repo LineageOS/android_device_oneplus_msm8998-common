@@ -11,11 +11,10 @@
 
 #include "DisplayModes.h"
 
+namespace aidl {
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V2_0 {
-namespace implementation {
 
 static const std::string kModeBasePath = "/sys/devices/virtual/graphics/fb0/preset";
 static const std::string kAvailableModesPath = "/sys/devices/virtual/graphics/fb0/num_presets";
@@ -34,8 +33,8 @@ DisplayModes::DisplayModes() : mCurrentModeId(0), mDefaultModeId(0) {
     setDisplayMode(mDefaultModeId, false);
 }
 
-// Methods from ::vendor::lineage::livedisplay::V2_0::IDisplayModes follow.
-Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
+// Methods from ::aidl::vendor::lineage::livedisplay::BnDisplayModes follow.
+ndk::ScopedAStatus getDisplayModes(std::vector<DisplayMode>* _aidl_return) {
     std::vector<V2_0::DisplayMode> modes;
     std::ifstream numFile(kAvailableModesPath);
     int32_t maxModeCount;
@@ -50,24 +49,24 @@ Return<void> DisplayModes::getDisplayModes(getDisplayModes_cb resultCb) {
             if (entry.first == maxModeCount - 1) break;
         }
     }
-    resultCb(modes);
-    return Void();
+    *_aidl_return = modes;
+    return ndk::ScopedAStatus::ok();
 }
 
-Return<void> DisplayModes::getCurrentDisplayMode(getCurrentDisplayMode_cb resultCb) {
-    resultCb({mCurrentModeId, kModeMap.at(mCurrentModeId)});
-    return Void();
+ndk::ScopedAStatus getCurrentDisplayMode(DisplayMode* _aidl_return) {
+    *_aidl_return = {mCurrentModeId, kModeMap.at(mCurrentModeId)};
+    return ndk::ScopedAStatus::ok();
 }
 
-Return<void> DisplayModes::getDefaultDisplayMode(getDefaultDisplayMode_cb resultCb) {
+ndk::ScopedAStatus getDefaultDisplayMode(DisplayMode* _aidl_return) {
     resultCb({mDefaultModeId, kModeMap.at(mDefaultModeId)});
-    return Void();
+    return ndk::ScopedAStatus::ok();
 }
 
-Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
+ndk::ScopedAStatus setDisplayMode(int32_t modeID, bool makeDefault) {
     const auto iter = kModeMap.find(modeID);
     if (iter == kModeMap.end()) {
-        return false;
+        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
     std::ofstream file(kModeBasePath);
     file << modeID;
@@ -85,11 +84,10 @@ Return<bool> DisplayModes::setDisplayMode(int32_t modeID, bool makeDefault) {
     if (mOnDisplayModeSet) {
         mOnDisplayModeSet();
     }
-    return true;
+    return ndk::ScopedAStatus::ok();
 }
 
-}  // namespace implementation
-}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
+}  // namespace aidl
