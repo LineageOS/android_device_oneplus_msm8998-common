@@ -22,6 +22,30 @@
       },
       "revId": "8f40f3a05f77dd0917ac803754e8d5a9421a716d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80851cfe_3652929b",
+        "filename": "livedisplay/vendor.lineage.livedisplay-service.oneplus_msm8998.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-09-24T13:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcac4a4a_c6e2fc7c",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "8f40f3a05f77dd0917ac803754e8d5a9421a716d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
