@@ -7,7 +7,7 @@ on init
 on post-fs-data
     mkdir /data/vendor/display/ 0770 system graphics
 
-service vendor.livedisplay-hal-2-0 /vendor/bin/hw/vendor.lineage.livedisplay@2.0-service.oneplus_msm8998
+service vendor.livedisplay-hal-2-0 /vendor/bin/hw/vendor.lineage.livedisplay-service.oneplus_msm8998
     class late_start
     user system
     group system
