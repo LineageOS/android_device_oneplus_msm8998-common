@@ -245,7 +245,10 @@ $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.oneplus_msm8998
+    vendor.lineage.livedisplay-service.oneplus_msm8998 \
+    vendor.lineage.livedisplay-service.sdm
+
+$(call soong_config_set,livedisplay_sdm,enable_dm,false)
 
 # Media
 PRODUCT_COPY_FILES += \
