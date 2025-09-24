@@ -1,56 +1,39 @@
 /*
- * Copyright (C) 2019-2021 The LineageOS Project
+ * Copyright (C) 2019-2025 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "vendor.lineage.livedisplay@2.0-service.oneplus_msm8998"
+#define LOG_TAG "vendor.lineage.livedisplay-service.oneplus_msm8998"
 
 #include <android-base/logging.h>
+#include <android/binder_manager.h>
+#include <android/binder_process.h>
 #include <binder/ProcessState.h>
-#include <hidl/HidlTransportSupport.h>
-#include <livedisplay/sdm/PictureAdjustment.h>
 #include <livedisplay/sysfs/SunlightEnhancement.h>
 
 #include "DisplayModes.h"
 
-using ::vendor::lineage::livedisplay::V2_0::IDisplayModes;
-using ::vendor::lineage::livedisplay::V2_0::IPictureAdjustment;
-using ::vendor::lineage::livedisplay::V2_0::ISunlightEnhancement;
-using ::vendor::lineage::livedisplay::V2_0::implementation::DisplayModes;
-using ::vendor::lineage::livedisplay::V2_0::sdm::PictureAdjustment;
-using ::vendor::lineage::livedisplay::V2_0::sdm::SDMController;
-using ::vendor::lineage::livedisplay::V2_0::sysfs::SunlightEnhancement;
+using ::aidl::vendor::lineage::livedisplay::DisplayModes;
+using ::aidl::vendor::lineage::livedisplay::sysfs::SunlightEnhancement;
 
 int main() {
-    std::shared_ptr<SDMController> controller = std::make_shared<SDMController>();
-    android::sp<IDisplayModes> modesService = new DisplayModes();
-    android::sp<IPictureAdjustment> paService = new PictureAdjustment(controller);
-    android::sp<ISunlightEnhancement> seService = new SunlightEnhancement();
+    android::ProcessState::self()->setThreadPoolMaxThreadCount(1);
+    android::ProcessState::self()->startThreadPool();
 
-    LOG(DEBUG) << "LiveDisplay HAL service is starting.";
+    std::shared_ptr<DisplayModes> dm = ndk::SharedRefBase::make<DisplayModes>();
+    std::shared_ptr<SunlightEnhancement> se = ndk::SharedRefBase::make<SunlightEnhancement>();
 
-    android::hardware::configureRpcThreadpool(1 /*threads*/, true /*callerWillJoin*/);
+    std::string instance = std::string() + DisplayModes::descriptor + "/default";
+    binder_status_t status = AServiceManager_addService(dm->asBinder().get(), instance.c_str());
+    CHECK_EQ(status, STATUS_OK);
 
-    if (modesService->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register display modes HAL service.";
-        return 1;
-    }
+    instance = std::string() + SunlightEnhancement::descriptor + "/default";
+    status = AServiceManager_addService(se->asBinder().get(), instance.c_str());
+    CHECK_EQ(status, STATUS_OK);
 
-    if (paService->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register picture adjustment HAL service.";
-        return 1;
-    }
+    LOG(INFO) << "LiveDisplay HAL service ready.";
 
-    if (seService->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register sunlight enhancement HAL service.";
-        return 1;
-    }
-
-    LOG(INFO) << "LiveDisplay HAL service is ready.";
-
-    android::hardware::joinRpcThreadpool();
-
-    LOG(ERROR) << "LiveDisplay HAL service failed to join thread pool.";
-    return 1;
+    ABinderProcess_joinThreadPool();
+    return EXIT_FAILURE;  // should not reach
 }
