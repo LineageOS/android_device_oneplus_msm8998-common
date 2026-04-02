@@ -406,8 +406,6 @@ vendor/etc/camera/ashdr/iso617_4608x3456.ncf
 vendor/etc/camera/ashdr/ncf_pack.ncf
 vendor/etc/camera/sticker/dog.zip
 vendor/etc/camera/sticker/huzi.zip
-vendor/etc/camera/sticker/megviifacepp_0_4_7_model
-vendor/etc/camera/sticker/mgbeautify_1_2_3_model
 vendor/etc/camera/sticker/tuzi.zip
 vendor/etc/camera/sticker/wanzai.zip
 
