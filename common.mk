@@ -243,6 +243,9 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
 
+# need to input this line to fix the charging loop bug  #8115
+$(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
+
 # LiveDisplay
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service.oneplus_msm8998
