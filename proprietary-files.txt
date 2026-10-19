@@ -51,7 +51,7 @@ vendor/bin/hw/vendor.oneplus.hardware.ifaa@2.0-service
 vendor/etc/init/vendor.oneplus.hardware.ifaa@2.0-service.rc
 vendor/lib64/vendor.oneplus.hardware.ifaa@2.0.so
 
-# ANT+ - from from FP3 - 6.A.025.0
+# ANT+ - from FP3 - 6.A.025.0
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so|6e2b594b44552b42000164c091af5cf7a4c508f5
 
 # Audio
@@ -67,7 +67,7 @@ vendor/lib/libdrc.so
 vendor/lib/libqtigef.so
 vendor/lib/soundfx/libasphere.so
 
-# Bluetooth - from from FP3 - 6.A.025.0
+# Bluetooth - from FP3 - 6.A.025.0
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|73d7132773572d87bdac6b5e454573e79d35316c
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|f4ee3b2da2b08647447869ade86ec63f7340accc
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|1e238b1e84d889f424001f5134f0d2994d13251a
